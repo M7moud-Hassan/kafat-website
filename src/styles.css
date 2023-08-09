@@ -1,0 +1,133 @@
+/* You can add global styles to this file, and also import other style files */
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'alex-400';
+}
+@font-face {
+    font-family: 'alex-400';
+    src: url('/assets/fonts/alexandria/Alexandria-Regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'alex-600';
+    src: url('/assets/fonts/alexandria/Alexandria-SemiBold.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'alex-700';
+    src: url('/assets/fonts/alexandria/Alexandria-Bold.ttf') format('truetype');
+}
+:root {
+    --primary-color: #E6F1F9;
+    --main-color: #005183;
+    --neutral60-color: #9E9E9E;
+    --neutral90-color: #424242;
+    --Primary-Surface-color: #F7FBFE;
+    --Primary-focus-color: #B3CBDA;
+    --success-main-color: #008243;
+    --success-border-color: #B3DAC7;
+    --success-surface-color: #EBF5F0;
+  }
+::-webkit-scrollbar{
+    width: 8px;
+}
+::-webkit-scrollbar-thumb{
+    background: linear-gradient(to bottom , #005183,#A18131, #005183);
+    border-radius: 6px;
+    transition: all .5s ease-in-out;
+}
+::-webkit-scrollbar-thumb:hover{
+    background: linear-gradient(to bottom , #A18131,#005183,#A18131);
+    cursor: pointer;
+}
+.bg-primary-opacity-btn{
+    display: inline-block;
+    padding: 14px 18px 14px 18px;
+    border-radius: 8px;
+    color: var(--main-color);
+    background-color: var(--Primary-Surface-color);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+}
+.bg-primary-btn{
+    display: inline-block;
+    padding: 14px 18px 14px 18px;
+    border-radius: 8px;
+    color: white;
+    background-color: var(--main-color);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+}
+.bg-primary-btn-block{
+    display: inline-block;
+    padding: 14px 18px 14px 18px;
+    border-radius: 8px;
+    color: white;
+    background-color: var(--main-color);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    width: 100%;
+    text-align: center;
+}
+.primary-padge,.success-padge{
+    size: 10px;
+    display: inline-block;
+    padding: 2px 12px 2px 12px;
+    border-radius: 32px;
+    color: var(--main-color);
+    border: 1px solid var(--Primary-focus-color);
+    background-color: var(--Primary-Surface-color);
+}
+.success-padge{
+    color: var(--success-main-color);
+    border: 1px solid var(--success-border-color);
+    background-color: var(--success-surface-color);
+}
+.octagon-image-container{
+    position: relative;
+    width: calc(15.5vw);
+    height: calc(20vw);
+    border: 1px solid #005183;
+}
+.octagon-image{
+    position: absolute;
+    top: calc(.5vw);
+    left:calc(.5vw);
+    width: calc(14.5vw);
+    height: calc(14.5vw);
+    background-image: url('/assets/images/people.jpg');
+    clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 3px solid black;
+}
+.octagon-image-back{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: calc(15.5vw);
+    height: calc(15.5vw);
+    background-image: url('/assets/images/people.jpg');
+    clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+    /* clip-path: polygon(71% 31%, 28% 0, 28% 0, 99% 70%, 29% 31%, 99% 70%, 29% 31%, 29% 72%, 29% 72%, ); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 3px solid black;
+    opacity: 20%;
+}
+.octagon-image-title-and-padge{
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    text-align: center;
+}
+.octagon-image-title{
+    font-size: 16px;
+    font-weight: 600;
+    /* line-height: 24; */
+    color: black;
+}
