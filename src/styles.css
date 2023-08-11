@@ -21,9 +21,18 @@
     --primary-color: #E6F1F9;
     --main-color: #005183;
     --neutral60-color: #9E9E9E;
+<<<<<<< HEAD
     --neutral90-color: #424242;
     --Primary-Surface-color: #F7FBFE;
     --Primary-focus-color: #B3CBDA;
+=======
+    --neutral70-color: #757575;
+    --neutral80-color: #616161;
+    --neutral90-color: #424242;
+    --Primary-Surface-color: #F7FBFE;
+    --Primary-focus-color: #B3CBDA;
+    --Primary-border-color: #E6F1F9;
+>>>>>>> b17576b7723de78bb978e7fd357eb33154d530b3
     --success-main-color: #008243;
     --success-border-color: #B3DAC7;
     --success-surface-color: #EBF5F0;
@@ -72,7 +81,11 @@
     width: 100%;
     text-align: center;
 }
+<<<<<<< HEAD
 .primary-padge,.success-padge{
+=======
+.primary-padge,.success-padge,.white-padge,.main-padge{
+>>>>>>> b17576b7723de78bb978e7fd357eb33154d530b3
     size: 10px;
     display: inline-block;
     padding: 2px 12px 2px 12px;
@@ -86,6 +99,36 @@
     border: 1px solid var(--success-border-color);
     background-color: var(--success-surface-color);
 }
+<<<<<<< HEAD
+=======
+.white-padge{
+    color: var(--neutral90-color);
+    border: 1px solid var(--Primary-border-color);
+    background-color: white;
+}
+.main-padge{
+    color: white;
+    border: 1px solid var(--main-color);
+    background-color: var(--main-color);
+}
+.active-navigation-button,.inactive-navigation-button{
+    text-decoration: none;
+    size: 16px;
+    font-weight: 600;
+    display: inline-block;
+    padding:  16px 24px;
+    border-radius: 30px;
+    color: white;
+    border: 1px solid var(--main-color);
+    background-color: var(--main-color);
+    margin-left: 15px;
+}
+.inactive-navigation-button{
+    color: var(--neutral90-color);
+    border: 1px solid var(--Primary-border-color);
+    background-color: white;
+}
+>>>>>>> b17576b7723de78bb978e7fd357eb33154d530b3
 .octagon-image-container{
     position: relative;
     width: calc(15.5vw);
@@ -112,7 +155,10 @@
     height: calc(15.5vw);
     background-image: url('/assets/images/people.jpg');
     clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+<<<<<<< HEAD
     /* clip-path: polygon(71% 31%, 28% 0, 28% 0, 99% 70%, 29% 31%, 99% 70%, 29% 31%, 29% 72%, 29% 72%, ); */
+=======
+>>>>>>> b17576b7723de78bb978e7fd357eb33154d530b3
     background-repeat: no-repeat;
     background-size: cover;
     border: 3px solid black;
@@ -130,4 +176,57 @@
     font-weight: 600;
     /* line-height: 24; */
     color: black;
+<<<<<<< HEAD
+=======
+}
+
+
+/* -------------------------circle clipped top and in bottom-------------------------------- */
+.image-container-circle{
+    height: 230px;
+    width: 345px;
+    margin: 0px auto;
+}
+.circle-image-container{
+    position: relative;
+    /* width: 100%; */
+    height: 230px;
+    /* border: 1px solid #005183; */
+}
+.circle-image{
+    position: absolute;
+    top: 5px;
+    left: 1%;
+    width: calc(98%);
+    height: 220px;
+    background-image: url('/assets/images/people.jpg');
+    clip-path: ellipse(39% 56% at 50% 50%);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 3px solid black;
+}
+.circle-image-back{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 230px;
+    background-image: url('/assets/images/people.jpg');
+    clip-path: ellipse(39% 56% at 50% 50%);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 3px solid black;
+    opacity: 20%;
+}
+
+@media (500px <= width <=2000px){
+    .circle-image-container{
+        width: 100%;
+    }
+}   
+@media (0px <= width <=500px){
+    .circle-image-container{
+        width: 100%;
+    }
+>>>>>>> b17576b7723de78bb978e7fd357eb33154d530b3
 }
