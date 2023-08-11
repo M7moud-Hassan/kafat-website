@@ -60,12 +60,6 @@
     /* display: inline-flex;  */
     white-space: nowrap; 
   }
-  .outer-container{
-    
-  }
-
-
-
 
 .manashet-items{
     margin-top: 35px;
@@ -108,7 +102,7 @@
 
     .manashet-list-container{
         margin: 16px 124px;
-        /* padding: 30px; */
+        padding: 68px 10px;
     }
 }
 @media (0px <= width <=500px){
@@ -138,6 +132,6 @@
     }
     .manashet-list-container{
         margin: 16px 20px;
-        /* padding: 10px; */
+        padding: 68px 10px;
     }
 }
