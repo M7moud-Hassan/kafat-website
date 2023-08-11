@@ -59,6 +59,7 @@
     overflow-x: scroll;
     /* display: inline-flex;  */
     white-space: nowrap; 
+    /* padding-top: 50px; */
   }
 
 .manashet-items{
@@ -101,8 +102,8 @@
     }
 
     .manashet-list-container{
-        margin: 16px 124px;
-        padding: 68px 10px;
+        margin: 0px 124px;
+        padding: 40px 40px;
     }
 }
 @media (0px <= width <=500px){
@@ -131,7 +132,7 @@
         overflow: visible;  
     }
     .manashet-list-container{
-        margin: 16px 20px;
-        padding: 68px 10px;
+        margin: 0px 20px;
+        padding: 40px 10px;
     }
 }

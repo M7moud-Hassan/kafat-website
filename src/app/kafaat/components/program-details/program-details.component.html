@@ -49,8 +49,11 @@
         </div>
     </div>
 </div>
-
-<div class="manashet-list-container">
+<div class="page-padding mt-5">
+    <a (click)="toggleLinks()" [ngClass]="isManashetActive?'bg-primary-btn':'bg-primary-opacity-btn'"> المناشط</a>
+    <a (click)="toggleLinks()" [ngClass]="!isManashetActive?'bg-primary-btn':'bg-primary-opacity-btn'" class="mx-3">المشاركات </a>
+</div>
+<div *ngIf="isManashetActive"  class="manashet-list-container mb-5">
     <div class="manashet-list-content">
         <a routerLink="#" class="active-navigation-button">جميع المناشط</a> 
         <a routerLink="#" class="inactive-navigation-button">القادمة</a> 
@@ -62,5 +65,11 @@
         <app-manashet-item></app-manashet-item>
         <app-manashet-item></app-manashet-item>
     </div>
+</div>
+<div *ngIf="!isManashetActive" class="manashet-list-container mb-5">
+    <app-musharakat-item></app-musharakat-item>
+    <app-musharakat-item></app-musharakat-item>
+    <app-musharakat-item></app-musharakat-item>
+    <app-musharakat-item></app-musharakat-item>
 </div>
 

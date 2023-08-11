@@ -1,0 +1,39 @@
+.manashet-card-container{
+    border: 1px solid var(--Primary-border-color);
+    border-radius: 8px;
+    margin: 10px 0px;
+    background-color: white;
+    box-shadow: 1px 1px 7px lightgray;
+}
+.manashet-card-container img{
+    display: inline-block;
+    border-radius: 8px 8px 0px 0px;
+}
+.manashet-card-details{
+    padding: 16px;
+    text-align: right;
+}
+.manashet-card-details-title{
+    text-align: right;
+    color: var(--neutral90-color);
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+.manashet-card-details-program-details-words{
+    font-size: 14px;
+    columns: var(--neutral70-color);
+    font-weight: 400;
+    line-height: 22px;
+    text-align: right;
+}
+.manashet-card-details-more-link{
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 14px 0px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--main-color);
+    text-align: right;
+}

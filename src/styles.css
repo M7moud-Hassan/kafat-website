@@ -52,6 +52,7 @@
     text-decoration: none;
     font-size: 16px;
     font-weight: 600;
+    cursor: pointer;
 }
 .bg-primary-btn{
     display: inline-block;
@@ -62,6 +63,7 @@
     text-decoration: none;
     font-size: 16px;
     font-weight: 600;
+    cursor: pointer;
 }
 .bg-primary-btn-block{
     display: inline-block;
@@ -74,6 +76,7 @@
     font-weight: 600;
     width: 100%;
     text-align: center;
+    cursor: pointer;
 }
 .primary-padge,.success-padge,.white-padge,.main-padge{
     size: 10px;
@@ -184,7 +187,6 @@
     clip-path: ellipse(39% 56% at 50% 50%);
     background-repeat: no-repeat;
     background-size: cover;
-    border: 3px solid black;
 }
 .circle-image-back{
     position: absolute;
@@ -196,7 +198,6 @@
     clip-path: ellipse(39% 56% at 50% 50%);
     background-repeat: no-repeat;
     background-size: cover;
-    border: 3px solid black;
     opacity: 20%;
 }
 
@@ -204,9 +205,17 @@
     .circle-image-container{
         width: 100%;
     }
+    .page-padding{
+        margin: 0px 124px;
+        padding: 0px 0px;
+    }
 }   
 @media (0px <= width <=500px){
     .circle-image-container{
         width: 100%;
+    }
+    .page-padding{
+        margin: 0px 20px;
+        padding: 0px 0px;
     }
 }
