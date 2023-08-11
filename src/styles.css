@@ -206,6 +206,9 @@
     opacity: 20%;
 }
 
+.text-main{
+    color: var(--main-color) !important;
+}
 @media (500px <= width <=2000px){
     .circle-image-container{
         width: 100%;
