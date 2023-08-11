@@ -7,6 +7,7 @@ import { ProgramDetailsComponent } from './components/program-details/program-de
 import { MusharakatItemComponent } from './components/musharakat-item/musharakat-item.component';
 
 
+
 @NgModule({
   declarations: [
     ProgramDetailsComponent,

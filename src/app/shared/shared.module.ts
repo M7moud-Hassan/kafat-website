@@ -11,6 +11,7 @@ import { ManashetItemComponent } from './components/manashet-item/manashet-item.
 @NgModule({
   declarations: [
     FooterComponent,
+
     NavbarComponent,
     BreadCrumbComponent,
     PageHeaderComponent,
