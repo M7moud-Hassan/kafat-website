@@ -22,6 +22,7 @@ import { VideoPopUpComponent } from './components/video-pop-up/video-pop-up.comp
     NavigationToBackHeaderComponent,
     ImagePopUpComponent,
     VideoPopUpComponent
+
   ],
   imports: [
     CommonModule
@@ -34,6 +35,7 @@ import { VideoPopUpComponent } from './components/video-pop-up/video-pop-up.comp
     ManashetItemComponent,
     NavigationToBackHeaderComponent,
     ImagePopUpComponent
+
   ]
 })
 export class SharedModule { }

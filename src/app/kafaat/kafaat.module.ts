@@ -15,6 +15,9 @@ import { ManashetDetailsDistinguishedPageComponent } from './components/manashet
 
 
 
+import { HomePageComponent } from './components/home-page/home-page.component';
+import { CarousalHomeComponent } from './components/carousal-home/carousal-home.component';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 @NgModule({
   declarations: [
     ProgramDetailsComponent,
@@ -25,12 +28,15 @@ import { ManashetDetailsDistinguishedPageComponent } from './components/manashet
     ManashetDetailsImageGalleryPageComponent,
     ManashetDetailsVideoGalleryPageComponent,
     ManashetDetailsSharedPageComponent,
-    ManashetDetailsDistinguishedPageComponent
+    ManashetDetailsDistinguishedPageComponent,
+    HomePageComponent,
+    CarousalHomeComponent
   ],
   imports: [
     CommonModule,
     KafaatRoutingModule,
-    SharedModule
+    SharedModule,
+    SlickCarouselModule
   ]
 })
 export class KafaatModule { }

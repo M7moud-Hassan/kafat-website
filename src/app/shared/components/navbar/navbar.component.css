@@ -1,31 +1,18 @@
-.navbar-container{
-    background: linear-gradient(to right ,#A18131, #005183);
-    position: relative;
-    min-height: calc(100vh);
-    width: 100%;
+.border-main {
+    border-color: var(--main-color) !important;
 }
-.navbar-element-container{
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: calc(40vh);
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 3;
+    top: 0;
+    right: 0;
+    background-color: white;
+    overflow-x: hidden;
+    transition: 0.5s;
 }
-.navbar-element{
-    background-color: transparent;
-    border: 1px solid blueviolet;
-    height: 60px;
-    width: 100%;
-}
-.navbar-image{
-    position: absolute;
-    bottom: calc(-30vh);
-    left: 0px;
-    background-color: transparent;
-    height: calc(70vh);
-    width: 100%;
-    clip-path: ellipse(56% 48% at 49% 48%);
-    background-image: url('/assets/images/people.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
+.sidenav .dropdown-toggle::after{
+    float: left !important;
 }
