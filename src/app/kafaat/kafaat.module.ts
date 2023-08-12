@@ -18,6 +18,9 @@ import { ManashetDetailsDistinguishedPageComponent } from './components/manashet
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { CarousalHomeComponent } from './components/carousal-home/carousal-home.component';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { MinshatCarousalComponent } from './components/minshat-carousal/minshat-carousal.component';
+import { PostsCarousalHomeComponent } from './components/posts-carousal-home/posts-carousal-home.component';
+import { DiscoverProgramsComponent } from './components/discover-programs/discover-programs.component';
 @NgModule({
   declarations: [
     ProgramDetailsComponent,
@@ -30,7 +33,10 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     ManashetDetailsSharedPageComponent,
     ManashetDetailsDistinguishedPageComponent,
     HomePageComponent,
-    CarousalHomeComponent
+    CarousalHomeComponent,
+    MinshatCarousalComponent,
+    PostsCarousalHomeComponent,
+    DiscoverProgramsComponent
   ],
   imports: [
     CommonModule,

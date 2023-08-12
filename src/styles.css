@@ -288,6 +288,13 @@
   .small{
     color: #757575;
   }
+
+  .truncate-lines-3 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3; 
+    overflow: hidden;
+  }
   
 @media (500px <= width <=2000px){
     .circle-image-container{
