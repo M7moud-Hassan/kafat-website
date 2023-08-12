@@ -34,6 +34,58 @@
     --success-main-color: #008243;
     --success-border-color: #B3DAC7;
     --success-surface-color: #EBF5F0;
+    --warning-hover-color: #D16603;
+    --warning-border-color: #FFCA99;
+    --warning-surface-color: #FFF2E7;
+    --bg-outline-color: #d3d3d333;
+  }
+  .truncate-1-lines {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+  }
+  .truncate-2-lines {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+  }
+  .truncate-3-lines {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+  }
+  .truncate-4-lines {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    overflow: hidden;
+  }
+  .truncate-5-lines {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+    overflow: hidden;
+  }
+  .truncate-6-lines {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 6;
+    overflow: hidden;
+  }
+  .truncate-7-lines {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 7;
+    overflow: hidden;
+  }
+  .truncate-10-lines {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 10;
+    overflow: hidden;
   }
 ::-webkit-scrollbar{
     width: 8px;
@@ -57,6 +109,8 @@
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
+    outline: none;
+    border: none;
 }
 .bg-primary-btn{
     display: inline-block;
@@ -68,6 +122,8 @@
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
+    outline: none;
+    border: none;
 }
 .bg-primary-btn-block{
     display: inline-block;
@@ -81,13 +137,15 @@
     width: 100%;
     text-align: center;
     cursor: pointer;
+    outline: none;
+    border: none;
 }
-.primary-padge,.success-padge,.white-padge,.main-padge{
-
+.primary-padge,.success-padge,.warning-padge,.white-padge,.main-padge{
     size: 10px;
     display: inline-block;
     padding: 2px 12px 2px 12px;
     border-radius: 32px;
+    text-decoration: none;
     color: var(--main-color);
     border: 1px solid var(--Primary-focus-color);
     background-color: var(--Primary-Surface-color);
@@ -96,6 +154,11 @@
     color: var(--success-main-color);
     border: 1px solid var(--success-border-color);
     background-color: var(--success-surface-color);
+}
+.warning-padge{
+    color: var(--warning-hover-color);
+    border: 1px solid var(--warning-border-color);
+    background-color: var(--warning-surface-color);
 }
 .white-padge{
     color: var(--neutral90-color);

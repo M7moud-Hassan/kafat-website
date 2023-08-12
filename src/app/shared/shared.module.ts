@@ -5,6 +5,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { BreadCrumbComponent } from './components/bread-crumb/bread-crumb.component';
 import { PageHeaderComponent } from './components/page-header/page-header.component';
 import { ManashetItemComponent } from './components/manashet-item/manashet-item.component';
+import { NavigationToBackHeaderComponent } from './components/navigation-to-back-header/navigation-to-back-header.component';
+import { ImagePopUpComponent } from './components/image-pop-up/image-pop-up.component';
+import { VideoPopUpComponent } from './components/video-pop-up/video-pop-up.component';
 
 
 
@@ -15,7 +18,10 @@ import { ManashetItemComponent } from './components/manashet-item/manashet-item.
     NavbarComponent,
     BreadCrumbComponent,
     PageHeaderComponent,
-    ManashetItemComponent
+    ManashetItemComponent,
+    NavigationToBackHeaderComponent,
+    ImagePopUpComponent,
+    VideoPopUpComponent
   ],
   imports: [
     CommonModule
@@ -25,7 +31,9 @@ import { ManashetItemComponent } from './components/manashet-item/manashet-item.
     NavbarComponent,
     BreadCrumbComponent,
     PageHeaderComponent,
-    ManashetItemComponent
+    ManashetItemComponent,
+    NavigationToBackHeaderComponent,
+    ImagePopUpComponent
   ]
 })
 export class SharedModule { }
