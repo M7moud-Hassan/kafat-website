@@ -1,0 +1,7 @@
+.carousal-home-item{
+    background-image: url('/assets/images/border-image-home.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 200px;
+}

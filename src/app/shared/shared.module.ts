@@ -15,7 +15,8 @@ import { ManashetItemComponent } from './components/manashet-item/manashet-item.
     NavbarComponent,
     BreadCrumbComponent,
     PageHeaderComponent,
-    ManashetItemComponent
+    ManashetItemComponent,
+
   ],
   imports: [
     CommonModule
@@ -25,7 +26,8 @@ import { ManashetItemComponent } from './components/manashet-item/manashet-item.
     NavbarComponent,
     BreadCrumbComponent,
     PageHeaderComponent,
-    ManashetItemComponent
+    ManashetItemComponent,
+
   ]
 })
 export class SharedModule { }

@@ -1,3 +1,18 @@
-.border-main{
+.border-main {
     border-color: var(--main-color) !important;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 3;
+    top: 0;
+    right: 0;
+    background-color: white;
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+.sidenav .dropdown-toggle::after{
+    float: left !important;
 }

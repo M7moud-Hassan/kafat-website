@@ -3,10 +3,10 @@
         <a class="navbar-brand" href="#"><img [src]="typeNav=='dark'?'assets/images/logo-blue.svg':'assets/images/logo.svg'" alt="logo.svg"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-            aria-expanded="false" aria-label="Toggle navigation">
+            aria-expanded="false" aria-label="Toggle navigation" (click)="openNav()">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="container collapse navbar-collapse mx-4" id="navbarSupportedContent">
+        <div class="container collapse navbar-collapse mx-4">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 w-100 d-flex justify-content-around">
                 <li class="nav-item">
                     <a [class]="typeNav=='dark'?'nav-link text-dark':'nav-link text-light'" aria-current="page" href="#">الرئيسية</a>
@@ -49,3 +49,52 @@
         </div>
     </div>
 </nav>
+
+<div id="mySidenav" class="sidenav">
+    <div class="text-end">
+        <a href="javascript:void(0)" class="fs-1 fw-bold p-2 text-decoration-none text-dark" (click)="closeNav()">&times;</a>
+    </div>
+    <hr>
+    <div class="ps-2">
+
+        <nav class="navbar navbar-expand-lg navbar-light w-100 ">
+            <div class="container">
+              <ul class="navbar-nav w-100">
+                <li class="nav-item">
+                    <a class="nav-link"  href="#">الرئيسية</a>
+                  </li>
+                <li class="nav-item dropdown w-100">
+                  <a class="nav-link dropdown-toggle w-100 text-main" href="#" id="navbarDropdown" role="button"
+                     data-bs-toggle="dropdown" aria-expanded="false">
+                    البرامج
+                  </a>
+                  <ul class="dropdown-menu w-100 border-0" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="#">برنامج قارئ</a></li>
+                    <li><a class="dropdown-item" href="#">برنامج كاتب</a></li>
+                    <li><a class="dropdown-item" href="#"> برنامج متحدث</a></li>
+                  </ul>
+                </li>
+                 
+          <li class="nav-item">
+            <a class="nav-link" href="#">من نحن</a>
+          </li>
+         
+          <li class="nav-item">
+            <a class="nav-link" href="#" >تواصل معنا</a>
+          </li>
+              </ul>
+            </div>
+          </nav>
+    </div>
+    <hr>
+    <div class="px-2 text-center">
+        <div class="bg-primary-btn w-100">تسجيل دخول</div>
+        <a class="text-decoration-none " href="#"><h5 class="text-main fw-bold mt-2">طلب انضمام</h5></a>
+    </div>
+    <hr>
+    <div class="d-flex align-items-center justify-content-around w-50 mx-auto">
+        <a href="#" class="mx-2"><img src='assets/images/facebook-dark.svg' alt="facebook.svg"></a>
+        <a href="#" class="mx-2"><img src='assets/images/twitter-dark.svg' alt="twitter.svg"></a>
+        <a href="#" class="mx-2"><img src='assets/images/linkedin-dark.svg' alt="linkedin.svg"></a>
+    </div>
+</div>
