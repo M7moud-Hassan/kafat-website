@@ -34,8 +34,8 @@ import { VideoPopUpComponent } from './components/video-pop-up/video-pop-up.comp
     PageHeaderComponent,
     ManashetItemComponent,
     NavigationToBackHeaderComponent,
-    ImagePopUpComponent
-
+    ImagePopUpComponent,
+    
   ]
 })
 export class SharedModule { }

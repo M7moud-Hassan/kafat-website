@@ -43,12 +43,11 @@
 .kafaat-logo{
     background-image: url('/assets/images/kafaat-logo-light.svg');
     background-repeat: no-repeat;
-    background-size: 100% 100%;
-    background-position: 7px 0px;
+    background-size: contain;
+    background-position: right;
     width: 70%;
     height: 100px;  
     margin-bottom: 35px;
-    /* border: 1px solid white; */
 }
 .social-icon{
     width: 24px;
@@ -62,4 +61,7 @@
 .social-icon-container{
     margin-top: 30px;
     margin-bottom: 20px;
+}
+.page-padding{
+    padding-top: 50px;
 }
