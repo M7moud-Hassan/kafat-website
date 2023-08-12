@@ -19,15 +19,19 @@
 }.page-header-container-title{
     display: inline-block;
     padding-right: 10px;
-    font-size: 32px;
+    font-size: 25px;
     font-weight: 600;
     color: var(----neutral90-color); 
 }
 
+.bg-header{
+    background-image: url("../../../../assets/images/background-header-page.svg");
+    background-repeat: no-repeat;
+    background-position: right;
+}
 
 
-
-@media (500px <= width <=2000px){
+/* @media (500px <= width <=2000px){
     .page-header-container{
         margin: 40px 107px;
     }
@@ -36,4 +40,4 @@
     .page-header-container{
         margin: 40px 16px;
     }
-}
+} */

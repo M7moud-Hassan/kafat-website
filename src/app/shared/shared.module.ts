@@ -5,6 +5,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { BreadCrumbComponent } from './components/bread-crumb/bread-crumb.component';
 import { PageHeaderComponent } from './components/page-header/page-header.component';
 import { ManashetItemComponent } from './components/manashet-item/manashet-item.component';
+import { DisplayContentComponent } from './components/display-content/display-content.component';
+import { LayoutSectionComponent } from './components/layout-section/layout-section.component';
+import { ItemCarousalAngleComponent } from './components/item-carousal-angle/item-carousal-angle.component';
 
 
 
@@ -16,7 +19,9 @@ import { ManashetItemComponent } from './components/manashet-item/manashet-item.
     BreadCrumbComponent,
     PageHeaderComponent,
     ManashetItemComponent,
-
+    DisplayContentComponent,
+    LayoutSectionComponent,
+    ItemCarousalAngleComponent
   ],
   imports: [
     CommonModule
@@ -27,6 +32,8 @@ import { ManashetItemComponent } from './components/manashet-item/manashet-item.
     BreadCrumbComponent,
     PageHeaderComponent,
     ManashetItemComponent,
+    LayoutSectionComponent,
+    ItemCarousalAngleComponent
 
   ]
 })
