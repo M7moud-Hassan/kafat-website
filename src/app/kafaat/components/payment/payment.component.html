@@ -1,0 +1,22 @@
+<app-navbar></app-navbar>
+<div class="page-padding">
+    <div class="row">
+        <div class="col-12 col-md-7">
+            <div class="payment-details-container">
+                <div class="payment-details-title">تفاصيل الدفع</div>
+                <span class="under-line"></span>
+                <div class="payment-methods-title">الدفع عن طريق:</div>
+                <div class="payment-methods">
+                    <a *ngFor="let method of paymentList" (click)="selectPaymenyMethod(method.id)" ngClass="{{method.isSelected?'payment-methods-item-active':'payment-methods-item-inactive'}}" ><img src="{{method.imagePath}}" width="60" height="25"></a>
+                </div>
+                <div class="input-and-label-icon">
+                    <img src="/assets/images/person-blue.svg" width="20" height="20">
+                    <input type="text" class="input-text" #inputVal ngClass="{{inputVal.value.length > 0?'input-label-with-value':'input-label'}}">
+                    <span class="input-label">الاسم على البطاقة</span>
+                </div>
+                <button class="bg-primary-btn-block">ادفع الآن</button>
+            </div>
+        </div>
+        <div class="col-12 col-md-5"></div>
+    </div>
+</div>

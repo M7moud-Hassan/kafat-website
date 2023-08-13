@@ -8,6 +8,9 @@ import { ManashetItemComponent } from './components/manashet-item/manashet-item.
 import { NavigationToBackHeaderComponent } from './components/navigation-to-back-header/navigation-to-back-header.component';
 import { ImagePopUpComponent } from './components/image-pop-up/image-pop-up.component';
 import { VideoPopUpComponent } from './components/video-pop-up/video-pop-up.component';
+import { DisplayContentComponent } from './components/display-content/display-content.component';
+import { LayoutSectionComponent } from './components/layout-section/layout-section.component';
+import { ItemCarousalAngleComponent } from './components/item-carousal-angle/item-carousal-angle.component';
 
 
 
@@ -21,8 +24,10 @@ import { VideoPopUpComponent } from './components/video-pop-up/video-pop-up.comp
     ManashetItemComponent,
     NavigationToBackHeaderComponent,
     ImagePopUpComponent,
-    VideoPopUpComponent
-
+    VideoPopUpComponent,
+    DisplayContentComponent,
+    LayoutSectionComponent,
+    ItemCarousalAngleComponent
   ],
   imports: [
     CommonModule
@@ -35,7 +40,9 @@ import { VideoPopUpComponent } from './components/video-pop-up/video-pop-up.comp
     ManashetItemComponent,
     NavigationToBackHeaderComponent,
     ImagePopUpComponent,
-    
+    LayoutSectionComponent,
+    ItemCarousalAngleComponent
+
   ]
 })
 export class SharedModule { }

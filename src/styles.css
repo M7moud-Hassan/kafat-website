@@ -23,6 +23,7 @@
     --neutral60-color: #9E9E9E;
     --neutral90-color: #424242;
     --Primary-focus-color: #B3CBDA;
+    --neutral40-color: #E0E0E0;
     --neutral70-color: #757575;
     --neutral80-color: #616161;
     --neutral90-color: #424242;
@@ -304,4 +305,10 @@
         margin: 0px 20px;
         padding: 0px 0px;
     }
+}
+.under-line{
+    display: inline-block;
+    width: 64px;
+    height: 3px;
+    background-color: var(--main-color);
 }

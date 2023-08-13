@@ -12,12 +12,6 @@
     font-weight: 600;
     color: var(--neutral90-color);
 }
-.under-line{
-    display: inline-block;
-    width: 64px;
-    height: 3px;
-    background-color: var(--main-color);
-}
 .manshat-card-container-descrition-wording{
     margin-top: 20px;
     font-size: 16px;
