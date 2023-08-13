@@ -13,13 +13,13 @@ import { ManashetDetailsVideoGalleryPageComponent } from './components/manashet-
 import { ManashetDetailsSharedPageComponent } from './components/manashet-details-shared-page/manashet-details-shared-page.component';
 import { ManashetDetailsDistinguishedPageComponent } from './components/manashet-details-distinguished-page/manashet-details-distinguished-page.component';
 
-
-
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { CarousalHomeComponent } from './components/carousal-home/carousal-home.component';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { PaymentComponent } from './components/payment/payment.component';
 import { PaymentSuccessComponent } from './components/payment-success/payment-success.component';
+import { DiscoverProgramsComponent } from './components/discover-programs/discover-programs.component';
+
 @NgModule({
   declarations: [
     ProgramDetailsComponent,
@@ -34,7 +34,9 @@ import { PaymentSuccessComponent } from './components/payment-success/payment-su
     HomePageComponent,
     CarousalHomeComponent,
     PaymentComponent,
-    PaymentSuccessComponent
+    PaymentSuccessComponent,
+    DiscoverProgramsComponent,
+
   ],
   imports: [
     CommonModule,
@@ -42,5 +44,6 @@ import { PaymentSuccessComponent } from './components/payment-success/payment-su
     SharedModule,
     SlickCarouselModule
   ]
+  
 })
 export class KafaatModule { }
