@@ -1,0 +1,39 @@
+.contact{
+    padding-right: 10%;
+    padding-left: 10%;
+}
+.contact input[type=text],.contact textarea {
+    /* background-image: url('../../../../assets/images/user.svg'); */
+    background-position: right;
+    background-repeat: no-repeat;
+    padding-right: 30px;
+  }
+  .contact .name-user{
+    background-image: url('../../../../assets/images/user.svg');
+  }
+  .contact .details{
+    background-position-y: top;
+    background-image: url('../../../../assets/images/pencil.svg');
+  }
+
+  .contact .email-user{
+    background-image: url('../../../../assets/images/at-symbol.svg');
+  }
+
+  .contact label{
+    padding-right: 30px;
+  }
+
+
+
+  
+
+
+
+ 
+  
+  
+  
+
+  
+  

@@ -4,7 +4,7 @@ import { SlickCarouselComponent } from 'ngx-slick-carousel';
 @Component({
   selector: 'app-minshat-carousal',
   templateUrl: './minshat-carousal.component.html',
-  styleUrls: ['../../../shared/components/manashet-item/manashet-item.component.css','./minshat-carousal.component.css']
+  styleUrls: ['../manashet-item/manashet-item.component.css','./minshat-carousal.component.css']
 })
 export class MinshatCarousalComponent implements OnInit {
    slides=[1,2,3,4,5,6,7,8]

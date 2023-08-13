@@ -14,7 +14,7 @@ export class HomePageComponent {
     this.showOverlay=value;
   }
   slides:ItemCarousal[]=[
-    { img: 'assets/images/Programs.png',title:'برنامج موهوب',subTitle:'١٢٣ منشط' ,onClickItem:(item:ItemCarousal,index:number):void=>{
+    { img: 'assets/images/more_horiz.png',title:'برنامج موهوب',subTitle:'١٢٣ منشط' ,onClickItem:(item:ItemCarousal,index:number):void=>{
       console.log(item,index);
       
     }},
@@ -24,19 +24,19 @@ export class HomePageComponent {
     }},{ img: 'assets/images/Programs.png',title:'برنامج موهوب',subTitle:'١٢٣ منشط' ,onClickItem:(item:ItemCarousal,index:number):void=>{
       console.log(item,index);
       
-    }},{ img: 'assets/images/Programs.png',title:'برنامج موهوب',subTitle:'١٢٣ منشط' ,onClickItem:(item:ItemCarousal,index:number):void=>{
+    }},{ img: 'assets/images/slide5.png',title:'برنامج موهوب',subTitle:'١٢٣ منشط' ,onClickItem:(item:ItemCarousal,index:number):void=>{
       console.log(item,index);
       
-    }},{ img: 'assets/images/Programs.png',title:'برنامج موهوب',subTitle:'١٢٣ منشط' ,onClickItem:(item:ItemCarousal,index:number):void=>{
+    }},{ img: 'assets/images/slide4.png',title:'برنامج ماهر',subTitle:'١٢٣ منشط' ,onClickItem:(item:ItemCarousal,index:number):void=>{
       console.log(item,index);
       
-    }},{ img: 'assets/images/Programs.png',title:'برنامج موهوب',subTitle:'١٢٣ منشط' ,onClickItem:(item:ItemCarousal,index:number):void=>{
+    }},{ img: 'assets/images/Programs.png',title:'برنامج متفوق',subTitle:'١٢٣ منشط' ,onClickItem:(item:ItemCarousal,index:number):void=>{
       console.log(item,index);
       
-    }},{ img: 'assets/images/Programs.png',title:'برنامج موهوب',subTitle:'١٢٣ منشط' ,onClickItem:(item:ItemCarousal,index:number):void=>{
+    }},{ img: 'assets/images/slide2.png',title:'برنامج مبتكر',subTitle:'١٢٣ منشط' ,onClickItem:(item:ItemCarousal,index:number):void=>{
       console.log(item,index);
       
-    }},{ img: 'assets/images/Programs.png',title:'برنامج موهوب',subTitle:'١٢٣ منشط' ,onClickItem:(item:ItemCarousal,index:number):void=>{
+    }},{ img: 'assets/images/more_horiz.png',title:'جميع البرامج',subTitle:'' ,onClickItem:(item:ItemCarousal,index:number):void=>{
       console.log(item,index);
       
     }},

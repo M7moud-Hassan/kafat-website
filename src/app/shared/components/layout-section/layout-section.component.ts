@@ -6,7 +6,7 @@ import { Component, ComponentFactoryResolver, Input, ViewContainerRef } from '@a
   styleUrls: ['./layout-section.component.css']
 })
 export class LayoutSectionComponent {
-  @Input() componentToDisplay: any;
+  @Input() componentToDisplay: number=-1;
 
   constructor(
   

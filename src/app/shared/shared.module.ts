@@ -11,7 +11,11 @@ import { ItemCarousalAngleComponent } from './components/item-carousal-angle/ite
 import { NavigationToBackHeaderComponent } from './components/navigation-to-back-header/navigation-to-back-header.component';
 import { ImagePopUpComponent } from './components/image-pop-up/image-pop-up.component';
 import { VideoPopUpComponent } from './components/video-pop-up/video-pop-up.component';
-
+import { MinshatCarousalComponent } from './components/minshat-carousal/minshat-carousal.component';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { PostsCarousalHomeComponent } from './components/posts-carousal-home/posts-carousal-home.component';
+import { MonthFaamousComponent } from './components/month-faamous/month-faamous.component';
+import { FormContactComponent } from './components/form-contact/form-contact.component';
 
 
 @NgModule({
@@ -26,11 +30,16 @@ import { VideoPopUpComponent } from './components/video-pop-up/video-pop-up.comp
     ItemCarousalAngleComponent,
     NavigationToBackHeaderComponent,
     ImagePopUpComponent,
-    VideoPopUpComponent
+    VideoPopUpComponent,
+    MinshatCarousalComponent,
+    PostsCarousalHomeComponent,
+    MonthFaamousComponent,
+    FormContactComponent
 
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    SlickCarouselModule
   ],
   exports:[
     FooterComponent,
@@ -41,7 +50,11 @@ import { VideoPopUpComponent } from './components/video-pop-up/video-pop-up.comp
     LayoutSectionComponent,
     ItemCarousalAngleComponent,
     NavigationToBackHeaderComponent,
-    ImagePopUpComponent
+    ImagePopUpComponent,
+    MinshatCarousalComponent,
+    PostsCarousalHomeComponent,
+    MonthFaamousComponent
+    
 
   ]
 })
