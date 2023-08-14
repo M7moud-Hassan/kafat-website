@@ -16,6 +16,7 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { PostsCarousalHomeComponent } from './components/posts-carousal-home/posts-carousal-home.component';
 import { MonthFaamousComponent } from './components/month-faamous/month-faamous.component';
 import { FormContactComponent } from './components/form-contact/form-contact.component';
+import { TabsContainerComponent } from './components/tabs-container/tabs-container.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { FormContactComponent } from './components/form-contact/form-contact.com
     MinshatCarousalComponent,
     PostsCarousalHomeComponent,
     MonthFaamousComponent,
-    FormContactComponent
+    FormContactComponent,
+    TabsContainerComponent
 
   ],
   imports: [
@@ -53,7 +55,8 @@ import { FormContactComponent } from './components/form-contact/form-contact.com
     ImagePopUpComponent,
     MinshatCarousalComponent,
     PostsCarousalHomeComponent,
-    MonthFaamousComponent
+    MonthFaamousComponent,
+    TabsContainerComponent
     
 
   ]
