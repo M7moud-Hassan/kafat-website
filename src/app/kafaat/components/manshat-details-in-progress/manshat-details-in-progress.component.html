@@ -1,9 +1,28 @@
+<app-navbar typeNav="dark"></app-navbar>
 <app-navigation-to-back-header Title="كيف تختار كتابا للقراءة"></app-navigation-to-back-header>
 <app-bread-crumb></app-bread-crumb>
+
+<div class="row mt-4 mb-2">
+    <div class="col-1"></div>
+    <div class="col-10">
+        <div *ngIf="isAlertShown" class="alert alert-info alert-dismissible fade show" role="alert">
+            <div class="alert-items-container py-2 px-4 ">
+                <img src="assets/images/alert-warning-grey.svg" class="image-start" width="24" height="24">
+                <div>
+                    <div class="alert-items-title">هذا المنشط جاري الآن</div>
+                    <div class="alert-items-details">يمكنك الإطلاع على تقرير المنشط، المرفقات، الصور والفيديوهات، المشاركات ومتميزوا المنشط بعد انتهاءه وادراج جميع التفاصيل</div>
+                </div>
+                <img (click)="hideAlert()" src="assets/images/close-grey.svg" class="image-end" width="24" height="24">
+            </div>
+          </div>
+    </div>
+    <div class="col-1"></div>
+</div>
+
 <div class="manshat-card-container-and-image-section mb-5">
 <div class="page-padding manshat-card-container">
     <div class="row">
-        <div class="col-12 col-md-7 d-none d-md-block">
+        <div class="col-12 col-md-7 mb-3 order-md-1 order-2">
             <div class="manshat-card-container-descrition-container">
                 <div class="manshat-card-container-descrition-title">وصف المنشط</div>
                 <span class="under-line"></span>
@@ -17,7 +36,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-12 col-md-5">
+        <div class="col-12 col-md-5 mb-3 order-md-2 order-1">
             <div class="manshat-card-container-image-section-container">
                 <div class="card-image">
                     <div class="card-displayed-image">
@@ -47,19 +66,4 @@
         </div>
     </div>
 </div>
-</div>
-<div class="nav-links-container">
-    <button *ngFor="let link of navigationItemsList" [ngClass]="{'bg-primary-btn':link.isSelected,'bg-primary-opacity-btn':!link.isSelected}" (click)="chageNavigationLink(link.id)" class="m-3"> {{link.label}} </button> 
-</div>
-<div class="pages-section-container mb-5">
-    <div class="page-padding">
-        <div class="nav-links-page">
-            <div *ngIf="navigationItemsList[0].isSelected"><app-manashet-details-report-page></app-manashet-details-report-page></div>
-            <div *ngIf="navigationItemsList[1].isSelected"><app-manashet-details-attachment-page></app-manashet-details-attachment-page></div>
-            <div *ngIf="navigationItemsList[2].isSelected"><app-manashet-details-image-gallery-page></app-manashet-details-image-gallery-page></div>
-            <div *ngIf="navigationItemsList[3].isSelected"><app-manashet-details-video-gallery-page></app-manashet-details-video-gallery-page></div>
-            <div *ngIf="navigationItemsList[4].isSelected"><app-manashet-details-shared-page></app-manashet-details-shared-page></div>
-            <div *ngIf="navigationItemsList[5].isSelected"><app-manashet-details-distinguished-page></app-manashet-details-distinguished-page></div>
-        </div>
-    </div>
 </div>

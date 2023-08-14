@@ -5,14 +5,17 @@ import { BreadCrumbComponent } from '../shared/components/bread-crumb/bread-crum
 import { ManshatDetailsComponent } from './components/manshat-details/manshat-details.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { PaymentComponent } from './components/payment/payment.component';
+import { PaymentSuccessComponent } from './components/payment-success/payment-success.component';
+import { ManshatDetailsInProgressComponent } from './components/manshat-details-in-progress/manshat-details-in-progress.component';
 
 const routes: Routes = [
   {path:'',component:HomePageComponent},
   {path:'program-details',component:ProgramDetailsComponent},
   {path:'event-details',component:ManshatDetailsComponent},
+  {path:'event-details-in-progress',component:ManshatDetailsInProgressComponent},
   {path:'breadcrumb',component:BreadCrumbComponent},
   {path:'payment',component:PaymentComponent},
-  {path:'payment-success',component:PaymentComponent},
+  {path:'payment-success',component:PaymentSuccessComponent},
 ];
 
 @NgModule({

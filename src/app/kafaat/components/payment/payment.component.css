@@ -1,9 +1,15 @@
+.page-padding{
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
 .payment-details-container{
-    height: 400px;
     border-radius: 8px;
     box-shadow: 0px 0px 7px lightgray;
     padding: 40px;
-
+    margin: 20px 0px 20px 0px; 
+}
+.payment-details-container-left-section{
+  padding-bottom: 100px;
 }
 .payment-details-title{
     font-size: 24px;
@@ -96,4 +102,67 @@
     color: var(--neutral90-color);
     transition: all .5s ease-in-out;
     border: none;
+  }
+    .person-icon {
+      background-image: url('../../../../assets/images/user.svg');
+    }
+  
+    .card-icon {
+      background-image: url('/assets/images/credit-card-grey.svg');
+    }
+  
+    .card-date {
+      background-image: url('/assets/images/calender-grey.svg');
+    }
+
+.payment-items-details{
+  margin: 20px 0px;
+  height: 70px;
+  position: relative;
+  overflow: hidden;
+}
+.payment-items-details-title {
+  position: absolute;
+  width: 70%;
+  top: 0px;
+  right: 27%;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--neutral90-color);
+}
+
+.payment-items-details-description {
+  position: absolute;
+  width: 70%;
+  bottom: 0px;
+  right: 27%;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 17.5px;
+  color: var(--neutral80-color);
+}
+.line-seperator{
+  color: var(--Primary-border-color);
+  margin: 35px 0px;
+}
+.item-details-label-values{
+  display: flex;
+  justify-content: space-between;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 17.5px;
+  color: var(--neutral80-color);
+}
+.total{
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 32px;
+  color: var(--neutral90-color);
+}
+  @media (500px <= width <= 2500px){}
+  @media (0px <= width <= 500px){
+    .payment-methods{
+      padding-right: 0px;
+    }
   }

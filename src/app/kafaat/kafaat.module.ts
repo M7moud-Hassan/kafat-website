@@ -19,6 +19,7 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { PaymentComponent } from './components/payment/payment.component';
 import { PaymentSuccessComponent } from './components/payment-success/payment-success.component';
 import { DiscoverProgramsComponent } from './components/discover-programs/discover-programs.component';
+import { ManshatDetailsInProgressComponent } from './components/manshat-details-in-progress/manshat-details-in-progress.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { DiscoverProgramsComponent } from './components/discover-programs/discov
     PaymentComponent,
     PaymentSuccessComponent,
     DiscoverProgramsComponent,
+    ManshatDetailsInProgressComponent,
 
   ],
   imports: [
