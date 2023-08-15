@@ -16,6 +16,7 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { PostsCarousalHomeComponent } from './components/posts-carousal-home/posts-carousal-home.component';
 import { MonthFaamousComponent } from './components/month-faamous/month-faamous.component';
 import { FormContactComponent } from './components/form-contact/form-contact.component';
+import { PageHeaderLabeledComponent } from './components/page-header-labeled/page-header-labeled.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { FormContactComponent } from './components/form-contact/form-contact.com
     MinshatCarousalComponent,
     PostsCarousalHomeComponent,
     MonthFaamousComponent,
-    FormContactComponent
+    FormContactComponent,
+    PageHeaderLabeledComponent
   ],
   imports: [
     CommonModule,
@@ -62,8 +64,8 @@ import { FormContactComponent } from './components/form-contact/form-contact.com
     ImagePopUpComponent,
     MinshatCarousalComponent,
     PostsCarousalHomeComponent,
-    MonthFaamousComponent
-
+    MonthFaamousComponent,
+    PageHeaderLabeledComponent
   ]
 })
 export class SharedModule { }

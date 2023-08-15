@@ -7,6 +7,7 @@ import { HomePageComponent } from './components/home-page/home-page.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { PaymentSuccessComponent } from './components/payment-success/payment-success.component';
 import { ManshatDetailsInProgressComponent } from './components/manshat-details-in-progress/manshat-details-in-progress.component';
+import { ContactUsComponent } from './components/contact-us/contact-us.component';
 
 const routes: Routes = [
   {path:'',component:HomePageComponent},
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path:'breadcrumb',component:BreadCrumbComponent},
   {path:'payment',component:PaymentComponent},
   {path:'payment-success',component:PaymentSuccessComponent},
+  {path:'contact-us',component:ContactUsComponent},
 ];
 
 @NgModule({

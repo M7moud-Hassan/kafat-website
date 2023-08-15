@@ -20,6 +20,7 @@ import { PaymentComponent } from './components/payment/payment.component';
 import { PaymentSuccessComponent } from './components/payment-success/payment-success.component';
 import { DiscoverProgramsComponent } from './components/discover-programs/discover-programs.component';
 import { ManshatDetailsInProgressComponent } from './components/manshat-details-in-progress/manshat-details-in-progress.component';
+import { ContactUsComponent } from './components/contact-us/contact-us.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { ManshatDetailsInProgressComponent } from './components/manshat-details-
     PaymentSuccessComponent,
     DiscoverProgramsComponent,
     ManshatDetailsInProgressComponent,
+    ContactUsComponent,
 
   ],
   imports: [
