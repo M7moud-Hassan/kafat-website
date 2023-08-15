@@ -17,6 +17,7 @@ import { PostsCarousalHomeComponent } from './components/posts-carousal-home/pos
 import { MonthFaamousComponent } from './components/month-faamous/month-faamous.component';
 import { FormContactComponent } from './components/form-contact/form-contact.component';
 import { PageHeaderLabeledComponent } from './components/page-header-labeled/page-header-labeled.component';
+import { TabsContainerComponent } from './components/tabs-container/tabs-container.component';
 
 
 @NgModule({
@@ -42,7 +43,9 @@ import { PageHeaderLabeledComponent } from './components/page-header-labeled/pag
     PostsCarousalHomeComponent,
     MonthFaamousComponent,
     FormContactComponent,
-    PageHeaderLabeledComponent
+    PageHeaderLabeledComponent,
+    TabsContainerComponent
+
   ],
   imports: [
     CommonModule,
@@ -65,7 +68,10 @@ import { PageHeaderLabeledComponent } from './components/page-header-labeled/pag
     MinshatCarousalComponent,
     PostsCarousalHomeComponent,
     MonthFaamousComponent,
-    PageHeaderLabeledComponent
+    PageHeaderLabeledComponent,
+    TabsContainerComponent
+    
+
   ]
 })
 export class SharedModule { }
