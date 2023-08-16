@@ -22,14 +22,15 @@
     --main-color: #005183;
     --neutral60-color: #9E9E9E;
     --neutral90-color: #424242;
-    --Primary-Surface-color: #F7FBFE;
     --Primary-focus-color: #B3CBDA;
+    --neutral40-color: #E0E0E0;
     --neutral70-color: #757575;
     --neutral80-color: #616161;
     --neutral90-color: #424242;
     --Primary-Surface-color: #F7FBFE;
-    --Primary-focus-color: #B3CBDA;
     --Primary-border-color: #E6F1F9;
+
+    --dark-default-color:#010B38;
 
     --success-main-color: #008243;
     --success-border-color: #B3DAC7;
@@ -323,7 +324,7 @@
     font-size: 12px;
   }
   
-@media (500px <= width <=2000px){
+@media (766px <= width <=5000px){
     .circle-image-container{
         width: 100%;
     }
@@ -332,7 +333,7 @@
         padding: 0px 0px;
     }
 }   
-@media (0px <= width <=500px){
+@media (0px <= width <=766px){
     .circle-image-container{
         width: 100%;
     }
@@ -341,3 +342,56 @@
         padding: 0px 0px;
     }
 }
+.under-line{
+    display: inline-block;
+    width: 64px;
+    height: 3px;
+    background-color: var(--main-color);
+}
+
+
+  /* -------------------input with icon and you can change the icon in the css component -------------------------------- */
+  .input-container {
+    position: relative;
+    outline: none;
+    box-shadow: none;   
+    border: none;
+    /* border: 1px solid var(--neutral90-color); */
+  }
+  
+  .input-container input,.input-container textarea {
+    width: 100%;
+    padding: 20px 30px 10px 0px;    
+  }
+  .input-container label {
+    position: absolute;
+    top:0;
+    right: 5px;
+    padding:10px 25px;
+    color: var(--neutral90-color);
+    pointer-events: none;
+    transition: .5s;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+  }
+  
+  .input-container input:focus ~ label,
+  .input-container input:valid ~ label ,.input-container textarea:focus ~ label,
+  .input-container textarea:valid ~ label{
+    top: -10px;
+    left: 0;
+    color: var(--neutral90-color);
+    font-size: 10px;
+    outline: none;
+    box-shadow: none;
+  }
+  
+  .input-container-icon {
+      background-position: right;
+      background-repeat: no-repeat;
+      padding-right: 40px;
+      outline: none;
+      box-shadow: none;     
+       border: 1px solid var(--neutral90-color);
+  }

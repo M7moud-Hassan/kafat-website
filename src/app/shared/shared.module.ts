@@ -16,6 +16,7 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { PostsCarousalHomeComponent } from './components/posts-carousal-home/posts-carousal-home.component';
 import { MonthFaamousComponent } from './components/month-faamous/month-faamous.component';
 import { FormContactComponent } from './components/form-contact/form-contact.component';
+import { PageHeaderLabeledComponent } from './components/page-header-labeled/page-header-labeled.component';
 import { TabsContainerComponent } from './components/tabs-container/tabs-container.component';
 import { ImageThirdComponent } from './components/image-third/image-third.component';
 
@@ -27,6 +28,12 @@ import { ImageThirdComponent } from './components/image-third/image-third.compon
     BreadCrumbComponent,
     PageHeaderComponent,
     ManashetItemComponent,
+    NavigationToBackHeaderComponent,
+    ImagePopUpComponent,
+    VideoPopUpComponent,
+    DisplayContentComponent,
+    LayoutSectionComponent,
+    ItemCarousalAngleComponent,
     DisplayContentComponent,
     LayoutSectionComponent,
     ItemCarousalAngleComponent,
@@ -38,7 +45,9 @@ import { ImageThirdComponent } from './components/image-third/image-third.compon
     MonthFaamousComponent,
     FormContactComponent,
     TabsContainerComponent,
-    ImageThirdComponent
+    ImageThirdComponent,
+    PageHeaderLabeledComponent,
+    TabsContainerComponent
 
   ],
   imports: [
@@ -51,6 +60,10 @@ import { ImageThirdComponent } from './components/image-third/image-third.compon
     BreadCrumbComponent,
     PageHeaderComponent,
     ManashetItemComponent,
+    NavigationToBackHeaderComponent,
+    ImagePopUpComponent,
+    LayoutSectionComponent,
+    ItemCarousalAngleComponent,
     LayoutSectionComponent,
     ItemCarousalAngleComponent,
     NavigationToBackHeaderComponent,
@@ -59,7 +72,9 @@ import { ImageThirdComponent } from './components/image-third/image-third.compon
     PostsCarousalHomeComponent,
     MonthFaamousComponent,
     TabsContainerComponent,
-    ImageThirdComponent
+    ImageThirdComponent,
+    PageHeaderLabeledComponent,
+    TabsContainerComponent
     
 
   ]

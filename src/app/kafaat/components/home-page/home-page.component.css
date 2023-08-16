@@ -18,16 +18,45 @@
     width: 100%;
 }
 .navbar-image{
-    position: relative;
-    bottom: calc(-30vh);
+    position: absolute;
+    bottom: calc(-20vh);
     left: 0px;
     background-color: transparent;
     height: calc(70vh);
     width: 100%;
-    clip-path: ellipse(56% 48% at 49% 48%);
+    clip-path: ellipse(55% 50% at 50% 50%);
     background-image: url('/assets/images/people.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+}
+.navbar-image-opacity{
+    position: absolute;
+    bottom: calc(-20vh);
+    left: 0px;
+    background-color: transparent;
+    height: calc(70vh);
+    width: 100%;
+    clip-path: ellipse(55% 50% at 50% 50%);
+    background-color: lightblue;
+    z-index: 3;
+    opacity: .3;
+}
+.discover-image{
+    position: absolute;
+    bottom: calc(-20vh);
+    left: 0px;
+    background-color: transparent;
+    height: calc(70vh);
+    width: 100%;
+    z-index: 5;
+    font-size: 30px;
+    color: red;
+}
+.discover-image button{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 .home{
     background-image: url('../../../../assets/images/BGpattern.png');
