@@ -19,6 +19,7 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { PaymentComponent } from './components/payment/payment.component';
 import { PaymentSuccessComponent } from './components/payment-success/payment-success.component';
 import { DiscoverProgramsComponent } from './components/discover-programs/discover-programs.component';
+import { AboutPageComponent } from './components/about-page/about-page.component';
 import { ManshatDetailsInProgressComponent } from './components/manshat-details-in-progress/manshat-details-in-progress.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 
@@ -38,6 +39,7 @@ import { ContactUsComponent } from './components/contact-us/contact-us.component
     PaymentComponent,
     PaymentSuccessComponent,
     DiscoverProgramsComponent,
+         AboutPageComponent,
     ManshatDetailsInProgressComponent,
     ContactUsComponent,
 

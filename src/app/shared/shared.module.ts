@@ -18,6 +18,7 @@ import { MonthFaamousComponent } from './components/month-faamous/month-faamous.
 import { FormContactComponent } from './components/form-contact/form-contact.component';
 import { PageHeaderLabeledComponent } from './components/page-header-labeled/page-header-labeled.component';
 import { TabsContainerComponent } from './components/tabs-container/tabs-container.component';
+import { ImageThirdComponent } from './components/image-third/image-third.component';
 
 
 @NgModule({
@@ -43,6 +44,8 @@ import { TabsContainerComponent } from './components/tabs-container/tabs-contain
     PostsCarousalHomeComponent,
     MonthFaamousComponent,
     FormContactComponent,
+    TabsContainerComponent,
+    ImageThirdComponent,
     PageHeaderLabeledComponent,
     TabsContainerComponent
 
@@ -68,6 +71,8 @@ import { TabsContainerComponent } from './components/tabs-container/tabs-contain
     MinshatCarousalComponent,
     PostsCarousalHomeComponent,
     MonthFaamousComponent,
+    TabsContainerComponent,
+    ImageThirdComponent,
     PageHeaderLabeledComponent,
     TabsContainerComponent
     
