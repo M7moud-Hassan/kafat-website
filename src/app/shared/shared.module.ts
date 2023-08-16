@@ -17,6 +17,7 @@ import { PostsCarousalHomeComponent } from './components/posts-carousal-home/pos
 import { MonthFaamousComponent } from './components/month-faamous/month-faamous.component';
 import { FormContactComponent } from './components/form-contact/form-contact.component';
 import { TabsContainerComponent } from './components/tabs-container/tabs-container.component';
+import { ImageThirdComponent } from './components/image-third/image-third.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { TabsContainerComponent } from './components/tabs-container/tabs-contain
     PostsCarousalHomeComponent,
     MonthFaamousComponent,
     FormContactComponent,
-    TabsContainerComponent
+    TabsContainerComponent,
+    ImageThirdComponent
 
   ],
   imports: [
@@ -56,7 +58,8 @@ import { TabsContainerComponent } from './components/tabs-container/tabs-contain
     MinshatCarousalComponent,
     PostsCarousalHomeComponent,
     MonthFaamousComponent,
-    TabsContainerComponent
+    TabsContainerComponent,
+    ImageThirdComponent
     
 
   ]

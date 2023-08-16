@@ -19,6 +19,7 @@ import { HomePageComponent } from './components/home-page/home-page.component';
 import { CarousalHomeComponent } from './components/carousal-home/carousal-home.component';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { DiscoverProgramsComponent } from './components/discover-programs/discover-programs.component';
+import { AboutPageComponent } from './components/about-page/about-page.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { DiscoverProgramsComponent } from './components/discover-programs/discov
     CarousalHomeComponent,
    
     DiscoverProgramsComponent,
+         AboutPageComponent,
 
 
   ],
