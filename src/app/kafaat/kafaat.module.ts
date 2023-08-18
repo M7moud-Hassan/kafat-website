@@ -22,6 +22,8 @@ import { DiscoverProgramsComponent } from './components/discover-programs/discov
 import { AboutPageComponent } from './components/about-page/about-page.component';
 import { ManshatDetailsInProgressComponent } from './components/manshat-details-in-progress/manshat-details-in-progress.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
+import { WinnerComponent } from './components/winner/winner.component';
+import { PostsSlidesComponent } from './components/posts-slides/posts-slides.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,8 @@ import { ContactUsComponent } from './components/contact-us/contact-us.component
          AboutPageComponent,
     ManshatDetailsInProgressComponent,
     ContactUsComponent,
+    WinnerComponent,
+    PostsSlidesComponent,
 
   ],
   imports: [
