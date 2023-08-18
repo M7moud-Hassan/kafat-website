@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['../profile-layout/profile-layout.component.css','./profile-account-information.component.css']
 })
 export class ProfileAccountInformationComponent {
-
+  isPasswordPageVisible:boolean = false;
 }
