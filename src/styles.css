@@ -24,6 +24,7 @@
     --neutral90-color: #424242;
     --Primary-focus-color: #B3CBDA;
     --neutral40-color: #E0E0E0;
+    --neutral50-color: #C2C2C2;
     --neutral70-color: #757575;
     --neutral80-color: #616161;
     --neutral90-color: #424242;
@@ -126,6 +127,19 @@
     outline: none;
     border: none;
 }
+.bg-primary-outline-btn{
+  display: inline-block;
+  padding: 14px 18px 14px 18px;
+  border-radius: 8px;
+  color: var(--main-color);
+  background-color: white;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 400;
+  cursor: pointer;
+  outline: none;
+  border: 1px solid var(--main-color);
+}
 .bg-primary-btn-block{
     display: inline-block;
     padding: 14px 18px 14px 18px;
@@ -182,6 +196,7 @@
     border: 1px solid var(--main-color);
     background-color: var(--main-color);
     margin-left: 15px;
+    cursor: pointer;
 }
 .inactive-navigation-button{
     color: var(--neutral90-color);
@@ -366,7 +381,7 @@
   .input-container label {
     position: absolute;
     top:0;
-    right: 5px;
+    right: 8px;
     padding:10px 25px;
     color: var(--neutral90-color);
     pointer-events: none;
@@ -388,10 +403,99 @@
   }
   
   .input-container-icon {
-      background-position: right;
+      background-position: 99%;
       background-repeat: no-repeat;
       padding-right: 40px;
       outline: none;
       box-shadow: none;     
        border: 1px solid var(--neutral90-color);
   }
+
+
+  /* ==================================input text, radio , date and checkbox========================================================================================= */
+  input[type=radio].defaultRadioButton {
+    border: none;
+    -webkit-appearance: none;
+    background: url('/assets/images/radio-inactive.svg') no-repeat center center;
+    background-size: 25px;
+    border-radius: 0;
+    width: 20px;
+    height: 20px;
+  }
+  
+  
+  input[type=radio].defaultRadioButton:checked {
+    background: url('/assets/images/radio-active.png') no-repeat center center;
+    background-size: 25px;
+    border: none;
+    border-radius: 0;
+    width: 20px;
+    height: 20px;
+  }
+  
+  
+  input[type=radio].defaultRadioButton:focus {
+    outline-color: transparent;
+    border-radius: 0;
+  }
+  
+  input[type=checkbox].SquarecheckboxButton,input[type=checkbox].Square_Sign_checkboxButton {
+    padding: 0.5em;
+    -webkit-appearance: none;
+    background: url('/assets/images/rect.svg') no-repeat center center;
+    background-size: 30px;
+    border: none;
+    border-radius: 3px;
+    width: 20px;
+    height: 20px;
+  }
+  input[type=checkbox].Square_Sign_checkboxButton:checked{
+    background-image: url('/assets/images/checkedWithSign.svg');
+    background-size: 15px;
+    border: 1px solid lightskyblue;
+    border-radius: 3px;
+    width: 20px;
+    height: 20px;
+  }
+  input[type=checkbox].SquarecheckboxButton:focus {
+    outline-color: transparent;
+    border-radius: 0;
+  }
+  
+/* 
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+
+  }
+ */
+
+/* .custom-date-input::-webkit-calendar-picker-indicator {
+  background-image: url('/assets/images/calender-grey.svg');
+  background-size: 25px;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 16px; 
+  height: 16px; 
+  opacity: 1; 
+} */
+
+.date-icon{
+  background: url('/assets/images/calender-grey.svg') no-repeat;
+  background-position: 10px 20px;
+}
+input[type="date"].defaultDateInput::-webkit-calendar-picker-indicator {
+  background: url('/assets/images/calender-grey.svg') no-repeat;
+  background-position: 0px 0px;
+  background-size: 25px;
+  padding: 5px;
+  display: inline-block;
+  /* text-align: right;
+  direction: rtl; */
+}
+/* .defaultDateInput::-webkit-datetime-edit-text {
+  text-align: right;
+  direction: ltr;
+  unicode-bidi: isolate;
+  vertical-align: bottom;
+} */
+  /* ==================================input text, radio , date and checkbox========================================================================================= */

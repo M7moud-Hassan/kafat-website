@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { KafaatLayoutComponent } from './layout-pages/kafaat-layout/kafaat-layout.component';
 import { SharedModule } from './shared/shared.module';
 
+
 @NgModule({
   declarations: [
     AppComponent,

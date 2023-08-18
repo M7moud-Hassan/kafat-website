@@ -6,9 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./manashet-details-shared-page.component.css']
 })
 export class ManashetDetailsSharedPageComponent {
+  isDropDownVisible:boolean=false;
 
 
   toggleOptions(){
+    this.isDropDownVisible = !this.isDropDownVisible;
   }
 
 }

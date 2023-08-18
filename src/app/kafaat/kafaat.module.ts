@@ -22,6 +22,18 @@ import { DiscoverProgramsComponent } from './components/discover-programs/discov
 import { AboutPageComponent } from './components/about-page/about-page.component';
 import { ManshatDetailsInProgressComponent } from './components/manshat-details-in-progress/manshat-details-in-progress.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
+import { ProfileLayoutComponent } from './components/profile-layout/profile-layout.component';
+import { ProfileAccountInformationComponent } from './components/profile-account-information/profile-account-information.component';
+import { ProfileManashetComponent } from './components/profile-manashet/profile-manashet.component';
+import { ProfilePaymentComponent } from './components/profile-payment/profile-payment.component';
+import { ProfileMusharakatComponent } from './components/profile-musharakat/profile-musharakat.component';
+import { ProfileAchievementsComponent } from './components/profile-achievements/profile-achievements.component';
+import { ProfileLogoutComponent } from './components/profile-logout/profile-logout.component';
+import { ProfileDeleteAccountComponent } from './components/profile-delete-account/profile-delete-account.component';
+import { ProfileChangePasswordComponent } from './components/profile-change-password/profile-change-password.component';
+import { ProfileLogoutPopUpComponent } from './components/profile-logout-pop-up/profile-logout-pop-up.component';
+import { ProfileDeleteAccountPopUpComponent } from './components/profile-delete-account-pop-up/profile-delete-account-pop-up.component';
+// import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -39,16 +51,28 @@ import { ContactUsComponent } from './components/contact-us/contact-us.component
     PaymentComponent,
     PaymentSuccessComponent,
     DiscoverProgramsComponent,
-         AboutPageComponent,
+    AboutPageComponent,
     ManshatDetailsInProgressComponent,
     ContactUsComponent,
+    ProfileLayoutComponent,
+    ProfileAccountInformationComponent,
+    ProfileManashetComponent,
+    ProfilePaymentComponent,
+    ProfileMusharakatComponent,
+    ProfileAchievementsComponent,
+    ProfileLogoutComponent,
+    ProfileDeleteAccountComponent,
+    ProfileChangePasswordComponent,
+    ProfileLogoutPopUpComponent,
+    ProfileDeleteAccountPopUpComponent,
 
   ],
   imports: [
     CommonModule,
     KafaatRoutingModule,
     SharedModule,
-    SlickCarouselModule
+    SlickCarouselModule,
+    // MatDialogModule
   ]
   
 })

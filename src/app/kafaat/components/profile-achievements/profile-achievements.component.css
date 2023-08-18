@@ -1,0 +1,42 @@
+.divider{
+    height: 1px;
+    background-color: var(--Primary-border-color);
+    margin: 20px 0px;
+}
+.musharakat-list-content::-webkit-scrollbar {
+    display: none; 
+}
+.musharakat-list-content {
+    overflow-x: scroll;
+    /* display: inline-flex;  */
+    white-space: nowrap; 
+    /* padding-top: 50px; */
+    margin-bottom: 30px;
+  }
+  .active-navigation-button,.inactive-navigation-button{
+    size: 12px;
+    font-weight: 600;
+    display: inline-block;
+    padding:  16px;
+    line-height: 8px;
+}
+.program-name{
+    font-weight: 400px;
+    font-size: 12px;
+    line-height: 17.5px;
+    color: var(--main-color);
+    margin-bottom: 10px;
+}
+.main-title {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 32px;
+    color: var(--neutral90-color);
+    margin-bottom: 15px;
+}
+
+.card-item{
+    border-radius: 8px;
+    border: 1px solid var(--Primary-border-color);
+    margin-bottom: 20px;
+}
