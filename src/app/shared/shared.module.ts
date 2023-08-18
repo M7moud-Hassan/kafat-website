@@ -53,7 +53,8 @@ import { DatePickerComponent } from './components/date-picker/date-picker.compon
     TabsContainerComponent,
     PaginationsComponent,
     ScrollNavComponent,
-    DatePickerComponent
+    DatePickerComponent,
+
 
   ],
   imports: [
@@ -83,8 +84,8 @@ import { DatePickerComponent } from './components/date-picker/date-picker.compon
     TabsContainerComponent,
     PaginationsComponent,
     ScrollNavComponent,
-    DatePickerComponent
-    
+    DatePickerComponent,
+  
 
   ]
 })

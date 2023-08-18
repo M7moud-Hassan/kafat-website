@@ -24,7 +24,7 @@ const routes: Routes = [
   {path:'payment-success',component:PaymentSuccessComponent},
   {path:'contact-us',component:ContactUsComponent},
   {path:'winners',component:WinnerComponent},
-  {path:'famous-posts',component:PostsSlidesComponent}
+  {path:'famous-posts',component:PostsSlidesComponent},
 ];
 
 @NgModule({

@@ -24,6 +24,12 @@ import { ManshatDetailsInProgressComponent } from './components/manshat-details-
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { WinnerComponent } from './components/winner/winner.component';
 import { PostsSlidesComponent } from './components/posts-slides/posts-slides.component';
+import { LoginComponent } from './components/login/login.component';
+import { ForgottenPasswordComponent } from './components/forgotten-password/forgotten-password.component';
+import { CodeAuthComponent } from './components/code-auth/code-auth.component';
+import { NewPasswordComponent } from './components/new-password/new-password.component';
+
+
 
 @NgModule({
   declarations: [
@@ -46,6 +52,10 @@ import { PostsSlidesComponent } from './components/posts-slides/posts-slides.com
     ContactUsComponent,
     WinnerComponent,
     PostsSlidesComponent,
+    LoginComponent,
+    ForgottenPasswordComponent,
+    CodeAuthComponent,
+    NewPasswordComponent,
 
   ],
   imports: [
