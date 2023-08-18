@@ -19,6 +19,9 @@ import { FormContactComponent } from './components/form-contact/form-contact.com
 import { PageHeaderLabeledComponent } from './components/page-header-labeled/page-header-labeled.component';
 import { TabsContainerComponent } from './components/tabs-container/tabs-container.component';
 import { ImageThirdComponent } from './components/image-third/image-third.component';
+import { PaginationsComponent } from './components/paginations/paginations.component';
+import { ScrollNavComponent } from './components/scroll-nav/scroll-nav.component';
+import { DatePickerComponent } from './components/date-picker/date-picker.component';
 
 
 @NgModule({
@@ -47,7 +50,10 @@ import { ImageThirdComponent } from './components/image-third/image-third.compon
     TabsContainerComponent,
     ImageThirdComponent,
     PageHeaderLabeledComponent,
-    TabsContainerComponent
+    TabsContainerComponent,
+    PaginationsComponent,
+    ScrollNavComponent,
+    DatePickerComponent
 
   ],
   imports: [
@@ -74,7 +80,10 @@ import { ImageThirdComponent } from './components/image-third/image-third.compon
     TabsContainerComponent,
     ImageThirdComponent,
     PageHeaderLabeledComponent,
-    TabsContainerComponent
+    TabsContainerComponent,
+    PaginationsComponent,
+    ScrollNavComponent,
+    DatePickerComponent
     
 
   ]

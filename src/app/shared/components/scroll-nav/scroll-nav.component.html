@@ -1,0 +1,24 @@
+<ngx-slick-carousel dir="ltr" #slickCarousel  class="card-header d-flex justify-content-center" #slickModal="slick-carousel" [config]="slideConfig">
+    <div ngxSlickItem [ngClass]="index==0?'active-navigation-button':'inactive-navigation-button'" (click)="onTap(0)">
+        جميع البرامج
+    </div>
+    <div ngxSlickItem [ngClass]="index==1?'active-navigation-button':'inactive-navigation-button'" (click)="onTap(1)">
+        برنامج قارئ
+    </div>
+    <div ngxSlickItem [ngClass]="index==2?'active-navigation-button':'inactive-navigation-button'" (click)="onTap(2)">
+        برنامج كاتب
+    </div>
+    <div ngxSlickItem [ngClass]="index==3?'active-navigation-button':'inactive-navigation-button'" (click)="onTap(3)">
+        برنامج مبتكر
+    </div>
+    <div ngxSlickItem [ngClass]="index==4?'active-navigation-button':'inactive-navigation-button'" (click)="onTap(4)">
+        برنامج موهوب 
+    </div>
+    <div ngxSlickItem [ngClass]="index==5?'active-navigation-button':'inactive-navigation-button'" (click)="onTap(5)">
+        برنامج قائد
+    </div>
+
+    <div ngxSlickItem [ngClass]="index==6?'active-navigation-button':'inactive-navigation-button'" (click)="onTap(6)">
+        المزيد <img src="assets/images/list.svg" alt="" class="me-2"> 
+    </div>
+</ngx-slick-carousel>

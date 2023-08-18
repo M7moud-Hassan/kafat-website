@@ -186,6 +186,7 @@
     background-color: var(--main-color);
 }
 .active-navigation-button,.inactive-navigation-button{
+  cursor: pointer;
     text-decoration: none;
     size: 16px;
     font-weight: 600;
@@ -309,6 +310,12 @@
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3; 
+    overflow: hidden;
+  }
+  .truncate-lines-2 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2; 
     overflow: hidden;
   }
 

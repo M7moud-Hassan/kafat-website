@@ -34,6 +34,9 @@ import { ProfileChangePasswordComponent } from './components/profile-change-pass
 import { ProfileLogoutPopUpComponent } from './components/profile-logout-pop-up/profile-logout-pop-up.component';
 import { ProfileDeleteAccountPopUpComponent } from './components/profile-delete-account-pop-up/profile-delete-account-pop-up.component';
 // import { MatDialogModule } from '@angular/material/dialog';
+import { WinnerComponent } from './components/winner/winner.component';
+import { PostsSlidesComponent } from './components/posts-slides/posts-slides.component';
+
 
 @NgModule({
   declarations: [
@@ -65,7 +68,8 @@ import { ProfileDeleteAccountPopUpComponent } from './components/profile-delete-
     ProfileChangePasswordComponent,
     ProfileLogoutPopUpComponent,
     ProfileDeleteAccountPopUpComponent,
-
+    WinnerComponent,
+    PostsSlidesComponent,
   ],
   imports: [
     CommonModule,
