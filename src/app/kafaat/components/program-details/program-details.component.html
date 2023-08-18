@@ -1,3 +1,4 @@
+<app-navbar typeNav="dark"></app-navbar>
 <app-page-header-labeled Header="المتميزون" Label="متميزو الشهر في جميع البرامج"></app-page-header-labeled>
     <app-bread-crumb></app-bread-crumb>
 <div class="row">
@@ -55,15 +56,43 @@
 </div>
 <div *ngIf="isManashetActive"  class="manashet-list-container mb-5">
     <div class="manashet-list-content">
-        <a routerLink="#" class="active-navigation-button">جميع المناشط</a> 
-        <a routerLink="#" class="inactive-navigation-button">القادمة</a> 
-        <a routerLink="#" class="inactive-navigation-button">الحالية</a> 
-        <a routerLink="#" class="inactive-navigation-button">السابقة</a> 
+        <a *ngFor="let nav of navList" (click)="selectItem(nav.id)" ngClass="{{nav.isSelected?'active-navigation-button':'inactive-navigation-button'}}">{{nav.label}}</a> 
     </div>
     <div class="manashet-items">
-        <app-manashet-item></app-manashet-item>
-        <app-manashet-item></app-manashet-item>
-        <app-manashet-item></app-manashet-item>
+        <div *ngIf="navList[0].isSelected"> 
+            <app-manashet-item></app-manashet-item> 
+            <app-manashet-item></app-manashet-item> 
+            <app-manashet-item></app-manashet-item> 
+        </div>
+        <div *ngIf="navList[1].isSelected"> 
+            <app-manashet-item></app-manashet-item> 
+            <app-manashet-item></app-manashet-item> 
+            <app-manashet-item></app-manashet-item> 
+            <app-manashet-item></app-manashet-item> 
+        </div>
+        <div *ngIf="navList[2].isSelected"> 
+            <app-manashet-item></app-manashet-item> 
+            <app-manashet-item></app-manashet-item> 
+            <app-manashet-item></app-manashet-item> 
+            <app-manashet-item></app-manashet-item> 
+            <app-manashet-item></app-manashet-item> 
+        </div>
+        <div *ngIf="navList[3].isSelected"> 
+            <app-manashet-item></app-manashet-item> 
+            <app-manashet-item></app-manashet-item> 
+            <app-manashet-item></app-manashet-item> 
+            <app-manashet-item></app-manashet-item> 
+            <app-manashet-item></app-manashet-item> 
+            <app-manashet-item></app-manashet-item> 
+            <app-manashet-item></app-manashet-item> 
+            <app-manashet-item></app-manashet-item> 
+            <app-manashet-item></app-manashet-item> 
+            <app-manashet-item></app-manashet-item> 
+            <app-manashet-item></app-manashet-item> 
+            <app-manashet-item></app-manashet-item> 
+            <app-manashet-item></app-manashet-item> 
+            <app-manashet-item></app-manashet-item> 
+        </div>
     </div>
 </div>
 <div *ngIf="!isManashetActive" class="manashet-list-container mb-5">

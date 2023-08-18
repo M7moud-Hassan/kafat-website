@@ -1,0 +1,87 @@
+<div class="input-container">
+    <div class="details-title">معلومات الحساب</div>
+    <div class="form-group input-container w-100 mt-4 ">
+        <input type="text" name="name" class="form-control input-container-icon person-icon" required="">
+        <label for="name">اسم المستخدم</label>
+    </div>
+    <div class="form-group input-container w-100 mt-4 ">
+        <input type="text" name="name" class="form-control input-container-icon email-icon" required="">
+        <label for="name"> البريد الإلكتروني</label>
+    </div>
+    <div class="form-group input-container w-100 mt-4 ">
+        <input type="text" name="name" class="form-control input-container-icon phone-icon" required="">
+        <label for="name">رقم الجوال</label>
+    </div>
+    <div class="divider"></div>
+    <div class="details-title">كلمة المرور</div>
+    <div class="form-group input-container w-100 mt-4 ">
+        <input type="password" name="name" class="form-control input-container-icon password-icon" value="28927982792" style="background-color: var(--neutral50-color);" required="">
+        <label for="name"> كلمة المرور</label>
+    </div>
+    <button class="bg-primary-btn mt-5">تغيير كلمة المرور</button>
+    <div class="divider" style="margin-top: 20px;"></div>
+    <div class="details-title">معلومات شخصية</div>
+    <div class="row">
+        <div class="col-12 col-md-4">
+            <div class="form-group input-container w-100 mt-4 ">
+                <input type="text" name="name" class="form-control input-container-icon" style="padding-right: 15px;"  required="">
+                <label style="padding-right: 0px;"  for="name">الاسم الاول</label>
+            </div>
+        </div>
+        <div class="col-12 col-md-4">
+            <div class="form-group input-container w-100 mt-4 ">
+                <input type="text" name="name" class="form-control input-container-icon" style="padding-right: 15px;"  required="">
+                <label  style="padding-right: 0px;" for="name">الاسم الاوسط</label>
+            </div>
+        </div>
+        <div class="col-12 col-md-4">
+            <div class="form-group input-container w-100 mt-4 ">
+                <input type="text" name="name" class="form-control input-container-icon" style="padding-right: 15px;"  required="">
+                <label  style="padding-right: 0px;" for="name">الاسم الاخير</label>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-12">
+            <div class="sub-title">النوع</div>            
+        </div>
+    </div>
+    <div class="form-group input-container w-100 mt-4 ">
+        <input type="text" name="name" class="form-control input-container-icon" style="padding-right: 15px;" required="">
+        <label style="padding-right: 0px;" for="name">رقم الهوية</label>
+    </div>
+    <!-- <div class="row">
+        <div class="col-12 col-md-6">
+            <div class="form-group input-container w-100 mt-4 ">
+                <input type="date" name="name" class="form-control  input-container-icon date-icon" required="">
+                <label for="name">تاريخ الميلاد (ميلادي)</label>
+            </div>
+        </div>
+        <div class="col-12 col-md-6">
+            <div class="form-group input-container w-100 mt-4 ">
+                <input type="date" name="name" class="form-control  input-container-icon date-icon" required="" dir="rtl">
+                <label for="name">تاريخ الميلاد (هجري)</label>
+            </div>
+        </div>
+    </div> -->
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <div class="form-group input-container w-100 mt-4 ">
+                <input type="text" name="name" class="form-control input-container-icon person-icon" required="">
+                <label for="name">رابط تويتر (اختياري)</label>
+            </div>
+        </div>
+        <div class="col-12 col-md-6">
+            <div class="form-group input-container w-100 mt-4 ">
+                <input type="text" name="name" class="form-control input-container-icon person-icon" required="">
+                <label for="name">رابط الفيسبوك (اختياري)</label>
+            </div>
+        </div>
+        <input type="checkbox" class="Square_Sign_checkboxButton">
+        <input type="radio" name="name" value="value1" class="defaultRadioButton">
+        <input type="radio" name="name" value="value2" class="defaultRadioButton">
+    </div>
+
+    <button class="bg-primary-btn-block mt-5">إرسال</button>
+</div>
+<app-profile-change-password  *ngIf="false"></app-profile-change-password>

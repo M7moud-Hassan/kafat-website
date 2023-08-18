@@ -1,23 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-program-details',
-  templateUrl: './program-details.component.html',
-  styleUrls: ['./program-details.component.css']
+  selector: 'app-profile-manashet',
+  templateUrl: './profile-manashet.component.html',
+  styleUrls: ['./profile-manashet.component.css']
 })
-export class ProgramDetailsComponent implements OnInit {
-  isManashetActive:boolean = true;
+export class ProfileManashetComponent implements OnInit {
+  hideTest:boolean = true;
   navList:any[]=[];
 
   ngOnInit(): void {
-    this.isManashetActive = true;
     this.fillNavList();
+    this.hideTest = true;
   }
-  
-  toggleLinks(){
-    this.isManashetActive = !this.isManashetActive;
-  }
-  
 
   selectItem(id:any){
     this.navList.map(x=>x.id==id?x.isSelected=true:x.isSelected=false);
