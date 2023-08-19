@@ -1,4 +1,4 @@
-import { Component, Type } from '@angular/core';
+import { Component, ElementRef, HostListener, Type, ViewChild } from '@angular/core';
 import { ItemCarousal } from '../carousal-home/carousal-home.component';
 import { DisplayContentComponent } from 'src/app/shared/components/display-content/display-content.component';
 
@@ -43,5 +43,24 @@ export class HomePageComponent {
   ]
 
   component: Type<any> = DisplayContentComponent;
+
+  @ViewChild('targetElement', { static: true }) targetElement: ElementRef | undefined;
+  @HostListener('window:scroll', ['$event'])
+  onScroll(event: Event) {
+    this.checkIfElementReachedTop();
+  }
+
+  private checkIfElementReachedTop() {
+    const elementTop = this.targetElement!.nativeElement.getBoundingClientRect().top;
+    const scrollPosition = window.scrollY || window.pageYOffset;
+    if (elementTop <= 0) {
+     
+      document.getElementById('navbar')!.style.display='block';
+    }
+    else if(scrollPosition <= 0)
+    {
+      document.getElementById('navbar')!.style.display='none';
+    }
+  }
   
 }

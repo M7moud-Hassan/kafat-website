@@ -77,6 +77,17 @@ export class CarousalHomeComponent implements OnInit {
   }
 
 
+  onCarouselItemMouseEnter(index:number) {
+   const element= document.getElementById('p'+index);
+   element!.style.color='var(--main-color)';
+  }
+
+  onCarouselItemMouseLeave(index:number) {
+    const element= document.getElementById('p'+index);
+    element!.style.color='';
+  }
+
+
 }
 
 export interface ItemCarousal {

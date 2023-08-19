@@ -16,3 +16,7 @@
 .sidenav .dropdown-toggle::after{
     float: left !important;
 }
+.divider-line{
+    width: 1px; height: 46px;
+    background-color: wheat;
+}
