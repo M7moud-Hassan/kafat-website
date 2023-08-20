@@ -1,4 +1,4 @@
-import { Component, Input, Renderer2 ,OnInit, Output, EventEmitter} from '@angular/core';
+import { Component, Input, Renderer2 ,OnInit, Output, EventEmitter, HostListener} from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
@@ -7,6 +7,7 @@ import { Component, Input, Renderer2 ,OnInit, Output, EventEmitter} from '@angul
 })
 export class NavbarComponent implements OnInit{
   @Input() typeNav: string="light";
+  @Input() active:number=0;
   @Output() handleOpenNav = new EventEmitter<boolean>();
 
   constructor(private renderer: Renderer2) {
@@ -25,5 +26,22 @@ export class NavbarComponent implements OnInit{
   closeNav(): void {
     document.getElementById("mySidenav")!.style.width = "0";
     this.handleOpenNav.emit(false);
+  }
+
+ 
+  @HostListener('window:scroll', ['$event'])
+  onScroll(event: Event) {
+    this.checkIfElementReachedTop();
+  }
+
+  private checkIfElementReachedTop() {
+    
+    const scrollPosition = window.scrollY || window.pageYOffset;
+     if(scrollPosition <= 0)
+    {
+      document.getElementById('navbar')!.style.display='none';
+    }else{
+      document.getElementById('navbar')!.style.display='block';
+    }
   }
 }

@@ -2,6 +2,9 @@
     <div class="navbar-container">
         <div class="navbar-element-container">
             <app-navbar typeNav="light" (handleOpenNav)="openOrClosNav($event)"></app-navbar>
+            <!-- <div id="navbar" class="bg-light w-100 top-0 position-fixed">
+                <app-navbar typeNav="dark" (handleOpenNav)="openOrClosNav($event)"></app-navbar>
+            </div> -->
         </div>
         <div class="navbar-image"></div>
         <div class="navbar-image-opacity"></div>
@@ -11,7 +14,9 @@
     </div>
     <!-- because mahmoud abd magisss -->
     <div style="margin-top: 150px;"></div>
-    <app-carousal-home [slides]="slides"></app-carousal-home>
+    <div>
+        <app-carousal-home [slides]="slides"></app-carousal-home>
+    </div>
     <app-layout-section [componentToDisplay]="1"></app-layout-section>
     <app-layout-section [componentToDisplay]="2"></app-layout-section>
     <app-layout-section [componentToDisplay]="3"></app-layout-section>
@@ -24,5 +29,5 @@
     <!-- <app-month-faamous></app-month-faamous> -->
     <div class="overlay" *ngIf="showOverlay"></div>
     <a href="#" class="position-fixed bottom-0"><img src="assets/images/Whatsapp.svg" alt=""></a>
-    <app-tabs-container></app-tabs-container>
+    <!-- <app-tabs-container></app-tabs-container> -->
 </div>

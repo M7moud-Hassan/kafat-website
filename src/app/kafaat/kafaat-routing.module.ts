@@ -12,7 +12,7 @@ import { ContactUsComponent } from './components/contact-us/contact-us.component
 import { ProfileLayoutComponent } from './components/profile-layout/profile-layout.component';
 import { WinnerComponent } from './components/winner/winner.component';
 import { PostsSlidesComponent } from './components/posts-slides/posts-slides.component';
-
+import { AllProgramsComponent } from './components/all-programs/all-programs.component';
 
 const routes: Routes = [
   {path:'',component:HomePageComponent},
@@ -31,6 +31,7 @@ const routes: Routes = [
   {path:'winners',component:WinnerComponent},
   {path:'famous-posts',component:PostsSlidesComponent},
   {path:'profile',component:ProfileLayoutComponent},
+  {path:'programs',component:AllProgramsComponent}
 ];
 
 @NgModule({

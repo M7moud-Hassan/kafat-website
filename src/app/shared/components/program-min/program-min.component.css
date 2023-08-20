@@ -1,0 +1,18 @@
+.divider-line{
+    width: 1px;
+    height: 46px;
+    background-color: #A18131;
+}
+.custom-border-right {
+    border-top-right-radius: 50% 50%;
+    border-bottom-right-radius: 50% 50%;
+    transform: scaleY(1.3);
+    
+}
+
+.custom-border-left {
+    border-top-left-radius: 50% 50%;
+    border-bottom-left-radius: 50% 50%;
+    transform: scaleY(1.3);
+    
+}

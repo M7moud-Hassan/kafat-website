@@ -41,6 +41,9 @@
     --warning-surface-color: #FFF2E7;
     --bg-outline-color: #d3d3d333;
   }
+  .border-right{
+    border-right: 2px solid var(--secondary-main, #A18131);
+  }
   .truncate-1-lines {
     display: -webkit-box;
     -webkit-box-orient: vertical;

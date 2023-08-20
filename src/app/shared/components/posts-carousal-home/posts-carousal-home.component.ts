@@ -20,28 +20,14 @@ export class PostsCarousalHomeComponent implements OnInit{
     "slidesToShow": 1,
     "slidesToScroll": 1,
     "infinite": false,
+    "autoplay":true
   }
 
   scrollNext() {
-    if(this.swapSlideIndex && this.currentSlideIndex<this.maxlength-1){
-    this.currentSlideIndex += 2;
-    }
-    else if(!this.swapSlideIndex && this.currentSlideIndex<this.maxlength-1){
-      this.currentSlideIndex += 1; 
-    }
-    this.swapSlideIndex=false;
-    this.slickCarousel!.slickGoTo(this.currentSlideIndex);
+    this.slickCarousel!.slickNext();
   }
 
   scrollBack() {
-    if(!this.swapSlideIndex && this.currentSlideIndex>0){
-      this.currentSlideIndex -= 2;
-     
-    }else if (this.swapSlideIndex && this.currentSlideIndex>0){
-      this.currentSlideIndex -= 1;
-    }
-    
-    this.swapSlideIndex=true;
-    this.slickCarousel!.slickGoTo(this.currentSlideIndex);
+    this.slickCarousel!.slickPrev();
   }
 }

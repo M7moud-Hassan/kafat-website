@@ -5,3 +5,10 @@
     background-size: contain;
     height: 200px;
 }
+
+.carousal-home-item:hover{
+    background-image: url('/assets/images/border-hover.svg');
+}
+.carousel-home-item:hover .p-title {
+    color: var(--main-color);
+}

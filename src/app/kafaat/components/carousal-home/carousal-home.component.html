@@ -1,10 +1,11 @@
 <div class="container" dir="ltr">
     <ngx-slick-carousel #slickCarousel  class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
       <div ngxSlickItem *ngFor="let slide of slides;let i = index" class="slide">
-        <div class="carousal-home-item d-flex align-items-center justify-content-center m-4">
+        <div class="carousal-home-item d-flex align-items-center justify-content-center m-4"
+        (mouseenter)="onCarouselItemMouseEnter(i)" (mouseleave)="onCarouselItemMouseLeave(i)">
             <img src="{{slide.img}}" alt="Programs" (click)="onItemClick(slide, i)">
         </div>
-        <p class="fs-6 fw-bold text-center" (click)="onItemClick(slide, i)">{{slide.title}}</p>
+        <p [id]="'p'+i" class="fs-6 fw-bold text-center p-title" (click)="onItemClick(slide, i)">{{slide.title}}</p>
         <p class="text-center small" (click)="onItemClick(slide, i)"> {{slide.subTitle}}</p>
         </div>
     </ngx-slick-carousel>

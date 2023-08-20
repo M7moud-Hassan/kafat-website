@@ -55,18 +55,11 @@ export class MinshatCarousalComponent implements OnInit {
       this.currentSlideIndex += 1; 
     }
     this.swapSlideIndex=false;
-    this.slickCarousel!.slickGoTo(this.currentSlideIndex);
+    this.slickCarousel!.slickNext();
   }
 
   scrollBack() {
-    if(!this.swapSlideIndex && this.currentSlideIndex>0){
-      this.currentSlideIndex -= 2;
-     
-    }else if (this.swapSlideIndex && this.currentSlideIndex>0){
-      this.currentSlideIndex -= 1;
-    }
-    
-    this.swapSlideIndex=true;
-    this.slickCarousel!.slickGoTo(this.currentSlideIndex);
+   
+    this.slickCarousel!.slickPrev()
   }
 }

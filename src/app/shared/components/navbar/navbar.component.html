@@ -1,44 +1,50 @@
 <nav [class]="typeNav=='dark'?'navbar navbar-light navbar-expand-lg bg-transparent border-bottom border-main':'navbar navbar-dark navbar-expand-lg bg-transparent border-bottom border-light'">
     <div class="container">
-        <a class="navbar-brand" href="#"><img [src]="typeNav=='dark'?'assets/images/logo-blue.svg':'assets/images/logo.svg'" alt="logo.svg"></a>
+        <a class="navbar-brand mb-1" href="#"><img [src]="typeNav=='dark'?'assets/images/logo-blue.svg':'assets/images/logo.svg'" alt="logo.svg"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
             aria-expanded="false" aria-label="Toggle navigation" (click)="openNav()">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="container collapse navbar-collapse mx-4">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0 w-100 d-flex justify-content-around">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 w-100 d-flex justify-content-around align-items-center">
                 <li class="nav-item">
-                    <a [class]="typeNav=='dark'?'nav-link text-dark':'nav-link text-light'" aria-current="page" href="#">الرئيسية</a>
+                    <a [class]="typeNav=='dark'?'nav-link text-dark':'nav-link text-light'" aria-current="page" href="#"><span [class]="active==0?'active':''">الرئيسية</span></a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a [class]="typeNav=='dark'?'nav-link dropdown-toggle text-dark':'nav-link dropdown-toggle text-light'" href="#" id="navbarDropdown" role="button"
+                    <a routerLink="/kafaat/programs"  [class]="typeNav=='dark'?'d-inline text-dark text-decoration-none':'d-inline text-light text-decoration-none'"><span [class]="active==1?'active':''">البرامج</span></a>
+                    <a [class]="typeNav=='dark'?'nav-link dropdown-toggle text-dark d-inline':'nav-link dropdown-toggle text-light d-inline'" href="#" id="navbarDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
-                        البرامج
+                        <span [class]="active==1?'active':''"></span>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item py-2" href="#">عنصر القائمة</a></li>
+                        <li><a class="dropdown-item py-2" href="#">عنصر القائمة</a></li>
+                        <li><a class="dropdown-item py-2" href="#">عنصر القائمة</a></li>
+                        <li><a class="dropdown-item py-2" href="#">عنصر القائمة</a></li>
+                        <li><a class="dropdown-item py-2" href="#">عنصر القائمة</a></li>
+                        <li><a class="dropdown-item py-2" href="#">عنصر القائمة</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <li><a class="dropdown-item" href="#">عنصر القائمة</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a  [class]="typeNav=='dark'?'nav-link text-dark':'nav-link text-light'" aria-current="page" href="#">من نحن</a>
+                    <a  [class]="typeNav=='dark'?'nav-link text-dark':'nav-link text-light'" aria-current="page" href="#"><span [class]="active==2?'active':''">من نحن</span></a>
                 </li>
                 <li class="nav-item">
-                    <a  [class]="typeNav=='dark'?'nav-link text-dark':'nav-link text-light'" aria-current="page" routerLink ="/kafaat/contact-us">تواصل معنا</a>
+                    <a  [class]="typeNav=='dark'?'nav-link text-dark':'nav-link text-light'" aria-current="page" routerLink ="/kafaat/contact-us"><span [class]="active==3?'active':''">تواصل معنا</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="bg-primary-btn text-light py-2" aria-current="page" href="#">تسجيل دخول</a>
+                    <a class="bg-primary-btn text-light py-3" aria-current="page" href="#"><span [class]="active==4?'active':''">تسجيل دخول</span></a>
                 </li>
                 <li class="nav-item">
-                    <a [class]="typeNav=='dark'?'nav-link text-main':'nav-link text-light'" aria-current="page" href="#">طلب انضمام</a>
+                    <a [class]="typeNav=='dark'?'nav-link text-main':'nav-link text-light'" aria-current="page" href="#"><span [class]="active==5?'active':''">طلب انضمام</span></a>
                 </li>
-                <li>
-                    <hr class="d-none d-sm-block bg-secondary mx-3 my-0 h-100" style="width: 2px;">
+                <li class="nav-item">
+                    <!-- <hr class="d-none d-sm-block bg-light mx-3 my-0 h-100" style="width: 2px;"> -->
+                    <div [class]="typeNav=='dark'?'divider-line bg-dark mx-3 my-0':'divider-line bg-light mx-3 my-0'">&nbsp;</div>
                 </li>
                 <li class="d-flex align-items-center">
                     <a href="#" class="mx-2"><img [src]="typeNav=='light'?'assets/images/facebook.svg':'assets/images/facebook-dark.svg'" alt="facebook.svg"></a>
@@ -49,6 +55,65 @@
         </div>
     </div>
 </nav>
+
+<nav id="navbar"  class="navbar navbar-light navbar-expand-lg bg-transparent border-bottom border-main  w-100 top-0 position-fixed bg-light">
+    <div class="container ">
+        <a class="navbar-brand mb-1" href="#"><img src="assets/images/logo-blue.svg"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation" (click)="openNav()">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="container collapse navbar-collapse mx-4">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 w-100 d-flex justify-content-around align-items-center">
+                <li class="nav-item">
+                    <a class="nav-link text-dark" aria-current="page" href="#"><span [class]="active==0?'active':''">الرئيسية</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a routerLink="/kafaat/programs" class="d-inline text-dark text-decoration-none d-pointer"><span [class]="active==1?'active':''">البرامج</span></a>
+                    <a class="nav-link d-inline dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item py-2" href="#">عنصر القائمة</a></li>
+                        <li><a class="dropdown-item py-2" href="#">عنصر القائمة</a></li>
+                        <li><a class="dropdown-item py-2" href="#">عنصر القائمة</a></li>
+                        <li><a class="dropdown-item py-2" href="#">عنصر القائمة</a></li>
+                        <li><a class="dropdown-item py-2" href="#">عنصر القائمة</a></li>
+                        <li><a class="dropdown-item py-2" href="#">عنصر القائمة</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">عنصر القائمة</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a  class="nav-link text-dark" aria-current="page" href="#"><span [class]="active==2?'active':''">من نحن</span></a>
+                </li>
+                <li class="nav-item">
+                    <a  class="nav-link text-dark" aria-current="page" routerLink ="/kafaat/contact-us"><span [class]="active==3?'active':''">تواصل معنا</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="bg-primary-btn text-light py-3" aria-current="page" href="#"><span [class]="active==4?'active':''">تسجيل دخول</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-main" aria-current="page" href="#"><span [class]="active==5?'active':''">طلب انضمام</span></a>
+                </li>
+                <li class="nav-item">
+                    <!-- <hr class="d-none d-sm-block bg-light mx-3 my-0 h-100" style="width: 2px;"> -->
+                    <div class="divider-line bg-dark mx-3 my-0">&nbsp;</div>
+                </li>
+                <li class="d-flex align-items-center">
+                    <a href="#" class="mx-2"><img src="assets/images/facebook-dark.svg" alt="facebook.svg"></a>
+                    <a href="#" class="mx-2"><img src="assets/images/twitter-dark.svg" alt="twitter.svg"></a>
+                    <a href="#" class="mx-2"><img src="assets/images/linkedin-dark.svg" alt="linkedin.svg"></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
 
 <div id="mySidenav" class="sidenav">
     <div class="text-end">

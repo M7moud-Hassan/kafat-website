@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { KafaatRoutingModule } from './kafaat-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { ProgramDetailsComponent } from './components/program-details/program-details.component';
@@ -12,7 +11,6 @@ import { ManashetDetailsImageGalleryPageComponent } from './components/manashet-
 import { ManashetDetailsVideoGalleryPageComponent } from './components/manashet-details-video-gallery-page/manashet-details-video-gallery-page.component';
 import { ManashetDetailsSharedPageComponent } from './components/manashet-details-shared-page/manashet-details-shared-page.component';
 import { ManashetDetailsDistinguishedPageComponent } from './components/manashet-details-distinguished-page/manashet-details-distinguished-page.component';
-
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { CarousalHomeComponent } from './components/carousal-home/carousal-home.component';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
@@ -42,8 +40,7 @@ import { ProfileDeleteAccountPopUpComponent } from './components/profile-delete-
 import { PasswordMaskDirective } from './core/directives/password-mask.directive';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ArabicDigitsDirective } from './core/directives/arabic-digits.directive';
-
-
+import { AllProgramsComponent } from './components/all-programs/all-programs.component';
 
 @NgModule({
   declarations: [
@@ -87,7 +84,7 @@ import { ArabicDigitsDirective } from './core/directives/arabic-digits.directive
     PostsSlidesComponent,
     PasswordMaskDirective,
     ArabicDigitsDirective,
-
+    AllProgramsComponent
   ],
   imports: [
     CommonModule,

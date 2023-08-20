@@ -1,4 +1,4 @@
-import { Component, Type } from '@angular/core';
+import { Component,Type } from '@angular/core';
 import { ItemCarousal } from '../carousal-home/carousal-home.component';
 import { DisplayContentComponent } from 'src/app/shared/components/display-content/display-content.component';
 
@@ -43,5 +43,7 @@ export class HomePageComponent {
   ]
 
   component: Type<any> = DisplayContentComponent;
+
+  
   
 }
