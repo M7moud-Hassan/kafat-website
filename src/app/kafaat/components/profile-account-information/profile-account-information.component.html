@@ -1,215 +1,374 @@
 <div *ngIf="!isPasswordPageVisible" class="input-container">
     <div class="details-title">معلومات الحساب</div>
-    <form [formGroup]="form" (ngSubmit)="submit()" >
+    <form [formGroup]="form" (ngSubmit)="submit()">
         <!-- username -->
-    <div class="input-surrounding">
-        <div class="input-element w-100">
-            <input type="text" name="userName" id="userName" formControlName="userName"  class="input-element-icon person-icon" required="">
-            <label for="userName">اسم المستخدم</label>
+        <div class="input-surrounding">
+            <div class="input-element w-100">
+                <input type="text" name="userName" id="userName" formControlName="userName"
+                    class="input-element-icon person-icon" required="">
+                <label for="userName">اسم المستخدم</label>
+            </div>
+            <div *ngIf="userName?.errors && userName?.touched">
+                <small *ngIf="userName?.hasError('required')" class="error-text"> حقل اسم المستخدم مطلوب</small>
+            </div>
         </div>
-        <div *ngIf="userName?.errors && userName?.touched">
-            <small  *ngIf="userName?.hasError('required')" class="error-text"> حقل  اسم المستخدم مطلوب</small>
+        <!-- email -->
+        <div class="input-surrounding">
+            <div class="input-element w-100">
+                <input type="text" name="email" id="email" formControlName="email" class="input-element-icon email-icon"
+                    required="">
+                <label for="email">البريد الإلكتروني</label>
+            </div>
+            <div *ngIf="email?.errors && email?.touched">
+                <small *ngIf="email?.hasError('required')" class="error-text"> حقل البريد الإلكتروني مطلوب</small>
+            </div>
         </div>
-    </div>
-    <!-- email -->
-    <div class="input-surrounding">
-        <div class="input-element w-100">
-            <input type="text" name="email" id="email" formControlName="email"  class="input-element-icon email-icon" required="">
-            <label for="email">البريد الإلكتروني</label>
+        <!-- phone -->
+        <div class="input-surrounding">
+            <div class="input-element w-100">
+                <input type="text" name="phone" id="phone" formControlName="phone" class="input-element-icon phone-icon"
+                    required="">
+                <label for="phone">رقم الجوال</label>
+            </div>
+            <div *ngIf="phone?.errors && phone?.touched">
+                <small *ngIf="phone?.hasError('required')" class="error-text"> حقل رقم الجوال مطلوب</small>
+            </div>
         </div>
-        <div *ngIf="email?.errors && email?.touched">
-            <small  *ngIf="email?.hasError('required')" class="error-text"> حقل  البريد الإلكتروني مطلوب</small>
+        <div class="divider"></div>
+        <div class="details-title">كلمة المرور</div>
+        <!-- password -->
+        <div class="input-surrounding">
+            <div class="input-element w-100">
+                <input type="text" passwordMask (originalValue)="handleOriginalValue($event)" name="password"
+                    id="password" formControlName="password" style="background-color: var(--neutral50-color);"
+                    class="input-element-icon lock-icon" required="">
+                <label for="password">كلمة المرور</label>
+            </div>
         </div>
-    </div>
-    <!-- phone -->
-    <div class="input-surrounding">
-        <div class="input-element w-100">
-            <input type="text" name="phone" id="phone" formControlName="phone"  class="input-element-icon phone-icon" required="">
-            <label for="phone">رقم الجوال</label>
-        </div>
-        <div *ngIf="phone?.errors && phone?.touched">
-            <small  *ngIf="phone?.hasError('required')" class="error-text"> حقل  رقم الجوال مطلوب</small>
-        </div>
-    </div>
-    <div class="divider"></div>
-    <div class="details-title">كلمة المرور</div>
-    <!-- password -->
-    <div class="input-surrounding">
-        <div class="input-element w-100">
-            <input type="text" passwordMask (originalValue)="handleOriginalValue($event)" name="password" id="password" formControlName="password" style="background-color: var(--neutral50-color);"  class="input-element-icon lock-icon" required="">
-            <label for="password">كلمة المرور</label>
-        </div>
-    </div>
-    <button class="bg-primary-btn mt-3" (click)="isPasswordPageVisible=!isPasswordPageVisible">تغيير كلمة المرور</button>
-    <div class="divider"></div>
-    <div class="details-title">معلومات شخصية</div>
-    <!-- first, middle and last name -->
-    <div class="row">
-        <div class="col-12 col-md-4">
-            <div class="input-surrounding">
-                <div class="input-element-none-icon w-100">
-                    <input type="text"  name="firstName" id="firstName" formControlName="firstName"  class="none-icon" required="">
-                    <label for="firstName">الاسم الاول</label>
+        <button class="bg-primary-btn mt-3" (click)="isPasswordPageVisible=!isPasswordPageVisible">تغيير كلمة
+            المرور</button>
+        <div class="divider"></div>
+        <div class="details-title">معلومات شخصية</div>
+        <!-- first, middle and last name -->
+        <div class="row">
+            <div class="col-12 col-md-4">
+                <div class="input-surrounding">
+                    <div class="input-element-none-icon w-100">
+                        <input type="text" name="firstName" id="firstName" formControlName="firstName" class="none-icon"
+                            required="">
+                        <label for="firstName">الاسم الاول</label>
+                    </div>
+                    <div *ngIf="firstName?.errors && firstName?.touched">
+                        <small *ngIf="firstName?.hasError('required')" class="error-text"> حقل الاسم الاول مطلوب</small>
+                    </div>
                 </div>
-                <div *ngIf="firstName?.errors && firstName?.touched">
-                    <small  *ngIf="firstName?.hasError('required')" class="error-text"> حقل الاسم الاول مطلوب</small>
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="input-surrounding">
+                    <div class="input-element-none-icon w-100">
+                        <input type="text" name="middleName" id="middleName" formControlName="middleName"
+                            class="none-icon" required="">
+                        <label for="middleName">الاسم الاوسط</label>
+                    </div>
+                    <div *ngIf="middleName?.errors && middleName?.touched">
+                        <small *ngIf="middleName?.hasError('required')" class="error-text"> حقل الاسم الاوسط
+                            مطلوب</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="input-surrounding">
+                    <div class="input-element-none-icon w-100">
+                        <input type="text" name="lastName" id="lastName" formControlName="lastName" class="none-icon"
+                            required="">
+                        <label for="lastName">الاسم الاخير</label>
+                    </div>
+                    <div *ngIf="lastName?.errors && lastName?.touched">
+                        <small *ngIf="lastName?.hasError('required')" class="error-text"> حقل الاسم الاخير مطلوب</small>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-12 col-md-4">
-            <div class="input-surrounding">
-                <div class="input-element-none-icon w-100">
-                    <input type="text"  name="middleName" id="middleName" formControlName="middleName"  class="none-icon" required="">
-                    <label for="middleName">الاسم الاوسط</label>
-                </div>
-                <div *ngIf="middleName?.errors && middleName?.touched">
-                    <small  *ngIf="middleName?.hasError('required')" class="error-text"> حقل الاسم الاوسط مطلوب</small>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-md-4">
-            <div class="input-surrounding">
-                <div class="input-element-none-icon w-100">
-                    <input type="text"  name="lastName" id="lastName" formControlName="lastName"  class="none-icon" required="">
-                    <label for="lastName">الاسم الاخير</label>
-                </div>
-                <div *ngIf="lastName?.errors && lastName?.touched">
-                    <small  *ngIf="lastName?.hasError('required')" class="error-text"> حقل الاسم الاخير مطلوب</small>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="sub-title my-3">النوع</div>   
+        <div class="sub-title my-3">النوع</div>
         <!-- gender -->
-   <div>
-    <div class="row">
-        <div class="col-12 col-md-4">
+        <div>
             <div class="row">
-                <div class="col-12 col-md-6">
-                    <div class="d-flex justify-content-center align-items-center">
-                        <input type="radio" class="defaultRadioButton" value="male" formControlName="gender" name="gender" id="male">
-                        <span for="make d-inline-block">ذكر</span>
+                <div class="col-12 col-md-4">
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="d-flex justify-content-start align-items-start pb-2">
+                                <input type="radio" class="defaultRadioButton" style="width: 30px;" value="male" formControlName="gender"
+                                    name="gender" id="male">
+                                <span for="make d-inline-block" style="margin-right: 20px;">ذكر</span>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="d-flex justify-content-start align-items-start pb-2">
+                                <input type="radio" class="defaultRadioButton" style="width: 30px;" value="female" formControlName="gender"
+                                    name="gender" id="female">
+                                <span for="female d-inline-block" style="margin-right: 20px;">انثى</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-12 col-md-6">
-                    <div class="d-flex justify-content-center align-items-center">
-                        <input type="radio" class="defaultRadioButton" value="female" formControlName="gender" name="gender" id="female">
-                        <span for="female d-inline-block">انثى</span>
-                    </div>
-                </div>
+                <div class="col-12 col-md-8"></div>
             </div>
         </div>
-        <div class="col-12 col-md-8"></div>
-    </div>
-   </div>
-
-    <!--   identityNumber -->
-    <div class="input-surrounding mt-4">
-        <div class="input-element-none-icon w-100">
-            <input type="text" name="identityNumber" id="identityNumber" formControlName="identityNumber"  class="none-icon" required="">
-            <label for="identityNumber">رقم الهوية</label>
+        <!--   identityNumber -->
+        <div class="input-surrounding mt-4">
+            <div class="input-element-none-icon w-100">
+                <input type="text" name="identityNumber" id="identityNumber" formControlName="identityNumber"
+                    class="none-icon" required="">
+                <label for="identityNumber">رقم الهوية</label>
+            </div>
+            <div *ngIf="identityNumber?.errors && identityNumber?.touched">
+                <small *ngIf="identityNumber?.hasError('required')" class="error-text"> حقل رقم الهوية مطلوب</small>
+            </div>
         </div>
-        <div *ngIf="identityNumber?.errors && identityNumber?.touched">
-            <small  *ngIf="identityNumber?.hasError('required')" class="error-text"> حقل  رقم الهوية مطلوب</small>
-        </div>
-    </div>
         <!-- birth data milady and hijry -->
         <div class="row">
             <div class="col-12 col-md-6">
                 <div class="input-element-none-icon w-100 mt-4 ">
-                    <input type="date" ArabicDigits (input)="pickBirthDataInMilady($event)" name="birthDate" id="birthDate" formControlName="birthDate"  class="none-icon">
+                    <input type="date" ArabicDigits (input)="pickBirthDataInMilady($event)" name="birthDate"
+                        id="birthDate" formControlName="birthDate" class="none-icon">
                     <label for="birthDate">تاريخ الميلاد (ميلادي)</label>
                 </div>
             </div>
             <div class="col-12 col-md-6">
                 <div class="input-element-none-icon w-100 mt-4 ">
-                    <input type="date" ArabicDigits (input)="pickBirthDataInHijri($event)" name="birthDateHijry" id="birthDateHijry" formControlName="birthDateHijry" class="none-icon">
+                    <input type="date" ArabicDigits (input)="pickBirthDataInHijri($event)" name="birthDateHijry"
+                        id="birthDateHijry" formControlName="birthDateHijry" class="none-icon">
                     <label for="birthDateHijry">تاريخ الميلاد (هجري)</label>
                 </div>
             </div>
         </div>
-    <!-- facebook and twitter -->
-    <div class="row">
-        <div class="col-12 col-md-6">
-            <div class="input-element-none-icon w-100 mt-4 ">
-                <input type="text" name="twitterLink" id="twitterLink" formControlName="twitterLink"  class="none-icon">
-                <label for="twitterLink">رابط تويتر (اختياري)</label>
+        <!-- facebook and twitter -->
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <div class="input-element-none-icon w-100 mt-4 ">
+                    <input type="text" name="twitterLink" id="twitterLink" formControlName="twitterLink"
+                        class="none-icon">
+                    <label for="twitterLink">رابط تويتر (اختياري)</label>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 ">
+                <div class="input-element-none-icon w-100 mt-4 ">
+                    <input type="text" name="facebookLink" id="facebookLink" formControlName="facebookLink"
+                        class="none-icon">
+                    <label for="facebookLink">رابط الفيسبوك (اختياري)</label>
+                </div>
             </div>
         </div>
-        <div class="col-12 col-md-6 ">
-            <div class="input-element-none-icon w-100 mt-4 ">
-                <input type="text" name="facebookLink" id="facebookLink" formControlName="facebookLink"  class="none-icon">
-                <label for="facebookLink">رابط الفيسبوك (اختياري)</label>
-            </div>
-        </div>
-    </div>
-    <div class="sub-title my-3">الحالة</div>   
+        <div class="sub-title my-3">الحالة</div>
         <!-- gender -->
-   <div>
-    <div class="row">
-        <div class="col-12 col-md-4">
+        <div>
             <div class="row">
-                <div class="col-12 col-md-6">
-                    <div class="d-flex justify-content-center align-items-center">
-                        <input type="radio" class="defaultRadioButton" value="married" formControlName="maritalStatus" name="maritalStatus" id="male">
-                        <span for="make d-inline-block">متزوج</span>
+                <div class="col-12 col-md-4">
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="d-flex justify-content-start align-items-start pb-2">
+                                <input type="radio" class="defaultRadioButton" style="width: 30px;" value="married"
+                                    formControlName="maritalStatus" name="maritalStatus" id="male">
+                                <span for="make d-inline-block" style="margin-right: 20px;">متزوج</span>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="d-flex justify-content-start align-items-start pb-2">
+                                <input type="radio" class="defaultRadioButton" style="width: 30px;" value="single"
+                                    formControlName="maritalStatus" name="maritalStatus" id="female">
+                                <span for="female d-inline-block" style="margin-right: 20px;">اعزب</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-12 col-md-6">
-                    <div class="d-flex justify-content-center align-items-center">
-                        <input type="radio" class="defaultRadioButton" value="single" formControlName="maritalStatus" name="maritalStatus" id="female">
-                        <span for="female d-inline-block">اعزب</span>
+                <div class="col-12 col-md-8"></div>
+            </div>
+            <!-- country,city and district -->
+            <div class="row mt-3">
+                <div class="col-12 col-md-4">
+                    <!-- country -->
+                    <div class="input-surrounding">
+                        <div class="select-element select-input w-100">
+                            <select type="text" name="country" id="country" formControlName="country" required="">
+                                <option *ngFor="let item of countries" value="{{item.id}}">{{item.name}}</option>
+                            </select>
+                            <label for="country">الدولة</label>
+                        </div>
+                        <div *ngIf="country?.errors && country?.touched">
+                            <small *ngIf="country?.hasError('required')" class="error-text"> حقل الدولة مطلوب</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <!-- city -->
+                    <div class="input-surrounding">
+                        <div class="select-element select-input w-100">
+                            <select type="text" name="city" id="city" formControlName="city" required="">
+                                <option *ngFor="let item of cities" value="{{item.id}}">{{item.name}}</option>
+                            </select>
+                            <label for="city">المدينة</label>
+                        </div>
+                        <div *ngIf="city?.errors && city?.touched">
+                            <small *ngIf="city?.hasError('required')" class="error-text"> حقل المدينة مطلوب</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <!-- district -->
+                    <div class="input-surrounding">
+                        <div class="select-element select-input w-100">
+                            <select type="text" name="district" id="district" formControlName="district" required="">
+                                <option *ngFor="let item of districts" value="{{item.id}}">{{item.name}}</option>
+                            </select>
+                            <label for="district">الحى</label>
+                        </div>
+                        <div *ngIf="district?.errors && district?.touched">
+                            <small *ngIf="district?.hasError('required')" class="error-text"> حقل الحى مطلوب</small>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-12 col-md-8"></div>
-    </div>
-    <select class="form-control" required="">
-                        <option *ngFor="let item of countries" value="{{item.id}}">{{item.name}}</option>
-                    </select>
-    <!-- country,city and district -->
-    <div class="row">
-        <div class="col-12 col-md-4">
-            <div class="input-surrounding">
-                <div class="input-element w-100">
-                    <select name="country" id="country" formControlName="country"  class="input-element-icon-end form-control dropdown-button-icon" required="">
-                        <option *ngFor="let item of countries" value="{{item.id}}">{{item.name}}</option>
-                    </select>
-                    <label for="country">الدولة</label>
-                </div>
-                <div *ngIf="country?.errors && country?.touched">
-                    <small  *ngIf="country?.hasError('required')" class="error-text"> حقل الاسم الاول مطلوب</small>
+        <div class="input-surrounding">
+            <div class="select-element select-input w-100">
+                <select type="text" name="familyBranch" id="familyBranch" formControlName="familyBranch" required="">
+                    <option *ngFor="let item of cities" value="{{item.id}}">{{item.name}}</option>
+                </select>
+                <label for="familyBranch">فرع الأسرة</label>
+            </div>
+            <div *ngIf="familyBranch?.errors && familyBranch?.touched">
+                <small *ngIf="familyBranch?.hasError('required')" class="error-text"> حقل فرع الأسرة مطلوب</small>
+            </div>
+        </div>
+        <div class="input-surrounding">
+            <div class="input-element-none-icon w-100">
+                <input type="text" name="nickName" id="nickName" formControlName="nickName" class="none-icon"
+                    required="">
+                <label for="nickName">الكنية</label>
+            </div>
+            <div *ngIf="nickName?.errors && nickName?.touched">
+                <small *ngIf="nickName?.hasError('required')" class="error-text"> حقل الكنية مطلوب</small>
+            </div>
+        </div>
+        <div class="input-surrounding">
+            <div class="select-element select-input w-100">
+                <select type="text" name="differences" id="differences" formControlName="differences" required="">
+                    <option *ngFor="let item of cities" value="{{item.id}}">{{item.name}}</option>
+                </select>
+                <label for="differences">وجه التميز</label>
+            </div>
+            <div *ngIf="differences?.errors && differences?.touched">
+                <small *ngIf="differences?.hasError('required')" class="error-text"> حقل وجه التميز مطلوب</small>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <div class="details-title">معلومات السيرة الذاتية</div>
+        <div>
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <div class="d-flex justify-content-right align-items-center">
+                    <input type="checkbox" class="Square_Sign_checkboxButton" style="width: auto;" value="isAvailableToWork" formControlName="isAvailableToWork" name="isAvailableToWork" id="isAvailableToWork">
+                    <span for="make d-inline-block">متاح لفرصة عمل</span>
                 </div>
             </div>
         </div>
-        <div class="col-12 col-md-4">
-            <div class="input-surrounding">
-                <div class="input-element-none-icon w-100">
-                    <input type="text"  name="middleName" id="middleName" formControlName="middleName"  class="none-icon" required="">
-                    <label for="middleName">الاسم الاوسط</label>
+        </div>
+        <div class="row mt-3">
+            <div class="col-12 col-md-4">
+                <!-- qualification -->
+                <div class="input-surrounding">
+                    <div class="select-element select-input w-100">
+                        <select type="text" name="qualification" id="qualification" formControlName="qualification" required="">
+                            <option *ngFor="let item of qualifications" value="{{item.id}}">{{item.name}}</option>
+                        </select>
+                        <label for="qualification">المؤهل</label>
+                    </div>
+                    <div *ngIf="qualification?.errors && qualification?.touched">
+                        <small *ngIf="qualification?.hasError('required')" class="error-text"> حقل المؤهل مطلوب</small>
+                    </div>
                 </div>
-                <div *ngIf="middleName?.errors && middleName?.touched">
-                    <small  *ngIf="middleName?.hasError('required')" class="error-text"> حقل الاسم الاوسط مطلوب</small>
+            </div>
+            <div class="col-12 col-md-4">
+                <!-- specialization -->
+                <div class="input-surrounding">
+                    <div class="select-element select-input w-100">
+                        <select type="text" name="specialization" id="specialization" formControlName="specialization" required="">
+                            <option *ngFor="let item of qualifications" value="{{item.id}}">{{item.name}}</option>
+                        </select>
+                        <label for="specialization">التخصص</label>
+                    </div>
+                    <div *ngIf="specialization?.errors && specialization?.touched">
+                        <small *ngIf="specialization?.hasError('required')" class="error-text"> حقل التخصص مطلوب</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <!-- department -->
+                <div class="input-surrounding">
+                    <div class="select-element select-input w-100">
+                        <select type="text" name="department" id="department" formControlName="department" required="">
+                            <option *ngFor="let item of departments" value="{{item.id}}">{{item.name}}</option>
+                        </select>
+                        <label for="department">القسم</label>
+                    </div>
+                    <div *ngIf="department?.errors && department?.touched">
+                        <small *ngIf="department?.hasError('required')" class="error-text"> حقل القسم مطلوب</small>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-12 col-md-4">
-            <div class="input-surrounding">
-                <div class="input-element w-100">
-                    <input type="text"  name="lastName" id="lastName" formControlName="lastName"  class="input-element-icon none-icon" required="">
-                    <label for="lastName">الاسم الاخير</label>
+        <div class="row mt-3 d-flex justify-content-center align-items-center">
+            <div class="col-12 col-md-6">
+                <!-- workType -->
+                <div class="input-surrounding">
+                    <div class="select-element select-input w-100">
+                        <select type="text" name="workType" id="workType" formControlName="workType" required="">
+                            <option *ngFor="let item of workTypes" value="{{item.id}}">{{item.name}}</option>
+                        </select>
+                        <label for="workType">نوع العمل</label>
+                    </div>
+                    <div *ngIf="workType?.errors && workType?.touched">
+                        <small *ngIf="workType?.hasError('required')" class="error-text"> حقل نوع العمل مطلوب</small>
+                    </div>
                 </div>
-                <div *ngIf="lastName?.errors && lastName?.touched">
-                    <small  *ngIf="lastName?.hasError('required')" class="error-text"> حقل الاسم الاخير مطلوب</small>
+            </div>
+            <div class="col-12 col-md-6 pb-2">
+                <!-- specialization -->
+                <div class="input-element-none-icon w-100 mt-4 ">
+                    <input type="text" name="favourites" id="favourites" formControlName="favourites"
+                        class="none-icon">
+                    <label for="favourites">الهوايات</label>
+                </div>
+                <div *ngIf="favourites?.errors && favourites?.touched">
+                    <small *ngIf="favourites?.hasError('required')" class="error-text"> حقل الهوايات مطلوب</small>
                 </div>
             </div>
         </div>
-    </div>
-   </div>
+        <div class="sub-title mb-2 mt-3">السيرة الذاتية</div>
+        <div class="dashed-container d-flex justify-content-between align-items-center">
+            <div class="d-flex justify-content-start align-items-center">
+                <img src="/assets/images/cloud.svg" alt="">
+                <div class="ps-3">
+                    <div (click)="fileInput.click()" class="d-pointer">
+                        <div class="cloud-title pb-2">اختر ملف، او اسحبه هنا للرفع</div>
+                        <div class="cloud-sub-title">JPG, PNG or PDF, file size no more than 10MB</div>
+                    </div>
+                    <input type="file" name="image" formControlName="image"  accept="image/*" (change)="onFileSelected($event)" #fileInput style="display:none">
+                </div>
+            </div>
+            <div class="">
+                <a class="bg-primary-btn" (click)="fileInput.click()">تحديد ملف</a>
+            </div>
+        </div>
+        <div class="p-3 d-flex justify-content-between align-items-center">
+            <div>{{fileSize}} MB</div>
+            <div>
+                <a class="text-decoration-none d-pointer">عرض</a>
+                <span class="px-3">{{fileName}}</span>
+                <img src="/assets/images/file-small-image.svg" alt="">
+            </div>
+        </div>
+
     </form>
-
-
-    <button class="bg-primary-btn-block mt-5" [disabled]="!(form.valid)">إرسال</button>
 </div>
-<app-profile-change-password  *ngIf="isPasswordPageVisible"></app-profile-change-password>
+<app-profile-change-password *ngIf="isPasswordPageVisible"></app-profile-change-password>

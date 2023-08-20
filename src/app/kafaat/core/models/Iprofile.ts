@@ -31,4 +31,5 @@ export interface IProfile {
     department:any,
     workType:any,
     favourites:any,
+    image:any,
 }

@@ -33,19 +33,20 @@ export class ProfileService {
       country:2,
       city:3,
       district:5,
-      department:'Information technology',
-      differences:'Not Exists',
+      department:7,
+      differences:3,
       facebookLink:'facebooklink267822',
       twitterLink:'twitter-link-7826827',
-      familyBranch:'قبيلة العراف',
+      familyBranch:7,
       favourites:'السباحة',
       gender:'male',
       identityNumber:'296653675376536753',
       isAvailableToWork:true,
       maritalStatus:'married',
-      qualification:'Computer Sience',
-      specialization:'IS',
-      workType:'Software',
+      qualification:9,
+      specialization:10,
+      workType:2,
+      image:'',
     };
   }
   loadContries(){
@@ -88,6 +89,90 @@ export class ProfileService {
       {id:8,name:'مقاطعة رقم 8'},
       {id:9,name:'مقاطعة رقم 9'},
       {id:10,name:'مقاطعة رقم 10'},
+    ]
+  }
+  loadFamilyBranches(){
+    return [
+      {id:1,name:'فرع رقم 1'},
+      {id:2,name:'فرع رقم 2'},
+      {id:3,name:'فرع رقم 3'},
+      {id:4,name:'فرع رقم 4'},
+      {id:5,name:'فرع رقم 5'},
+      {id:6,name:'فرع رقم 6'},
+      {id:7,name:'فرع رقم 7'},
+      {id:8,name:'فرع رقم 8'},
+      {id:9,name:'فرع رقم 9'},
+      {id:10,name:'فرع رقم 10'},
+    ]
+  }
+  loaddifferences(){
+    return [
+      {id:1,name:'وجه التميز رقم 1'},
+      {id:2,name:'وجه التميز رقم 2'},
+      {id:3,name:'وجه التميز رقم 3'},
+      {id:4,name:'وجه التميز رقم 4'},
+      {id:5,name:'وجه التميز رقم 5'},
+      {id:6,name:'وجه التميز رقم 6'},
+      {id:7,name:'وجه التميز رقم 7'},
+      {id:8,name:'وجه التميز رقم 8'},
+      {id:9,name:'وجه التميز رقم 9'},
+      {id:10,name:'وجه التميز رقم 10'},
+    ]
+  }
+  loadQualifications(){
+    return [
+      {id:1,name:'مؤهل رقم 1'},
+      {id:2,name:'مؤهل رقم 2'},
+      {id:3,name:'مؤهل رقم 3'},
+      {id:4,name:'مؤهل رقم 4'},
+      {id:5,name:'مؤهل رقم 5'},
+      {id:6,name:'مؤهل رقم 6'},
+      {id:7,name:'مؤهل رقم 7'},
+      {id:8,name:'مؤهل رقم 8'},
+      {id:9,name:'مؤهل رقم 9'},
+      {id:10,name:'مؤهل رقم 10'},
+    ]
+  }
+  loadSpecialists(){
+    return [
+      {id:1,name:'التخصص رقم 1'},
+      {id:2,name:'التخصص رقم 2'},
+      {id:3,name:'التخصص رقم 3'},
+      {id:4,name:'التخصص رقم 4'},
+      {id:5,name:'التخصص رقم 5'},
+      {id:6,name:'التخصص رقم 6'},
+      {id:7,name:'التخصص رقم 7'},
+      {id:8,name:'التخصص رقم 8'},
+      {id:9,name:'التخصص رقم 9'},
+      {id:10,name:'التخصص رقم 10'},
+    ]
+  }
+  loadDepartments(){
+    return [
+      {id:1,name:'القسم رقم 1'},
+      {id:2,name:'القسم رقم 2'},
+      {id:3,name:'القسم رقم 3'},
+      {id:4,name:'القسم رقم 4'},
+      {id:5,name:'القسم رقم 5'},
+      {id:6,name:'القسم رقم 6'},
+      {id:7,name:'القسم رقم 7'},
+      {id:8,name:'القسم رقم 8'},
+      {id:9,name:'القسم رقم 9'},
+      {id:10,name:'القسم رقم 10'},
+    ]
+  }
+  loadWorkTypes(){
+    return [
+      {id:1,name:'العمل رقم 1'},
+      {id:2,name:'العمل رقم 2'},
+      {id:3,name:'العمل رقم 3'},
+      {id:4,name:'العمل رقم 4'},
+      {id:5,name:'العمل رقم 5'},
+      {id:6,name:'العمل رقم 6'},
+      {id:7,name:'العمل رقم 7'},
+      {id:8,name:'العمل رقم 8'},
+      {id:9,name:'العمل رقم 9'},
+      {id:10,name:'العمل رقم 10'},
     ]
   }
   changePassword(model:any):Observable<ResponseVM>{

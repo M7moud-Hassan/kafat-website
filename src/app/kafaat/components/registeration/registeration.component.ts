@@ -1,14 +1,17 @@
-import { AfterViewInit, Component, OnInit ,Renderer2 } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
 import { KafaatMainService } from '../../services/kafaat-main.service';
 
 @Component({
-  selector: 'app-profile-account-information',
-  templateUrl: './profile-account-information.component.html',
-  styleUrls: ['../profile-layout/profile-layout.component.css','./profile-account-information.component.css']
+  selector: 'app-registeration',
+  templateUrl: './registeration.component.html',
+  styleUrls: ['../profile-layout/profile-layout.component.css','../profile-account-information/profile-account-information.component.css','./registeration.component.css']
 })
-export class ProfileAccountInformationComponent  implements OnInit , AfterViewInit {
-  isPasswordPageVisible:boolean = false;
+export class RegisterationComponent   implements OnInit , AfterViewInit {
+  isNextPageVisible:boolean = true;
+  isPasswordVisible:boolean = false;
+  isPasswordVisible2:boolean = false;
+  isAvailableToWorkChecked:boolean = true;
   form:FormGroup = new FormGroup({});
   imagefile:any = "";
   fileName:string="";
@@ -30,9 +33,7 @@ export class ProfileAccountInformationComponent  implements OnInit , AfterViewIn
     this.handleOriginalValue(this.form.controls['password'].value);
   }
   ngOnInit(): void {
-    this.isPasswordPageVisible = false;
     this.createForm();
-    this.loadFormData();
     this.loadCountries();
     this.loadCities();
     this.loadDistricts();
@@ -81,6 +82,7 @@ export class ProfileAccountInformationComponent  implements OnInit , AfterViewIn
       email:['',[Validators.required]],
       phone:['',[Validators.required]],
       password:['',[Validators.required]],
+      confirmPassword:['',[Validators.required]],
       firstName:['',[Validators.required]],
       middleName:['',[Validators.required]],
       lastName:['',[Validators.required]],
@@ -88,16 +90,16 @@ export class ProfileAccountInformationComponent  implements OnInit , AfterViewIn
       identityNumber:['',[Validators.required]],
       birthDate:['',[Validators.required]],
       birthDateHijry:['',[Validators.required]],
-      twitterLink:['',[Validators.required]],
-      facebookLink:['',[Validators.required]],
+      // twitterLink:['',[Validators.required]],
+      // facebookLink:['',[Validators.required]],
       maritalStatus:['',[Validators.required]],
       country:['',[Validators.required]],
       city:['',[Validators.required]],
       district:['',[Validators.required]],
       familyBranch:['',[Validators.required]],
-      nickName:['',[Validators.required]],
-      differences:['',[Validators.required]],
-      isAvailableToWork:['',[Validators.required]],
+      // nickName:['',[Validators.required]],
+      // differences:['',[Validators.required]],
+      isAvailableToWork:[false,[Validators.required]],
       qualification:['',[Validators.required]],
       specialization:['',[Validators.required]],
       department:['',[Validators.required]],
@@ -106,17 +108,9 @@ export class ProfileAccountInformationComponent  implements OnInit , AfterViewIn
       image:['',[Validators.required]],
     });
   }
-  loadFormData(){
-    let model = this.service.profileService.loadProfileData({id:18617});
-    this.form.patchValue(model);
-  }
-
 
   onFileSelected(event: any) {
     const file: File = event.target.files[0];
-    console.log("=============================================================")
-    console.log(file);
-    console.log("=============================================================")
     this.fileSize= file.size/1000;
     this.fileName = file.name;
     const reader = new FileReader();
@@ -128,7 +122,7 @@ export class ProfileAccountInformationComponent  implements OnInit , AfterViewIn
   }
   
   submit() {
-    this.service.printFormValues(this.form);
+    // this.service.printFormValues(this.form);
     if(this.form.valid){
       this.service.profileService.editProfile(this.form.value).subscribe({
         next:(response)=>{
@@ -169,6 +163,9 @@ export class ProfileAccountInformationComponent  implements OnInit , AfterViewIn
   }
   get password(){
     return this.form.controls['password'];
+  }
+  get confirmPassword(){
+    return this.form.controls['confirmPassword'];
   }
   get firstName(){
     return this.form.controls['firstName'];
@@ -237,3 +234,4 @@ export class ProfileAccountInformationComponent  implements OnInit , AfterViewIn
     return this.form.controls['favourites'];
   }
 }
+

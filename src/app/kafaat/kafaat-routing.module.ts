@@ -31,7 +31,7 @@ const routes: Routes = [
   {path:'winners',component:WinnerComponent},
   {path:'famous-posts',component:PostsSlidesComponent},
   {path:'profile',component:ProfileLayoutComponent},
-  {path:'programs',component:AllProgramsComponent}
+  {path:'programs',component:AllProgramsComponent},
 ];
 
 @NgModule({

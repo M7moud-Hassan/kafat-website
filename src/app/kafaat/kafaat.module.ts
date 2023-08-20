@@ -41,6 +41,8 @@ import { PasswordMaskDirective } from './core/directives/password-mask.directive
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ArabicDigitsDirective } from './core/directives/arabic-digits.directive';
 import { AllProgramsComponent } from './components/all-programs/all-programs.component';
+import { RegisterationComponent } from './components/registeration/registeration.component';
+import { RegisterationSucceededComponent } from './components/registeration-succeeded/registeration-succeeded.component';
 
 @NgModule({
   declarations: [
@@ -84,7 +86,9 @@ import { AllProgramsComponent } from './components/all-programs/all-programs.com
     PostsSlidesComponent,
     PasswordMaskDirective,
     ArabicDigitsDirective,
-    AllProgramsComponent
+    AllProgramsComponent,
+    RegisterationComponent,
+    RegisterationSucceededComponent
   ],
   imports: [
     CommonModule,
