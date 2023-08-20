@@ -22,6 +22,7 @@ import { ImageThirdComponent } from './components/image-third/image-third.compon
 import { PaginationsComponent } from './components/paginations/paginations.component';
 import { ScrollNavComponent } from './components/scroll-nav/scroll-nav.component';
 import { DatePickerComponent } from './components/date-picker/date-picker.component';
+import { ProgramMinComponent } from './components/program-min/program-min.component';
 
 
 @NgModule({
@@ -54,6 +55,7 @@ import { DatePickerComponent } from './components/date-picker/date-picker.compon
     PaginationsComponent,
     ScrollNavComponent,
     DatePickerComponent,
+    ProgramMinComponent,
 
 
   ],
@@ -85,6 +87,7 @@ import { DatePickerComponent } from './components/date-picker/date-picker.compon
     PaginationsComponent,
     ScrollNavComponent,
     DatePickerComponent,
+    ProgramMinComponent
   
 
   ]

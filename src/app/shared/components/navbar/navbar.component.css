@@ -20,3 +20,14 @@
     width: 1px; height: 46px;
     background-color: wheat;
 }
+#navbar{
+    background-color: white !important;
+    z-index: 100; display: none;
+}
+.active{
+    color: blue !important;
+}
+
+.dropdown-menu{
+    border-top: 3px solid var(--main-color);
+}

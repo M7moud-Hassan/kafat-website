@@ -2,9 +2,9 @@
     <div class="navbar-container">
         <div class="navbar-element-container">
             <app-navbar typeNav="light" (handleOpenNav)="openOrClosNav($event)"></app-navbar>
-            <div id="navbar" class="bg-light w-100 top-0 position-fixed">
+            <!-- <div id="navbar" class="bg-light w-100 top-0 position-fixed">
                 <app-navbar typeNav="dark" (handleOpenNav)="openOrClosNav($event)"></app-navbar>
-            </div>
+            </div> -->
         </div>
         <div class="navbar-image"></div>
         <div class="navbar-image-opacity"></div>
@@ -14,7 +14,7 @@
     </div>
     <!-- because mahmoud abd magisss -->
     <div style="margin-top: 150px;"></div>
-    <div #targetElement>
+    <div>
         <app-carousal-home [slides]="slides"></app-carousal-home>
     </div>
     <app-layout-section [componentToDisplay]="1"></app-layout-section>
