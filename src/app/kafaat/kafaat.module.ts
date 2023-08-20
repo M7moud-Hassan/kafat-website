@@ -22,6 +22,12 @@ import { DiscoverProgramsComponent } from './components/discover-programs/discov
 import { AboutPageComponent } from './components/about-page/about-page.component';
 import { ManshatDetailsInProgressComponent } from './components/manshat-details-in-progress/manshat-details-in-progress.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
+import { WinnerComponent } from './components/winner/winner.component';
+import { PostsSlidesComponent } from './components/posts-slides/posts-slides.component';
+import { LoginComponent } from './components/login/login.component';
+import { ForgottenPasswordComponent } from './components/forgotten-password/forgotten-password.component';
+import { CodeAuthComponent } from './components/code-auth/code-auth.component';
+import { NewPasswordComponent } from './components/new-password/new-password.component';
 import { ProfileLayoutComponent } from './components/profile-layout/profile-layout.component';
 import { ProfileAccountInformationComponent } from './components/profile-account-information/profile-account-information.component';
 import { ProfileManashetComponent } from './components/profile-manashet/profile-manashet.component';
@@ -33,13 +39,16 @@ import { ProfileDeleteAccountComponent } from './components/profile-delete-accou
 import { ProfileChangePasswordComponent } from './components/profile-change-password/profile-change-password.component';
 import { ProfileLogoutPopUpComponent } from './components/profile-logout-pop-up/profile-logout-pop-up.component';
 import { ProfileDeleteAccountPopUpComponent } from './components/profile-delete-account-pop-up/profile-delete-account-pop-up.component';
-// import { MatDialogModule } from '@angular/material/dialog';
-import { WinnerComponent } from './components/winner/winner.component';
-import { PostsSlidesComponent } from './components/posts-slides/posts-slides.component';
+import { PasswordMaskDirective } from './core/directives/password-mask.directive';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ArabicDigitsDirective } from './core/directives/arabic-digits.directive';
+
 
 
 @NgModule({
   declarations: [
+    PasswordMaskDirective,
+    ArabicDigitsDirective,
     ProgramDetailsComponent,
     MusharakatItemComponent,
     ManshatDetailsComponent,
@@ -57,6 +66,12 @@ import { PostsSlidesComponent } from './components/posts-slides/posts-slides.com
     AboutPageComponent,
     ManshatDetailsInProgressComponent,
     ContactUsComponent,
+    WinnerComponent,
+    PostsSlidesComponent,
+    LoginComponent,
+    ForgottenPasswordComponent,
+    CodeAuthComponent,
+    NewPasswordComponent,
     ProfileLayoutComponent,
     ProfileAccountInformationComponent,
     ProfileManashetComponent,
@@ -70,13 +85,17 @@ import { PostsSlidesComponent } from './components/posts-slides/posts-slides.com
     ProfileDeleteAccountPopUpComponent,
     WinnerComponent,
     PostsSlidesComponent,
+    PasswordMaskDirective,
+    ArabicDigitsDirective,
+
   ],
   imports: [
     CommonModule,
     KafaatRoutingModule,
     SharedModule,
     SlickCarouselModule,
-    // MatDialogModule
+    FormsModule,
+    ReactiveFormsModule,
   ]
   
 })

@@ -13,6 +13,7 @@ import { ProfileLayoutComponent } from './components/profile-layout/profile-layo
 import { WinnerComponent } from './components/winner/winner.component';
 import { PostsSlidesComponent } from './components/posts-slides/posts-slides.component';
 
+
 const routes: Routes = [
   {path:'',component:HomePageComponent},
   {path:'program-details',component:ProgramDetailsComponent},
@@ -26,7 +27,10 @@ const routes: Routes = [
   {path:'contact-us',component:ContactUsComponent},
   {path:'profile',component:ProfileLayoutComponent},
   {path:'winners',component:WinnerComponent},
-  {path:'famous-posts',component:PostsSlidesComponent}
+  {path:'famous-posts',component:PostsSlidesComponent},
+  {path:'winners',component:WinnerComponent},
+  {path:'famous-posts',component:PostsSlidesComponent},
+  {path:'profile',component:ProfileLayoutComponent},
 ];
 
 @NgModule({

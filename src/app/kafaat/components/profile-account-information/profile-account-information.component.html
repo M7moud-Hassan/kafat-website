@@ -1,75 +1,215 @@
 <div *ngIf="!isPasswordPageVisible" class="input-container">
     <div class="details-title">معلومات الحساب</div>
-    <div class="input-main-container">
-        <div class="input-container w-100">
-            <input type="text" name="name" class="form-control input-container-icon person-icon" required="">
-            <label for="name">اسم المستخدم</label>
+    <form [formGroup]="form" (ngSubmit)="submit()" >
+        <!-- username -->
+    <div class="input-surrounding">
+        <div class="input-element w-100">
+            <input type="text" name="userName" id="userName" formControlName="userName"  class="input-element-icon person-icon" required="">
+            <label for="userName">اسم المستخدم</label>
+        </div>
+        <div *ngIf="userName?.errors && userName?.touched">
+            <small  *ngIf="userName?.hasError('required')" class="error-text"> حقل  اسم المستخدم مطلوب</small>
         </div>
     </div>
-    <div class="form-group input-container w-100 mt-4 ">
-        <input type="text" name="name" class="form-control input-container-icon email-icon" required="">
-        <label for="name"> البريد الإلكتروني</label>
+    <!-- email -->
+    <div class="input-surrounding">
+        <div class="input-element w-100">
+            <input type="text" name="email" id="email" formControlName="email"  class="input-element-icon email-icon" required="">
+            <label for="email">البريد الإلكتروني</label>
+        </div>
+        <div *ngIf="email?.errors && email?.touched">
+            <small  *ngIf="email?.hasError('required')" class="error-text"> حقل  البريد الإلكتروني مطلوب</small>
+        </div>
     </div>
-    <div class="form-group input-container w-100 mt-4 ">
-        <input type="text" name="name" class="form-control input-container-icon phone-icon" required="">
-        <label for="name">رقم الجوال</label>
+    <!-- phone -->
+    <div class="input-surrounding">
+        <div class="input-element w-100">
+            <input type="text" name="phone" id="phone" formControlName="phone"  class="input-element-icon phone-icon" required="">
+            <label for="phone">رقم الجوال</label>
+        </div>
+        <div *ngIf="phone?.errors && phone?.touched">
+            <small  *ngIf="phone?.hasError('required')" class="error-text"> حقل  رقم الجوال مطلوب</small>
+        </div>
     </div>
     <div class="divider"></div>
     <div class="details-title">كلمة المرور</div>
-    <div class="form-group input-container w-100 mt-4 ">
-        <input type="password" name="name" class="form-control input-container-icon password-icon" value="28927982792" style="background-color: var(--neutral50-color);" required="">
-        <label for="name"> كلمة المرور</label>
+    <!-- password -->
+    <div class="input-surrounding">
+        <div class="input-element w-100">
+            <input type="text" passwordMask (originalValue)="handleOriginalValue($event)" name="password" id="password" formControlName="password" style="background-color: var(--neutral50-color);"  class="input-element-icon lock-icon" required="">
+            <label for="password">كلمة المرور</label>
+        </div>
     </div>
-    <button class="bg-primary-btn mt-5" (click)="isPasswordPageVisible=!isPasswordPageVisible">تغيير كلمة المرور</button>
-    <div class="divider" style="margin-top: 20px;"></div>
+    <button class="bg-primary-btn mt-3" (click)="isPasswordPageVisible=!isPasswordPageVisible">تغيير كلمة المرور</button>
+    <div class="divider"></div>
     <div class="details-title">معلومات شخصية</div>
+    <!-- first, middle and last name -->
     <div class="row">
         <div class="col-12 col-md-4">
-            <div class="form-group input-container w-100 mt-4 ">
-                <input type="text" name="name" class="form-control input-container-icon" style="padding-right: 15px;"  required="">
-                <label style="padding-right: 0px;"  for="name">الاسم الاول</label>
+            <div class="input-surrounding">
+                <div class="input-element-none-icon w-100">
+                    <input type="text"  name="firstName" id="firstName" formControlName="firstName"  class="none-icon" required="">
+                    <label for="firstName">الاسم الاول</label>
+                </div>
+                <div *ngIf="firstName?.errors && firstName?.touched">
+                    <small  *ngIf="firstName?.hasError('required')" class="error-text"> حقل الاسم الاول مطلوب</small>
+                </div>
             </div>
         </div>
         <div class="col-12 col-md-4">
-            <div class="form-group input-container w-100 mt-4 ">
-                <input type="text" name="name" class="form-control input-container-icon" style="padding-right: 15px;"  required="">
-                <label  style="padding-right: 0px;" for="name">الاسم الاوسط</label>
+            <div class="input-surrounding">
+                <div class="input-element-none-icon w-100">
+                    <input type="text"  name="middleName" id="middleName" formControlName="middleName"  class="none-icon" required="">
+                    <label for="middleName">الاسم الاوسط</label>
+                </div>
+                <div *ngIf="middleName?.errors && middleName?.touched">
+                    <small  *ngIf="middleName?.hasError('required')" class="error-text"> حقل الاسم الاوسط مطلوب</small>
+                </div>
             </div>
         </div>
         <div class="col-12 col-md-4">
-            <div class="form-group input-container w-100 mt-4 ">
-                <input type="text" name="name" class="form-control input-container-icon" style="padding-right: 15px;"  required="">
-                <label  style="padding-right: 0px;" for="name">الاسم الاخير</label>
+            <div class="input-surrounding">
+                <div class="input-element-none-icon w-100">
+                    <input type="text"  name="lastName" id="lastName" formControlName="lastName"  class="none-icon" required="">
+                    <label for="lastName">الاسم الاخير</label>
+                </div>
+                <div *ngIf="lastName?.errors && lastName?.touched">
+                    <small  *ngIf="lastName?.hasError('required')" class="error-text"> حقل الاسم الاخير مطلوب</small>
+                </div>
             </div>
         </div>
     </div>
-    <div class="row mt-3">
-        <div class="col-12">
-            <div class="sub-title">النوع</div>            
-        </div>
-    </div>
-    <div class="form-group input-container w-100 mt-4 ">
-        <input type="text" name="name" class="form-control input-container-icon" style="padding-right: 15px;" required="">
-        <label style="padding-right: 0px;" for="name">رقم الهوية</label>
-    </div>
+    <div class="sub-title my-3">النوع</div>   
+        <!-- gender -->
+   <div>
     <div class="row">
-        <div class="col-12 col-md-6">
-            <div class="form-group input-container w-100 mt-4 ">
-                <input type="text" name="name" class="form-control input-container-icon person-icon" required="">
-                <label for="name">رابط تويتر (اختياري)</label>
+        <div class="col-12 col-md-4">
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <div class="d-flex justify-content-center align-items-center">
+                        <input type="radio" class="defaultRadioButton" value="male" formControlName="gender" name="gender" id="male">
+                        <span for="make d-inline-block">ذكر</span>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="d-flex justify-content-center align-items-center">
+                        <input type="radio" class="defaultRadioButton" value="female" formControlName="gender" name="gender" id="female">
+                        <span for="female d-inline-block">انثى</span>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="col-12 col-md-6">
-            <div class="form-group input-container w-100 mt-4 ">
-                <input type="text" name="name" class="form-control input-container-icon person-icon" required="">
-                <label for="name">رابط الفيسبوك (اختياري)</label>
-            </div>
-        </div>
-        <input type="checkbox" class="Square_Sign_checkboxButton">
-        <input type="radio" name="name" value="value1" class="defaultRadioButton">
-        <input type="radio" name="name" value="value2" class="defaultRadioButton">
+        <div class="col-12 col-md-8"></div>
     </div>
+   </div>
 
-    <button class="bg-primary-btn-block mt-5">إرسال</button>
+    <!--   identityNumber -->
+    <div class="input-surrounding mt-4">
+        <div class="input-element-none-icon w-100">
+            <input type="text" name="identityNumber" id="identityNumber" formControlName="identityNumber"  class="none-icon" required="">
+            <label for="identityNumber">رقم الهوية</label>
+        </div>
+        <div *ngIf="identityNumber?.errors && identityNumber?.touched">
+            <small  *ngIf="identityNumber?.hasError('required')" class="error-text"> حقل  رقم الهوية مطلوب</small>
+        </div>
+    </div>
+        <!-- birth data milady and hijry -->
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <div class="input-element-none-icon w-100 mt-4 ">
+                    <input type="date" ArabicDigits (input)="pickBirthDataInMilady($event)" name="birthDate" id="birthDate" formControlName="birthDate"  class="none-icon">
+                    <label for="birthDate">تاريخ الميلاد (ميلادي)</label>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="input-element-none-icon w-100 mt-4 ">
+                    <input type="date" ArabicDigits (input)="pickBirthDataInHijri($event)" name="birthDateHijry" id="birthDateHijry" formControlName="birthDateHijry" class="none-icon">
+                    <label for="birthDateHijry">تاريخ الميلاد (هجري)</label>
+                </div>
+            </div>
+        </div>
+    <!-- facebook and twitter -->
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <div class="input-element-none-icon w-100 mt-4 ">
+                <input type="text" name="twitterLink" id="twitterLink" formControlName="twitterLink"  class="none-icon">
+                <label for="twitterLink">رابط تويتر (اختياري)</label>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 ">
+            <div class="input-element-none-icon w-100 mt-4 ">
+                <input type="text" name="facebookLink" id="facebookLink" formControlName="facebookLink"  class="none-icon">
+                <label for="facebookLink">رابط الفيسبوك (اختياري)</label>
+            </div>
+        </div>
+    </div>
+    <div class="sub-title my-3">الحالة</div>   
+        <!-- gender -->
+   <div>
+    <div class="row">
+        <div class="col-12 col-md-4">
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <div class="d-flex justify-content-center align-items-center">
+                        <input type="radio" class="defaultRadioButton" value="married" formControlName="maritalStatus" name="maritalStatus" id="male">
+                        <span for="make d-inline-block">متزوج</span>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="d-flex justify-content-center align-items-center">
+                        <input type="radio" class="defaultRadioButton" value="single" formControlName="maritalStatus" name="maritalStatus" id="female">
+                        <span for="female d-inline-block">اعزب</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-8"></div>
+    </div>
+    <select class="form-control" required="">
+                        <option *ngFor="let item of countries" value="{{item.id}}">{{item.name}}</option>
+                    </select>
+    <!-- country,city and district -->
+    <div class="row">
+        <div class="col-12 col-md-4">
+            <div class="input-surrounding">
+                <div class="input-element w-100">
+                    <select name="country" id="country" formControlName="country"  class="input-element-icon-end form-control dropdown-button-icon" required="">
+                        <option *ngFor="let item of countries" value="{{item.id}}">{{item.name}}</option>
+                    </select>
+                    <label for="country">الدولة</label>
+                </div>
+                <div *ngIf="country?.errors && country?.touched">
+                    <small  *ngIf="country?.hasError('required')" class="error-text"> حقل الاسم الاول مطلوب</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-4">
+            <div class="input-surrounding">
+                <div class="input-element-none-icon w-100">
+                    <input type="text"  name="middleName" id="middleName" formControlName="middleName"  class="none-icon" required="">
+                    <label for="middleName">الاسم الاوسط</label>
+                </div>
+                <div *ngIf="middleName?.errors && middleName?.touched">
+                    <small  *ngIf="middleName?.hasError('required')" class="error-text"> حقل الاسم الاوسط مطلوب</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-4">
+            <div class="input-surrounding">
+                <div class="input-element w-100">
+                    <input type="text"  name="lastName" id="lastName" formControlName="lastName"  class="input-element-icon none-icon" required="">
+                    <label for="lastName">الاسم الاخير</label>
+                </div>
+                <div *ngIf="lastName?.errors && lastName?.touched">
+                    <small  *ngIf="lastName?.hasError('required')" class="error-text"> حقل الاسم الاخير مطلوب</small>
+                </div>
+            </div>
+        </div>
+    </div>
+   </div>
+    </form>
+
+
+    <button class="bg-primary-btn-block mt-5" [disabled]="!(form.valid)">إرسال</button>
 </div>
 <app-profile-change-password  *ngIf="isPasswordPageVisible"></app-profile-change-password>

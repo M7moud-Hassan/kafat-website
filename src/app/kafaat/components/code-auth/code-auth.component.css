@@ -1,0 +1,12 @@
+.code input {
+    width: 45px;
+    height: 45px;
+    text-align: center;
+    margin-right: 10px;
+    font-size: large;
+    font-weight: bold;
+    
+}
+.code input:focus,.code input:valid{
+    border-color:  var(--main-color);
+}

@@ -71,6 +71,7 @@
 }
 .email-icon{
     background-image: url('/assets/images/user.svg');
+    background-color: transparent;
 }
 .message-icon{
     background-image: url('/assets/images/user.svg');

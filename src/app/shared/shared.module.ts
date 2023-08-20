@@ -22,6 +22,8 @@ import { ImageThirdComponent } from './components/image-third/image-third.compon
 import { PaginationsComponent } from './components/paginations/paginations.component';
 import { ScrollNavComponent } from './components/scroll-nav/scroll-nav.component';
 import { DatePickerComponent } from './components/date-picker/date-picker.component';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -53,12 +55,16 @@ import { DatePickerComponent } from './components/date-picker/date-picker.compon
     TabsContainerComponent,
     PaginationsComponent,
     ScrollNavComponent,
-    DatePickerComponent
+    DatePickerComponent,
+
 
   ],
   imports: [
     CommonModule,
-    SlickCarouselModule
+    SlickCarouselModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   exports:[
     FooterComponent,
@@ -83,8 +89,8 @@ import { DatePickerComponent } from './components/date-picker/date-picker.compon
     TabsContainerComponent,
     PaginationsComponent,
     ScrollNavComponent,
-    DatePickerComponent
-    
+    DatePickerComponent,
+  
 
   ]
 })

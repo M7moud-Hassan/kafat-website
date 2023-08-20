@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { KafaatMainService } from '../../services/kafaat-main.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ProfileLogoutPopUpComponent } from '../profile-logout-pop-up/profile-logout-pop-up.component';
 
 @Component({
   selector: 'app-profile-layout',
@@ -8,7 +10,10 @@ import { KafaatMainService } from '../../services/kafaat-main.service';
 })
 export class ProfileLayoutComponent implements OnInit {
   navigationItemsList:any[]=[];
-// constructor(private service:KafaatMainService){}
+constructor(private dialog:MatDialog) {
+  
+  
+}
   ngOnInit(): void {
     this.loadNavigationItemsList();
   }
@@ -25,18 +30,15 @@ export class ProfileLayoutComponent implements OnInit {
     ];
   }
   chageNavigationLink(id:any){
+    if(id==6){
+      this.dialog.open(ProfileLogoutPopUpComponent,{
+        width:'30%'
+      })
+    }else{
     this.navigationItemsList.map(x=>x.id==id?x.isSelected=true:x.isSelected=false);
+    }
   }
-  // openDialog(): void {
-  //   const dialogRef = this.dialog.open(DialogComponent, {
-  //     width: '400px', // Adjust the width as needed
-  //     // You can pass data to the dialog component using the `data` property
-  //     data: { message: 'Hello, this is a dialog!' }
-  //   });
-  
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     console.log('The dialog was closed');
-  //     // Handle any actions after the dialog is closed, if needed
-  //   });
-  // }
+  logout(){
+    this.dialog.open(ProfileLogoutPopUpComponent)
+  }
 }

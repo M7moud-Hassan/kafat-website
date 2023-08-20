@@ -417,35 +417,53 @@
       box-shadow: none;     
        border: 1px solid var(--neutral90-color);
   }
+  .error-text{
+    font-size: 10px;
+    padding-right: 30px;
+    color: red;
+    padding-top: 5px;
+}
+/* html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
+
 
 
   /* ==================================input text, radio , date and checkbox========================================================================================= */
-  input[type=radio].defaultRadioButton {
-    border: none;
-    -webkit-appearance: none;
-    background: url('/assets/images/radio-inactive.svg') no-repeat center center;
-    background-size: 25px;
-    border-radius: 0;
-    width: 20px;
-    height: 20px;
-  }
+
+    input[type=radio].defaultRadioButton {
+      border: 1px solid #fff;
+      padding: 0.5em;
+      /* -webkit-appearance: none; */
+      background: url('/assets/images/radio-inactive.svg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-size: 30px;
+      border: 1px solid grey;
+      border-radius: 0;
+      height: 20px;
+      width: 20px;
+      display: inline-block;
+    }
+    
+    
+    input[type=radio].defaultRadioButton:checked {
+      background: url('/assets/images/radio-active.png');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-size: 20px;
+      border: 1px solid blue;
+      border-radius: 0;
+    }
+    
+    
+    input[type=radio].defaultRadioButton:focus {
+      outline-color: transparent;
+      border-radius: 0;
+    }
+ 
+
   
-  
-  input[type=radio].defaultRadioButton:checked {
-    background: url('/assets/images/radio-active.png') no-repeat center center;
-    background-size: 25px;
-    border: none;
-    border-radius: 0;
-    width: 20px;
-    height: 20px;
-  }
-  
-  
-  input[type=radio].defaultRadioButton:focus {
-    outline-color: transparent;
-    border-radius: 0;
-  }
-  
+
   input[type=checkbox].SquarecheckboxButton,input[type=checkbox].Square_Sign_checkboxButton {
     padding: 0.5em;
     -webkit-appearance: none;
