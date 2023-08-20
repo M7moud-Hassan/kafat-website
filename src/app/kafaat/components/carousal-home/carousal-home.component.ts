@@ -9,11 +9,10 @@ import { SlickCarouselComponent } from 'ngx-slick-carousel';
 export class CarousalHomeComponent implements OnInit {
   @Input() slides: ItemCarousal[] = [];
   @ViewChild('slickCarousel', { static: false }) slickCarousel: SlickCarouselComponent | undefined;
-  currentSlideIndex = 0;
-  swapSlideIndex = false;
-  maxlength = 0;
+
+
   ngOnInit(): void {
-    this.maxlength = this.slides.length
+
   }
   slideConfig = {
     "slidesToShow": 5,
@@ -48,26 +47,13 @@ export class CarousalHomeComponent implements OnInit {
     ]
   };
   scrollNext() {
-    if (this.swapSlideIndex && this.currentSlideIndex < this.maxlength - 1) {
-      this.currentSlideIndex += 2;
-    }
-    else if (!this.swapSlideIndex && this.currentSlideIndex < this.maxlength - 1) {
-      this.currentSlideIndex += 1;
-    }
-    this.swapSlideIndex = false;
-    this.slickCarousel!.slickGoTo(this.currentSlideIndex);
+
+    this.slickCarousel!.slickNext();
   }
 
   scrollBack() {
-    if (!this.swapSlideIndex && this.currentSlideIndex > 0) {
-      this.currentSlideIndex -= 2;
 
-    } else if (this.swapSlideIndex && this.currentSlideIndex > 0) {
-      this.currentSlideIndex -= 1;
-    }
-
-    this.swapSlideIndex = true;
-    this.slickCarousel!.slickGoTo(this.currentSlideIndex);
+    this.slickCarousel!.slickPrev();
   }
 
   onItemClick(item: ItemCarousal, index: number) {
@@ -77,14 +63,14 @@ export class CarousalHomeComponent implements OnInit {
   }
 
 
-  onCarouselItemMouseEnter(index:number) {
-   const element= document.getElementById('p'+index);
-   element!.style.color='var(--main-color)';
+  onCarouselItemMouseEnter(index: number) {
+    const element = document.getElementById('p' + index);
+    element!.style.color = 'var(--main-color)';
   }
 
-  onCarouselItemMouseLeave(index:number) {
-    const element= document.getElementById('p'+index);
-    element!.style.color='';
+  onCarouselItemMouseLeave(index: number) {
+    const element = document.getElementById('p' + index);
+    element!.style.color = '';
   }
 
 
