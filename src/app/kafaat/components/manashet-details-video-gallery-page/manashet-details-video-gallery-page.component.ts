@@ -6,5 +6,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./manashet-details-video-gallery-page.component.css']
 })
 export class ManashetDetailsVideoGalleryPageComponent {
+  modalVisible: boolean = false;
+  modalImageSrc: string = '';
+  modalCaption: string = '';
 
+  openModal() {
+    this.modalVisible = true;
+    this.modalImageSrc = 'assets/images/youtube_player.png';
+
+  }
+
+  closeModal() {
+    this.modalVisible = false;
+  }
 }

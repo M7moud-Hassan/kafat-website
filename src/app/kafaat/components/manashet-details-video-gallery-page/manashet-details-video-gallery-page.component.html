@@ -2,7 +2,7 @@
 <div class="row">
     <div class="col-12 col-md-4">
         <div class="video-player-item-container">
-            <div class="card-image">
+            <div class="card-image" (click)="openModal()">
                 <div class="card-displayed-image">
                     <img src="/assets/images/people.jpg">
                 </div>
@@ -141,3 +141,9 @@
     </div>
 </div>
 </div>
+
+
+<div id="myModal" class="modal" [style.display]="modalVisible ? 'block' : 'none'">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <img class="modal-content" [src]="modalImageSrc" id="img01">
+  </div>

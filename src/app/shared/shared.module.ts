@@ -23,6 +23,7 @@ import { PaginationsComponent } from './components/paginations/paginations.compo
 import { ScrollNavComponent } from './components/scroll-nav/scroll-nav.component';
 import { DatePickerComponent } from './components/date-picker/date-picker.component';
 import { ProgramMinComponent } from './components/program-min/program-min.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -61,7 +62,8 @@ import { ProgramMinComponent } from './components/program-min/program-min.compon
   ],
   imports: [
     CommonModule,
-    SlickCarouselModule
+    SlickCarouselModule,
+    RouterModule
   ],
   exports:[
     FooterComponent,

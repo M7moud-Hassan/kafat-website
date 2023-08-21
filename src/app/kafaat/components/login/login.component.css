@@ -1,7 +1,7 @@
 .login{
     background: linear-gradient(to right ,#A18131, #005183);
-    position: fixed;
-    height: 100%;
+    position: absolute;
+    min-height: 100%;
     width: 100%;
 }
 .password-input{

@@ -7,7 +7,7 @@ import { Component, Input, Renderer2 ,OnInit, Output, EventEmitter, HostListener
 })
 export class NavbarComponent implements OnInit{
   @Input() typeNav: string="light";
-  @Input() active:number=0;
+  @Input() active:number=-1;
   @Output() handleOpenNav = new EventEmitter<boolean>();
 
   constructor(private renderer: Renderer2) {

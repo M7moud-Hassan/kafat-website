@@ -9,7 +9,7 @@
         <div class="container collapse navbar-collapse mx-4">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 w-100 d-flex justify-content-around align-items-center">
                 <li class="nav-item">
-                    <a [class]="typeNav=='dark'?'nav-link text-dark':'nav-link text-light'" aria-current="page" href="#"><span [class]="active==0?'active':''">الرئيسية</span></a>
+                    <a routerLinkActive="active" [class]="typeNav=='dark'?'nav-link text-dark':'nav-link text-light'" aria-current="page" href="#"><span [class]="active==0?'active':''">الرئيسية</span></a>
                 </li>
                 <li class="nav-item dropdown">
                     <a routerLink="/kafaat/programs"  [class]="typeNav=='dark'?'d-inline text-dark text-decoration-none':'d-inline text-light text-decoration-none'"><span [class]="active==1?'active':''">البرامج</span></a>
@@ -18,29 +18,31 @@
                         <span [class]="active==1?'active':''"></span>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item py-2" href="#">عنصر القائمة</a></li>
-                        <li><a class="dropdown-item py-2" href="#">عنصر القائمة</a></li>
-                        <li><a class="dropdown-item py-2" href="#">عنصر القائمة</a></li>
-                        <li><a class="dropdown-item py-2" href="#">عنصر القائمة</a></li>
-                        <li><a class="dropdown-item py-2" href="#">عنصر القائمة</a></li>
-                        <li><a class="dropdown-item py-2" href="#">عنصر القائمة</a></li>
+                        <li><a class="dropdown-item py-2" routerLinkActive="active"   routerLink="/kafaat/program-details">برنامج قارئ</a></li>
+                        <li><a class="dropdown-item py-2" outerLinkActive="active"   routerLink="/kafaat/program-details">برنامج كاتب</a></li>
+                        <li><a class="dropdown-item py-2" outerLinkActive="active"   routerLink="/kafaat/program-details">برنامج متحدث</a></li>
+                        <li><a class="dropdown-item py-2" outerLinkActive="active"   routerLink="/kafaat/program-details">برنامج مبتكر</a></li>
+                        <li><a class="dropdown-item py-2" outerLinkActive="active"   routerLink="/kafaat/program-details">برنامج موهوب</a></li>
+                        <li><a class="dropdown-item py-2" outerLinkActive="active"   routerLink="/kafaat/program-details">برنامج قائد </a></li>
+                        <li><a class="dropdown-item py-2" outerLinkActive="active"   routerLink="/kafaat/program-details">برنامج متفوق </a></li>
+                        <li><a class="dropdown-item py-2" outerLinkActive="active"   routerLink="/kafaat/program-details">برنامج مثقف </a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="#">عنصر القائمة</a></li>
+                        <li><a class="dropdown-item" outerLinkActive="active"   routerLink="/kafaat/program-details">برنامج مثقف</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a  [class]="typeNav=='dark'?'nav-link text-dark':'nav-link text-light'" aria-current="page" href="#"><span [class]="active==2?'active':''">من نحن</span></a>
+                    <a  routerLink="/kafaat/about" routerLinkActive="active"  [class]="typeNav=='dark'?'nav-link text-dark':'nav-link text-light'" aria-current="page" >من نحن</a>
                 </li>
                 <li class="nav-item">
-                    <a  [class]="typeNav=='dark'?'nav-link text-dark':'nav-link text-light'" aria-current="page" routerLink ="/kafaat/contact-us"><span [class]="active==3?'active':''">تواصل معنا</span></a>
+                    <a  [class]="typeNav=='dark'?'nav-link  text-dark':'nav-link text-light'" routerLinkActive="active"  aria-current="page" routerLink ="/kafaat/contact-us">تواصل معنا</a>
                 </li>
                 <li class="nav-item">
-                    <a class="bg-primary-btn text-light py-3" aria-current="page" href="#"><span [class]="active==4?'active':''">تسجيل دخول</span></a>
+                    <a routerLink="/login" class="bg-primary-btn text-light py-3" aria-current="page" routerLinkActive="active" >تسجيل دخول</a>
                 </li>
                 <li class="nav-item">
-                    <a [class]="typeNav=='dark'?'nav-link text-main':'nav-link text-light'" aria-current="page" href="#"><span [class]="active==5?'active':''">طلب انضمام</span></a>
+                    <a [class]="typeNav=='dark'?'nav-link text-main':'nav-link text-light'" routerLinkActive="active"  aria-current="page" href="#">طلب انضمام</a>
                 </li>
                 <li class="nav-item">
                     <!-- <hr class="d-none d-sm-block bg-light mx-3 my-0 h-100" style="width: 2px;"> -->
@@ -76,20 +78,23 @@
                         
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item py-2" href="#">عنصر القائمة</a></li>
-                        <li><a class="dropdown-item py-2" href="#">عنصر القائمة</a></li>
-                        <li><a class="dropdown-item py-2" href="#">عنصر القائمة</a></li>
-                        <li><a class="dropdown-item py-2" href="#">عنصر القائمة</a></li>
-                        <li><a class="dropdown-item py-2" href="#">عنصر القائمة</a></li>
-                        <li><a class="dropdown-item py-2" href="#">عنصر القائمة</a></li>
+                        <li><a class="dropdown-item py-2" routerLinkActive="active"   routerLink="/kafaat/program-details">برنامج قارئ</a></li>
+                        <li><a class="dropdown-item py-2" outerLinkActive="active"   routerLink="/kafaat/program-details">برنامج كاتب</a></li>
+                        <li><a class="dropdown-item py-2" outerLinkActive="active"   routerLink="/kafaat/program-details">برنامج متحدث</a></li>
+                        <li><a class="dropdown-item py-2" outerLinkActive="active"   routerLink="/kafaat/program-details">برنامج مبتكر</a></li>
+                        <li><a class="dropdown-item py-2" outerLinkActive="active"   routerLink="/kafaat/program-details">برنامج موهوب</a></li>
+                        <li><a class="dropdown-item py-2" outerLinkActive="active"   routerLink="/kafaat/program-details">برنامج قائد </a></li>
+                        <li><a class="dropdown-item py-2" outerLinkActive="active"   routerLink="/kafaat/program-details">برنامج متفوق </a></li>
+                        <li><a class="dropdown-item py-2" outerLinkActive="active"   routerLink="/kafaat/program-details">برنامج مثقف </a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="#">عنصر القائمة</a></li>
+                        <li><a class="dropdown-item" outerLinkActive="active"   routerLink="/kafaat/program-details">برنامج مثقف</a></li>
+   
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a  class="nav-link text-dark" aria-current="page" href="#"><span [class]="active==2?'active':''">من نحن</span></a>
+                    <a  routerLink="/kafaat/programs"  class="nav-link text-dark" aria-current="page" href="#"><span [class]="active==2?'active':''">من نحن</span></a>
                 </li>
                 <li class="nav-item">
                     <a  class="nav-link text-dark" aria-current="page" routerLink ="/kafaat/contact-us"><span [class]="active==3?'active':''">تواصل معنا</span></a>
@@ -134,9 +139,17 @@
                     البرامج
                   </a>
                   <ul class="dropdown-menu w-100 border-0" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#">برنامج قارئ</a></li>
-                    <li><a class="dropdown-item" href="#">برنامج كاتب</a></li>
-                    <li><a class="dropdown-item" href="#"> برنامج متحدث</a></li>
+                    <li><a class="dropdown-item py-2" routerLinkActive="active"   routerLink="/kafaat/program-details">برنامج قارئ</a></li>
+                    <li><a class="dropdown-item py-2" outerLinkActive="active"   routerLink="/kafaat/program-details">برنامج كاتب</a></li>
+                    <li><a class="dropdown-item py-2" outerLinkActive="active"   routerLink="/kafaat/program-details">برنامج متحدث</a></li>
+                    <li><a class="dropdown-item py-2" outerLinkActive="active"   routerLink="/kafaat/program-details">برنامج مبتكر</a></li>
+                    <li><a class="dropdown-item py-2" outerLinkActive="active"   routerLink="/kafaat/program-details">برنامج موهوب</a></li>
+                    <li><a class="dropdown-item py-2" outerLinkActive="active"   routerLink="/kafaat/program-details">برنامج قائد </a></li>
+                    <li><a class="dropdown-item py-2" outerLinkActive="active"   routerLink="/kafaat/program-details">برنامج متفوق </a></li>
+                    <li><a class="dropdown-item py-2" outerLinkActive="active"   routerLink="/kafaat/program-details">برنامج مثقف </a></li>
+                    
+                    <li><a class="dropdown-item" outerLinkActive="active"   routerLink="/kafaat/program-details">برنامج مثقف</a></li>
+
                   </ul>
                 </li>
                  

@@ -40,6 +40,7 @@ import { ProfileChangePasswordComponent } from './components/profile-change-pass
 import { ProfileLogoutPopUpComponent } from './components/profile-logout-pop-up/profile-logout-pop-up.component';
 import { ProfileDeleteAccountPopUpComponent } from './components/profile-delete-account-pop-up/profile-delete-account-pop-up.component';
 import { AllProgramsComponent } from './components/all-programs/all-programs.component';
+import { RouterModule } from '@angular/router';
 // import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
@@ -85,6 +86,7 @@ import { AllProgramsComponent } from './components/all-programs/all-programs.com
     KafaatRoutingModule,
     SharedModule,
     SlickCarouselModule,
+    RouterModule
     // MatDialogModule
   ]
   
