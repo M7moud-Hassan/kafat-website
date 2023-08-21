@@ -536,3 +536,87 @@ input[type="date"].defaultDateInput::-webkit-calendar-picker-indicator {
     line-height: 13.5px;
     font-weight: 400;
   }
+
+
+  input:focus,input:hover,select:focus,select:hover,textarea:focus,textarea:hover{
+    border: 1px solid var(--main-color);
+    outline: none !important;
+}
+  /* ----------shadow------------------ */
+  .Input Shadow{
+    box-shadow: 0px 25px 50px 0px #000000 18%;
+  }
+  .shadow-small{
+    box-shadow: 0px 1px 2px 0px #000000 12%;
+  }
+  .shadow-medium{
+    box-shadow: 0px 4px 8px 0px #000000 12%;
+  }
+  .shadow-large{
+    box-shadow: 0px 6px 15px 0px #000000 12%;
+  }
+  .shadow-X-Large{
+    box-shadow: 0px 25px 50px 0px #000000 18%;
+  }
+  /* ------------font size--------- */
+  .Caption-Regular{
+    font-size: 8px;
+    line-height: 10px;
+    font-family: "alex-400";
+  }
+  .Caption-Semibold{
+    font-size: 8px;
+    line-height: 10px;
+    font-family: "alex-600";
+  }
+  .Text-S-Regular{
+    font-size: 8px;
+    line-height: 12px;
+    font-family: "alex-400";
+  }
+  .Text-S-Semibold{
+    font-size: 8px;
+    line-height: 12px;
+    font-family: "alex-600";
+  }
+  .Text-M-Regular{
+    font-size: 16px;
+    line-height: 14px;
+    font-family: "alex-400";
+  }
+  .Text-M-Semibold{
+    font-size: 16px;
+    line-height: 12px;
+    font-family: "alex-600";
+  }
+  .Text-L-Regular{
+    font-size: 24px;
+    line-height: 16px;
+    font-family: "alex-400";
+  }
+  .Text-L-Semibold{
+    font-size: 24px;
+    line-height: 16px;
+    font-family: "alex-600";
+  }
+  .Headline-H4{
+    font-size: 32px;
+    line-height: 18px;
+    font-family: "alex-400";
+  } 
+  .Headline-H3{
+    font-size: 40px;
+    line-height: 24px;
+    font-family: "alex-400";
+  }
+  .Headline-H2{
+    font-size: 48px;
+    line-height: 32px;
+    font-family: "alex-400";
+  }
+  .Headline-H1{
+    font-size: 56px;
+    line-height: 40px;
+    font-family: "alex-400";
+  }
+  

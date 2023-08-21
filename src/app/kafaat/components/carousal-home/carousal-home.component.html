@@ -1,6 +1,6 @@
 <div class="container" dir="ltr">
     <ngx-slick-carousel #slickCarousel  class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
-      <div ngxSlickItem *ngFor="let slide of slides;let i = index" class="slide">
+      <div ngxSlickItem *ngFor="let slide of slides;let i = index" class="slide d-pointer">
         <div class="carousal-home-item d-flex align-items-center justify-content-center m-4"
         (mouseenter)="onCarouselItemMouseEnter(i)" (mouseleave)="onCarouselItemMouseLeave(i)">
             <img src="{{slide.img}}" alt="Programs" (click)="onItemClick(slide, i)">

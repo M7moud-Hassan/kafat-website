@@ -76,10 +76,18 @@
 .message-icon{
     background-image: url('/assets/images/user.svg');
     top: 0px;
-    background-position: top right;
+    background-position: 99% 8px;
     resize: none;
     background-repeat: no-repeat;
 }
+.input-fields{
+    outline: none;
+    border: 1px solid var(--neutral40-color);
+    border-radius: 8px;
+    display: inline-block;
+    transition: all .7s ease-in-out;
+}
+
 @media (500px<width<=3000px){
     .contact-information-container{
         padding: 40px 48px;
