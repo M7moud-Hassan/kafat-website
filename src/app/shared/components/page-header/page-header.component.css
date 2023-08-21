@@ -29,6 +29,11 @@
     background-repeat: no-repeat;
     background-position: right;
 }
+.bg-header2{
+    background-image: url("../../../../assets/images/bg-header2.svg");
+    background-repeat: no-repeat;
+    background-position: right;
+}
 
 
 /* @media (500px <= width <=2000px){

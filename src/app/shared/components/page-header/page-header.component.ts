@@ -7,4 +7,5 @@ import { Component, Input } from '@angular/core';
 })
 export class PageHeaderComponent {
   @Input() Header:string = ""; 
+  @Input() header='a'
 }

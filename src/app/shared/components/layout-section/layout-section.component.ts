@@ -7,7 +7,8 @@ import { Component, ComponentFactoryResolver, Input, ViewContainerRef } from '@a
 })
 export class LayoutSectionComponent {
   @Input() componentToDisplay: number=-1;
-
+  @Input() title:string='';
+  @Input() header='a'
   constructor(
   
   ) { }
