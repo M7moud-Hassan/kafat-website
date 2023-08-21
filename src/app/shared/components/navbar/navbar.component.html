@@ -42,11 +42,11 @@
                     <a routerLink="/login" class="bg-primary-btn text-light py-3" aria-current="page" routerLinkActive="active" >تسجيل دخول</a>
                 </li>
                 <li class="nav-item">
-                    <a [class]="typeNav=='dark'?'nav-link text-main':'nav-link text-light'" routerLinkActive="active"  aria-current="page" href="#">طلب انضمام</a>
+                    <a [class]="typeNav=='dark'?'nav-link text-main':'nav-link text-light'" routerLink="/registeration" outerLinkActive="active"  aria-current="page" href="#">طلب انضمام</a>
                 </li>
                 <li class="nav-item">
                     <!-- <hr class="d-none d-sm-block bg-light mx-3 my-0 h-100" style="width: 2px;"> -->
-                    <div [class]="typeNav=='dark'?'divider-line bg-dark mx-3 my-0':'divider-line bg-light mx-3 my-0'">&nbsp;</div>
+                    <div [class]="typeNav=='dark'?'divider-line bg-dark mx-3 my-0':'divider-line bg-light mx-3 my-0'" >&nbsp;</div>
                 </li>
                 <li class="d-flex align-items-center">
                     <a href="#" class="mx-2"><img [src]="typeNav=='light'?'assets/images/facebook.svg':'assets/images/facebook-dark.svg'" alt="facebook.svg"></a>
@@ -94,16 +94,16 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a  routerLink="/kafaat/programs"  class="nav-link text-dark" aria-current="page" href="#"><span [class]="active==2?'active':''">من نحن</span></a>
+                    <a   routerLink="/kafaat/about" routerLinkActive="active" class="nav-link text-dark" aria-current="page" href="#"><span [class]="active==2?'active':''">من نحن</span></a>
                 </li>
                 <li class="nav-item">
-                    <a  class="nav-link text-dark" aria-current="page" routerLink ="/kafaat/contact-us"><span [class]="active==3?'active':''">تواصل معنا</span></a>
+                    <a  class="nav-link text-dark" aria-current="page" routerLinkActive="active"  aria-current="page" routerLink ="/kafaat/contact-us"><span [class]="active==3?'active':''">تواصل معنا</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="bg-primary-btn text-light py-3" aria-current="page" href="#"><span [class]="active==4?'active':''">تسجيل دخول</span></a>
+                    <a class="bg-primary-btn text-light py-3" aria-current="page" href="#" routerLink="/login" outerLinkActive="active"><span>تسجيل دخول</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-main" aria-current="page" href="#"><span [class]="active==5?'active':''">طلب انضمام</span></a>
+                    <a class="nav-link text-main" aria-current="page" routerLink="/registeration" outerLinkActive="active" ><span>طلب انضمام</span></a>
                 </li>
                 <li class="nav-item">
                     <!-- <hr class="d-none d-sm-block bg-light mx-3 my-0 h-100" style="width: 2px;"> -->
@@ -131,12 +131,12 @@
             <div class="container">
               <ul class="navbar-nav w-100">
                 <li class="nav-item">
-                    <a class="nav-link"  href="#">الرئيسية</a>
+                    <a routerLinkActive="active" class="nav-link text-dark" aria-current="page" href="#"><span [class]="active==0?'active':''">الرئيسية</span></a>
                   </li>
                 <li class="nav-item dropdown w-100">
                   <a class="nav-link dropdown-toggle w-100 text-main" href="#" id="navbarDropdown" role="button"
                      data-bs-toggle="dropdown" aria-expanded="false">
-                    البرامج
+                    <span [class]="active==1?'active':''"> البرامج</span>
                   </a>
                   <ul class="dropdown-menu w-100 border-0" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item py-2" routerLinkActive="active"   routerLink="/kafaat/program-details">برنامج قارئ</a></li>
@@ -154,11 +154,11 @@
                 </li>
                  
           <li class="nav-item">
-            <a class="nav-link" href="#">من نحن</a>
+            <a   routerLink="/kafaat/about" routerLinkActive="active" class="nav-link text-dark" aria-current="page" href="#"><span>من نحن</span></a>
           </li>
          
           <li class="nav-item">
-            <a class="nav-link" routerLink ="/kafaat/contact-us" routerLinkActive="router-link-active" >تواصل معنا</a>
+            <a class="nav-link" routerLink ="/kafaat/contact-us" routerLinkActive="active" >تواصل معنا</a>
           </li>
               </ul>
             </div>
@@ -166,8 +166,8 @@
     </div>
     <hr>
     <div class="px-2 text-center">
-        <div class="bg-primary-btn w-100">تسجيل دخول</div>
-        <a class="text-decoration-none " href="#"><h5 class="text-main fw-bold mt-2">طلب انضمام</h5></a>
+        <a class="bg-primary-btn w-100" routerLink="/login" outerLinkActive="active">تسجيل دخول</a>
+        <a routerLink="/registeration" outerLinkActive="active"  class="text-decoration-none " href="#"><h5 class="text-main fw-bold mt-2 fs-3">طلب انضمام</h5></a>
     </div>
     <hr>
     <div class="d-flex align-items-center justify-content-around w-50 mx-auto">
