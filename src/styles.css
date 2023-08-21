@@ -349,7 +349,7 @@
     font-size: 12px;
   }
 
-@media (766px <= width <=5000px){
+@media (767px <= width <=5000px){
     .circle-image-container{
         width: 100%;
     }
@@ -358,7 +358,7 @@
         padding: 0px 0px;
     }
 }
-@media (0px <= width <=766px){
+@media (0px <= width <=767px){
     .circle-image-container{
         width: 100%;
     }

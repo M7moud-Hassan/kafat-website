@@ -6,19 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./program-details.component.css']
 })
 export class ProgramDetailsComponent implements OnInit {
-  isManashetActive:boolean = true;
+  tabNumberIsActive:number = 0;
   navList:any[]=[];
 
   ngOnInit(): void {
-    this.isManashetActive = true;
     this.fillNavList();
   }
-  
-  toggleLinks(){
-    this.isManashetActive = !this.isManashetActive;
-  }
-  
-
   selectItem(id:any){
     this.navList.map(x=>x.id==id?x.isSelected=true:x.isSelected=false);
   }
@@ -30,5 +23,7 @@ export class ProgramDetailsComponent implements OnInit {
       {id:4,label:'السابقة',isSelected:false},
     ];
   }
-
+  onTabSelected(index:any){
+    this.tabNumberIsActive = index;
+  }
 }
