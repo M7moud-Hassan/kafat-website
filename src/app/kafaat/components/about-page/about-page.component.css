@@ -30,6 +30,15 @@
     background-position: right;
 
 }
+.item-card{
+    background-color: #005183;
+    border: none;
+    background: rgba(255, 255, 255, 0.10);
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.12); 
+}
+.item-card:hover{
+    background-color: white;
+}
 @media (max-width: 575.98px) {
     .card-about{
         position: relative;
