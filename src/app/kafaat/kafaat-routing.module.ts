@@ -9,9 +9,9 @@ import { PaymentComponent } from './components/payment/payment.component';
 import { PaymentSuccessComponent } from './components/payment-success/payment-success.component';
 import { ManshatDetailsInProgressComponent } from './components/manshat-details-in-progress/manshat-details-in-progress.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
+import { ProfileLayoutComponent } from './components/profile-layout/profile-layout.component';
 import { WinnerComponent } from './components/winner/winner.component';
 import { PostsSlidesComponent } from './components/posts-slides/posts-slides.component';
-import { ProfileLayoutComponent } from './components/profile-layout/profile-layout.component';
 import { AllProgramsComponent } from './components/all-programs/all-programs.component';
 
 const routes: Routes = [
@@ -25,10 +25,13 @@ const routes: Routes = [
   {path:'payment',component:PaymentComponent},
   {path:'payment-success',component:PaymentSuccessComponent},
   {path:'contact-us',component:ContactUsComponent},
+  {path:'profile',component:ProfileLayoutComponent},
+  {path:'winners',component:WinnerComponent},
+  {path:'famous-posts',component:PostsSlidesComponent},
   {path:'winners',component:WinnerComponent},
   {path:'famous-posts',component:PostsSlidesComponent},
   {path:'profile',component:ProfileLayoutComponent},
-  {path:'programs',component:AllProgramsComponent}
+  {path:'programs',component:AllProgramsComponent},
 ];
 
 @NgModule({

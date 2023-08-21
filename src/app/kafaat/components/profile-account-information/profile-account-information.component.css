@@ -3,7 +3,6 @@
     font-size: 18px;
     line-height: 32px;
     color: var(--neutral90-color);
-    margin-bottom: 15px;
 }
 .person-icon{
     background-image: url('/assets/images/user.svg');
@@ -32,3 +31,177 @@
     font-weight: 400;
     display: inline-block;
 }
+.input-main-container{
+    border: 1px solid grey;
+    overflow: hidden;
+}
+
+.details-title {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 32px;
+    color: var(--neutral90-color);
+    margin-bottom: 20px;
+}
+.lock-icon{
+    background-image: url('/assets/images/lock.svg');
+    /* background-position: 99%; */
+}
+
+
+.input-element {
+    position: relative;
+    outline: none;
+    box-shadow: none;   
+    border: none;
+    /* border: 1px solid var(--neutral90-color); */
+  }
+  
+  .input-element input,.input-element textarea,.input-element select {
+    width: 100%;
+    padding: 25px 35px 5px 5px;
+    border-radius: 8px;  
+  }
+  .input-element label {
+    position: absolute;
+    top:0;
+    right: 8px;
+    padding:10px 25px;
+    color: var(--neutral90-color);
+    pointer-events: none;
+    transition: .5s;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+  }
+  .input-element-icon-end label{
+    top: -10px;
+    left: 0;
+    color: var(--neutral90-color);
+    font-size: 10px;
+    outline: none;
+    box-shadow: none;
+  }
+  
+  .input-element select:focus ~ label,
+  .input-element select:valid ~ label .input-element input:focus ~ label,
+  .input-element input:valid ~ label ,.input-element textarea:focus ~ label,
+  .input-element textarea:valid ~ label{
+    top: -10px;
+    left: 0;
+    color: var(--neutral90-color);
+    font-size: 10px;
+    outline: none;
+    box-shadow: none;
+  }
+  
+  .input-element-icon {
+      background-position: 99%;
+      background-repeat: no-repeat;
+      padding-right: 40px;
+      outline: none;
+      box-shadow: none;     
+      border: 1px solid var(--neutral40-color);
+  }
+  .input-surrounding{
+    margin-top: 15px;
+  }
+  /* ==================================================================================================== */
+  
+.input-element-none-icon {
+    position: relative;
+    outline: none;
+    box-shadow: none;   
+    border: none;
+    /* border: 1px solid var(--neutral90-color); */
+  }
+  
+  .input-element-none-icon input,.input-element-none-icon textarea,.input-element-none-icon select {
+    width: 100%;
+    padding: 25px 10px 5px 5px;
+    border-radius: 8px;  
+  }
+  .input-element-none-icon label {
+    position: absolute;
+    top:0;
+    right: 8px;
+    padding:10px 0px;
+    color: var(--neutral90-color);
+    pointer-events: none;
+    transition: .5s;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+  }
+  
+  .input-element-none-icon select:focus ~ label,
+  .input-element-none-icon select:valid ~ label 
+  .input-element-none-icon input:focus ~ label,
+  .input-element-none-icon input:valid ~ label ,.input-element-none-icon textarea:focus ~ label,
+  .input-element-none-icon textarea:valid ~ label{
+    top: -10px;
+    left: 0;
+    color: var(--neutral90-color);
+    font-size: 10px;
+    outline: none;
+    box-shadow: none;
+  }
+  
+  .none-icon {
+      background-position: 100%;
+      background-repeat: no-repeat;
+      padding-right: 40px;
+      outline: none;
+      box-shadow: none;     
+      border: 1px solid var(--neutral40-color);
+  }
+  .dropdown-button-icon{
+    background-image: url('/assets/images/down-arrow.svg');
+  }
+  .input-element-icon-end{
+        background-position: 1%;
+        background-repeat: no-repeat;
+        padding-right: 40px;
+        outline: none;
+        box-shadow: none;     
+        border: 1px solid var(--neutral40-color);
+        width: 100%;
+        display: inline-block;
+  }
+
+  /* ======================================================================================== */
+  .select-element {
+    position: relative;
+    outline: none;
+    box-shadow: none;   
+    border: none;
+    /* border: 1px solid var(--neutral90-color); */
+  }
+  .select-element select {
+    width: 100%;
+    padding: 25px 10px 5px 5px;
+    border-radius: 8px;  
+    color: var(--neutral90-color);
+  }
+  .select-element label {
+    position: absolute;
+    top:0;
+    right: 8px;
+    padding:10px 10px;
+    color: var(--neutral90-color);
+    pointer-events: none;
+    transition: .5s;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+  }
+  .select-element select:focus ~ label,
+  .select-element select:valid ~ label {
+    top: -10px;
+    left: 0;
+    color: var(--neutral90-color);
+    font-size: 10px;
+    outline: none;
+    box-shadow: none;
+  }
+  

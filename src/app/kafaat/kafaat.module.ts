@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { KafaatRoutingModule } from './kafaat-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { ProgramDetailsComponent } from './components/program-details/program-details.component';
@@ -12,7 +11,6 @@ import { ManashetDetailsImageGalleryPageComponent } from './components/manashet-
 import { ManashetDetailsVideoGalleryPageComponent } from './components/manashet-details-video-gallery-page/manashet-details-video-gallery-page.component';
 import { ManashetDetailsSharedPageComponent } from './components/manashet-details-shared-page/manashet-details-shared-page.component';
 import { ManashetDetailsDistinguishedPageComponent } from './components/manashet-details-distinguished-page/manashet-details-distinguished-page.component';
-
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { CarousalHomeComponent } from './components/carousal-home/carousal-home.component';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
@@ -39,12 +37,19 @@ import { ProfileDeleteAccountComponent } from './components/profile-delete-accou
 import { ProfileChangePasswordComponent } from './components/profile-change-password/profile-change-password.component';
 import { ProfileLogoutPopUpComponent } from './components/profile-logout-pop-up/profile-logout-pop-up.component';
 import { ProfileDeleteAccountPopUpComponent } from './components/profile-delete-account-pop-up/profile-delete-account-pop-up.component';
+import { PasswordMaskDirective } from './core/directives/password-mask.directive';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ArabicDigitsDirective } from './core/directives/arabic-digits.directive';
 import { AllProgramsComponent } from './components/all-programs/all-programs.component';
 import { RouterModule } from '@angular/router';
-// import { MatDialogModule } from '@angular/material/dialog';
+
+import { RegisterationComponent } from './components/registeration/registeration.component';
+import { RegisterationSucceededComponent } from './components/registeration-succeeded/registeration-succeeded.component';
 
 @NgModule({
   declarations: [
+    PasswordMaskDirective,
+    ArabicDigitsDirective,
     ProgramDetailsComponent,
     MusharakatItemComponent,
     ManshatDetailsComponent,
@@ -79,15 +84,22 @@ import { RouterModule } from '@angular/router';
     ProfileChangePasswordComponent,
     ProfileLogoutPopUpComponent,
     ProfileDeleteAccountPopUpComponent,
-    AllProgramsComponent
+    WinnerComponent,
+    PostsSlidesComponent,
+    PasswordMaskDirective,
+    ArabicDigitsDirective,
+    AllProgramsComponent,
+    RegisterationComponent,
+    RegisterationSucceededComponent
   ],
   imports: [
     CommonModule,
     KafaatRoutingModule,
     SharedModule,
     SlickCarouselModule,
-    RouterModule
-    // MatDialogModule
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
   ]
   
 })

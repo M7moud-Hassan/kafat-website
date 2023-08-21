@@ -312,23 +312,23 @@
   .truncate-lines-3 {
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3; 
+    -webkit-line-clamp: 3;
     overflow: hidden;
   }
   .truncate-lines-2 {
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2; 
+    -webkit-line-clamp: 2;
     overflow: hidden;
   }
 
   .input-advanced {
     position: relative;
   }
-  
+
   .input-advanced input,.input-advanced textarea {
     width: 100%;
-    padding: 10px 0;    
+    padding: 10px 0;
   }
   .input-advanced label {
     position: absolute;
@@ -339,7 +339,7 @@
     pointer-events: none;
     transition: .5s;
   }
-  
+
   .input-advanced input:focus ~ label,
   .input-advanced input:valid ~ label ,.input-advanced textarea:focus ~ label,
   .input-advanced textarea:valid ~ label{
@@ -348,7 +348,7 @@
     color: #03e9f4;
     font-size: 12px;
   }
-  
+
 @media (766px <= width <=5000px){
     .circle-image-container{
         width: 100%;
@@ -357,7 +357,7 @@
         margin: 0px 124px;
         padding: 0px 0px;
     }
-}   
+}
 @media (0px <= width <=766px){
     .circle-image-container{
         width: 100%;
@@ -379,14 +379,14 @@
   .input-container {
     position: relative;
     outline: none;
-    box-shadow: none;   
+    box-shadow: none;
     border: none;
     /* border: 1px solid var(--neutral90-color); */
   }
-  
+
   .input-container input,.input-container textarea {
     width: 100%;
-    padding: 20px 30px 10px 0px;    
+    padding: 20px 30px 10px 0px;
   }
   .input-container label {
     position: absolute;
@@ -400,7 +400,7 @@
     font-size: 14px;
     line-height: 24px;
   }
-  
+
   .input-container input:focus ~ label,
   .input-container input:valid ~ label ,.input-container textarea:focus ~ label,
   .input-container textarea:valid ~ label{
@@ -411,62 +411,65 @@
     outline: none;
     box-shadow: none;
   }
-  
+
   .input-container-icon {
       background-position: 99%;
       background-repeat: no-repeat;
       padding-right: 40px;
       outline: none;
-      box-shadow: none;     
+      box-shadow: none;
        border: 1px solid var(--neutral90-color);
   }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+  .error-text{
+    font-size: 10px;
+    padding-right: 30px;
+    color: red;
+    padding-top: 5px;
+}
 
-
-
-  /* ==================================input text, radio , date and checkbox========================================================================================= */
-  input[type=radio].defaultRadioButton {
-    border: none;
-    -webkit-appearance: none;
-    background: url('/assets/images/radio-inactive.svg') no-repeat center center;
-    background-size: 25px;
-    border-radius: 0;
-    width: 20px;
-    height: 20px;
-  }
-  
-  
-  input[type=radio].defaultRadioButton:checked {
-    background: url('/assets/images/radio-active.png') no-repeat center center;
-    background-size: 25px;
-    border: none;
-    border-radius: 0;
-    width: 20px;
-    height: 20px;
-  }
-  
-  
-  input[type=radio].defaultRadioButton:focus {
-    outline-color: transparent;
-    border-radius: 0;
-  }
-  
+/* ==================================input text, radio , date and checkbox========================================================================================= */
+    input[type=radio].defaultRadioButton {
+      border: 1px solid #fff;
+      padding: 0.5em;
+      /* -webkit-appearance: none; */
+      background: url('/assets/images/radio-inactive.svg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-size: 30px;
+      border: 1px solid grey;
+      border-radius: 0;
+      height: 20px;
+      width: 20px;
+      display: inline-block;
+    }
+    input[type=radio].defaultRadioButton:checked {
+      background: url('/assets/images/radio-active.png');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-size: 20px;
+      border: 1px solid blue;
+      border-radius: 0;
+    }
+    input[type=radio].defaultRadioButton:focus {
+      outline-color: transparent;
+      border-radius: 0;
+    }
   input[type=checkbox].SquarecheckboxButton,input[type=checkbox].Square_Sign_checkboxButton {
     padding: 0.5em;
     -webkit-appearance: none;
-    background: url('/assets/images/rect.svg') no-repeat center center;
-    background-size: 30px;
+    background: url('/assets/images/unchecked.svg') no-repeat center center;
+    background-size: 20px;
     border: none;
     border-radius: 3px;
     width: 20px;
     height: 20px;
   }
   input[type=checkbox].Square_Sign_checkboxButton:checked{
-    background-image: url('/assets/images/checkedWithSign.svg');
-    background-size: 15px;
+    background-image: url('/assets/images/checked.svg');
     border: 1px solid lightskyblue;
+    background-size: 20px;
     border-radius: 3px;
+    border: none;
     width: 20px;
     height: 20px;
   }
@@ -474,23 +477,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     outline-color: transparent;
     border-radius: 0;
   }
-  
-/* 
-  input[type="date"]::-webkit-calendar-picker-indicator {
-    display: none;
-
-  }
- */
-
-/* .custom-date-input::-webkit-calendar-picker-indicator {
-  background-image: url('/assets/images/calender-grey.svg');
-  background-size: 25px;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 16px; 
-  height: 16px; 
-  opacity: 1; 
-} */
 
 .date-icon{
   background: url('/assets/images/calender-grey.svg') no-repeat;
@@ -502,13 +488,52 @@ input[type="date"].defaultDateInput::-webkit-calendar-picker-indicator {
   background-size: 25px;
   padding: 5px;
   display: inline-block;
-  /* text-align: right;
-  direction: rtl; */
 }
-/* .defaultDateInput::-webkit-datetime-edit-text {
-  text-align: right;
-  direction: ltr;
-  unicode-bidi: isolate;
-  vertical-align: bottom;
-} */
+
+
   /* ==================================input text, radio , date and checkbox========================================================================================= */
+  .select-input::after {
+    content: '\02EC'; /* Unicode character for down arrow */
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    font-size: 20px;
+    transform: translateY(-70%);
+    color: var(--neutral40-color); /* Change the color to your desired value */
+    pointer-events: none; /* Ensure the pseudo-element does not interfere with clicking the select input */
+  }
+  .select-input {
+    position: relative;
+    display: inline-block;
+  }
+  .select-input select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    height: 100%;
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+
+
+  .dashed-container{
+    border: 1px dashed var(--Primary-border-color);
+    border-radius: 8px;
+    padding: 16px 24px 16px 32px;
+  }
+  .cloud-title{
+    font-size: 12px;
+    color: var(--neutral90-color);
+    line-height: 17.5px;
+    font-weight: 400;
+  }
+  .cloud-sub-title{
+    font-size: 12px;
+    color: black;
+    opacity: 40%;
+    line-height: 13.5px;
+    font-weight: 400;
+  }

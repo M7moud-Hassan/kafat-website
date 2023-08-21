@@ -6,12 +6,16 @@ import { LoginComponent } from './kafaat/components/login/login.component';
 import { ForgottenPasswordComponent } from './kafaat/components/forgotten-password/forgotten-password.component';
 import { CodeAuthComponent } from './kafaat/components/code-auth/code-auth.component';
 import { NewPasswordComponent } from './kafaat/components/new-password/new-password.component';
+import { RegisterationComponent } from './kafaat/components/registeration/registeration.component';
+import { RegisterationSucceededComponent } from './kafaat/components/registeration-succeeded/registeration-succeeded.component';
 
 const routes: Routes = [
   {path:'',component:KafaatLayoutComponent,children:[
     {path:'',component:HomePageComponent},
     {path:'kafaat',loadChildren:()=>import('./kafaat/kafaat.module').then(m=>m.KafaatModule)},
   ]},
+  {path:'registeration',component:RegisterationComponent},
+  {path:'registeration-succeeded',component:RegisterationSucceededComponent},
   {path:'login',component:LoginComponent},
   {path:'forgotten-password',component:ForgottenPasswordComponent},
   {path:'code-auth',component:CodeAuthComponent},
