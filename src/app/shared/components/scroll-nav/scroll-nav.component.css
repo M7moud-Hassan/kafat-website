@@ -1,12 +1,11 @@
 .card-header div{
-    display: flex !important;
-    text-align: center !important;
-    flex-wrap: wrap;
-   
+    text-align: center !important;   
 }
 
 @media (min-width: 992px) {
-    .card-header div {
+    .card-header div{
+      
       width: auto !important;
+  
     }
   }
