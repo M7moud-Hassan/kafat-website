@@ -45,6 +45,7 @@ import { RouterModule } from '@angular/router';
 
 import { RegisterationComponent } from './components/registeration/registeration.component';
 import { RegisterationSucceededComponent } from './components/registeration-succeeded/registeration-succeeded.component';
+import { ManashetTabsComponent } from './components/manashet-tabs/manashet-tabs.component';
 
 @NgModule({
   declarations: [
@@ -90,7 +91,8 @@ import { RegisterationSucceededComponent } from './components/registeration-succ
     ArabicDigitsDirective,
     AllProgramsComponent,
     RegisterationComponent,
-    RegisterationSucceededComponent
+    RegisterationSucceededComponent,
+    ManashetTabsComponent
   ],
   imports: [
     CommonModule,

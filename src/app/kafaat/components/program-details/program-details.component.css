@@ -13,6 +13,7 @@
     font-size: 32px;
     /* text-align: center; */
     font-weight: 600;
+    margin: 15px 0px;
 }
 .statistic-label{
     display: block;
@@ -67,7 +68,7 @@
     text-align: right;
 }
 
-@media (500px <= width <=2000px){
+@media (767px <= width <=2000px){
     .statistic-container-right{
         text-align: left;
     }
@@ -106,7 +107,7 @@
         padding: 40px 40px;
     }
 }
-@media (0px <= width <=500px){
+@media (0px <= width <=767px){
     .statistic-container-right,.statistic-container-left{
         text-align: center;
     }

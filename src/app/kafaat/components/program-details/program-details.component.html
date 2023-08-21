@@ -51,10 +51,9 @@
     </div>
 </div>
 <div class="page-padding mt-5">
-    <a (click)="toggleLinks()" [ngClass]="isManashetActive?'bg-primary-btn':'bg-primary-opacity-btn'"> المناشط</a>
-    <a (click)="toggleLinks()" [ngClass]="!isManashetActive?'bg-primary-btn':'bg-primary-opacity-btn'" class="mx-3">المشاركات </a>
+    <app-manashet-tabs (tabSelected)="onTabSelected($event)"></app-manashet-tabs>
 </div>
-<div *ngIf="isManashetActive"  class="manashet-list-container mb-5">
+<div *ngIf="tabNumberIsActive == 0"  class="manashet-list-container mb-5">
     <div class="manashet-list-content">
         <a *ngFor="let nav of navList" (click)="selectItem(nav.id)" ngClass="{{nav.isSelected?'active-navigation-button':'inactive-navigation-button'}}">{{nav.label}}</a> 
     </div>
@@ -95,7 +94,7 @@
         </div>
     </div>
 </div>
-<div *ngIf="!isManashetActive" class="manashet-list-container mb-5">
+<div *ngIf="tabNumberIsActive == 1" class="manashet-list-container mb-5">
     <app-musharakat-item></app-musharakat-item>
     <app-musharakat-item></app-musharakat-item>
     <app-musharakat-item></app-musharakat-item>
