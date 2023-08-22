@@ -25,7 +25,8 @@
     z-index: 100; display: none;
 }
 .active{
-    color: blue !important;
+    color: #002034
+    !important;
 }
 
 .dropdown-menu{

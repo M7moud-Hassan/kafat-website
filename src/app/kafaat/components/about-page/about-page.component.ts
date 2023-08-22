@@ -10,4 +10,14 @@ export class AboutPageComponent {
   openOrClosNav(value:boolean):void{
     this.showOverlay=value;
   }
+
+  itemCardEnter(index:number):void{
+    
+    document.getElementById('p'+index)!.style.color='#005183';
+    
+  }
+  itemCardLeave(index:number):void{
+    console.log(2222)
+    document.getElementById('p'+index)!.style.color='white';
+  }
 }

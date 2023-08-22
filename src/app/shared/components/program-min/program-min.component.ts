@@ -7,4 +7,8 @@ import { Component, Input } from '@angular/core';
 })
 export class ProgramMinComponent {
   @Input() direction:string="ltr"
+  @Input() image:string='';
+  @Input() title:string='';
+  @Input() image2:string='';
+
 }

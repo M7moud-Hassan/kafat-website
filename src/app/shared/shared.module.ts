@@ -59,8 +59,6 @@ import { RouterModule } from '@angular/router';
     ScrollNavComponent,
     DatePickerComponent,
     ProgramMinComponent,
-
-
   ],
   imports: [
     CommonModule,

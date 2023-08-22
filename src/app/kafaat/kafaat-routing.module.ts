@@ -13,6 +13,7 @@ import { ProfileLayoutComponent } from './components/profile-layout/profile-layo
 import { WinnerComponent } from './components/winner/winner.component';
 import { PostsSlidesComponent } from './components/posts-slides/posts-slides.component';
 import { AllProgramsComponent } from './components/all-programs/all-programs.component';
+import { PostsPeopleComponent } from './components/posts-people/posts-people.component';
 
 const routes: Routes = [
   {path:'',component:HomePageComponent},
@@ -28,8 +29,7 @@ const routes: Routes = [
   {path:'profile',component:ProfileLayoutComponent},
   {path:'winners',component:WinnerComponent},
   {path:'famous-posts',component:PostsSlidesComponent},
-  {path:'winners',component:WinnerComponent},
-  {path:'famous-posts',component:PostsSlidesComponent},
+  {path:'post-people',component:PostsPeopleComponent},
   {path:'profile',component:ProfileLayoutComponent},
   {path:'programs',component:AllProgramsComponent},
 ];

@@ -28,11 +28,15 @@
     background-image: url("../../../../assets/images/background-header-page.svg");
     background-repeat: no-repeat;
     background-position: right;
+    position: relative;
+    right: -9px;
 }
 .bg-header2{
     background-image: url("../../../../assets/images/bg-header2.svg");
     background-repeat: no-repeat;
     background-position: right;
+    position: relative;
+    right: -9px;
 }
 
 

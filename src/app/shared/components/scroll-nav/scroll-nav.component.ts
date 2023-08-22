@@ -15,7 +15,6 @@ export class ScrollNavComponent {
     "slidesToShow": 7,
     "slidesToScroll": 1,
     "infinite": false,
-
     "responsive": [
 
       {

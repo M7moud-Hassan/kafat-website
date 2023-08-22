@@ -46,6 +46,8 @@ import { RouterModule } from '@angular/router';
 import { RegisterationComponent } from './components/registeration/registeration.component';
 import { RegisterationSucceededComponent } from './components/registeration-succeeded/registeration-succeeded.component';
 import { ManashetTabsComponent } from './components/manashet-tabs/manashet-tabs.component';
+import { GoalsKafaatComponent } from './components/goals-kafaat/goals-kafaat.component';
+import { PostsPeopleComponent } from './components/posts-people/posts-people.component';
 
 @NgModule({
   declarations: [
@@ -92,7 +94,9 @@ import { ManashetTabsComponent } from './components/manashet-tabs/manashet-tabs.
     AllProgramsComponent,
     RegisterationComponent,
     RegisterationSucceededComponent,
-    ManashetTabsComponent
+    ManashetTabsComponent,
+    GoalsKafaatComponent,
+    PostsPeopleComponent
   ],
   imports: [
     CommonModule,

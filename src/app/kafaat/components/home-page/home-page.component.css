@@ -52,6 +52,13 @@
     z-index: 5;
     font-size: 30px;
     color: red;
+  
+}
+
+@media (0px <= width <=767px){
+    .navbar-image,.navbar-image-opacity{
+    transform: scaleX(2);
+    }
 }
 .discover-image button{
     position: absolute;

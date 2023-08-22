@@ -19,26 +19,21 @@
     background-position: right;
     background-size: contain;
 }
-.section3{
-    background-image: url('../../../../assets/images/bg_section3.png');
-    background-repeat: no-repeat;
 
-}
-.section4{
-    background-image: url('../../../../assets/images/bg_section.png');
-    background-repeat: no-repeat;
-    background-position: right;
-
-}
 .item-card{
     background-color: #005183;
+    color: white;
     border: none;
     background: rgba(255, 255, 255, 0.10);
     box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.12); 
+    cursor: pointer;
 }
+
 .item-card:hover{
     background-color: white;
 }
+
+
 @media (max-width: 575.98px) {
     .card-about{
         position: relative;
@@ -49,4 +44,3 @@
         padding-top: 10px;
     }
   }
-  
