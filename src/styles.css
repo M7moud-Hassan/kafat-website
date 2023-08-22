@@ -346,6 +346,10 @@
     font-size: 12px;
   }
 
+  .card{
+    border: none !important;
+  }
+
 @media (767px <= width <=5000px){
     .circle-image-container{
         width: 100%;
@@ -415,7 +419,7 @@
       padding-right: 40px;
       outline: none;
       box-shadow: none;
-       border: 1px solid var(--neutral90-color);
+     border: 1px solid var(--neutral90-color);
   }
   .error-text{
     font-size: 10px;
@@ -553,14 +557,15 @@ input[type="date"].defaultDateInput::-webkit-calendar-picker-indicator {
   .shadow-small{
     box-shadow: 0px 1px 2px 0px #000000 12%;
   }
-  .shadow-medium{
-    box-shadow: 0px 4px 8px 0px #000000 12%;
-  }
+  .shadow-medium {
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.12);
+}
   .shadow-large{
     box-shadow: 0px 6px 15px 0px #000000 12%;
   }
   .shadow-X-Large{
-    box-shadow: 0px 25px 50px 0px #000000 18%;
+    box-shadow: 0px 25px 50px 0px rgba(0, 0, 0, 0.18);
+
   }
   /* ------------font size--------- */
   .Caption-Regular{
@@ -603,6 +608,9 @@ input[type="date"].defaultDateInput::-webkit-calendar-picker-indicator {
     line-height: 16px;
     font-family: "alex-600";
   }
+  .divider-section{
+height: 76px;
+  }
   .Headline-H4{
     font-size: 32px;
     line-height: 18px;
@@ -623,4 +631,12 @@ input[type="date"].defaultDateInput::-webkit-calendar-picker-indicator {
     line-height: 40px;
     font-family: "alex-400";
   }
+
+  .vertical-line {
+    width: 2px; 
+    height: auto ;
+    background-color: black; 
+    margin: 0 10px;
+}
+
   

@@ -1,6 +1,7 @@
-<div class="container-fluid my-4">
-    <app-page-header Header="ماهي كفاءات ؟"></app-page-header>
-    <div class="card mx-4">
+<div class="divider-section"></div>
+<div class="page-padding">
+    <app-page-header [Header]="title" [header]="header"></app-page-header>
+    <div class="card p-0 m-0 shadow-X-Large">
         <div class="card-body p-0">
             <ng-container #container>
                 <app-display-content *ngIf="componentToDisplay==1"></app-display-content>

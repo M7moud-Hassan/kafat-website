@@ -62,4 +62,25 @@ export class MinshatCarousalComponent implements OnInit {
    
     this.slickCarousel!.slickPrev()
   }
+
+  data=[
+   {
+    image:'assets/images/car1.png',
+    title:'تأملات في السيرة النبوية',
+    subTitle:'برنامج مثقف',
+    des:'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة هذا النص هو مثال لنص يمكن أن يستبدل في ',
+   },
+   {
+    image:'assets/images/car2.png',
+    title:'كيف يتلقى المفكر العلم',
+    subTitle:'برنامج كاتب',
+    des:'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة هذا النص هو مثال لنص يمكن أن يستبدل في '
+   },
+   {
+    image:'assets/images/car3.png',
+    title:'مهارات الوورد',
+    subTitle:'برنامج ماهر',
+    des:'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة هذا النص هو مثال لنص يمكن أن يستبدل في'
+   }
+  ]
 }
