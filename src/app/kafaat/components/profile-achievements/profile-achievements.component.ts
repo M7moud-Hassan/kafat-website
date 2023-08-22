@@ -9,6 +9,8 @@ export class ProfileAchievementsComponent {
   // hideTest:boolean = true;
   navList:any[]=[];
   isDropDownVisible:boolean=false;
+  isDropDownOptionsVisible:boolean=false;
+
 
   ngOnInit(): void {
     this.fillNavList();
@@ -17,6 +19,9 @@ export class ProfileAchievementsComponent {
 
   selectItem(id:any){
     this.navList.map(x=>x.id==id?x.isSelected=true:x.isSelected=false);
+    if(id==7){
+      this.isDropDownOptionsVisible=!this.isDropDownOptionsVisible;
+    }
   }
   fillNavList(){
     this.navList = [

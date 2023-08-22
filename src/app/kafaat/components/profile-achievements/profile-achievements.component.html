@@ -1,10 +1,16 @@
 <div class="Musharkat-container">
     <div class="main-title">الإنجازات</div>
-    <div class="musharakat-list-content">
-        <a *ngFor="let nav of navList" (click)="selectItem(nav.id)" ngClass="{{nav.isSelected?'active-navigation-button':'inactive-navigation-button'}}">
-            <img *ngIf="nav.label=='المزيد'" class="me-1" src="/assets/images/list.svg" alt="">
-            {{nav.label}}
-        </a> 
+    <div class="tabs-container">
+        <div class="musharakat-list-content">
+            <a *ngFor="let nav of navList" (click)="selectItem(nav.id)" ngClass="{{nav.isSelected?'active-navigation-button':'inactive-navigation-button'}}">
+                <img  *ngIf="nav.label=='المزيد'" class="me-1" src="/assets/images/list.svg" height="10px" alt="">
+                {{nav.label}}
+            </a> 
+        </div>
+        <div *ngIf="isDropDownOptionsVisible" class="musharakat-options">
+            <a class="shared-user-info-list-options-item-update">تعديل المشاركة</a>
+            <a class="shared-user-info-list-options-item-delete">حذف المشاركة</a>
+        </div>
     </div>
     <div class="card-items-container">
         <div class="row">

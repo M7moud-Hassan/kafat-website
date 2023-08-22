@@ -40,3 +40,48 @@
     border: 1px solid var(--Primary-border-color);
     margin-bottom: 20px;
 }
+
+.tabs-container{
+    position: relative;
+}
+.musharakat-options{
+    position: absolute;
+    left: 25px;
+    top: 50px;
+    width: 200px;
+    height: 100px;
+    box-shadow: 0px 0px 7px lightgray;
+    border-radius: 8px;
+    z-index: 6;
+}
+.shared-user-info{
+    z-index: 1;
+}
+.shared-user-info-list-options-item-update,.shared-user-info-list-options-item-delete{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: inline-block;
+    width: 100%;
+    border-radius: 8px 8px 0px 0px;
+    padding: 18px 16px 18px 16px;
+    color: var(--neutral90-color);
+    background-color: white;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 17.5px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+.shared-user-info-list-options-item-delete{
+    color: red;
+    border-radius: 0px 0px 8px 8px;
+    background-color: white;
+    bottom: 0px;
+    top: 50px;
+}
+.shared-user-info-list-options-item-update:hover,.shared-user-info-list-options-item-delete:hover{
+    color: var(--main-color);
+    background-color: var(--Primary-Surface-color);
+}

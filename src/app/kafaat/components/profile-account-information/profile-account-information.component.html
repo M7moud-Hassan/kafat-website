@@ -39,10 +39,10 @@
         <!-- password -->
         <div class="input-surrounding">
             <div class="input-element w-100">
-                <input type="text" passwordMask (originalValue)="handleOriginalValue($event)" name="password"
+                <input type="text" [readonly]="true" name="password"
                     id="password" formControlName="password" style="background-color: var(--neutral50-color);"
                     class="input-element-icon lock-icon" required="">
-                <label for="password">كلمة المرور</label>
+                <label for="password" style="top:-10px">كلمة المرور</label>
             </div>
         </div>
         <button class="bg-primary-btn mt-3" (click)="isPasswordPageVisible=!isPasswordPageVisible">تغيير كلمة
@@ -363,7 +363,7 @@
         <div *ngIf="errorMessage.length>1">
             <small class="error-text">{{errorMessage}}</small>
         </div>
-        <div *ngIf="fileSize>0 || errorMessage.length == 0" class="p-3 d-flex justify-content-between align-items-center select-file-bg">
+        <div *ngIf="fileSize > 0 && errorMessage == ''" class="p-3 d-flex justify-content-between align-items-center select-file-bg">
             <div>{{fileSize|number:'1.2-2'}} MB</div>
             <div>
                 <a class="text-decoration-none d-pointer">عرض</a>
@@ -374,4 +374,4 @@
 
     </form>
 </div>
-<app-profile-change-password *ngIf="isPasswordPageVisible"></app-profile-change-password>
+<app-profile-change-password *ngIf="isPasswordPageVisible" (valueEmitted)="valueEmitted($event)"></app-profile-change-password>

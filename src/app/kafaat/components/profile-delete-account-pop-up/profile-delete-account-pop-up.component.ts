@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-profile-delete-account-pop-up',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./profile-delete-account-pop-up.component.css']
 })
 export class ProfileDeleteAccountPopUpComponent {
-
+  constructor(public dialogRef: MatDialogRef<ProfileDeleteAccountPopUpComponent>) {}
+  closeDialog(): void {
+    this.dialogRef.close();
+  }
 }

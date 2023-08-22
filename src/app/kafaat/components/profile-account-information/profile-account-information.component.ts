@@ -44,6 +44,15 @@ export class ProfileAccountInformationComponent  implements OnInit , AfterViewIn
     this.loadWorkTypes();
     this.loadQualifications();
     this.imagefile = this.form.controls['image'].value ?? this.imagefile ;
+    this.replacePasswordWithX();
+  }
+  valueEmitted(event: any) {
+    this.isPasswordPageVisible = event;
+  }
+  replacePasswordWithX(){
+    let passLength = this.password.toString().length;
+    let newPass = 'x'.padStart(passLength, 'x');
+    this.form.controls['password'].patchValue(newPass);
   }
   loadCountries(){
     this.countries = this.service.profileService.loadContries();
