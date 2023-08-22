@@ -205,3 +205,12 @@
     box-shadow: none;
   }
   
+  input:focus,input:hover,select:focus,select:hover,textarea:focus,textarea:hover{
+    border: 1px solid var(--main-color);
+    outline: none !important;
+}
+
+.select-file-bg:hover{
+  background-color: var(--neutral40-color);
+  cursor: pointer;
+}

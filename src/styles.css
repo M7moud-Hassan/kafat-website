@@ -451,6 +451,12 @@
       outline-color: transparent;
       border-radius: 0;
     }
+    input[type=radio].defaultRadioButton:hover {
+      cursor: pointer;
+      width: 30px;
+      height: 30px;
+    }
+
   input[type=checkbox].SquarecheckboxButton,input[type=checkbox].Square_Sign_checkboxButton {
     padding: 0.5em;
     -webkit-appearance: none;

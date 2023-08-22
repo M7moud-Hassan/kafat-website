@@ -33,11 +33,7 @@
     line-height: 32px;
     padding-left: 5px;
 }
-.manashet-card-details-badge{
-    /* position: absolute;
-    top: 0px;
-    left: 0px; */
-}
+
 .manashet-card-details-program-name{
     color: var(--main-color);
     font-size: 12px;

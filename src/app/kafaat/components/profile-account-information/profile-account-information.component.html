@@ -360,8 +360,11 @@
                 <a class="bg-primary-btn" (click)="fileInput.click()">تحديد ملف</a>
             </div>
         </div>
-        <div class="p-3 d-flex justify-content-between align-items-center">
-            <div>{{fileSize}} MB</div>
+        <div *ngIf="errorMessage.length>1">
+            <small class="error-text">{{errorMessage}}</small>
+        </div>
+        <div *ngIf="fileSize>0 || errorMessage.length == 0" class="p-3 d-flex justify-content-between align-items-center select-file-bg">
+            <div>{{fileSize|number:'1.2-2'}} MB</div>
             <div>
                 <a class="text-decoration-none d-pointer">عرض</a>
                 <span class="px-3">{{fileName}}</span>
