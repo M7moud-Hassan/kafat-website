@@ -11,11 +11,12 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
   isNextPageVisible:boolean = true;
   isPasswordVisible:boolean = false;
   isPasswordVisible2:boolean = false;
-  isAvailableToWorkChecked:boolean = true;
+  isAvailableToWorkChecked:boolean = false;
   form:FormGroup = new FormGroup({});
   imagefile:any = "";
   fileName:string="";
   fileSize:number=0;
+  errorMessage:string = "";
   originalPassword: string = '';
   countries:any[]=[];
   cities:any[]=[];
@@ -110,9 +111,19 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
   }
 
   onFileSelected(event: any) {
+    this.errorMessage = "";
     const file: File = event.target.files[0];
-    this.fileSize= file.size/1000;
+    this.fileSize = file.size / (1024 * 1024);  //in MB
     this.fileName = file.name;
+    if(this.fileSize.toFixed(2) > '10.00'){
+      this.errorMessage = "حجم الملف يتجاوز الحد المسموح به";
+      return;
+    }
+     let fileExtension:String = this.fileName.replace(".","").split(".")[1].toLowerCase().toString();
+    if(fileExtension!="jpg" || fileExtension != "png" || fileExtension != "pdf"){
+      this.errorMessage = "نوع الملف  غير مسموح به";
+      return;
+    }
     const reader = new FileReader();
     reader.onload = () => {
       this.imagefile = URL.createObjectURL(file);

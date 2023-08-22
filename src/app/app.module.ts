@@ -7,6 +7,8 @@ import { KafaatLayoutComponent } from './layout-pages/kafaat-layout/kafaat-layou
 import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog'; 
+import { NgxMaskModule } from 'ngx-mask';
+
 
 
 @NgModule({
@@ -20,8 +22,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     SharedModule,
     BrowserAnimationsModule,
     MatDialogModule,
+    NgxMaskModule.forRoot()
   ],
-  providers: [],
+  // providers: [provideNgxMask()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

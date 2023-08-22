@@ -109,6 +109,7 @@
   
     .card-icon {
       background-image: url('/assets/images/credit-card-grey.svg');
+      background-size: 20px 30px;
     }
   
     .card-date {

@@ -10,23 +10,23 @@
                     <a *ngFor="let method of paymentList" (click)="selectPaymenyMethod(method.id)" ngClass="{{method.isSelected?'payment-methods-item-active':'payment-methods-item-inactive'}}" ><img src="{{method.imagePath}}" width="60" height="25"></a>
                 </div>
                 <div class="form-group input-container w-100 mt-4 ">
-                    <input type="text" name="name" class="form-control input-container-icon person-icon" required="">
+                    <input type="text" name="name" class="input-container-icon person-icon" required="">
                     <label for="name">الاسم على البطاقة</label>
                   </div>
                   <div class="form-group input-container w-100 mt-4 ">
-                    <input type="text" name="name" class="form-control input-container-icon card-icon" required="">
+                    <input type="text"  mask="0000 - 0000 - 0000 - 0000" name="name" class="input-container-icon card-icon" required="">
                     <label for="name">رقم البطاقة</label>
                   </div>
                   <div class="row">
                     <div class="col-12 col-md-6">
                         <div class="form-group input-container w-100 mt-4 ">
-                            <input type="text" name="name" class="form-control input-container-icon card-date" required="">
+                            <input type="text"  mask="00 / 00" name="name" class="input-container-icon card-date" required="">
                             <label for="name">تاريخ الإنتهاء</label>
                           </div>
                     </div>
                     <div class="col-12 col-md-6">
                         <div class="form-group input-container w-100 mt-4 ">
-                            <input type="text" name="name" class="form-control input-container-icon " required="">
+                            <input type="text"  mask="000" name="name" class="input-container-icon " required="">
                             <label for="name">CVV</label>
                         </div>
                     </div>

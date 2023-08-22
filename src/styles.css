@@ -461,10 +461,10 @@
       outline-color: transparent;
       border-radius: 0;
     }
-    input[type=radio].defaultRadioButton:hover {
+    /* input[type=radio].defaultRadioButton:hover {
       background-image: url('/assets/images/radio-active.png');
       cursor: pointer;
-    }
+    } */
 
   input[type=checkbox].SquarecheckboxButton,input[type=checkbox].Square_Sign_checkboxButton {
     padding: 0.5em;
@@ -655,4 +655,7 @@ height: 76px;
   color: var(--neutral90-color);
 }
 
-  
+  .defaultRadioButton{
+    width: 20px;
+    height: 20px;
+  }

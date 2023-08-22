@@ -52,16 +52,16 @@
                     <div class="row">
                         <div class="col-12 col-md-4">
                             <div class="row">
-                                <div class="col-12 col-md-6">
+                                <div class="col-3 col-md-6">
                                     <div class="d-flex justify-content-start align-items-start pb-2">
-                                        <input type="radio" class="defaultRadioButton" style="width: 30px;" value="male" formControlName="gender"
+                                        <input style="width: 25px;" type="radio" class="defaultRadioButton"  value="male" formControlName="gender"
                                             name="gender" id="male">
                                         <span for="make d-inline-block" style="margin-right: 20px;">ذكر</span>
                                     </div>
                                 </div>
-                                <div class="col-12 col-md-6">
+                                <div class="col-3 col-md-6">
                                     <div class="d-flex justify-content-start align-items-start pb-2">
-                                        <input type="radio" class="defaultRadioButton" style="width: 30px;" value="female" formControlName="gender"
+                                        <input style="width: 25px;" type="radio" class="defaultRadioButton"  value="female" formControlName="gender"
                                             name="gender" id="female">
                                         <span for="female d-inline-block" style="margin-right: 20px;">انثى</span>
                                     </div>
@@ -161,16 +161,16 @@
                     <div class="row">
                         <div class="col-12 col-md-4">
                             <div class="row">
-                                <div class="col-12 col-md-6">
+                                <div class="col-3 col-md-6">
                                     <div class="d-flex justify-content-start align-items-start pb-2">
-                                        <input type="radio" class="defaultRadioButton" style="width: 30px;" value="married"
+                                        <input style="width: 25px;" type="radio" class="defaultRadioButton"  value="married"
                                             formControlName="maritalStatus" name="maritalStatus" id="male">
                                         <span for="make d-inline-block" style="margin-right: 20px;">متزوج</span>
                                     </div>
                                 </div>
-                                <div class="col-12 col-md-6">
+                                <div class="col-3 col-md-6">
                                     <div class="d-flex justify-content-start align-items-start pb-2">
-                                        <input type="radio" class="defaultRadioButton" style="width: 30px;" value="single"
+                                        <input style="width: 25px;" type="radio" class="defaultRadioButton"  value="single"
                                             formControlName="maritalStatus" name="maritalStatus" id="female">
                                         <span for="female d-inline-block" style="margin-right: 20px;">اعزب</span>
                                     </div>
@@ -278,8 +278,11 @@
                         <a class="bg-primary-btn" (click)="fileInput.click()">تحديد ملف</a>
                     </div>
                 </div>
-                <div class="p-3 d-flex justify-content-between align-items-center">
-                    <div>{{fileSize}} MB</div>
+                <div *ngIf="errorMessage.length>1">
+                    <small class="error-text">{{errorMessage}}</small>
+                </div>
+                <div *ngIf="fileSize > 0 && errorMessage == ''" class="p-3 d-flex justify-content-between align-items-center select-file-bg">
+                    <div>{{fileSize|number:'1.2-2'}} MB</div>
                     <div>
                         <a class="text-decoration-none d-pointer">عرض</a>
                         <span class="px-3">{{fileName}}</span>
@@ -360,10 +363,9 @@
         </div>
     </div>
     <div class="back-arrow pt-3">
-        <a (click)="isNextPageVisible=!isNextPageVisible" class="text-white text-decoration-none d-pointer">
-            <img src="/assets/images/arrow-forward.svg" alt="">
-            رجوع 
-
+        <a class="text-white text-decoration-none d-pointer">
+            <img (click)="isNextPageVisible=!isNextPageVisible"  src="/assets/images/arrow-forward.svg" alt="">
+            <div class="d-inline-block back-btn">رجوع</div> 
         </a>
     </div>
 </div>
