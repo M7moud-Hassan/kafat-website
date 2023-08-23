@@ -143,7 +143,4 @@
 </div>
 
 
-<div id="myModal" class="modal" [style.display]="modalVisible ? 'block' : 'none'">
-    <span class="close" (click)="closeModal()">&times;</span>
-    <img class="modal-content" [src]="modalImageSrc" id="img01">
-  </div>
+<app-dialog-video-image #dialog></app-dialog-video-image>

@@ -26,7 +26,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProgramMinComponent } from './components/program-min/program-min.component';
 import { RouterModule } from '@angular/router';
-
+import { DialogVideoImageComponent } from './components/dialog-video-image/dialog-video-image.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +59,7 @@ import { RouterModule } from '@angular/router';
     ScrollNavComponent,
     DatePickerComponent,
     ProgramMinComponent,
+    DialogVideoImageComponent,
   ],
   imports: [
     CommonModule,
@@ -66,7 +67,7 @@ import { RouterModule } from '@angular/router';
     RouterModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
   exports:[
     FooterComponent,
@@ -92,7 +93,8 @@ import { RouterModule } from '@angular/router';
     PaginationsComponent,
     ScrollNavComponent,
     DatePickerComponent,
-    ProgramMinComponent
+    ProgramMinComponent,
+    DialogVideoImageComponent
   
 
   ]

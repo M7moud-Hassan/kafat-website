@@ -97,7 +97,7 @@ import { NgxMaskModule } from 'ngx-mask';
     RegisterationSucceededComponent,
     ManashetTabsComponent,
     GoalsKafaatComponent,
-    PostsPeopleComponent
+    PostsPeopleComponent,
   ],
   imports: [
     CommonModule,
