@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { DialogVideoImageComponent } from 'src/app/shared/components/dialog-video-image/dialog-video-image.component';
 
 @Component({
   selector: 'app-manashet-details-video-gallery-page',
@@ -6,17 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./manashet-details-video-gallery-page.component.css']
 })
 export class ManashetDetailsVideoGalleryPageComponent {
-  modalVisible: boolean = false;
-  modalImageSrc: string = '';
-  modalCaption: string = '';
 
-  openModal() {
-    this.modalVisible = true;
-    this.modalImageSrc = 'assets/images/youtube_player.png';
-
-  }
-
-  closeModal() {
-    this.modalVisible = false;
+  @ViewChild('dialog', { static: false }) dialogComponent: DialogVideoImageComponent | undefined;
+  openModal(){
+    console.log(this.dialogComponent)
+    if (this.dialogComponent) {
+      this.dialogComponent.openVideo("https://www.youtube.com/embed/Apl8h-P0F9Q");
+    }
   }
 }

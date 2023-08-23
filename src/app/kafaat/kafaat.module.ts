@@ -96,7 +96,7 @@ import { PostsPeopleComponent } from './components/posts-people/posts-people.com
     RegisterationSucceededComponent,
     ManashetTabsComponent,
     GoalsKafaatComponent,
-    PostsPeopleComponent
+    PostsPeopleComponent,
   ],
   imports: [
     CommonModule,

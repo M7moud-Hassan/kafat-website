@@ -1,0 +1,7 @@
+<div id="myModal" class="modal" [style.display]="modalVisible ? 'block' : 'none'">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <img  *ngIf="modalImageSrc" [src]="modalImageSrc" id="img01">
+    <div class="modal-content" *ngIf="videoSource" id="div-video">
+        
+    </div>
+  </div>
