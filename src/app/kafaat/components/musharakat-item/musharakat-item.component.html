@@ -6,7 +6,7 @@
              </div>
              <div class="manashet-card-details">
                  <div class="manashet-card-details-title">تأملات في السيرة النبوية</div>
-                <div class="manashet-card-details-program-details-words truncate-4-lines">
+                <div class="manashet-card-details-program-details-words" [ngClass]="isMoreReadEnabled?'truncate-4-lines':''">
                     هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة هذا النص هو مثال لنص يمكن أن يستبدل في 
                     هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة هذا النص هو مثال لنص يمكن أن يستبدل في 
                     هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة هذا النص هو مثال لنص يمكن أن يستبدل في 
@@ -14,7 +14,8 @@
                     هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة هذا النص هو مثال لنص يمكن أن يستبدل في 
                     هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة هذا النص هو مثال لنص يمكن أن يستبدل في 
                 </div>
-                <a routerLink="#" class="manashet-card-details-more-link">عرض المزيد</a>
+                <a routerLink="#" (click)="isMoreReadEnabled=!isMoreReadEnabled" *ngIf="isMoreReadEnabled" class="manashet-card-details-more-link">عرض المزيد</a>
+                <a routerLink="#" (click)="isMoreReadEnabled=!isMoreReadEnabled" *ngIf="!isMoreReadEnabled" class="manashet-card-details-more-link">عرض اقل</a>
              </div>
         </div>
     </div>

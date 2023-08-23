@@ -6,6 +6,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./musharakat-item.component.css']
 })
 export class MusharakatItemComponent implements OnInit {
+  isMoreReadEnabled:boolean=true;
   listItems:any[]=[]
   constructor(){}
   @Input() Items: any[] = [];
