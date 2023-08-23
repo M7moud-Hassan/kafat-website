@@ -1,24 +1,26 @@
-.navbar-container{
-    background: linear-gradient(to right ,#A18131, #005183);
+.navbar-container {
+    background: linear-gradient(to right, #A18131, #005183);
     position: relative;
     min-height: calc(100vh);
     width: 100%;
 }
 
-.navbar-element-container{
+.navbar-element-container {
     position: relative;
     top: 0px;
     left: 0px;
     width: 100%;
     height: calc(40vh);
 }
-.navbar-element{
+
+.navbar-element {
     background-color: transparent;
     border: 1px solid blueviolet;
     height: 60px;
     width: 100%;
 }
-.navbar-image{
+
+.navbar-image {
     position: absolute;
     bottom: calc(-20vh);
     left: 0px;
@@ -30,7 +32,8 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
-.navbar-image-opacity{
+
+.navbar-image-opacity {
     position: absolute;
     bottom: calc(-20vh);
     left: 0px;
@@ -42,7 +45,54 @@
     z-index: 3;
     opacity: .3;
 }
-.discover-image{
+
+.icons-rigt,
+.icons-left {
+    position: relative;
+    height: 300px;
+}
+
+.icons-rigt img,
+.icons-left img {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    transition: top 1s;
+}
+
+.icons-rigt img:nth-child(1) {
+    top: 200%;
+    right: 0;
+
+}
+
+.icons-rigt img:nth-child(2) {
+    top: 200%;
+    left: 15%;
+}
+
+.icons-rigt img:nth-child(3) {
+    top: 200%;
+    left: -20%;
+
+}
+
+.icons-left img:nth-child(1) {
+    top: 200%;
+    right: -15%;
+}
+
+.icons-left img:nth-child(2) {
+    top: 200%;
+    left: 26%;
+}
+
+.icons-left img:nth-child(3) {
+    top: 200%;
+    left: 0;
+}
+
+.discover-image {
     position: absolute;
     bottom: calc(-20vh);
     left: 0px;
@@ -52,21 +102,56 @@
     z-index: 5;
     font-size: 30px;
     color: red;
-  
+
 }
 
-@media (0px <= width <=767px){
-    .navbar-image,.navbar-image-opacity{
-    transform: scaleX(2);
+
+@media (0px <=width <=1200px) {
+
+    .icons-rigt img,
+    .icons-left img {
+        display: none;
     }
 }
-.discover-image button{
+
+@media (0px <=width <=767px) {
+
+    .navbar-image,
+    .navbar-image-opacity {
+        transform: scaleX(2);
+    }
+
+    .icons-rigt img,
+    .icons-left img {
+        display: block;
+        width: 150px;
+        height: 150px;
+    }
+
+    .icons-left img:nth-child(1),
+    .icons-left img:nth-child(3) {
+        top: -70px !important;
+    }
+
+    .icons-left img:nth-child(2) {
+        top: -40px;
+        left: 30%;
+    }
+
+    .icons-left img:nth-child(3) {
+        left: -7%;
+    }
+
+}
+
+.discover-image button {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
-.home{
+
+.home {
     background-image: url('../../../../assets/images/BGpattern.png');
     background-repeat: repeat-y;
 }

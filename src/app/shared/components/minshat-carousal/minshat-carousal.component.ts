@@ -72,15 +72,22 @@ export class MinshatCarousalComponent implements OnInit {
    },
    {
     image:'assets/images/car2.png',
-    title:'كيف يتلقى المفكر العلم',
+  
     subTitle:'برنامج كاتب',
     des:'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة هذا النص هو مثال لنص يمكن أن يستبدل في '
    },
    {
     image:'assets/images/car3.png',
-    title:'مهارات الوورد',
+   
     subTitle:'برنامج ماهر',
     des:'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة هذا النص هو مثال لنص يمكن أن يستبدل في'
    }
   ]
+
+  onMouseEnter(index:number):void{
+    document.getElementById('d'+index)!.style.top='0';
+  }
+  onMouseLeave(index:number):void{
+    document.getElementById('d'+index)!.style.top='-45px';
+  }
 }
