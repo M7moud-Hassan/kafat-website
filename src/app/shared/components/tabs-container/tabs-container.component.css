@@ -59,6 +59,15 @@
     padding: 10px;
     position: fixed;
     top: 0;
-    width: 100%;
-    
+    width: 80%;
+    z-index: 200;
+}
+.card-hea{
+    height: 80px; 
+    background-color:   #F5F5F5;
+     position: fixed; 
+     transform: scaleX(4);
+     top: 0;
+     width: 100%;
+     z-index: 200;
 }

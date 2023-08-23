@@ -14,6 +14,7 @@ export class TabsContainerComponent {
   }
   @ViewChild('targetElement', { static: true }) targetElement: ElementRef|undefined;
   @ViewChild('nav', { static: true }) nav: ElementRef|undefined;
+  @ViewChild('divHead', { static: true }) divHead: ElementRef|undefined;
 
   @HostListener('window:scroll', ['$event'])
   onWindowScroll(event: any) {
@@ -23,9 +24,11 @@ export class TabsContainerComponent {
     if (rect.top <45) {
       document.getElementById('navbar')!.style.display='none';
       this.nav!.nativeElement.classList.add('fix-tabs');
+      this.divHead!.nativeElement.style.display='block';
     } else {
       document.getElementById('navbar')!.style.display='block';
       this.nav!.nativeElement.classList.remove('fix-tabs');
+      this.divHead!.nativeElement.style.display='none';
     }
   }
 
