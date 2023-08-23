@@ -70,11 +70,11 @@
     background-image: url('/assets/images/user.svg');
 }
 .email-icon{
-    background-image: url('/assets/images/user.svg');
+    background-image: url('/assets/images/email.svg');
     background-color: transparent;
 }
 .message-icon{
-    background-image: url('/assets/images/user.svg');
+    background-image: url('/assets/images/pencil.svg');
     top: 0px;
     background-position: 99% 8px;
     resize: none;
@@ -87,7 +87,10 @@
     display: inline-block;
     transition: all .7s ease-in-out;
 }
-
+input:focus,input:hover,select:focus,select:hover,textarea:focus,textarea:hover{
+    border: 1px solid var(--main-color);
+    outline: none !important;
+}
 @media (500px<width<=3000px){
     .contact-information-container{
         padding: 40px 48px;
