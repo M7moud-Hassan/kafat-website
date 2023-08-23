@@ -12,7 +12,7 @@ export class ManashetDetailsVideoGalleryPageComponent {
   openModal(){
     console.log(this.dialogComponent)
     if (this.dialogComponent) {
-      this.dialogComponent.openVideo("https://www.youtube.com/embed/Apl8h-P0F9Q");
+      this.dialogComponent.openVideo("https://youtu.be/z94DAHxH_iw?si=agSSDRSaA9RPo2yZ");
     }
   }
 }
