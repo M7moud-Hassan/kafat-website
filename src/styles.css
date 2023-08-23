@@ -351,6 +351,9 @@
   .card{
     border: none !important;
   }
+  .w-md-75{
+    width: 75% !important;
+  }
 
 @media (767px <= width <=5000px){
     .circle-image-container{
@@ -368,6 +371,12 @@
     .page-padding{
         margin: 0px 20px;
         padding: 0px 0px;
+    }
+    .truncate-4-lines {
+      -webkit-line-clamp: 10;
+    }
+    .w-md-75{
+      width: 100% !important;
     }
 }
 .under-line{
@@ -633,6 +642,25 @@ height: 76px;
     height: auto ;
     background-color: black; 
     margin: 0 10px;
+}
+
+.text-justify{
+  text-align: justify;
+}
+
+
+.item-hover-top{
+  height: 400px !important;
+  transition: height .5s ease;
+}
+.item-hover-top:hover{
+  height: 450px !important;
+}
+  
+
+.item-hover-top-details{
+  position: relative; top: -45px;
+  transition: top 0.5s ease;
 }
 
   

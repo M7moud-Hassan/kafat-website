@@ -1,9 +1,15 @@
 .manashet-card-container{
     border: 1px solid var(--Primary-border-color);
     border-radius: 8px;
+    height: 450px ;
     margin: 10px 0px;
     background-color: white;
     box-shadow: 1px 1px 7px lightgray;
+    cursor: pointer;
+}
+.manashet-card-container:hover{
+    background-color: #E6F1F9;
+    box-shadow: 1px 1px 7px #E6F1F9;
 }
 .manashet-card-container img{
     display: inline-block;
