@@ -1,6 +1,7 @@
 
     <div class="row">
     <div *ngFor="let item of listItems" class="col-12 col-md-4">
+        <div routerLink="/kafaat/event-details"  class="manashet-card d-pointer">
         <div class="manashet-card-container">
              <div class="card-image">
              </div>
@@ -18,5 +19,6 @@
                 <a routerLink="#" (click)="isMoreReadEnabled=!isMoreReadEnabled" *ngIf="!isMoreReadEnabled" class="manashet-card-details-more-link">عرض اقل</a>
              </div>
         </div>
+    </div>
     </div>
 </div>
