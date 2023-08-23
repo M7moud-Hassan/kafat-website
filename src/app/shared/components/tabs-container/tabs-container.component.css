@@ -1,10 +1,11 @@
+
 .tabs .col-6{
     background-image: url('../../../../assets/images/section-title-unselected.svg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     position: relative;
-    transform: scale(1.25);
+    transform: scale(1.28);
     transform-origin: right center;
     cursor: pointer;
     text-align: center;
@@ -40,4 +41,24 @@
 .tab-selected{
     background-image: url('../../../../assets/images/section-title-selected.svg') !important;
     color: white !important;
+}
+
+.tabs{
+    z-index: 200;
+}
+.tabs .card-header{
+    background-color: white !important; width: 99%;
+}
+@media (0px <= width <=767px){
+    .tabs .card-header{
+        overflow-y: hidden; overflow-x: scroll;
+    }
+}
+
+.fix-tabs{
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    
 }
