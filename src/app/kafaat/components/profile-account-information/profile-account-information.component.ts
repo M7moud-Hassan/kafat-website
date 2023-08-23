@@ -13,6 +13,7 @@ export class ProfileAccountInformationComponent  implements OnInit , AfterViewIn
   imagefile:any = "";
   fileName:string="";
   fileSize:number=0;
+  errorMessage:string = "";
   originalPassword: string = '';
   countries:any[]=[];
   cities:any[]=[];
@@ -43,6 +44,15 @@ export class ProfileAccountInformationComponent  implements OnInit , AfterViewIn
     this.loadWorkTypes();
     this.loadQualifications();
     this.imagefile = this.form.controls['image'].value ?? this.imagefile ;
+    this.replacePasswordWithX();
+  }
+  valueEmitted(event: any) {
+    this.isPasswordPageVisible = event;
+  }
+  replacePasswordWithX(){
+    let passLength = this.password.toString().length;
+    let newPass = 'x'.padStart(passLength, 'x');
+    this.form.controls['password'].patchValue(newPass);
   }
   loadCountries(){
     this.countries = this.service.profileService.loadContries();
@@ -113,12 +123,19 @@ export class ProfileAccountInformationComponent  implements OnInit , AfterViewIn
 
 
   onFileSelected(event: any) {
+    this.errorMessage = "";
     const file: File = event.target.files[0];
-    console.log("=============================================================")
-    console.log(file);
-    console.log("=============================================================")
-    this.fileSize= file.size/1000;
+    this.fileSize = file.size / (1024 * 1024);  //in MB
     this.fileName = file.name;
+    if(this.fileSize.toFixed(2) > '10.00'){
+      this.errorMessage = "حجم الملف يتجاوز الحد المسموح به";
+      return;
+    }
+     let fileExtension:String = this.fileName.replace(".","").split(".")[1].toLowerCase().toString();
+    if(fileExtension!="jpg" || fileExtension != "png" || fileExtension != "pdf"){
+      this.errorMessage = "نوع الملف  غير مسموح به";
+      return;
+    }
     const reader = new FileReader();
     reader.onload = () => {
       this.imagefile = URL.createObjectURL(file);

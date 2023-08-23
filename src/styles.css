@@ -30,9 +30,7 @@
     --neutral90-color: #424242;
     --Primary-Surface-color: #F7FBFE;
     --Primary-border-color: #E6F1F9;
-
     --dark-default-color:#010B38;
-
     --success-main-color: #008243;
     --success-border-color: #B3DAC7;
     --success-surface-color: #EBF5F0;
@@ -117,7 +115,7 @@
     outline: none;
     border: none;
 }
-.bg-primary-btn{
+.bg-primary-btn,.bg-danger-btn{
     display: inline-block;
     padding: 14px 18px 14px 18px;
     border-radius: 8px;
@@ -129,6 +127,9 @@
     cursor: pointer;
     outline: none;
     border: none;
+}
+.bg-danger-btn{
+  background-color: red;
 }
 .bg-primary-outline-btn{
   display: inline-block;
@@ -399,6 +400,9 @@
   .input-container input,.input-container textarea {
     width: 100%;
     padding: 20px 30px 10px 0px;
+    border: 1px solid var(--neutral40-color);
+    outline: none;
+    border-radius: 8px;
   }
   .input-container label {
     position: absolute;
@@ -466,6 +470,11 @@
       outline-color: transparent;
       border-radius: 0;
     }
+    /* input[type=radio].defaultRadioButton:hover {
+      background-image: url('/assets/images/radio-active.png');
+      cursor: pointer;
+    } */
+
   input[type=checkbox].SquarecheckboxButton,input[type=checkbox].Square_Sign_checkboxButton {
     padding: 0.5em;
     -webkit-appearance: none;
@@ -501,7 +510,12 @@ input[type="date"].defaultDateInput::-webkit-calendar-picker-indicator {
   padding: 5px;
   display: inline-block;
 }
-
+.pop-up-warning-text{
+font-weight: 400;
+font-size: 12px;
+line-height: 17.5px;
+color: var(--neutral70-color);
+}
 
   /* ==================================input text, radio , date and checkbox========================================================================================= */
   .select-input::after {
@@ -643,7 +657,17 @@ height: 76px;
     background-color: black; 
     margin: 0 10px;
 }
+.main-title-text{
+  font-size: 18px;
+  line-height: 32px;
+  font-family: "alex-600";
+  color: var(--neutral90-color);
+}
 
+  .defaultRadioButton{
+    width: 20px;
+    height: 20px;
+  }
 .text-justify{
   text-align: justify;
 }

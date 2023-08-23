@@ -22,7 +22,7 @@
 
 .navbar-image {
     position: absolute;
-    bottom: calc(-20vh);
+    bottom: calc(-30vh);
     left: 0px;
     background-color: transparent;
     height: calc(70vh);
@@ -35,7 +35,7 @@
 
 .navbar-image-opacity {
     position: absolute;
-    bottom: calc(-20vh);
+    bottom: calc(-30vh);
     left: 0px;
     background-color: transparent;
     height: calc(70vh);

@@ -69,6 +69,14 @@
     background-color: var(--Primary-border-color);
     margin: 10px 0px;
 }
+.manashet-element:hover .main-title{
+    color: var(--main-color);
+    transform: scale(1.01);
+    transition: all .5s ease-in-out;
+    text-decoration: underline;
+    text-decoration-color: var(--Primary-border-color);
+    text-decoration-thickness: 3px;
+}
 @media(0px <= width <=700px){
     .element-image{
         width: 100%;

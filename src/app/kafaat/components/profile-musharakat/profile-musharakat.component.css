@@ -23,6 +23,9 @@
 .musharakat-list-content::-webkit-scrollbar {
     display: none; 
 }
+.tabs-container{
+    position: relative;
+}
 .musharakat-list-content {
     overflow-x: scroll;
     /* display: inline-flex;  */
@@ -102,6 +105,19 @@
     box-shadow: 0px 0px 7px lightgray;
     border-radius: 8px;
 }
+.musharakat-options{
+    position: absolute;
+    left: 25px;
+    top: 50px;
+    width: 200px;
+    height: 100px;
+    box-shadow: 0px 0px 7px lightgray;
+    border-radius: 8px;
+    z-index: 6;
+}
+.shared-user-info{
+    z-index: 1;
+}
 .shared-user-info-list-options-item-update,.shared-user-info-list-options-item-delete{
     position: absolute;
     top: 0px;
@@ -110,8 +126,8 @@
     width: 100%;
     border-radius: 8px 8px 0px 0px;
     padding: 18px 16px 18px 16px;
-    color: var(--main-color);
-    background-color: var(--Primary-Surface-color);
+    color: var(--neutral90-color);
+    background-color: white;
     font-size: 12px;
     font-weight: 400;
     line-height: 17.5px;
@@ -125,4 +141,8 @@
     background-color: white;
     bottom: 0px;
     top: 50px;
+}
+.shared-user-info-list-options-item-update:hover,.shared-user-info-list-options-item-delete:hover{
+    color: var(--main-color);
+    background-color: var(--Primary-Surface-color);
 }

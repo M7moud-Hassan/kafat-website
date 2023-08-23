@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { DialogVideoImageComponent } from 'src/app/shared/components/dialog-video-image/dialog-video-image.component';
 
 @Component({
   selector: 'app-manashet-details-image-gallery-page',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./manashet-details-image-gallery-page.component.css']
 })
 export class ManashetDetailsImageGalleryPageComponent {
-
+  @ViewChild('dialog', { static: false }) dialogComponent: DialogVideoImageComponent | undefined;
+  openModal(){
+    console.log(this.dialogComponent)
+    if (this.dialogComponent) {
+      this.dialogComponent.openImage("/assets/images/p6.png");
+    }
+  }
 }

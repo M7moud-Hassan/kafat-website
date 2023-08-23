@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
 import { KafaatMainService } from '../../services/kafaat-main.service';
 
@@ -15,6 +15,10 @@ export class ProfileChangePasswordComponent  implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
+  }
+  @Output() valueEmitted:EventEmitter<boolean>  = new EventEmitter<boolean>();
+  changePage():void{
+    this.valueEmitted.emit(false);
   }
 
   createForm(){

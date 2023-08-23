@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./manashet-item.component.css']
 })
 export class ManashetItemComponent {
-
+  isMoreReadEnabled:boolean=true;
 }

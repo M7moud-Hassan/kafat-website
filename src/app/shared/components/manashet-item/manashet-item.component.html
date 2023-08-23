@@ -1,61 +1,97 @@
 <div class="row">
-    <div class="col-12 col-md-4">
+    <div class="col-12 col-md-4 mb-4">
         <div class="manashet-card-container">
-             <img src="/assets/images/people.jpg" width="100%" height="230">
+             <div class="card-image-cont"></div>
              <div class="manashet-card-details">
                 <div class="manashet-card-details-title-container">
-                    <div class="manashet-card-details-title">تأملات في السيرة النبوية</div>
+                    <div class="manashet-card-details-title truncate-4-lines">تأملات في السيرة النبوية تأملات في السيرة النبوية</div>
                     <div class="manashet-card-details-badge">
                         <span class="primary-padge">جاري</span>
                     </div>
                 </div>
                 <div class="manashet-card-details-program-name">برنامج مثقف</div>
-                <div class="manashet-card-details-program-details-words">هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة هذا النص هو مثال لنص يمكن أن يستبدل في </div>
-                <a routerLink="#" class="manashet-card-details-more-link">عرض المزيد</a>
+                <div class="manashet-card-details-program-details-words" [ngClass]="isMoreReadEnabled?'truncate-4-lines':''">
+                    مثال لنص يمكن أن يستبدل في
+                    مثال لنص يمكن أن يستبدل في
+                    مثال لنص يمكن أن يستبدل في
+                    مثال لنص يمكن أن يستبدل في
+                    مثال لنص يمكن أن يستبدل في
+                    مثال لنص يمكن أن يستبدل في
+                    مثال لنص يمكن أن يستبدل في
+                    مثال لنص يمكن أن يستبدل في
+                    مثال لنص يمكن أن يستبدل في
+                    مثال لنص يمكن أن يستبدل في
+                </div>
+                <a routerLink="#" (click)="isMoreReadEnabled=!isMoreReadEnabled" *ngIf="isMoreReadEnabled" class="manashet-card-details-more-link">عرض المزيد</a>
+                <a routerLink="#" (click)="isMoreReadEnabled=!isMoreReadEnabled" *ngIf="!isMoreReadEnabled" class="manashet-card-details-more-link">عرض اقل</a>
+
              </div>
         </div>
     </div>
-    <div class="col-12 col-md-4">
+    <div class="col-12 col-md-4 mb-4">
         <div class="manashet-card-container">
              <!-- <img src="/assets/images/people.jpg" width="100%" height="230"> -->
              <div class="image-container-circle">
-                <div class="circle-image-container">
-                    <div class="circle-image-back"></div>
-                    <div class="circle-image"></div>
-                </div>
+                <div class="image-circle-container-element shadow-large"></div>
              </div>
              <div class="manashet-card-details">
                 <div class="manashet-card-details-title-container">
-                    <div class="manashet-card-details-title">تأملات في السيرة النبوية</div>
+                    <div class="manashet-card-details-title truncate-3-lines">
+                        تأملات في السيرة النبوية 
+                        تأملات في السيرة النبوية 
+                        تأملات في السيرة النبوية 
+                        تأملات في السيرة النبوية 
+                        تأملات في السيرة النبوية 
+                        تأملات في السيرة النبوية 
+                    </div>
                     <div class="manashet-card-details-badge">
                         <span class="success-padge">قادم</span>
                     </div>
                 </div>
                 <div class="manashet-card-details-program-name">برنامج مثقف</div>
-                <div class="manashet-card-details-program-details-words">هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة هذا النص هو مثال لنص يمكن أن يستبدل في </div>
-                <a routerLink="#" class="manashet-card-details-more-link">عرض المزيد</a>
+                <div class="manashet-card-details-program-details-words" [ngClass]="isMoreReadEnabled?'truncate-4-lines':''">
+                    هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة هذا النص هو مثال لنص يمكن أن يستبدل في 
+                    هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة هذا النص هو مثال لنص يمكن أن يستبدل في 
+                    هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة هذا النص هو مثال لنص يمكن أن يستبدل في 
+                    هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة هذا النص هو مثال لنص يمكن أن يستبدل في 
+                    هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة هذا النص هو مثال لنص يمكن أن يستبدل في 
+                </div>
+                <a routerLink="#" (click)="isMoreReadEnabled=!isMoreReadEnabled" *ngIf="isMoreReadEnabled" class="manashet-card-details-more-link">عرض المزيد</a>
+                <a routerLink="#" (click)="isMoreReadEnabled=!isMoreReadEnabled" *ngIf="!isMoreReadEnabled" class="manashet-card-details-more-link">عرض اقل</a>
+
              </div>
         </div>
     </div>
-    <div class="col-12 col-md-4">
+    <div class="col-12 col-md-4 mb-4">
         <div class="manashet-card-container">
              <!-- <img src="/assets/images/people.jpg" width="100%" height="230"> -->
              <div class="image-container-circle">
-                <div class="circle-image-container">
-                    <div class="circle-image-back"></div>
-                    <div class="circle-image"></div>
-                </div>
+                <div class="image-circle-container-element shadow-large"></div>
              </div>
              <div class="manashet-card-details">
                 <div class="manashet-card-details-title-container">
-                    <div class="manashet-card-details-title">تأملات في السيرة النبوية</div>
+                    <div class="manashet-card-details-title truncate-3-lines">
+                        تأملات في السيرة النبوية 
+                        تأملات في السيرة النبوية 
+                        تأملات في السيرة النبوية 
+                        تأملات في السيرة النبوية 
+                        تأملات في السيرة النبوية 
+                        تأملات في السيرة النبوية 
+                    </div>
                     <div class="manashet-card-details-badge">
                         <span class="success-padge">قادم</span>
                     </div>
                 </div>
                 <div class="manashet-card-details-program-name">برنامج مثقف</div>
-                <div class="manashet-card-details-program-details-words">هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة هذا النص هو مثال لنص يمكن أن يستبدل في </div>
-                <a routerLink="#" class="manashet-card-details-more-link">عرض المزيد</a>
+                <div class="manashet-card-details-program-details-words" [ngClass]="isMoreReadEnabled?'truncate-4-lines':''">
+                    هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة هذا النص هو مثال لنص يمكن أن يستبدل في 
+                    هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة هذا النص هو مثال لنص يمكن أن يستبدل في 
+                    هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة هذا النص هو مثال لنص يمكن أن يستبدل في 
+                    هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة هذا النص هو مثال لنص يمكن أن يستبدل في 
+                    هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة هذا النص هو مثال لنص يمكن أن يستبدل في 
+                </div>
+                <a routerLink="#" (click)="isMoreReadEnabled=!isMoreReadEnabled" *ngIf="isMoreReadEnabled" class="manashet-card-details-more-link">عرض المزيد</a>
+                <a routerLink="#" (click)="isMoreReadEnabled=!isMoreReadEnabled" *ngIf="!isMoreReadEnabled" class="manashet-card-details-more-link">عرض اقل</a>
              </div>
         </div>
     </div>

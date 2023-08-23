@@ -34,7 +34,8 @@
     <div class="row">
         <div class="col-12 col-md-3">
             <div class="program-descriprion-image-name-container">
-                <img src="/assets/images/book.svg" width="149" height="135">
+                <!-- <img src="/assets/images/book.svg" width="149" height="135"> -->
+                <div class="card-image"></div>
                  <span class="program-descriprion-name">برنامج قارئ</span>
             </div>
         </div>
@@ -94,10 +95,8 @@
         </div>
     </div>
 </div>
-<div *ngIf="tabNumberIsActive == 1" class="manashet-list-container mb-5">
-    <app-musharakat-item></app-musharakat-item>
-    <app-musharakat-item></app-musharakat-item>
-    <app-musharakat-item></app-musharakat-item>
-    <app-musharakat-item></app-musharakat-item>
+
+<div *ngIf="tabNumberIsActive == 1"  class="manashet-list-container mb-5">
+    <app-musharakat-item [Items]=[1,2,3,4,5,6,7,8,9,10]></app-musharakat-item>
 </div>
 

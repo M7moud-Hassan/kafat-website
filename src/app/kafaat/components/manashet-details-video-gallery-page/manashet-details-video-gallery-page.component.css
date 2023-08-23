@@ -58,6 +58,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     z-index: 99;
+    cursor: pointer;
   }
   .card-displayed-image{
     position: absolute;
@@ -69,6 +70,10 @@
     background-color: white;
     border-radius: 50% 50%;
     z-index: 2;
+    background-image: url('/assets/images/p3.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
   .card-displayed-image img{
     width: 210px;
@@ -87,4 +92,9 @@
     .video-player-item-container{
         width: auto;
     }
+}
+.video-player-item-container:hover .card-displayed-image{
+  transition: all .3s ease-in-out;
+  width: 250px;
+  height: 250px;
 }

@@ -48,6 +48,7 @@ import { RegisterationSucceededComponent } from './components/registeration-succ
 import { ManashetTabsComponent } from './components/manashet-tabs/manashet-tabs.component';
 import { GoalsKafaatComponent } from './components/goals-kafaat/goals-kafaat.component';
 import { PostsPeopleComponent } from './components/posts-people/posts-people.component';
+import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -106,6 +107,7 @@ import { PostsPeopleComponent } from './components/posts-people/posts-people.com
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxMaskModule.forRoot()
   ]
   
 })
