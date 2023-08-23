@@ -162,8 +162,8 @@
   line-height: 32px;
   color: var(--neutral90-color);
 }
-  @media (500px <= width <= 2500px){}
-  @media (0px <= width <= 500px){
+  @media (767px <= width <= 3500px){}
+  @media (0px <= width <= 767px){
     .payment-methods{
       padding-right: 0px;
     }
