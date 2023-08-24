@@ -7,11 +7,11 @@
     /* padding: 0px 0px 30px 0px; */
     margin: 0px 0px 15px 0px;
 }
-.manashet-card-container{
+/* .manashet-card-container{
     /* margin-bottom: 30px; */
     /* margin: 0px 0px 10px 0px; */
     /* border: 1px solid black; */
-}
+ 
 
 .manashet-card-container img{
     display: inline-block;
@@ -62,6 +62,5 @@
     transition: all .6s ease-in-out;
 }
 
-.manashet-card:hover  .manashet-card-container{
+/* .manashet-card:hover  .manashet-card-container{
  /* border: 1px solid orange; */
-}
