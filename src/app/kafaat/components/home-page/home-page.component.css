@@ -118,7 +118,7 @@
 
     .navbar-image,
     .navbar-image-opacity {
-        transform: scaleX(2);
+        /* transform: scaleX(2); */
     }
 
     .icons-rigt img,
@@ -141,7 +141,12 @@
     .icons-left img:nth-child(3) {
         left: -7%;
     }
-
+    .navbar-image-opacity{
+        clip-path: ellipse(92% 42% at 46% 54%);
+    }
+    .navbar-image{
+        clip-path: ellipse(92% 42% at 46% 54%);
+    }
 }
 
 .discover-image button {
