@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Location } from '@angular/common';
 import { ProfileService } from './profile.service';
 import { BreadCrumbService } from './bread-crumb.service';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,7 @@ export class KafaatMainService {
     private _sharedService:KafaatSharedService,
     private _profileService:ProfileService,
     private _breadCrumbService:BreadCrumbService,
+    private _authService:AuthService,
     ) { }
 
   get formBuilder(): FormBuilder {
@@ -39,6 +41,9 @@ export class KafaatMainService {
   }
   get breadCrumbService(): BreadCrumbService {
     return this._breadCrumbService;
+  }
+  get authService(): AuthService {
+    return this._authService;
   }
 
 

@@ -342,6 +342,8 @@
                             </div>
                             <div *ngIf="password?.errors && password?.touched">
                                 <small *ngIf="password?.hasError('required')" class="error-text"> حقل كلمة المرور مطلوب</small>
+                                <small  *ngIf="password?.hasError('pattern')" class="error-text">كلمة المرور يجب ان تحتوى على حروف كبيرة و صغيره و ارقام و رموز و طولها لا يقل عن 8 احرف</small>
+
                             </div>
                         </div>
                         <!-- confirm password -->
@@ -356,6 +358,7 @@
                             </div>
                             <div *ngIf="confirmPassword?.errors && confirmPassword?.touched">
                                 <small *ngIf="confirmPassword?.hasError('required')" class="error-text"> حقل تأكيد كلمة المرور مطلوب</small>
+                                <small  *ngIf="!isPasswordFieldsIdentical && confirmPassword.value.length>0" class="error-text">كلمتى المرور غير متطابقتين </small>
                             </div>
                         </div>
                         <button routerLink="/registeration-succeeded" class="bg-primary-btn-block my-3 mb-4">طلب انضمام</button>

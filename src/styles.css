@@ -607,6 +607,12 @@ color: var(--neutral70-color);
     line-height: 12px;
     font-family: "alex-600";
   }
+  .Text-hint{
+    font-size: 12px;
+    line-height: 17.5px;
+    font-family: "alex-400";
+    color: var(--neutral90-color);
+  }
   .Text-M-Regular{
     font-size: 16px;
     line-height: 14px;

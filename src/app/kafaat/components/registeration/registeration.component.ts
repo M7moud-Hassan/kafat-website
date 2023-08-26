@@ -82,8 +82,8 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
       userName:['',[Validators.required]],
       email:['',[Validators.required]],
       phone:['',[Validators.required]],
-      password:['',[Validators.required]],
-      confirmPassword:['',[Validators.required]],
+      password:['',[Validators.required,Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$")]],
+      confirmPassword:['',[Validators.required,Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$")]],
       firstName:['',[Validators.required]],
       middleName:['',[Validators.required]],
       lastName:['',[Validators.required]],
@@ -244,6 +244,9 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
   }
   get favourites(){
     return this.form.controls['favourites'];
+  }
+  get isPasswordFieldsIdentical():boolean{
+    return this.password.value == this.confirmPassword.value;
   }
 }
 
