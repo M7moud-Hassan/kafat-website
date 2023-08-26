@@ -69,4 +69,7 @@ export class HomePageComponent implements AfterViewInit{
      }
     });
   }
+
+
+  
 }

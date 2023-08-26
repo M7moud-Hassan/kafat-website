@@ -109,7 +109,6 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
       image:['',[Validators.required]],
     });
   }
-
   onFileSelected(event: any) {
     this.errorMessage = "";
     const file: File = event.target.files[0];
@@ -150,10 +149,12 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
   } 
   value1:any;
   isDate:boolean = true;
-  pickBirthDataInMilady(value: string){
-    let originValues = value.split('-').reverse().join('-');
+  pickBirthDataInMilady(event: any){
+    event.target.value='12-12-2003';
+    let originValues = event.target.value.split('-').reverse().join('-');
+    console.log(originValues)
     this.value1 = originValues;
-    this.form.controls['birthDate'].setValue(originValues);
+    // this.form.controls['birthDate'].setValue(originValues);
     return;
   }
   pickBirthDataInHijri(value: string){
