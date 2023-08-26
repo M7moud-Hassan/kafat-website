@@ -1,29 +1,48 @@
-<div class="login d-flex align-items-center justify-content-center">
-    <div class="row w-100">
-        <div class="col-12 col-md-6 mx-auto text-center mt-4">
-            <img src="assets/images/Layer_1.svg" alt=""/>
-            <div class="card w-100 mt-4 p-4 text-start">
-                <h5 class="fs-4">تسجيل الدخول</h5>
-                <form action="">
-                    <div class="form-group input-container w-100 mt-4 ">
-                        <input type="text" name="name" class=" input-container-icon email-icon" required="">
-                        <label for="name"> البريد الإلكتروني</label>
-                    </div>
-                    
-                    <div class="form-group input-container w-100 mt-4 password-input">
-                        <input type="text" name="name" class="input-container-icon password-icon" required="">
-                        <label for="name">  رقم السر</label>
-                    </div>
-                    <p class="text-end pt-2"><a routerLink="/forgotten-password" class="text-main text-decoration-none">نسيت كلمة المرور</a></p>
-                    <div class="bg-primary-btn w-100 mt-4 text-center">
-                        الدخول
-                    </div>
-                    <p class="text-center mt-4"><span>لا تملك حساب؟</span><a href="" class="text-main text-decoration-none">طلب انضمام</a></p>
-                </form>
+<form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="registeration-container">
+        <div class="pb-4">
+            <img src="/assets/images/logo.svg" width="100%" height="80px" alt="">
+        </div>
+        <div class="registeration">
+            <div class="nextPage">
+                <div class="details-title">تسجيل الدخول</div>
+                            <!-- email -->
+                            <div class="input-surrounding">
+                                <div class="input-element w-100">
+                                    <input type="text" name="email" id="email" formControlName="email" class="input-element-icon email-icon"
+                                        required="">
+                                    <label for="email">البريد الإلكتروني</label>
+                                </div>
+                                <div *ngIf="email?.errors && email?.touched">
+                                    <small *ngIf="email?.hasError('required')" class="error-text"> حقل البريد الإلكتروني مطلوب</small>
+                                </div>
+                            </div>                       
+                            <!-- password -->
+                            <div class="input-surrounding">
+                                <div class="input-element w-100">
+                                    <div class="password-container">
+                                    <input type="{{isPasswordVisible?'text':'password'}}" name="password" id="password" formControlName="password" class="input-element-icon  lock-icon" required="">
+                                    <label for="password">كلمة المرور</label>
+                                    <img *ngIf="isPasswordVisible"  (click)="isPasswordVisible=!isPasswordVisible" src="/assets/images/show.svg" width="25" height="25" class="passwordImage" alt="">
+                                    <img *ngIf="!isPasswordVisible" (click)="isPasswordVisible=!isPasswordVisible" src="/assets/images/eye.svg" width="25" height="25" class="passwordImage" alt="">
+                                </div>
+                                </div>
+                                <div *ngIf="password?.errors && password?.touched">
+                                    <small *ngIf="password?.hasError('required')" class="error-text"> حقل كلمة المرور مطلوب</small>
+                                </div>
+                            </div>
+                            <p class="text-end pt-2"><a routerLink="/forgotten-password" class="text-main text-decoration-none">نسيت كلمة المرور</a></p>
+                            <button type="submit" routerLink="/forgotten-password" class="bg-primary-btn-block my-3 mb-4">تسجيل الدخول</button>
             </div>
-            <p class="text-start text-light fw-bold p-2">
-                <a routerLink="/" class="text-light text-decoration-none"><img src="assets/images/back.svg" alt=""> رجوع</a></p>
+            <div class="text-center">
+                لا تملك حساب ؟ <a routerLink="/registeration" class="d-pointer text-decoration-none" style="color: var(--main-color);">طلب انضمام</a>
+            </div>
+        </div>
+        <div class="back-arrow pt-3">
+            <a class="text-white text-decoration-none d-pointer">
+                <img (click)="back()"  src="/assets/images/arrow-forward.svg" alt="">
+                <div class="d-inline-block back-btn">رجوع</div> 
+            </a>
         </div>
     </div>
-    
-</div>
+    </form>
