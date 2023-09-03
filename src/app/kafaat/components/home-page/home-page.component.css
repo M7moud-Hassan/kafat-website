@@ -116,10 +116,10 @@
 
 @media (0px <=width <=767px) {
 
-    .navbar-image,
+    /* .navbar-image,
     .navbar-image-opacity {
         /* transform: scaleX(2); */
-    }
+    
 
     .icons-rigt img,
     .icons-left img {
@@ -135,7 +135,7 @@
 
     .icons-left img:nth-child(2) {
         top: -40px;
-        left: 30%;
+        left: 25%;
     }
 
     .icons-left img:nth-child(3) {
