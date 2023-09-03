@@ -8,11 +8,17 @@ import { CodeAuthComponent } from './kafaat/components/code-auth/code-auth.compo
 import { NewPasswordComponent } from './kafaat/components/new-password/new-password.component';
 import { RegisterationComponent } from './kafaat/components/registeration/registeration.component';
 import { RegisterationSucceededComponent } from './kafaat/components/registeration-succeeded/registeration-succeeded.component';
+import { DashboardLayoutComponent } from './layout-pages/dashboard-layout/dashboard-layout.component';
+import { HomeComponent } from './dashboard/components/home/home.component';
 
 const routes: Routes = [
   {path:'',component:KafaatLayoutComponent,children:[
     {path:'',component:HomePageComponent},
     {path:'kafaat',loadChildren:()=>import('./kafaat/kafaat.module').then(m=>m.KafaatModule)},
+  ]},
+  {path:'',component:DashboardLayoutComponent,children:[
+    {path:'',component:HomeComponent},
+    {path:'admin',loadChildren:()=>import('./dashboard/dashboard.module').then(m=>m.DashboardModule)},
   ]},
   {path:'registeration',component:RegisterationComponent},
   {path:'registeration-succeeded',component:RegisterationSucceededComponent},

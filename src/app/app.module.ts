@@ -8,13 +8,15 @@ import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog'; 
 import { NgxMaskModule } from 'ngx-mask';
+import { DashboardLayoutComponent } from './layout-pages/dashboard-layout/dashboard-layout.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    KafaatLayoutComponent
+    KafaatLayoutComponent,
+    DashboardLayoutComponent
   ],
   imports: [
     BrowserModule,
