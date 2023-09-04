@@ -20,6 +20,15 @@ $(document).ready(function() {
           var pickedDate = $('input').val();
           $('#pickedDate').html(pickedDate);
       });
+
+
+     
+    
   });
+
+  $('#sidebarCollapse').on('click', function () {
+    $('#sidebar').toggleClass('active');
+    $(this).toggleClass('active');
+});
   });
 

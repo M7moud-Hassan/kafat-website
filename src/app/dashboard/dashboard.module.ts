@@ -11,6 +11,11 @@ import { AddActivityTypeComponent } from './components/add-activity-type/add-act
 import { UpdateActivityTypeComponent } from './components/update-activity-type/update-activity-type.component';
 import { LoginComponent } from './components/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UserCategoryShowComponent } from './components/user-category-show/user-category-show.component';
+import { UserCategoryAddComponent } from './components/user-category-add/user-category-add.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+import { MatCardModule } from '@angular/material/card';
 
 
 @NgModule({
@@ -22,13 +27,19 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ActivityTypesComponent,
     AddActivityTypeComponent,
     UpdateActivityTypeComponent,
-    LoginComponent
+    LoginComponent,
+
+    UserCategoryAddComponent
   ],
   imports: [
     CommonModule,
     DashboardRoutingModule,
     FormsModule,
+    MatTableModule,
     ReactiveFormsModule,
+    MatPaginatorModule,
+    UserCategoryShowComponent,
+    MatCardModule
   ]
 })
 export class DashboardModule { }

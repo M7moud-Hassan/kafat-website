@@ -10,6 +10,7 @@ import { RegisterationComponent } from './kafaat/components/registeration/regist
 import { RegisterationSucceededComponent } from './kafaat/components/registeration-succeeded/registeration-succeeded.component';
 import { DashboardLayoutComponent } from './layout-pages/dashboard-layout/dashboard-layout.component';
 import { HomeComponent } from './dashboard/components/home/home.component';
+import { LoginComponent as AdminLogin } from './dashboard/components/login/login.component' ;
 
 const routes: Routes = [
   {path:'',component:KafaatLayoutComponent,children:[
@@ -20,6 +21,7 @@ const routes: Routes = [
     {path:'',component:HomeComponent},
     {path:'admin',loadChildren:()=>import('./dashboard/dashboard.module').then(m=>m.DashboardModule)},
   ]},
+  {path:'admin-login',component:AdminLogin},
   {path:'registeration',component:RegisterationComponent},
   {path:'registeration-succeeded',component:RegisterationSucceededComponent},
   {path:'login',component:LoginComponent},

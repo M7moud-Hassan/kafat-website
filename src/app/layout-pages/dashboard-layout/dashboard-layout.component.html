@@ -1,2 +1,104 @@
-<p>dashboard-layout works!</p>
-<router-outlet></router-outlet>
+<div class="wrapper">
+    <!-- Sidebar Holder -->
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <h3 class="text-center fw-bold fs-3">لوحة التحكم كفاءات</h3>
+        </div>
+  
+        <ul class="list-unstyled components">
+            <p>ادارة المناشط</p>
+  
+  
+            <!-- <li class="active">
+              <a href="#">مصنفات  المستخدمين</a>
+          </li>
+          <li>
+              <a href="#">Contact</a>
+          </li> -->
+  
+            <li class="nav-item">
+              <a href="#" class="nav-link" data-bs-toggle="collapse" data-bs-target="#homeSubmenu" aria-expanded="false">
+                  مصنفات المستخدمين <i class="fas fa-chevron-down float-end"></i>
+              </a>
+              <ul class="collapse list-unstyled" id="homeSubmenu">
+                  <li class="nav-item">
+                      <a routerLink="/admin/user-category-show"  routerLinkActive="active" class="nav-link active">عرض الجميع</a>
+                  </li>
+                  
+              </ul>
+          </li>
+         
+          
+          <li class="nav-item">
+            <a href="#" class="nav-link" data-bs-toggle="collapse" data-bs-target="#homeSubmenu2" aria-expanded="false">
+                Home <i class="fas fa-chevron-down float-end"></i>
+            </a>
+            <ul class="collapse list-unstyled" id="homeSubmenu2">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Home 1</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Home 2</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Home 3</a>
+                </li>
+            </ul>
+        </li>
+            
+        </ul>
+  
+        <div class="dropdown text-center">
+          <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+            <strong>m7moud</strong>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1" style="">
+            <li><a class="dropdown-item" href="#">الاعدادت</a></li>
+            <li><a class="dropdown-item" href="#">البروفيل</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#"> تسجيل خروج</a></li>
+          </ul>
+        </div>
+    </nav>
+  
+    <!-- Page Content Holder -->
+    <div id="content">
+  
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+  
+                <button type="button" id="sidebarCollapse" class="navbar-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <button class="btn btn-light d-inline-block d-lg-none ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+  
+          
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Page</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Page</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Page</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Page</a>
+                </li>
+            </ul>
+        </div>
+            </div>
+        </nav>
+        
+        <router-outlet></router-outlet>        
+    
+    </div>
+  </div>

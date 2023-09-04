@@ -1,0 +1,11 @@
+<form class="p-4" (submit)="onSubmit()">
+    <div class="form-group">
+        <label for="Name">اسم الصنف</label>
+        <input type="text" class="form-control mt-2" id="Name">
+    </div>
+    <div class="form-group mt-2 row">
+        <button class="bg-primary-btn 2-50 col-5" type="submit">حفظ</button>
+        <div class="col-2"></div>
+        <button class="bg-primary-btn 2-50 bg-danger col-5" (click)="onNoClick()">الغاء</button>
+    </div>
+</form>

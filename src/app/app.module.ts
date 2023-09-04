@@ -9,7 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog'; 
 import { NgxMaskModule } from 'ngx-mask';
 import { DashboardLayoutComponent } from './layout-pages/dashboard-layout/dashboard-layout.component';
-
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -24,7 +24,8 @@ import { DashboardLayoutComponent } from './layout-pages/dashboard-layout/dashbo
     SharedModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    NgxMaskModule.forRoot()
+    NgxMaskModule.forRoot(),
+    ToastrModule.forRoot(), 
   ],
   // providers: [provideNgxMask()],
   bootstrap: [AppComponent]
