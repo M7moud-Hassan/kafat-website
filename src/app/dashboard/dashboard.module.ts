@@ -9,6 +9,8 @@ import { UpdateActivityComponent } from './components/update-activity/update-act
 import { ActivityTypesComponent } from './components/activity-types/activity-types.component';
 import { AddActivityTypeComponent } from './components/add-activity-type/add-activity-type.component';
 import { UpdateActivityTypeComponent } from './components/update-activity-type/update-activity-type.component';
+import { LoginComponent } from './components/login/login.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,11 +21,14 @@ import { UpdateActivityTypeComponent } from './components/update-activity-type/u
     UpdateActivityComponent,
     ActivityTypesComponent,
     AddActivityTypeComponent,
-    UpdateActivityTypeComponent
+    UpdateActivityTypeComponent,
+    LoginComponent
   ],
   imports: [
     CommonModule,
-    DashboardRoutingModule
+    DashboardRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
   ]
 })
 export class DashboardModule { }
