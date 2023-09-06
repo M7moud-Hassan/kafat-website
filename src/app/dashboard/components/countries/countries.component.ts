@@ -7,6 +7,7 @@ import { ResponseVM } from 'src/app/kafaat/core/models/response-vm';
 import { PagedRequest } from 'src/app/kafaat/core/models/paged-request';
 import { SimpleModel } from 'src/app/kafaat/core/models/simple-model';
 import { PagedResponse } from 'src/app/kafaat/core/models/paged-response';
+import { EditCountryComponent } from '../edit-country/edit-country.component';
 
 @Component({
   selector: 'app-countries',
@@ -61,7 +62,12 @@ export class CountriesComponent implements OnInit ,AfterViewInit {
       }
     });
   }
-  editItem(id:any){}
+  editItem(id:any){
+    const dialogRef = this.service.dialog.open(EditCountryComponent, {
+      width:this.windowWidth<767?'99%':(this.windowWidth<1300?'50%':'40%'),
+      data:{id:id}
+    });
+  }
   deleteItem(id:any){}
 }
 

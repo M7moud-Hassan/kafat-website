@@ -21,4 +21,10 @@ export class CountryService {
   add(data:any):Observable<ResponseVM>{
     return this.http.post<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/add`,data);
   }
+  getById(id:any):Observable<ResponseVM>{
+    return this.http.get<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/get-by-id/${id}`);
+  }
+  update(data:any):Observable<ResponseVM>{
+    return this.http.put<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/edit`,data);
+  }
 }
