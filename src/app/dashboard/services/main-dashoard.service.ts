@@ -9,6 +9,7 @@ import { CountryService } from './country.service';
 import { CityService } from './city.service';
 import { DistrictService } from './district.service';
 import { ToastrService } from 'ngx-toastr';
+import { UserCategoryService } from './user-category.service';
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +27,7 @@ export class MainDashoardService {
     private _cityService:CityService,
     private _districtService:DistrictService,
     private _toastService:ToastrService,
+    private _userCategoryService:UserCategoryService
     ) { }
 
   get formBuilder(): FormBuilder {
@@ -48,6 +50,9 @@ export class MainDashoardService {
   }
   get cityService(): CityService {
     return this._cityService;
+  }
+  get userCategoryService(): UserCategoryService {
+    return this._userCategoryService;
   }
   get districtService(): DistrictService {
     return this._districtService;
