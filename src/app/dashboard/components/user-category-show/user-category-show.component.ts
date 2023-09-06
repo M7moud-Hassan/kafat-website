@@ -32,7 +32,7 @@ export class UserCategoryShowComponent implements OnInit {
 
   refreshPage(){
     this.service.userCategoryService.getPage({
-      "pageNumber":this.currentPage+1,
+      "pageNumber":this.currentPage,
       "pageSize":this.pageSize
     }).pipe(
       catchError((error) => {
@@ -42,7 +42,6 @@ export class UserCategoryShowComponent implements OnInit {
       })
     ).subscribe((response) => {
       this.data = response.items;
-      this.currentPage = response.page-1;
       this.pageSize = response.pageSize;
       this.totalItems = response.totalCount;
       this.dataSource= new MatTableDataSource<UserCategory>(this.data); 
@@ -116,6 +115,7 @@ export class UserCategoryShowComponent implements OnInit {
   editItem(id:number){
     const category=  this.dataSource.data.find(value=>value.id==id);
     const dialogRef = this.service.dialog.open(UserCategoryAddComponent, {
+      width:'50%',
       data:{...category,fun:()=>{
         this.refreshPage()
       }}

@@ -46,7 +46,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
       EditCountryComponent,
       CountriesComponent,
       DialogDeleteComponent,
-      DeleteCountryComponent
+      DeleteCountryComponent,
   ],
   imports: [
     CommonModule,

@@ -25,7 +25,7 @@ const routes: Routes = [
   {path:'user-category-show',component:UserCategoryShowComponent},
   {path:'user-category-add',component:UserCategoryAddComponent},
 
-  {path:'activityTypes',component:ActivityTypesComponent},
+  {path:'types-activity',component:ActivityTypesComponent},
   {path:'add-activityType',component:AddActivityTypeComponent},
   {path:'update-activityType/:id',component:UpdateActivityTypeComponent},
 

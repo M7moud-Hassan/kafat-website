@@ -17,17 +17,35 @@
           </li> -->
   
             <li class="nav-item">
-              <a href="#" class="nav-link" data-bs-toggle="collapse" data-bs-target="#homeSubmenu" aria-expanded="false">
-                  مصنفات المستخدمين <i class="fas fa-chevron-down float-end"></i>
+                <!-- routerLinkActive="active" data-bs-toggle="collapse" data-bs-target="#homeSubmenu" aria-expanded="false" -->
+              <a routerLink="/admin/user-category-show" class="nav-link"  routerLinkActive="active" >
+                  مصنفات المستخدمين 
               </a>
-              <ul class="collapse list-unstyled" id="homeSubmenu">
+              <!-- <ul class="collapse list-unstyled" id="homeSubmenu">
                   <li class="nav-item">
-                      <a routerLink="/admin/user-category-show"  routerLinkActive="active" class="nav-link active">عرض الجميع</a>
+                      <a   class="nav-link active">عرض الجميع</a>
                   </li>
                   
-              </ul>
+              </ul> -->
           </li>
-         
+          <li class="nav-item">
+            <a routerLink="/admin/types-activity" class="nav-link"  routerLinkActive="active" >
+                انواع الانشطة 
+            </a>
+          
+        <!-- </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link" data-bs-toggle="collapse" data-bs-target="#homeSubmenu" aria-expanded="false">
+                 انواع  <i class="fas fa-chevron-down float-end"></i>
+            </a>
+            <ul class="collapse list-unstyled" id="homeSubmenu">
+                <li class="nav-item">
+                    <a routerLink="/admin/user-category-show"  routerLinkActive="active" class="nav-link active">عرض الجميع</a>
+                </li>
+                
+            </ul>
+        </li>
+          -->
           
           <li class="nav-item">
             <a href="#" class="nav-link" data-bs-toggle="collapse" data-bs-target="#mainlinknumber2" aria-expanded="false">
