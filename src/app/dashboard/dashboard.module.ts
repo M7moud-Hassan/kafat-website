@@ -24,6 +24,7 @@ import { EditCountryComponent } from './components/edit-country/edit-country.com
 import { CountriesComponent } from './components/countries/countries.component';
 import { DialogDeleteComponent } from './components/dialog-delete/dialog-delete.component';
 import { DeleteCountryComponent } from './components/delete-country/delete-country.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import { DeleteCountryComponent } from './components/delete-country/delete-count
     ReactiveFormsModule,
     MatPaginatorModule,
     UserCategoryShowComponent,
-    MatCardModule
+    MatCardModule,
+    NgxPaginationModule
   ],
   providers:[
   ]

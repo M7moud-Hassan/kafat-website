@@ -697,7 +697,9 @@ height: 76px;
   font-weight: 600;
   color: var(--dark-default-color);
   line-height: 24px;
-  /* border-bottom: 2px solid var(--main-color); */
+  padding-bottom: 5px;
+  border-bottom: 3px solid var(--main-color);
+  display: inline-block;
 }
 .page-list-header{
   margin-bottom: 30px;
@@ -706,4 +708,17 @@ height: 76px;
   border-radius: 10px;
   background-color: white;
   box-shadow: 0px 6px 15px 0px #000000 12%;
+}
+.tableHeader{
+  padding: 15px;
+  border-radius: 10px;
+  background-color: var(--Primary-focus-color);
+  color: var(--dark-default-color);
+  font-weight: 600;
+  line-height: 32px;
+  text-align: center;
+  /* border: 1px solid var(--dark-default-color); */
+}
+.tableData{
+  text-align: center;
 }

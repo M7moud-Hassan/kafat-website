@@ -1,4 +1,5 @@
 export interface PagedRequest{
     pageNumber:number,
-    pageSize:number
+    pageSize:number,
+    name?:string
 }

@@ -80,7 +80,7 @@ export class UserCategoryShowComponent implements OnInit {
     }).pipe(
       catchError((error) => {
         console.error(error);
-        this.service.toastService.error('افحص السرفر');
+        this.service.toastService.error('افحص السيرفر');
         return throwError(error);
       })
     ).subscribe((response) => {

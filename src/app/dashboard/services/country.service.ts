@@ -1,10 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, catchError, throwError } from 'rxjs';
 import { PagedRequest } from 'src/app/kafaat/core/models/paged-request';
 import { PagedResponse } from 'src/app/kafaat/core/models/paged-response';
 import { ResponseVM } from 'src/app/kafaat/core/models/response-vm';
 import { environment } from 'src/environments/environment.prod';
+import { MainDashoardService } from './main-dashoard.service';
 
 @Injectable({
   providedIn: 'root'

@@ -24,7 +24,7 @@ export class AddCountryComponent implements OnInit {
     return this.form.controls['name'];
   }
   submit() {
-    this.service.printFormValues(this.form);
+    // this.service.printFormValues(this.form);
     if(this.form.valid){
       this.service.countryService.add(this.form.value).subscribe({
         next:(response:ResponseVM)=>{
