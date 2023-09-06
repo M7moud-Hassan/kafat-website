@@ -21,7 +21,6 @@ export class CountriesComponent implements OnInit ,AfterViewInit {
   windowWidth: number = 0;
   pageResponse:PagedResponse={page:1,pageSize:10,totalCount:10,hasNextPage:false,hasPreviousPage:false,items:[]};
   pagedRequest:PagedRequest = {pageNumber:1,pageSize:5,name:''};
-  dataSource:any;
   constructor(public service:MainDashoardService) {
   }
   ngOnInit(): void {
@@ -30,7 +29,7 @@ export class CountriesComponent implements OnInit ,AfterViewInit {
   ngAfterViewInit() {
     this.windowWidth = window.innerWidth;
   }
-  
+
   getPageByName(){
     this.getPage(); 
   }
@@ -69,7 +68,7 @@ export class CountriesComponent implements OnInit ,AfterViewInit {
   }
 
   deleteItem(id:number){
-    const element=  this.dataSource.data.find((value:any)=>value.id==id);
+    const element=  this.pageResponse.items.find((value:any)=>value.id==id);
     const dialogRef = this.service.dialog.open(DialogDeleteComponent, {
       width:this.windowWidth<767?'99%':(this.windowWidth<1300?'50%':'40%'),
       data:{
