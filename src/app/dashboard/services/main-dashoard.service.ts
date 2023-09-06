@@ -5,6 +5,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ActivityService } from './activity.service';
 import { ActivityTypesService } from './activity-types.service';
+import { CountryService } from './country.service';
+import { CityService } from './city.service';
+import { DistrictService } from './district.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +22,10 @@ export class MainDashoardService {
     private _location:Location,
     private _activityService:ActivityService,
     private _activityTypesService:ActivityTypesService,
+    private _countryService:CountryService,
+    private _cityService:CityService,
+    private _districtService:DistrictService,
+    private _toastService:ToastrService,
     ) { }
 
   get formBuilder(): FormBuilder {
@@ -34,6 +42,18 @@ export class MainDashoardService {
   }
   get activityTypesService(): ActivityTypesService {
     return this._activityTypesService;
+  }
+  get countryService(): CountryService {
+    return this._countryService;
+  }
+  get cityService(): CityService {
+    return this._cityService;
+  }
+  get districtService(): DistrictService {
+    return this._districtService;
+  }
+  get toastService(): ToastrService {
+    return this._toastService;
   }
 
 

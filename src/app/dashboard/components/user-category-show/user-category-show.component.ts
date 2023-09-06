@@ -5,6 +5,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import { UserCategoryAddComponent } from '../user-category-add/user-category-add.component';
+import { MainDashoardService } from '../../services/main-dashoard.service';
 
 
 export interface DialogData {
@@ -25,10 +26,10 @@ export class UserCategoryShowComponent implements AfterViewInit {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public service:MainDashoardService) {}
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(UserCategoryAddComponent, {
+    const dialogRef = this.service.dialog.open(UserCategoryAddComponent, {
       data: {name: this.name, animal: this.animal},
     });
 

@@ -16,6 +16,12 @@ import { UserCategoryAddComponent } from './components/user-category-add/user-ca
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
+import { AddWorkTypeComponent } from './components/add-work-type/add-work-type.component';
+import { EditWorkTypeComponent } from './components/edit-work-type/edit-work-type.component';
+import { WorkTypesComponent } from './components/work-types/work-types.component';
+import { AddCountryComponent } from './components/add-country/add-country.component';
+import { EditCountryComponent } from './components/edit-country/edit-country.component';
+import { CountriesComponent } from './components/countries/countries.component';
 
 
 @NgModule({
@@ -29,7 +35,13 @@ import { MatCardModule } from '@angular/material/card';
     UpdateActivityTypeComponent,
     LoginComponent,
 
-    UserCategoryAddComponent
+    UserCategoryAddComponent,
+      AddWorkTypeComponent,
+      EditWorkTypeComponent,
+      WorkTypesComponent,
+      AddCountryComponent,
+      EditCountryComponent,
+      CountriesComponent
   ],
   imports: [
     CommonModule,

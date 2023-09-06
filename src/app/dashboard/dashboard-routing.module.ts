@@ -10,6 +10,12 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { UserCategoryShowComponent } from './components/user-category-show/user-category-show.component';
 import { UserCategoryAddComponent } from './components/user-category-add/user-category-add.component';
+import { EditWorkTypeComponent } from './components/edit-work-type/edit-work-type.component';
+import { AddWorkTypeComponent } from './components/add-work-type/add-work-type.component';
+import { WorkTypesComponent } from './components/work-types/work-types.component';
+import { EditCountryComponent } from './components/edit-country/edit-country.component';
+import { AddCountryComponent } from './components/add-country/add-country.component';
+import { CountriesComponent } from './components/countries/countries.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -18,9 +24,18 @@ const routes: Routes = [
   {path:'update-activity/:id',component:UpdateActivityComponent},
   {path:'user-category-show',component:UserCategoryShowComponent},
   {path:'user-category-add',component:UserCategoryAddComponent},
+
   {path:'activityTypes',component:ActivityTypesComponent},
   {path:'add-activityType',component:AddActivityTypeComponent},
   {path:'update-activityType/:id',component:UpdateActivityTypeComponent},
+
+  {path:'update-work-type/:id',component:EditWorkTypeComponent},
+  {path:'add-work-type',component:AddWorkTypeComponent},
+  {path:'work-types',component:WorkTypesComponent},
+
+  {path:'update-country/:id',component:EditCountryComponent},
+  {path:'add-country',component:AddCountryComponent},
+  {path:'countries',component:CountriesComponent},
 
 ];
 
