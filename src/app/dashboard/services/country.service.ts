@@ -27,4 +27,7 @@ export class CountryService {
   update(data:any):Observable<ResponseVM>{
     return this.http.put<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/edit`,data);
   }
+  delete(id:any):Observable<ResponseVM>{
+    return this.http.delete<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/delete?id=${id}`);
+  }
 }

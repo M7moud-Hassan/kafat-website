@@ -28,6 +28,8 @@ import { ToastrModule } from 'ngx-toastr';
     ToastrModule.forRoot(), 
   ],
   // providers: [provideNgxMask()],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers:[
+  ]
 })
 export class AppModule { }

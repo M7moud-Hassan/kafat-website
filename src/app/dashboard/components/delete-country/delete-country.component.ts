@@ -1,18 +1,18 @@
-import { AfterViewInit, Component, Inject, Input, OnInit } from '@angular/core';
-import { MainDashoardService } from '../../services/main-dashoard.service';
-import { ResponseVM } from 'src/app/kafaat/core/models/response-vm';
+import { AfterViewInit, Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
+import { MainDashoardService } from '../../services/main-dashoard.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { ResponseVM } from 'src/app/kafaat/core/models/response-vm';
 
 @Component({
-  selector: 'app-edit-country',
-  templateUrl: './edit-country.component.html',
-  styleUrls: ['../add-country/add-country.component.css','./edit-country.component.css']
+  selector: 'app-delete-country',
+  templateUrl: './delete-country.component.html',
+  styleUrls: ['../add-country/add-country.component.css','./delete-country.component.css']
 })
-export class EditCountryComponent implements OnInit, AfterViewInit {
+export class DeleteCountryComponent implements OnInit, AfterViewInit {
   id:number = 0 ;
   form:FormGroup = new FormGroup({});
-  constructor(private service:MainDashoardService,private dialogRef: MatDialogRef<EditCountryComponent>,@Inject(MAT_DIALOG_DATA) public data: any){
+  constructor(private service:MainDashoardService,private dialogRef: MatDialogRef<DeleteCountryComponent>,@Inject(MAT_DIALOG_DATA) public data: any){
     this.id = data.id;
   }
   ngAfterViewInit(): void {
@@ -47,8 +47,9 @@ export class EditCountryComponent implements OnInit, AfterViewInit {
   submit() {
     // this.service.printFormValues(this.form);
     if(this.form.valid){
-      this.service.countryService.update(this.form.value).subscribe({
+      this.service.countryService.delete(this.id).subscribe({
         next:(response:ResponseVM)=>{
+          console.log(response);
           if(response.statusCode==200){
             this.service.toastService.success(response.message);
             this.closeDialog();
@@ -67,3 +68,4 @@ export class EditCountryComponent implements OnInit, AfterViewInit {
   }
 
 }
+

@@ -13,7 +13,7 @@ import { LoginComponent } from './components/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserCategoryShowComponent } from './components/user-category-show/user-category-show.component';
 import { UserCategoryAddComponent } from './components/user-category-add/user-category-add.component';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
 import { AddWorkTypeComponent } from './components/add-work-type/add-work-type.component';
@@ -22,6 +22,7 @@ import { WorkTypesComponent } from './components/work-types/work-types.component
 import { AddCountryComponent } from './components/add-country/add-country.component';
 import { EditCountryComponent } from './components/edit-country/edit-country.component';
 import { CountriesComponent } from './components/countries/countries.component';
+import { DeleteCountryComponent } from './components/delete-country/delete-country.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { CountriesComponent } from './components/countries/countries.component';
       WorkTypesComponent,
       AddCountryComponent,
       EditCountryComponent,
-      CountriesComponent
+      CountriesComponent,
+      DeleteCountryComponent
   ],
   imports: [
     CommonModule,
@@ -52,6 +54,8 @@ import { CountriesComponent } from './components/countries/countries.component';
     MatPaginatorModule,
     UserCategoryShowComponent,
     MatCardModule
+  ],
+  providers:[
   ]
 })
 export class DashboardModule { }

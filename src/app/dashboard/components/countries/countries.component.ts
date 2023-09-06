@@ -8,6 +8,7 @@ import { PagedRequest } from 'src/app/kafaat/core/models/paged-request';
 import { SimpleModel } from 'src/app/kafaat/core/models/simple-model';
 import { PagedResponse } from 'src/app/kafaat/core/models/paged-response';
 import { EditCountryComponent } from '../edit-country/edit-country.component';
+import { DeleteCountryComponent } from '../delete-country/delete-country.component';
 
 @Component({
   selector: 'app-countries',
@@ -34,15 +35,7 @@ export class CountriesComponent implements OnInit ,AfterViewInit {
     // alert("page size : "+this.pagedRequest.pageSize)
     this.getPage();
   }
-  openDialog(): void {
-    const dialogRef = this.service.dialog.open(AddCountryComponent, {
-      width:this.windowWidth<767?'99%':(this.windowWidth<1300?'50%':'40%')
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      // this.animal = result;
-    });
-  }
+
   @ViewChild(MatPaginator) paginator: MatPaginator ;
 
   ngAfterViewInit() {
@@ -62,13 +55,32 @@ export class CountriesComponent implements OnInit ,AfterViewInit {
       }
     });
   }
+  addItem(): void {
+    const dialogRef = this.service.dialog.open(AddCountryComponent, {
+      width:this.windowWidth<767?'99%':(this.windowWidth<1300?'50%':'40%')
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.getPage();
+    });
+  }
   editItem(id:any){
     const dialogRef = this.service.dialog.open(EditCountryComponent, {
       width:this.windowWidth<767?'99%':(this.windowWidth<1300?'50%':'40%'),
       data:{id:id}
     });
+    dialogRef.afterClosed().subscribe(result => {
+      this.getPage();
+    });
   }
-  deleteItem(id:any){}
+  deleteItem(id:any){
+    const dialogRef = this.service.dialog.open(DeleteCountryComponent, {
+      width:this.windowWidth<767?'99%':(this.windowWidth<1300?'50%':'40%'),
+      data:{id:id}
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.getPage();
+    });
+  }
 }
 
 
