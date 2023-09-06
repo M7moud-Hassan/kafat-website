@@ -45,7 +45,7 @@ import { DeleteCountryComponent } from './components/delete-country/delete-count
       EditCountryComponent,
       CountriesComponent,
       DialogDeleteComponent,
-      DeleteCountryComponent
+      DeleteCountryComponent,
   ],
   imports: [
     CommonModule,
