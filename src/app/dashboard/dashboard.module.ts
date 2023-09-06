@@ -22,6 +22,7 @@ import { WorkTypesComponent } from './components/work-types/work-types.component
 import { AddCountryComponent } from './components/add-country/add-country.component';
 import { EditCountryComponent } from './components/edit-country/edit-country.component';
 import { CountriesComponent } from './components/countries/countries.component';
+import { DialogDeleteComponent } from './components/dialog-delete/dialog-delete.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { CountriesComponent } from './components/countries/countries.component';
       WorkTypesComponent,
       AddCountryComponent,
       EditCountryComponent,
-      CountriesComponent
+      CountriesComponent,
+      DialogDeleteComponent
   ],
   imports: [
     CommonModule,

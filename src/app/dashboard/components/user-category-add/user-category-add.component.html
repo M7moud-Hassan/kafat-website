@@ -19,6 +19,7 @@
             <small *ngIf="description?.hasError('required')"  class="text-danger">يجب وصف اسم التصنيف</small>
         </div>
     </div>
-    <button type="submit" routerLink="#" class="bg-primary-btn-block my-3 mb-4 p-2">حفــظ</button>
+    <button *ngIf="data" type="submit" routerLink="#" class="bg-primary-btn-block my-3 mb-4 p-2">تعديل</button>
+    <button *ngIf="!data" type="submit" routerLink="#" class="bg-primary-btn-block my-3 mb-4 p-2">حفــظ</button>
 </form>
 </div>

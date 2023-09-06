@@ -21,6 +21,10 @@ export class UserCategoryService {
     return this.http.post<PagedResponse>(`${environment.baseApiUrl}/${this.controllerName}/get-page`,data);
   }
 
+  update(data:any):Observable<ResponseVM>{
+    return this.http.put<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/Update`,data);
+  }
+
 
 
   

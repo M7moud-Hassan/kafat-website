@@ -7,10 +7,7 @@ import { UserCategory } from '../../services/user-category.service';
 import { catchError, throwError } from 'rxjs';
 
 
-export interface DialogData {
-  animal: string;
-  name: string;
-}
+
 @Component({
   selector: 'app-user-category-show',
   templateUrl: './user-category-show.component.html',
@@ -19,13 +16,12 @@ export interface DialogData {
   imports: [MatTableModule, MatPaginatorModule],
 })
 export class UserCategoryShowComponent implements OnInit {
-  animal: string;
-  name: string;
+  
   data: UserCategory[] = [];
   pageSize = 5;
   currentPage = 1;
   totalItems = 0; 
-  displayedColumns: string[] = ["id",'name','description'];
+  displayedColumns: string[] = ["id",'name','description','actions'];
   dataSource = new MatTableDataSource<UserCategory>(this.data);
 
   constructor(public service:MainDashoardService) {}
@@ -36,8 +32,7 @@ export class UserCategoryShowComponent implements OnInit {
   onPageChange(event: any): void {
     this.currentPage = event.pageIndex;
     this.pageSize = event.pageSize;
-    console.log(this.currentPage);
-    console.log(this.pageSize)
+  
 
     this.service.userCategoryService.getPage({
       "pageNumber":this.currentPage+1,
@@ -82,11 +77,7 @@ export class UserCategoryShowComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.service.dialog.open(UserCategoryAddComponent, {
-      data: {name: this.name, animal: this.animal},
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      this.animal = result;
+      
     });
   }
   @ViewChild(MatPaginator) paginator: MatPaginator ;
@@ -97,5 +88,14 @@ export class UserCategoryShowComponent implements OnInit {
    
   }
 
+  editItem(id:number){
+    const category=  this.dataSource.data.find(value=>value.id==id);
+    const dialogRef = this.service.dialog.open(UserCategoryAddComponent, {
+      data:category
+    });
+  }
   
+  deleteItem(id:number){
+
+  }
 }

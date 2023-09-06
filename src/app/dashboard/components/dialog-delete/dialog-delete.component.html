@@ -1,0 +1,12 @@
+<div class="text-end p-2">
+    <img (click)="closeDialog()" class="d-pointer" src="assets/images/close_dialog.svg" alt="">
+</div>
+<div class="pop-up-container">
+<div class="title-pop-up">{{data.title}}</div>
+<form (ngSubmit)="submit()">
+    <div>
+        <p class="text-danger">{{data.description}}</p>
+    </div>
+    <button  type="submit" routerLink="#" class="bg-primary-btn-block my-3 mb-4 p-2">مسح</button>
+</form>
+</div>
