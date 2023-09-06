@@ -15,14 +15,14 @@ export class UserCategoryAddComponent implements OnInit {
   form:FormGroup = new FormGroup({});
   constructor(private service:MainDashoardService,
     public dialogRef: MatDialogRef<UserCategoryAddComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: UserCategory,
+    @Inject(MAT_DIALOG_DATA) public data: any,
   private toastr: ToastrService) {}
   ngOnInit(): void {
     this.createForm();
   }
 
   createForm(){
-    if(this.data){
+    if(this.data.name){
     this.form = this.service.formBuilder.group({
       name:[this.data.name,[Validators.required]],
       description:[this.data.description,[Validators.required]],
@@ -46,7 +46,7 @@ export class UserCategoryAddComponent implements OnInit {
   }
   submit(){
     this.dialogRef.close();
-    if(this.data){
+    if(this.data.name){
       this.service.userCategoryService.update({...this.form.value,"id":this.data.id}).pipe(
         catchError((error) => {
           console.error(error);
@@ -56,6 +56,7 @@ export class UserCategoryAddComponent implements OnInit {
       ).subscribe(respone=>{
         if(respone.statusCode=="200"){
           this.toastr.success(respone.message)
+          this.data.fun();
         }else{
           this.toastr.error(respone.message)
         }
@@ -70,6 +71,7 @@ export class UserCategoryAddComponent implements OnInit {
     ).subscribe(respone=>{
       if(respone.statusCode=="200"){
         this.toastr.success(respone.message)
+        this.data.fun();
       }else{
         this.toastr.error(respone.message)
       }

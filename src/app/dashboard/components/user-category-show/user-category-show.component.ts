@@ -5,6 +5,7 @@ import { UserCategoryAddComponent } from '../user-category-add/user-category-add
 import { MainDashoardService } from '../../services/main-dashoard.service';
 import { UserCategory } from '../../services/user-category.service';
 import { catchError, throwError } from 'rxjs';
+import { DialogDeleteComponent } from '../dialog-delete/dialog-delete.component';
 
 
 
@@ -29,6 +30,25 @@ export class UserCategoryShowComponent implements OnInit {
     this.loadData();
   }
 
+  refreshPage(){
+    this.service.userCategoryService.getPage({
+      "pageNumber":this.currentPage+1,
+      "pageSize":this.pageSize
+    }).pipe(
+      catchError((error) => {
+        console.error(error);
+        this.service.toastService.error('افحص السرفر');
+        return throwError(error);
+      })
+    ).subscribe((response) => {
+      this.data = response.items;
+      this.currentPage = response.page-1;
+      this.pageSize = response.pageSize;
+      this.totalItems = response.totalCount;
+      this.dataSource= new MatTableDataSource<UserCategory>(this.data); 
+    });
+  }
+
   onPageChange(event: any): void {
     this.currentPage = event.pageIndex;
     this.pageSize = event.pageSize;
@@ -47,6 +67,7 @@ export class UserCategoryShowComponent implements OnInit {
       this.data = response.items;
       this.currentPage = response.page-1;
       this.pageSize = response.pageSize;
+      this.totalItems = response.totalCount;
       this.dataSource= new MatTableDataSource<UserCategory>(this.data); 
     });
   }
@@ -77,8 +98,12 @@ export class UserCategoryShowComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.service.dialog.open(UserCategoryAddComponent, {
-      
+      width:'50%',
+      data:{fun:()=>{
+        this.refreshPage();
+      }}
     });
+   
   }
   @ViewChild(MatPaginator) paginator: MatPaginator ;
   
@@ -91,11 +116,42 @@ export class UserCategoryShowComponent implements OnInit {
   editItem(id:number){
     const category=  this.dataSource.data.find(value=>value.id==id);
     const dialogRef = this.service.dialog.open(UserCategoryAddComponent, {
-      data:category
+      data:{...category,fun:()=>{
+        this.refreshPage()
+      }}
     });
   }
   
   deleteItem(id:number){
-
+    const category=  this.dataSource.data.find(value=>value.id==id);
+    const dialogRef = this.service.dialog.open(DialogDeleteComponent, {
+      width:'50%',
+      data:{
+        id:category.id,
+        name:category.name,
+        title:'حذف تصنيف',
+        label:'اسم التصنيف',
+        submit:()=>{
+          this.service.userCategoryService.delete(category.id).pipe(
+            catchError((error) => {
+              console.error(error);
+              this.service.toastService.error('افحص السرفر');
+              return throwError(error);
+            })
+          ).subscribe((response) => {
+            if(response.statusCode=="200"){
+              this.service.toastService.success(response.message)
+              this.refreshPage()
+            }else{
+              this.service.toastService.error(response.message);
+            }
+          });
+        }
+        ,
+        fun:()=>{
+          this.refreshPage();
+        }
+      },
+    });
   }
 }

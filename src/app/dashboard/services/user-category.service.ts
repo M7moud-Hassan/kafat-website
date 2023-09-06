@@ -24,6 +24,9 @@ export class UserCategoryService {
   update(data:any):Observable<ResponseVM>{
     return this.http.put<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/Update`,data);
   }
+  delete(id: number): Observable<ResponseVM> {
+    return this.http.delete<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/Delete/${id}`);
+  }
 
 
 
