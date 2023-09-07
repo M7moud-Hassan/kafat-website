@@ -37,7 +37,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     AddActivityTypeComponent,
     UpdateActivityTypeComponent,
     LoginComponent,
-
+    UserCategoryShowComponent,
     UserCategoryAddComponent,
       AddWorkTypeComponent,
       EditWorkTypeComponent,
@@ -55,7 +55,6 @@ import {NgxPaginationModule} from 'ngx-pagination';
     MatTableModule,
     ReactiveFormsModule,
     MatPaginatorModule,
-    UserCategoryShowComponent,
     MatCardModule,
     NgxPaginationModule
   ],

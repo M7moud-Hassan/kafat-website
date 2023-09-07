@@ -1,105 +1,57 @@
-import {  Component, OnInit, ViewChild } from '@angular/core';
-import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
-import {MatTableDataSource, MatTableModule} from '@angular/material/table';
+import {  AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import {MatPaginator} from '@angular/material/paginator';
 import { UserCategoryAddComponent } from '../user-category-add/user-category-add.component';
 import { MainDashoardService } from '../../services/main-dashoard.service';
-import { UserCategory } from '../../services/user-category.service';
 import { catchError, throwError } from 'rxjs';
 import { DialogDeleteComponent } from '../dialog-delete/dialog-delete.component';
-
-
+import { PagedResponse } from 'src/app/kafaat/core/models/paged-response';
+import { PagedRequest } from 'src/app/kafaat/core/models/paged-request';
 
 @Component({
   selector: 'app-user-category-show',
   templateUrl: './user-category-show.component.html',
-  styleUrls: ['./user-category-show.component.css'],
-  standalone: true,
-  imports: [MatTableModule, MatPaginatorModule],
+  styleUrls: ['./user-category-show.component.css']
 })
-export class UserCategoryShowComponent implements OnInit {
-  
-  data: UserCategory[] = [];
-  pageSize = 5;
-  currentPage = 1;
-  totalItems = 0; 
-  displayedColumns: string[] = ["id",'name','description','actions'];
-  dataSource = new MatTableDataSource<UserCategory>(this.data);
+export class UserCategoryShowComponent implements OnInit,AfterViewInit {
+  windowWidth: number = 0;
+  pageResponse:PagedResponse={page:1,pageSize:10,totalCount:10,hasNextPage:false,hasPreviousPage:false,items:[]};
+  pagedRequest:PagedRequest = {pageNumber:1,pageSize:5,name:''};
 
   constructor(public service:MainDashoardService) {}
   ngOnInit(): void {
-    this.loadData();
+    this.getPage();
   }
 
-  refreshPage(){
-    this.service.userCategoryService.getPage({
-      "pageNumber":this.currentPage,
-      "pageSize":this.pageSize
-    }).pipe(
-      catchError((error) => {
-        console.error(error);
-        this.service.toastService.error('افحص السرفر');
-        return throwError(error);
-      })
-    ).subscribe((response) => {
-      this.data = response.items;
-      this.pageSize = response.pageSize;
-      this.totalItems = response.totalCount;
-      this.dataSource= new MatTableDataSource<UserCategory>(this.data); 
+  ngAfterViewInit() {
+    this.windowWidth = window.innerWidth;
+  }
+
+  getPageByName(){
+    console.log("sskskks");
+    this.getPage(); 
+  }
+
+  changePageSize(){
+    this.pagedRequest.pageNumber = 1;
+    this.getPage();
+  }
+  changePageNumber(event:any){
+    this.pagedRequest.pageNumber = event;
+    this.getPage();
+  }
+  getPage(){
+    this.service.userCategoryService.getPage(this.pagedRequest).subscribe({
+      next:(res:PagedResponse)=>{
+          this.pageResponse = res;
+      }
     });
   }
-
-  onPageChange(event: any): void {
-    this.currentPage = event.pageIndex;
-    this.pageSize = event.pageSize;
-  
-
-    this.service.userCategoryService.getPage({
-      "pageNumber":this.currentPage+1,
-      "pageSize":this.pageSize
-    }).pipe(
-      catchError((error) => {
-        console.error(error);
-        this.service.toastService.error('افحص السرفر');
-        return throwError(error);
-      })
-    ).subscribe((response) => {
-      this.data = response.items;
-      this.currentPage = response.page-1;
-      this.pageSize = response.pageSize;
-      this.totalItems = response.totalCount;
-      this.dataSource= new MatTableDataSource<UserCategory>(this.data); 
-    });
-  }
-
-
-  loadData(): void {
-    this.service.userCategoryService.getPage({
-      "pageNumber":this.currentPage,
-      "pageSize":this.pageSize
-    }).pipe(
-      catchError((error) => {
-        console.error(error);
-        this.service.toastService.error('افحص السيرفر');
-        return throwError(error);
-      })
-    ).subscribe((response) => {
-      this.data = response.items;
-      console.log(this.data);
-      this.currentPage = response.page;
-      this.pageSize = response.pageSize;
-      this.totalItems = response.totalCount;
-      this.dataSource.data=this.data;
-    });
-
-
-  }
- 
 
   openDialog(): void {
     const dialogRef = this.service.dialog.open(UserCategoryAddComponent, {
       width:'50%',
       data:{fun:()=>{
-        this.refreshPage();
+        this.getPage();
       }}
     });
    
@@ -107,23 +59,20 @@ export class UserCategoryShowComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator ;
   
  
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-   
-  }
+  
 
   editItem(id:number){
-    const category=  this.dataSource.data.find(value=>value.id==id);
+    const category=  this.pageResponse.items.find(value=>value.id==id);
     const dialogRef = this.service.dialog.open(UserCategoryAddComponent, {
       width:'50%',
       data:{...category,fun:()=>{
-        this.refreshPage()
+         this.getPage()
       }}
     });
   }
   
   deleteItem(id:number){
-    const category=  this.dataSource.data.find(value=>value.id==id);
+    const category=  this.pageResponse.items.find(value=>value.id==id);
     const dialogRef = this.service.dialog.open(DialogDeleteComponent, {
       width:'50%',
       data:{
@@ -141,7 +90,7 @@ export class UserCategoryShowComponent implements OnInit {
           ).subscribe((response) => {
             if(response.statusCode=="200"){
               this.service.toastService.success(response.message)
-              this.refreshPage()
+               this.getPage()
             }else{
               this.service.toastService.error(response.message);
             }
@@ -149,7 +98,7 @@ export class UserCategoryShowComponent implements OnInit {
         }
         ,
         fun:()=>{
-          this.refreshPage();
+           this.getPage();
         }
       },
     });

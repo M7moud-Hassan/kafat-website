@@ -9,6 +9,8 @@ import { UserCategoryAddComponent } from '../user-category-add/user-category-add
 import { TypeActivity } from '../../services/type-activity.service';
 import { AddActivityComponent } from '../add-activity/add-activity.component';
 import { AddActivityTypeComponent } from '../add-activity-type/add-activity-type.component';
+import { PagedRequest } from 'src/app/kafaat/core/models/paged-request';
+import { PagedResponse } from 'src/app/kafaat/core/models/paged-response';
 
 @Component({
   selector: 'app-activity-types',
@@ -17,88 +19,44 @@ import { AddActivityTypeComponent } from '../add-activity-type/add-activity-type
 })
 export class ActivityTypesComponent implements OnInit {
   
-  data: TypeActivity[] = [];
-  pageSize = 5;
-  currentPage = 1;
-  totalItems = 0; 
-  displayedColumns: string[] = ["id",'type','description','actions'];
-  dataSource = new MatTableDataSource<TypeActivity>(this.data);
+  windowWidth: number = 0;
+  pageResponse:PagedResponse={page:1,pageSize:10,totalCount:10,hasNextPage:false,hasPreviousPage:false,items:[]};
+  pagedRequest:PagedRequest = {pageNumber:1,pageSize:5,name:''};
 
   constructor(public service:MainDashoardService) {}
   ngOnInit(): void {
-    this.loadData();
+    this.getPage();
   }
 
-  refreshPage(){
-    this.service.typeActivity.getPage({
-      "pageNumber":this.currentPage,
-      "pageSize":this.pageSize
-    }).pipe(
-      catchError((error) => {
-        console.error(error);
-        this.service.toastService.error('افحص السرفر');
-        return throwError(error);
-      })
-    ).subscribe((response) => {
-      this.data = response.items;
-     
-      this.pageSize = response.pageSize;
-      this.totalItems = response.totalCount;
-      this.dataSource= new MatTableDataSource<TypeActivity>(this.data); 
+  ngAfterViewInit() {
+    this.windowWidth = window.innerWidth;
+  }
+
+  getPageByName(){
+    this.getPage(); 
+  }
+
+  changePageSize(){
+    this.pagedRequest.pageNumber = 1;
+    this.getPage();
+  }
+  changePageNumber(event:any){
+    this.pagedRequest.pageNumber = event;
+    this.getPage();
+  }
+  getPage(){
+    this.service.typeActivity.getPage(this.pagedRequest).subscribe({
+      next:(res:PagedResponse)=>{
+          this.pageResponse = res;
+      }
     });
   }
-
-  onPageChange(event: any): void {
-    this.currentPage = event.pageIndex;
-    this.pageSize = event.pageSize;
-  
-
-    this.service.typeActivity.getPage({
-      "pageNumber": this.currentPage,
-      "pageSize":this.pageSize
-    }).pipe(
-      catchError((error) => {
-        console.error(error);
-        this.service.toastService.error('افحص السرفر');
-        return throwError(error);
-      })
-    ).subscribe((response) => {
-      this.data = response.items;
-      this.pageSize = response.pageSize;
-      this.totalItems = response.totalCount;
-      this.dataSource= new MatTableDataSource<TypeActivity>(this.data); 
-    });
-  }
-
-
-  loadData(): void {
-    this.service.typeActivity.getPage({
-      "pageNumber":this.currentPage,
-      "pageSize":this.pageSize
-    }).pipe(
-      catchError((error) => {
-        console.error(error);
-        this.service.toastService.error('افحص السرفر');
-        return throwError(error);
-      })
-    ).subscribe((response) => {
-      this.data = response.items;
-      console.log(this.data);
-      this.currentPage = response.page;
-      this.pageSize = response.pageSize;
-      this.totalItems = response.totalCount;
-      this.dataSource.data=this.data;
-    });
-
-
-  }
- 
 
   openDialog(): void {
     const dialogRef = this.service.dialog.open(AddActivityTypeComponent, {
       width:'50%',
       data:{fun:()=>{
-        this.refreshPage();
+        this.getPage();
       }}
     });
    
@@ -106,30 +64,27 @@ export class ActivityTypesComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator ;
   
  
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-   
-  }
+  
 
   editItem(id:number){
-    const category=  this.dataSource.data.find(value=>value.id==id);
+    const category=  this.pageResponse.items.find(value=>value.id==id);
     const dialogRef = this.service.dialog.open(AddActivityTypeComponent, {
       width:'50%',
       data:{...category,fun:()=>{
-        this.refreshPage()
+         this.getPage()
       }}
     });
   }
   
   deleteItem(id:number){
-    const category=  this.dataSource.data.find(value=>value.id==id);
+    const category=  this.pageResponse.items.find(value=>value.id==id);
     const dialogRef = this.service.dialog.open(DialogDeleteComponent, {
       width:'50%',
       data:{
         id:category.id,
         name:category.type,
-        title:'حذف نوع نشاط',
-        label:'اسم نوع نشاط',
+        title:'حذف نوع النشاط',
+        label:'اسم نوع النشاط',
         submit:()=>{
           this.service.typeActivity.delete(category.id).pipe(
             catchError((error) => {
@@ -140,7 +95,7 @@ export class ActivityTypesComponent implements OnInit {
           ).subscribe((response) => {
             if(response.statusCode=="200"){
               this.service.toastService.success(response.message)
-              this.refreshPage()
+               this.getPage()
             }else{
               this.service.toastService.error(response.message);
             }
@@ -148,7 +103,7 @@ export class ActivityTypesComponent implements OnInit {
         }
         ,
         fun:()=>{
-          this.refreshPage();
+           this.getPage();
         }
       },
     });
