@@ -1,18 +1,18 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { MainDashoardService } from '../../services/main-dashoard.service';
-import { AddCountryComponent } from '../add-country/add-country.component';
 import { PagedRequest } from 'src/app/kafaat/core/models/paged-request';
 import { PagedResponse } from 'src/app/kafaat/core/models/paged-response';
-import { EditCountryComponent } from '../edit-country/edit-country.component';
+import { MainDashoardService } from '../../services/main-dashoard.service';
+import { AddCityComponent } from '../add-city/add-city.component';
+import { EditCityComponent } from '../edit-city/edit-city.component';
 import { DialogDeleteComponent } from '../dialog-delete/dialog-delete.component';
 import { catchError, throwError } from 'rxjs';
 
 @Component({
-  selector: 'app-countries',
-  templateUrl: './countries.component.html',
-  styleUrls: ['./countries.component.css']
+  selector: 'app-cities',
+  templateUrl: './cities.component.html',
+  styleUrls: ['./cities.component.css']
 })
-export class CountriesComponent implements OnInit ,AfterViewInit {
+export class CitiesComponent implements OnInit ,AfterViewInit {
   windowWidth: number = 0;
   pageResponse:PagedResponse={page:1,pageSize:10,totalCount:10,hasNextPage:false,hasPreviousPage:false,items:[]};
   pagedRequest:PagedRequest = {pageNumber:1,pageSize:5,name:''};
@@ -38,14 +38,14 @@ export class CountriesComponent implements OnInit ,AfterViewInit {
     this.getPage();
   }
   getPage(){
-    this.service.countryService.getPage(this.pagedRequest).subscribe({
+    this.service.cityService.getPage(this.pagedRequest).subscribe({
       next:(res:PagedResponse)=>{
           this.pageResponse = res;
       }
     });
   }
   addItem(): void {
-    const dialogRef = this.service.dialog.open(AddCountryComponent, {
+    const dialogRef = this.service.dialog.open(AddCityComponent, {
       width:this.windowWidth<767?'99%':(this.windowWidth<1300?'50%':'40%')
     });
     dialogRef.afterClosed().subscribe(result => {
@@ -53,7 +53,7 @@ export class CountriesComponent implements OnInit ,AfterViewInit {
     });
   }
   editItem(id:any){
-    const dialogRef = this.service.dialog.open(EditCountryComponent, {
+    const dialogRef = this.service.dialog.open(EditCityComponent, {
       width:this.windowWidth<767?'99%':(this.windowWidth<1300?'50%':'40%'),
       data:{id:id}
     });
@@ -69,10 +69,10 @@ export class CountriesComponent implements OnInit ,AfterViewInit {
       data:{
         id:element.id,
         name:element.name,
-        title:'حذف دولة',
-        label:'اسم الدولة',
+        title:'حذف مدينة',
+        label:'اسم المدينة',
         submit:()=>{
-          this.service.countryService.delete(element.id).pipe(
+          this.service.cityService.delete(element.id).pipe(
             catchError((error) => {
               console.error(error);
               this.service.toastService.error('افحص السيرفر');
@@ -81,6 +81,7 @@ export class CountriesComponent implements OnInit ,AfterViewInit {
           ).subscribe((response) => {
             if(response.statusCode=="200"){
               this.service.toastService.success(response.message)
+              this.pagedRequest.name='';
               this.getPage();
             }else{
               this.service.toastService.error(response.message);
@@ -92,6 +93,10 @@ export class CountriesComponent implements OnInit ,AfterViewInit {
            this.getPage();
         }
       },
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.pagedRequest.name='';
+      this.getPage();
     });
   }
 }

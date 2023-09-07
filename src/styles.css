@@ -722,3 +722,17 @@ height: 76px;
 .tableData{
   text-align: center;
 }
+.emptyData{
+  min-height: calc(50vh);
+  width: 100%;
+  background: url('/assets/images/empty.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  color: var(--dark-default-color);
+  font-size: 30px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -13,7 +13,7 @@ import { MainDashoardService } from './main-dashoard.service';
 export class CountryService {
   controllerName:string = 'country';
   constructor(private http:HttpClient) { }
-  getAllCountries():Observable<ResponseVM>{
+  getAll():Observable<ResponseVM>{
     return this.http.get<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/get-all`);
   }
   getPage(data:any):Observable<PagedResponse>{
