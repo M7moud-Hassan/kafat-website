@@ -5,11 +5,12 @@ import { PagedResponse } from 'src/app/kafaat/core/models/paged-response';
 import { ResponseVM } from 'src/app/kafaat/core/models/response-vm';
 import { environment } from 'src/environments/environment.prod';
 
+
 @Injectable({
   providedIn: 'root'
 })
-export class CountryService {
-  controllerName:string = 'country';
+export class DistinguishedTypeService {
+  controllerName:string = 'distinguishedType';
   constructor(private http:HttpClient) { }
   getAll():Observable<ResponseVM>{
     return this.http.get<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/get-all`);
@@ -30,3 +31,4 @@ export class CountryService {
     return this.http.delete<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/delete?id=${id}`);
   }
 }
+

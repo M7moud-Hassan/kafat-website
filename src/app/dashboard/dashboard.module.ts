@@ -40,6 +40,12 @@ import { DepartmentsComponent } from './components/departments/departments.compo
 import { SpecializationsComponent } from './components/specializations/specializations.component';
 import { EditSpecializationComponent } from './components/edit-specialization/edit-specialization.component';
 import { AddSpecializationsComponent } from './components/add-specializations/add-specializations.component';
+import { DistinguishedTypesComponent } from './components/distinguished-types/distinguished-types.component';
+import { AddDistinguishedTypesComponent } from './components/add-distinguished-types/add-distinguished-types.component';
+import { EditDistinguishedTypesComponent } from './components/edit-distinguished-types/edit-distinguished-types.component';
+import { AddFamilyBranchComponent } from './components/add-family-branch/add-family-branch.component';
+import { EditFamilyBranchComponent } from './components/edit-family-branch/edit-family-branch.component';
+import { FamilyBranchesComponent } from './components/family-branches/family-branches.component';
 
 
 @NgModule({
@@ -77,6 +83,12 @@ import { AddSpecializationsComponent } from './components/add-specializations/ad
       SpecializationsComponent,
       EditSpecializationComponent,
       AddSpecializationsComponent,
+      DistinguishedTypesComponent,
+      AddDistinguishedTypesComponent,
+      EditDistinguishedTypesComponent,
+      AddFamilyBranchComponent,
+      EditFamilyBranchComponent,
+      FamilyBranchesComponent,
   ],
   imports: [
     CommonModule,

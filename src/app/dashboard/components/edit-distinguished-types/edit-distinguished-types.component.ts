@@ -1,60 +1,42 @@
-import { AfterViewInit, Component, Inject, OnInit } from '@angular/core';
-import { FormGroup, Validators } from '@angular/forms';
-import { ResponseVM } from 'src/app/kafaat/core/models/response-vm';
+import { AfterViewInit, Component, Inject, Input, OnInit } from '@angular/core';
 import { MainDashoardService } from '../../services/main-dashoard.service';
+import { ResponseVM } from 'src/app/kafaat/core/models/response-vm';
+import { FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-edit-department',
-  templateUrl: './edit-department.component.html',
-  styleUrls: ['../add-country/add-country.component.css','./edit-department.component.css']
+  selector: 'app-edit-distinguished-types',
+  templateUrl: './edit-distinguished-types.component.html',
+  styleUrls: ['../add-country/add-country.component.css','./edit-distinguished-types.component.css']
 })
-export class EditDepartmentComponent  implements OnInit, AfterViewInit {
+export class EditDistinguishedTypesComponent implements OnInit, AfterViewInit {
   id:number = 0 ;
-  subItems:any;
   form:FormGroup = new FormGroup({});
-  constructor(private service:MainDashoardService,private dialogRef: MatDialogRef<EditDepartmentComponent>,@Inject(MAT_DIALOG_DATA) public data: any){
+  constructor(private service:MainDashoardService,private dialogRef: MatDialogRef<EditDistinguishedTypesComponent>,@Inject(MAT_DIALOG_DATA) public data: any){
     this.id = data.id;
   }
   ngAfterViewInit(): void {
     this.loadData();
-    this.getSubItems();
   }
   ngOnInit(): void {
     this.createForm();
   }
-  getSubItems(){
-    this.service.specializationService.getAll().subscribe({
-      next:(res:ResponseVM)=>{
-        if(res.statusCode==200){
-          this.subItems = res.data;
-        }else{
-          this.service.toastService.error(res.message);
-        }
-      }
-    })
-  }
-  
   createForm(){
     this.form = this.service.formBuilder.group({
-      id:['',[Validators.required]],
+      id:[0,[Validators.required]],
       name:['',[Validators.required]],
-      specializationId:['',[Validators.required]],
     });
   }
   get name(){
     return this.form.controls['name'];
   }
-  get specializationId(){
-    return this.form.controls['specializationId'];
-  }
   loadData(){
-    this.service.departmentService.getById(this.id).subscribe({
+    this.service.distinguishedTypeService.getById(this.id).subscribe({
       next:(res:ResponseVM)=>{
         if(res.statusCode==200){
           this.form.patchValue(res.data);
         }else{
-          this.service.toastService.error(res.message);
+          this.service.toastService.error(res.error);
         }
       },
       error:(error)=>{
@@ -65,7 +47,7 @@ export class EditDepartmentComponent  implements OnInit, AfterViewInit {
   submit() {
     // this.service.printFormValues(this.form);
     if(this.form.valid){
-      this.service.departmentService.update(this.form.value).subscribe({
+      this.service.distinguishedTypeService.update(this.form.value).subscribe({
         next:(response:ResponseVM)=>{
           if(response.statusCode==200){
             this.service.toastService.success(response.message);
@@ -85,4 +67,3 @@ export class EditDepartmentComponent  implements OnInit, AfterViewInit {
   }
 
 }
-

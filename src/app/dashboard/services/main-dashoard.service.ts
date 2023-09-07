@@ -12,6 +12,9 @@ import { TypeActivityService } from './type-activity.service';
 import { QualificationService } from './qualification.service';
 import { SpecializationService } from './specialization.service';
 import { DepartmentService } from './department.service';
+import { WorkTypeService } from './work-type.service';
+import { DistinguishedTypeService } from './distinguished-type.service';
+import { FamilyBranchService } from './family-branch.service';
 ;
 
 @Injectable({
@@ -34,6 +37,9 @@ export class MainDashoardService {
     private _qualificationService :QualificationService,
     private _specializationService :SpecializationService,
     private _departmentService :DepartmentService,
+    private _workTypeService :WorkTypeService,
+    private _distinguishedTypeService :DistinguishedTypeService,
+    private _familyBranchService :FamilyBranchService,
     ) { }
 
   get formBuilder(): FormBuilder {
@@ -76,6 +82,16 @@ export class MainDashoardService {
   }
   get departmentService(): DepartmentService {
     return this._departmentService;
+  }
+
+  get workTypeService(): WorkTypeService {
+    return this._workTypeService;
+  }
+  get distinguishedTypeService(): DistinguishedTypeService {
+    return this._distinguishedTypeService;
+  }
+  get familyBranchService(): FamilyBranchService {
+    return this._familyBranchService;
   }
 
 

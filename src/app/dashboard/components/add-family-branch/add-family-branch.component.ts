@@ -3,14 +3,15 @@ import { FormGroup, Validators } from '@angular/forms';
 import { MainDashoardService } from '../../services/main-dashoard.service';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ResponseVM } from 'src/app/kafaat/core/models/response-vm';
+
 @Component({
-  selector: 'app-add-work-type',
-  templateUrl: './add-work-type.component.html',
-  styleUrls: ['../add-country/add-country.component.css','./add-work-type.component.css']
+  selector: 'app-add-family-branch',
+  templateUrl: './add-family-branch.component.html',
+  styleUrls: ['../add-country/add-country.component.css','./add-family-branch.component.css']
 })
-export class AddWorkTypeComponent implements OnInit {
+export class AddFamilyBranchComponent implements OnInit {
   form:FormGroup = new FormGroup({});
-  constructor(private service:MainDashoardService,private dialogRef: MatDialogRef<AddWorkTypeComponent>){}
+  constructor(private service:MainDashoardService,private dialogRef: MatDialogRef<AddFamilyBranchComponent>){}
   ngOnInit(): void {
     this.createForm();
   }
@@ -25,7 +26,7 @@ export class AddWorkTypeComponent implements OnInit {
   submit() {
     // this.service.printFormValues(this.form);
     if(this.form.valid){
-      this.service.workTypeService.add(this.form.value).subscribe({
+      this.service.familyBranchService.add(this.form.value).subscribe({
         next:(response:ResponseVM)=>{
           if(response.statusCode==200){
             this.service.toastService.success(response.message);

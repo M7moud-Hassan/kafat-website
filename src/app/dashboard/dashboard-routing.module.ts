@@ -21,6 +21,8 @@ import { DistrictsComponent } from './components/districts/districts.component';
 import { QualificationsComponent } from './components/qualifications/qualifications.component';
 import { SpecializationsComponent } from './components/specializations/specializations.component';
 import { DepartmentsComponent } from './components/departments/departments.component';
+import { DistinguishedTypesComponent } from './components/distinguished-types/distinguished-types.component';
+import { FamilyBranchesComponent } from './components/family-branches/family-branches.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -45,6 +47,10 @@ const routes: Routes = [
   {path:'qualifications',component:QualificationsComponent},
   {path:'specializations',component:SpecializationsComponent},
   {path:'departments',component:DepartmentsComponent},
+
+  {path:'workTypes',component:WorkTypesComponent},
+  {path:'distinguishedTypes',component:DistinguishedTypesComponent},
+  {path:'familyBranches',component:FamilyBranchesComponent},
 
 ];
 

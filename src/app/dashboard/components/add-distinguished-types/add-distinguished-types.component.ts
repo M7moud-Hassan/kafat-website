@@ -3,14 +3,15 @@ import { FormGroup, Validators } from '@angular/forms';
 import { MainDashoardService } from '../../services/main-dashoard.service';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ResponseVM } from 'src/app/kafaat/core/models/response-vm';
+
 @Component({
-  selector: 'app-add-work-type',
-  templateUrl: './add-work-type.component.html',
-  styleUrls: ['../add-country/add-country.component.css','./add-work-type.component.css']
+  selector: 'app-add-distinguished-types',
+  templateUrl: './add-distinguished-types.component.html',
+  styleUrls: ['../add-country/add-country.component.css','./add-distinguished-types.component.css']
 })
-export class AddWorkTypeComponent implements OnInit {
+export class AddDistinguishedTypesComponent implements OnInit {
   form:FormGroup = new FormGroup({});
-  constructor(private service:MainDashoardService,private dialogRef: MatDialogRef<AddWorkTypeComponent>){}
+  constructor(private service:MainDashoardService,private dialogRef: MatDialogRef<AddDistinguishedTypesComponent>){}
   ngOnInit(): void {
     this.createForm();
   }
@@ -25,7 +26,7 @@ export class AddWorkTypeComponent implements OnInit {
   submit() {
     // this.service.printFormValues(this.form);
     if(this.form.valid){
-      this.service.workTypeService.add(this.form.value).subscribe({
+      this.service.distinguishedTypeService.add(this.form.value).subscribe({
         next:(response:ResponseVM)=>{
           if(response.statusCode==200){
             this.service.toastService.success(response.message);

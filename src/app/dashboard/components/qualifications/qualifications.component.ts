@@ -69,8 +69,8 @@ export class QualificationsComponent implements OnInit ,AfterViewInit {
       data:{
         id:element.id,
         name:element.name,
-        title:'حذف دولة',
-        label:'اسم الدولة',
+        title:'حذف مؤهل',
+        label:'اسم المؤهل',
         submit:()=>{
           this.service.qualificationService.delete(element.id).pipe(
             catchError((error) => {
