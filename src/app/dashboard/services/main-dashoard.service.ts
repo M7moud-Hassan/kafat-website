@@ -9,6 +9,9 @@ import { CityService } from './city.service';
 import { DistrictService } from './district.service';
 import { ToastrService } from 'ngx-toastr';import { UserCategoryService } from './user-category.service';
 import { TypeActivityService } from './type-activity.service';
+import { QualificationService } from './qualification.service';
+import { SpecializationService } from './specialization.service';
+import { DepartmentService } from './department.service';
 ;
 
 @Injectable({
@@ -27,7 +30,10 @@ export class MainDashoardService {
     private _districtService:DistrictService,
     private _toastService:ToastrService,
     private _userCategoryService:UserCategoryService,
-    private _typeActivity :TypeActivityService
+    private _typeActivity :TypeActivityService,
+    private _qualificationService :QualificationService,
+    private _specializationService :SpecializationService,
+    private _departmentService :DepartmentService,
     ) { }
 
   get formBuilder(): FormBuilder {
@@ -60,6 +66,16 @@ export class MainDashoardService {
   }
   get toastService(): ToastrService {
     return this._toastService;
+  }
+
+  get qualificationService(): QualificationService {
+    return this._qualificationService;
+  }
+  get specializationService(): SpecializationService {
+    return this._specializationService;
+  }
+  get departmentService(): DepartmentService {
+    return this._departmentService;
   }
 
 
