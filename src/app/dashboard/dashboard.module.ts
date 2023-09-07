@@ -52,7 +52,7 @@ import { AddSpecializationsComponent } from './components/add-specializations/ad
     AddActivityTypeComponent,
     UpdateActivityTypeComponent,
     LoginComponent,
-
+    UserCategoryShowComponent,
     UserCategoryAddComponent,
       AddWorkTypeComponent,
       EditWorkTypeComponent,
@@ -85,7 +85,6 @@ import { AddSpecializationsComponent } from './components/add-specializations/ad
     MatTableModule,
     ReactiveFormsModule,
     MatPaginatorModule,
-    UserCategoryShowComponent,
     MatCardModule,
     NgxPaginationModule
   ],
