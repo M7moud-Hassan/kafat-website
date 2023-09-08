@@ -25,6 +25,8 @@ import { CountriesComponent } from './components/countries/countries.component';
 import { DialogDeleteComponent } from './components/dialog-delete/dialog-delete.component';
 import { DeleteCountryComponent } from './components/delete-country/delete-country.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { ProgramsComponent } from './components/programs/programs.component';
+import { AddProgramComponent } from './components/add-program/add-program.component';
 
 
 @NgModule({
@@ -47,6 +49,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
       CountriesComponent,
       DialogDeleteComponent,
       DeleteCountryComponent,
+      ProgramsComponent,
+      AddProgramComponent,
   ],
   imports: [
     CommonModule,
