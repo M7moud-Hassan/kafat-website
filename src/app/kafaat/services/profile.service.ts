@@ -11,7 +11,9 @@ import { IProfile } from '../core/models/Iprofile';
 export class ProfileService {
   controllerName:string = 'account';
   constructor(private http:HttpClient) {}
-  
+  register(model:any):Observable<ResponseVM>{
+    return this.http.post<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/register`,model);
+  }
   editProfile(model:any):Observable<ResponseVM>{
     return this.http.post<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/`,model);
   }

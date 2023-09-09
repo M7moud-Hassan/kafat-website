@@ -29,7 +29,7 @@ export class SpecializationService {
   delete(id:any):Observable<ResponseVM>{
     return this.http.delete<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/delete?id=${id}`);
   }
-  getAllByCountryId(id:any):Observable<ResponseVM>{
+  getAllByQualificationId(id:any):Observable<ResponseVM>{
     return this.http.get<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/get-by-qualification-id/${id}`);
   }
 }

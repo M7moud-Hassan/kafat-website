@@ -15,6 +15,7 @@ import { DepartmentService } from './department.service';
 import { WorkTypeService } from './work-type.service';
 import { DistinguishedTypeService } from './distinguished-type.service';
 import { FamilyBranchService } from './family-branch.service';
+import { UploadFileService } from './upload-file.service';
 ;
 
 @Injectable({
@@ -40,6 +41,7 @@ export class MainDashoardService {
     private _workTypeService :WorkTypeService,
     private _distinguishedTypeService :DistinguishedTypeService,
     private _familyBranchService :FamilyBranchService,
+    private _uploadFileService :UploadFileService,
     ) { }
 
   get formBuilder(): FormBuilder {
@@ -92,6 +94,9 @@ export class MainDashoardService {
   }
   get familyBranchService(): FamilyBranchService {
     return this._familyBranchService;
+  }
+  get uploadFileService(): UploadFileService {
+    return this._uploadFileService;
   }
 
 

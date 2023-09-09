@@ -30,7 +30,7 @@ export class DepartmentService  {
   delete(id:any):Observable<ResponseVM>{
     return this.http.delete<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/delete?id=${id}`);
   }
-  getAllByCityId(id:any):Observable<ResponseVM>{
+  getAllBySpecializationId(id:any):Observable<ResponseVM>{
     return this.http.get<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/get-by-specialization-id/${id}`);
   }
 }
