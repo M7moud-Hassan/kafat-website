@@ -16,6 +16,7 @@ import { WorkTypesComponent } from './components/work-types/work-types.component
 import { EditCountryComponent } from './components/edit-country/edit-country.component';
 import { AddCountryComponent } from './components/add-country/add-country.component';
 import { CountriesComponent } from './components/countries/countries.component';
+import { ProgramsComponent } from './components/programs/programs.component';
 import { CitiesComponent } from './components/cities/cities.component';
 import { DistrictsComponent } from './components/districts/districts.component';
 import { QualificationsComponent } from './components/qualifications/qualifications.component';
@@ -31,15 +32,16 @@ const routes: Routes = [
   {path:'update-activity/:id',component:UpdateActivityComponent},
   {path:'user-category-show',component:UserCategoryShowComponent},
   {path:'user-category-add',component:UserCategoryAddComponent},
-
+  {path:'programs',component:ProgramsComponent},
   {path:'types-activity',component:ActivityTypesComponent},
   {path:'add-activityType',component:AddActivityTypeComponent},
   {path:'update-activityType/:id',component:UpdateActivityTypeComponent},
-
   {path:'update-work-type/:id',component:EditWorkTypeComponent},
   {path:'add-work-type',component:AddWorkTypeComponent},
   {path:'work-types',component:WorkTypesComponent},
-
+  {path:'update-country/:id',component:EditCountryComponent},
+  {path:'add-country',component:AddCountryComponent},
+  {path:'countries',component:CountriesComponent},
   {path:'countries',component:CountriesComponent},
   {path:'cities',component:CitiesComponent},
   {path:'districts',component:DistrictsComponent},
@@ -51,7 +53,6 @@ const routes: Routes = [
   {path:'workTypes',component:WorkTypesComponent},
   {path:'distinguishedTypes',component:DistinguishedTypesComponent},
   {path:'familyBranches',component:FamilyBranchesComponent},
-
 ];
 
 @NgModule({

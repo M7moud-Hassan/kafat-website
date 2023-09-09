@@ -25,6 +25,8 @@ import { CountriesComponent } from './components/countries/countries.component';
 import { DialogDeleteComponent } from './components/dialog-delete/dialog-delete.component';
 import { DeleteCountryComponent } from './components/delete-country/delete-country.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { ProgramsComponent } from './components/programs/programs.component';
+import { AddProgramComponent } from './components/add-program/add-program.component';
 import { CitiesComponent } from './components/cities/cities.component';
 import { AddCityComponent } from './components/add-city/add-city.component';
 import { EditCityComponent } from './components/edit-city/edit-city.component';
@@ -46,8 +48,15 @@ import { EditDistinguishedTypesComponent } from './components/edit-distinguished
 import { AddFamilyBranchComponent } from './components/add-family-branch/add-family-branch.component';
 import { EditFamilyBranchComponent } from './components/edit-family-branch/edit-family-branch.component';
 import { FamilyBranchesComponent } from './components/family-branches/family-branches.component';
-
-
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatButtonModule} from '@angular/material/button';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
+import { NgxMatDatetimePickerModule, NgxMatTimepickerModule, NgxMatNativeDateModule } from '@angular-material-components/datetime-picker';
+import { MatSelectModule } from '@angular/material/select';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -68,6 +77,8 @@ import { FamilyBranchesComponent } from './components/family-branches/family-bra
       CountriesComponent,
       DialogDeleteComponent,
       DeleteCountryComponent,
+      ProgramsComponent,
+      AddProgramComponent,
       CitiesComponent,
       AddCityComponent,
       EditCityComponent,
@@ -98,7 +109,18 @@ import { FamilyBranchesComponent } from './components/family-branches/family-bra
     ReactiveFormsModule,
     MatPaginatorModule,
     MatCardModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatButtonModule,
+    MatStepperModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    NgxMatDatetimePickerModule,
+    NgxMatTimepickerModule,
+    NgxMatNativeDateModule,
+    NgxMatSelectSearchModule,
+    MatSelectModule
   ],
   providers:[
   ]

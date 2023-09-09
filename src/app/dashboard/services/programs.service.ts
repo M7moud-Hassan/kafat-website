@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { PagedResponse } from 'src/app/kafaat/core/models/paged-response';
@@ -8,19 +8,21 @@ import { environment } from 'src/environments/environment.prod';
 @Injectable({
   providedIn: 'root'
 })
-export class TypeActivityService{
- controllerName:String="ActivityType"
-constructor(private http:HttpClient) { 
+export class ProgramsService {
 
-}
+  controllerName:String="Program"
+
+  constructor(private http:HttpClient) { 
+
+  }
 add(data:any):Observable<ResponseVM>{
-  return this.http.post<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/Add`,data);
+  console.log(data)
+  return this.http.post<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/add`,data);
 }
 
 getPage(data:any):Observable<PagedResponse>{
   return this.http.post<PagedResponse>(`${environment.baseApiUrl}/${this.controllerName}/get-page`,data);
 }
-
 getAll():Observable<ResponseVM>{
   return this.http.get<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/get-all`);
 }
@@ -33,11 +35,4 @@ delete(id: number): Observable<ResponseVM> {
 }
 
 
-
-
-}
-export interface TypeActivity{
-id:number;
-type:String; 
-description:String
 }

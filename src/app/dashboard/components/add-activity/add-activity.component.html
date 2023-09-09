@@ -1,0 +1,239 @@
+<mat-stepper orientation="vertical" [linear]="isLinear" #stepper>
+    <mat-step [stepControl]="group1">
+        <form [formGroup]="group1">
+            <ng-template matStepLabel>معلومات المنشط</ng-template>
+
+            <div class="row g-3">
+                <div class="col-12 col-md-6">
+                    <mat-form-field class="w-100">
+                        <mat-label class="input-label" for="name">نوع النشاط</mat-label>
+                        <input matInput formControlName="name" type="text" name="name" id="name"
+                            [class.is-invalid]="name?.invalid && name?.touched" [class.is-valid]="name?.valid"
+                            class="form-control">
+                        <div *ngIf="name?.errors && name?.touched">
+                            <small *ngIf="name?.hasError('required')" class="text-danger">يجب ادخال اسم التصنيف</small>
+                        </div>
+                    </mat-form-field>
+
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <mat-form-field class="w-100">
+                        <mat-label class="input-label" for="place">مكان النشاط</mat-label>
+                        <input matInput formControlName="place" type="text" name="place" id="place"
+                            [class.is-invalid]="place?.invalid && place?.touched" [class.is-valid]="place?.valid"
+                            class="form-control">
+                        <div *ngIf="place?.errors && place?.touched">
+                            <small *ngIf="place?.hasError('required')" class="text-danger">يجب ادخال اسم التصنيف</small>
+                        </div>
+                    </mat-form-field>
+                </div>
+
+
+
+                <div class="col-12 col-md-12">
+                    <mat-form-field class="w-100">
+                        <mat-label class="input-label" for="description">وصف المنشط</mat-label>
+                        <textarea matInput formControlName="description" type="text" name="description" id="description"
+                            [class.is-invalid]="description?.invalid && description?.touched"
+                            [class.is-valid]="description?.valid" class="form-control"></textarea>
+                        <div *ngIf="description?.errors && description?.touched">
+                            <small *ngIf="description?.hasError('required')" class="text-danger">يجب ادخال اسم
+                                التصنيف</small>
+                        </div>
+                    </mat-form-field>
+
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <mat-form-field class="w-100">
+                        <mat-label class="input-label" for="date">تاريخ المنشط</mat-label>
+                        <input matInput [matDatepicker]="picker" formControlName="date" name="date"
+                            placeholder="DD/MM/YYYY" id="date" [class.is-invalid]="date?.invalid && date?.touched"
+                            [class.is-valid]="date?.valid" class="form-control">
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <mat-form-field class="w-100">
+                        <mat-label class="input-label" for="from"> من تاريخ</mat-label>
+                        <input matInput [ngxMatDatetimePicker]="picker1" formControlName="from" name="from"
+                            placeholder="DD/MM/YYYY :HH:MM:SS" id="from"
+                            [class.is-invalid]="from?.invalid && from?.touched" [class.is-valid]="from?.valid"
+                            class="form-control" [min]="minDate" [max]="maxDate" [disabled]="disabled">
+                        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                        <ngx-mat-datetime-picker #picker1 [showSpinners]="showSpinners" [showSeconds]="showSeconds"
+                            [stepHour]="stepHour" [stepMinute]="stepMinute" [stepSecond]="stepSecond"
+                            [touchUi]="touchUi" [color]="color" [enableMeridian]="enableMeridian">
+                        </ngx-mat-datetime-picker>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <mat-form-field class="w-100">
+                        <mat-label class="input-label" for="to"> الي تاريخ</mat-label>
+                        <input matInput [ngxMatDatetimePicker]="picker2" formControlName="to" name="to"
+                            placeholder="DD/MM/YYYY :HH:MM:SS" id="to" [class.is-invalid]="to?.invalid && to?.touched"
+                            [class.is-valid]="to?.valid" class="form-control" [min]="minDate" [max]="maxDate"
+                            [disabled]="disabled">
+                        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                        <ngx-mat-datetime-picker #picker2 [showSpinners]="showSpinners" [showSeconds]="showSeconds"
+                            [stepHour]="stepHour" [stepMinute]="stepMinute" [stepSecond]="stepSecond"
+                            [touchUi]="touchUi" [color]="color" [enableMeridian]="enableMeridian">
+                        </ngx-mat-datetime-picker>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div>
+                <button mat-button matStepperNext>التالي</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="group2">
+        <form [formGroup]="group2">
+            <ng-template matStepLabel>السعر وعدد المشاركين والفئة </ng-template>
+            <div class="row g-3 mt-2">
+                <div class="col-12 col-md-6">
+                    <mat-form-field class="w-100">
+                        <mat-label class="input-label" for="maximumParticipants"> عدد المشاركين</mat-label>
+                        <input matInput formControlName="maximumParticipants" type="number" name="maximumParticipants"
+                            id="maximumParticipants"
+                            [class.is-invalid]="maximumParticipants?.invalid && maximumParticipants?.touched"
+                            [class.is-valid]="maximumParticipants?.valid" class="form-control">
+                        <div *ngIf="maximumParticipants?.errors && maximumParticipants?.touched">
+                            <small *ngIf="maximumParticipants?.hasError('required')" class="text-danger">عدد المشاركين
+                                مطلوب</small>
+                        </div>
+                    </mat-form-field>
+
+                </div>
+                <div class="col-12 col-md-6">
+                    <mat-form-field class="w-100">
+                        <mat-label class="input-label" for="ticketPrice"> سعر المشاركة </mat-label>
+                        <input matInput formControlName="ticketPrice" type="number" name="ticketPrice" id="ticketPrice"
+                            [class.is-invalid]="ticketPrice?.invalid && ticketPrice?.touched"
+                            [class.is-valid]="ticketPrice?.valid" class="form-control">
+                        <div *ngIf="ticketPrice?.errors && ticketPrice?.touched">
+                            <small *ngIf="ticketPrice?.hasError('required')" class="text-danger"> السعر المشاركة</small>
+                        </div>
+                    </mat-form-field>
+
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <mat-form-field class="w-100">
+                        <mat-label class="input-label" for="imagePath"> اختار صورة للمنشط </mat-label>
+                        <input matInput readonly type="text" [value]="fileName" (click)="hiddenInput.click()" formControlName="imagePath"
+                            name="imagePath" id="imagePath"
+                            [class.is-invalid]="imagePath?.invalid && imagePath?.touched"
+                            [class.is-valid]="imagePath?.valid" class="form-control">
+                            <div *ngIf="imagePath?.errors && imagePath?.touched">
+                                <small *ngIf="imagePath?.hasError('required')" class="text-danger">  صورة للمنشط مطلوبة</small>
+                            </div>
+                        <input hidden type="file" accept=".csv" #hiddenInput (change)="GetFileOnLoad($event)">
+                        <mat-icon matSuffix>folder_open</mat-icon>
+                    </mat-form-field>
+
+
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <mat-form-field class="w-100">
+                        <mat-select formControlName="ActivityTypeId" placeholder="نوع النشاط" #singleSelect name="ActivityTypeId" id="ActivityTypeId"
+                        [class.is-invalid]="ActivityTypeId?.invalid && ActivityTypeId?.touched"
+                        [class.is-valid]="ActivityTypeId?.valid">
+                            <mat-option>
+                                <ngx-mat-select-search [formControl]="filterInput0"
+                                    placeholderLabel="البحث عن نوع نشاط"></ngx-mat-select-search>
+                            </mat-option>
+                            <mat-option *ngFor="let element of activityTypes" [value]="element.id">
+                                {{element.type}}
+                            </mat-option>
+                        </mat-select>
+                        <div *ngIf="ActivityTypeId?.errors && ActivityTypeId?.touched">
+                            <small *ngIf="ActivityTypeId?.hasError('required')" class="text-danger">    يجب اختيار نوع المنشط</small>
+                        </div>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <mat-form-field class="w-100">
+                        <mat-select formControlName="programId" placeholder="البرنامج" #singleSelect name="programId" id="programId"
+                        [class.is-invalid]="programId?.invalid && programId?.touched"
+                        [class.is-valid]="programId?.valid">
+                            <mat-option>
+                                <ngx-mat-select-search [formControl]="filterInput"
+                                    placeholderLabel="البحث عن برنامج"></ngx-mat-select-search>
+                            </mat-option>
+                            <mat-option *ngFor="let element of projects" [value]="element.id">
+                                {{element.title}}
+                            </mat-option>
+                        </mat-select>
+                        <div *ngIf="programId?.errors && programId?.touched">
+                            <small *ngIf="programId?.hasError('required')" class="text-danger">    يجب اختيار البرنامج</small>
+                        </div>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <mat-form-field class="w-100">
+                        <mat-select formControlName="supervisorId" placeholder="المشرف" #singleSelect name="supervisorId" id="supervisorId"
+                        [class.is-invalid]="supervisorId?.invalid && supervisorId?.touched"
+                        [class.is-valid]="supervisorId?.valid">
+                            <mat-option>
+                                <ngx-mat-select-search [formControl]="filterInput2"
+                                    placeholderLabel="البحث عن مشرف"></ngx-mat-select-search>
+                            </mat-option>
+                            <mat-option *ngFor="let element of supervisors" [value]="element.id">
+                                {{element.title}}
+                            </mat-option>
+                        </mat-select>
+                        <div *ngIf="supervisorId?.errors && supervisorId?.touched">
+                            <small *ngIf="supervisorId?.hasError('required')" class="text-danger">    يجب اختيار مشرف</small>
+                        </div>
+                    </mat-form-field>
+                </div>
+
+               
+
+                <div class="col-12 col-md-6">
+                    <mat-form-field class="w-100">
+                        <mat-label>فئة المستخدم</mat-label>
+                        <mat-select [formControl]="userCategoryId" multiple>
+                            <mat-option style="z-index:1000;background-color: white;">
+                                <ngx-mat-select-search [formControl]="filterInput3"
+                                    placeholderLabel="البحث عن فئة"></ngx-mat-select-search>
+                            </mat-option>
+                          <mat-option *ngFor="let topping of userCategories" [value]="topping.id">{{topping.name}}</mat-option>
+                        </mat-select>
+
+                        <div *ngIf="userCategoryId?.errors && userCategoryId?.touched">
+                            <small *ngIf="userCategoryId?.hasError('required')" class="text-danger">    يجب اختيار علي الاقل فئة مستخدمين</small>
+                        </div>
+                      </mat-form-field>
+                      
+                </div>
+
+
+                
+
+            </div>
+            <div>
+                <button mat-button matStepperPrevious>رجوع</button>
+                <button mat-button matStepperNext>التالي</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>الحفظ</ng-template>
+        <p>اذ تعتقد ان كل شي تمام فمن المكن حفظ البيانات ونشر النشاط</p>
+        <button (click)="onSubmit()" class="bg-primary-outline-btn w-25">حفظ</button>
+        <div>
+            <button mat-button matStepperPrevious>رجوع</button>
+            <button mat-button (click)="stepper.reset()">حذف البيانات</button>
+        </div>
+    </mat-step>
+</mat-stepper>

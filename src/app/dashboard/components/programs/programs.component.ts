@@ -6,13 +6,14 @@ import { MainDashoardService } from '../../services/main-dashoard.service';
 import { AddCountryComponent } from '../add-country/add-country.component';
 import { DialogDeleteComponent } from '../dialog-delete/dialog-delete.component';
 import { EditCountryComponent } from '../edit-country/edit-country.component';
+import { AddProgramComponent } from '../add-program/add-program.component';
 
 @Component({
-  selector: 'app-activities',
-  templateUrl: './activities.component.html',
-  styleUrls: ['./activities.component.css']
+  selector: 'app-programs',
+  templateUrl: './programs.component.html',
+  styleUrls: ['./programs.component.css']
 })
-export class ActivitiesComponent implements OnInit ,AfterViewInit {
+export class ProgramsComponent implements OnInit ,AfterViewInit {
   windowWidth: number = 0;
   pageResponse:PagedResponse={page:1,pageSize:10,totalCount:10,hasNextPage:false,hasPreviousPage:false,items:[]};
   pagedRequest:PagedRequest = {pageNumber:1,pageSize:5,name:''};
@@ -38,14 +39,14 @@ export class ActivitiesComponent implements OnInit ,AfterViewInit {
     this.getPage();
   }
   getPage(){
-    this.service.activityService.getPage(this.pagedRequest).subscribe({
+    this.service.programsService.getPage(this.pagedRequest).subscribe({
       next:(res:PagedResponse)=>{
           this.pageResponse = res;
       }
     });
   }
   addItem(): void {
-    const dialogRef = this.service.dialog.open(AddCountryComponent, {
+    const dialogRef = this.service.dialog.open(AddProgramComponent, {
       width:this.windowWidth<767?'99%':(this.windowWidth<1300?'50%':'40%')
     });
     dialogRef.afterClosed().subscribe(result => {
@@ -53,9 +54,10 @@ export class ActivitiesComponent implements OnInit ,AfterViewInit {
     });
   }
   editItem(id:any){
-    const dialogRef = this.service.dialog.open(EditCountryComponent, {
+    const element=  this.pageResponse.items.find((value:any)=>value.id==id);
+    const dialogRef = this.service.dialog.open(AddProgramComponent, {
       width:this.windowWidth<767?'99%':(this.windowWidth<1300?'50%':'40%'),
-      data:{id:id}
+      data:element
     });
     dialogRef.afterClosed().subscribe(result => {
       this.getPage();
@@ -68,11 +70,11 @@ export class ActivitiesComponent implements OnInit ,AfterViewInit {
       width:this.windowWidth<767?'99%':(this.windowWidth<1300?'50%':'40%'),
       data:{
         id:element.id,
-        name:element.name,
-        title:'حذف دولة',
-        label:'اسم الدولة',
+        name:element.title,
+        title:'حذف برنامج',
+        label:'عنوان البرنامج',
         submit:()=>{
-          this.service.countryService.delete(element.id).pipe(
+          this.service.programsService.delete(element.id).pipe(
             catchError((error) => {
               console.error(error);
               this.service.toastService.error('افحص السيرفر');

@@ -195,7 +195,7 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
     this.fileName = image.name;
      this.cv_file = URL.createObjectURL(image);
      this.form.controls['cvFile'].setValue(this.cv_file);
-   // this.formData.append('cvFile',image,"image-"+image.name.toString().replace(' ',''));
+   this.formData.append('cvFile',image,"image-"+image.name.toString().replace(' ',''));
     
   }
 
@@ -208,7 +208,7 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
     }
     this.userProfileImage = URL.createObjectURL(image);
      this.form.controls['userImage'].setValue(this.user_Image);
-   // this.formData.append('userImage',image,"image-"+image.name.toString().replace(' ',''));
+   this.formData.append('userImage',image,"image-"+image.name.toString().replace(' ',''));
   }
   validateUplodedFile(image:any,isCv:boolean = false):string{
     let imageError = "";
@@ -268,10 +268,11 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
   }
   
   submit() {
+    debugger;
     // this.service.printFormValues(this.form);
     if(this.form.valid){
-      // this.service.profileService.register(this.AppendFormToFormData()).subscribe({
-      this.service.profileService.register(this.form.value).subscribe({
+      this.service.profileService.register(this.AppendFormToFormData()).subscribe({
+      // this.service.profileService.register(this.form.value).subscribe({
         next:(response:ResponseVM)=>{
           if(response.statusCode == 200){
             this.adminService.toastService.success(response.message);

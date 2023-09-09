@@ -28,8 +28,9 @@ export class UserCategoryService {
     return this.http.delete<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/Delete/${id}`);
   }
 
-
-
+  getAll(): Observable<ResponseVM> {
+    return this.http.get<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/get-all`);
+  }
   
 }
 export interface UserCategory{

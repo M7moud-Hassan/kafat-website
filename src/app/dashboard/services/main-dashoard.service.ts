@@ -9,6 +9,7 @@ import { CityService } from './city.service';
 import { DistrictService } from './district.service';
 import { ToastrService } from 'ngx-toastr';import { UserCategoryService } from './user-category.service';
 import { TypeActivityService } from './type-activity.service';
+import { ProgramsService } from './programs.service';
 import { QualificationService } from './qualification.service';
 import { SpecializationService } from './specialization.service';
 import { DepartmentService } from './department.service';
@@ -16,7 +17,6 @@ import { WorkTypeService } from './work-type.service';
 import { DistinguishedTypeService } from './distinguished-type.service';
 import { FamilyBranchService } from './family-branch.service';
 import { UploadFileService } from './upload-file.service';
-;
 
 @Injectable({
   providedIn: 'root'
@@ -35,6 +35,7 @@ export class MainDashoardService {
     private _toastService:ToastrService,
     private _userCategoryService:UserCategoryService,
     private _typeActivity :TypeActivityService,
+    private _programsService :ProgramsService,
     private _qualificationService :QualificationService,
     private _specializationService :SpecializationService,
     private _departmentService :DepartmentService,
@@ -59,6 +60,9 @@ export class MainDashoardService {
 
   get countryService(): CountryService {
     return this._countryService;
+  }
+  get programsService(): ProgramsService {
+    return this._programsService;
   }
   get typeActivity(): TypeActivityService {
     return this._typeActivity;
