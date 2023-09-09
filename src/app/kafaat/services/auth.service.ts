@@ -1,82 +1,61 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable, ReplaySubject } from 'rxjs';
-import { ResponseVM } from '../core/models/response-vm';
-import { environment } from 'src/environments/environment.prod';
-import { MainDashoardService } from 'src/app/dashboard/services/main-dashoard.service';
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
+import { MainDashoardService } from "src/app/dashboard/services/main-dashoard.service";
+import { environment } from "src/environments/environment.prod";
+import { ResponseVM } from "../core/models/response-vm";
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { HttpClientModule } from "@angular/common/http";
+import { UserData } from "../core/models/UserData";
+import { UserRoles } from "../core/user-roles";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  controllerName:string;
-  constructor(private http:HttpClient,private service:MainDashoardService) {
-    this.controllerName = 'account';
-   }
-
-
-  //  --------------------------------------------start-------------------------------------------------------------------------
- /*
+  controllerName: string = 'account';
   isLoggedIn = false;
-  public User: any;
-  private UserSource$ = new ReplaySubject<UserViewModel>(1);
-  public User$ = this.UserSource$.asObservable();
-  private jwt: JwtHelperService;
-  private isLoggedSubject = new BehaviorSubject<boolean>(false);
-  isLoggedChanged = this.isLoggedSubject.asObservable();
-  private sideMenuByRole = new BehaviorSubject<MenuConfig[]>(adminMenu);
-  sideMenuByRolehanged = this.sideMenuByRole.asObservable();
-  
-  editIsLogged(islogged: boolean) {
-    this.isLoggedSubject.next(islogged);
-  }
-  
+  jwt: JwtHelperService = new JwtHelperService();
+  constructor(private http: HttpClient, private service: MainDashoardService) { }
 
-
-
-
-  RefreshCurrentUser() {
-    let token = this.GetToken();
-    if (token) {
-      // update app state
-      this.User = this.DecodeTokenData(token);
-      this.isLoggedIn = true;
-    } else {
-      this.service.router.navigate(['auth', 'login']);
-    }
-  }
-  Logout() {
-    // update app state
-    this.User = null;
-    this.isLoggedIn = false;
-    //this.UserSource$.next(null);
-
-    // remove both refreshToken & accessToken
-    localStorage.removeItem('token');
-    this.service.router.navigateByUrl('/');
-    this.editIsLogged(false);
-  }
-  IsUserLoggenIn(): boolean {
-    let token = this.GetToken();
-    if (token) return !this.IsAccessTokenExpired();
-    return false;
-  }
-
-  IsAccessTokenExpired(): boolean {
-    var token = this.GetToken();
-    if (token) return this.jwt.isTokenExpired(token);
-    return false;
+  login(model: any) {
+    this.http.post<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/login`, model).subscribe({
+      next: (response: ResponseVM) => {
+        if (response.statusCode == 200) {
+          this.service.toastService.success(response.message);
+          this.SetOrUpdateToken(response.data.token);
+          this.isLoggedIn = true;
+          if(this.currentUser().role==UserRoles.Admin){
+            this.service.router.navigate(['/admin'], { replaceUrl: true });
+          }else{
+            this.service.router.navigate(['/kafaat'], { replaceUrl: true });
+          }
+        } else {
+          this.service.toastService.error(response.message);
+        }
+      },
+      error: (error) => {
+        this.service.toastService.error(error);
+      }
+    })
   }
   private SetOrUpdateToken(token: any) {
     localStorage.setItem('token', token);
   }
   private DecodeTokenData(token: any) {
     const decodedJWT = this.jwt.decodeToken(token);
-    this.User = JSON.parse(decodedJWT.profile);
-    this.UserSource$.next(this.User);
-    return this.User;
+    return decodedJWT;
   }
-
+  currentUser(): UserData {
+    let _userData: UserData = {} as UserData;
+    let decodedToken = this.DecodeTokenData(this.GetToken());
+    _userData.id = decodedToken.UserId;
+    _userData.email = decodedToken.Email;
+    _userData.role = decodedToken.Role;
+    _userData.userName = decodedToken.UserName;
+    _userData.userImage = decodedToken.UserImage;
+    return _userData;
+  }
   public GetToken() {
     const accessToken = localStorage.getItem('token');
     if (accessToken) {
@@ -85,45 +64,30 @@ export class AuthService {
       return null;
     }
   }
-
-  getUserId(){
-      return this.DecodeTokenData(this.GetToken());
+  logout() {
+    this.isLoggedIn = false;
+    localStorage.removeItem('token');
+    this.service.router.navigate(['/login'], { replaceUrl: true });
   }
-  loggedIn(): boolean {
-    return this.isLoggedIn;
-  }
-
-  getCurrentUser() {
-    var token = this.GetToken();
-    if (token) {
-      const decodedJWT = this.jwt.decodeToken(token);
-      let user = JSON.parse(decodedJWT.profile);
-      return user;
-    }
-  }
-
-  public EnableModule(roles: string[]): boolean {
-    var token = this.GetToken();
-    if (token) {
-      const decodedJWT = this.jwt.decodeToken(token);
-      return roles.includes(decodedJWT['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']);
-    }
+  IsUserLoggenIn(): boolean {
+    let token = this.GetToken();
+    if (token) return !this.IsAccessTokenExpired();
     return false;
   }
-    */
+  IsAccessTokenExpired(): boolean {
+    var token = this.GetToken();
+    if (token) return this.jwt.isTokenExpired(token);
+    return false;
+  }
 
-  //  --------------------------------------------end-------------------------------------------------------------------------
-  
-  login(model:any):Observable<ResponseVM>{
-    return this.http.post<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/login`,model);
+  forgetPassword(model: any): Observable<ResponseVM> {
+    return this.http.post<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/forget-password`, model);
   }
-  forgetPassword(model:any):Observable<ResponseVM>{
-    return this.http.post<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/forget-password`,model);
+  changePassword(model: any): Observable<ResponseVM> {
+    return this.http.post<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/change-password`, model);
   }
-  changePassword(model:any):Observable<ResponseVM>{
-    return this.http.post<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/change-password`,model);
+  validateSentCode(model: any): Observable<ResponseVM> {
+    return this.http.post<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/validate-sent-code`, model);
   }
-  validateSentCode(model:any):Observable<ResponseVM>{
-    return this.http.post<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/validate-sent-code`,model);
-  }
+
 }

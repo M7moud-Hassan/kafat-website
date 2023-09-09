@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
 import { KafaatMainService } from '../../services/kafaat-main.service';
+import { ResponseVM } from '../../core/models/response-vm';
+import { MainDashoardService } from 'src/app/dashboard/services/main-dashoard.service';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +12,7 @@ import { KafaatMainService } from '../../services/kafaat-main.service';
 export class LoginComponent implements OnInit {
   isPasswordVisible:boolean = false;
   form:FormGroup = new FormGroup({});
-  constructor(private service:KafaatMainService) {}
+  constructor(private service:KafaatMainService,private adminService:MainDashoardService) {}
   ngOnInit(): void {
     this.createForm();
   }
@@ -29,14 +31,7 @@ export class LoginComponent implements OnInit {
   submit() {
     //  this.service.printFormValues(this.form);
     if(this.form.valid){
-      this.service.authService.login(this.form.value).subscribe({
-        next:(response)=>{
-
-        },
-        error:(error)=>{
-
-        }
-      })
+      this.service.authService.login(this.form.value);
     }
   }
   back(){

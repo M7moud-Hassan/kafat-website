@@ -6,10 +6,9 @@
     <div class="registeration">
         <div *ngIf="isNextPageVisible" class="input-container">
             <div class="d-flex justify-content-between align-items-start">
-                <div class="details-title">طلب انضمام</div>
+                <div class="details-title" (click)="____loadData()">طلب انضمام</div>
                 <div class="user-profile-container">
                     <div class="user-profile-image" style="background-image: url('{{userProfileImage}}');">
-                        <!-- <img src="{{userProfileImage}}" width="130" height="130" alt=""> -->
                     </div>
                     <div class="user-profile-camera d-pointer">
                         <div (click)="userImage.click()" class="d-pointer"  class="d-flex align-items-center justify-content-center" style="height: 60px;">
@@ -69,14 +68,14 @@
                             <div class="row">
                                 <div class="col-3 col-md-6">
                                     <div class="d-flex justify-content-start align-items-start pb-2">
-                                        <input style="width: 25px;" type="radio" class="defaultRadioButton"  value="m" formControlName="gender"
+                                        <input style="width: 25px;" type="radio" class="defaultRadioButton" (change)="changeGender()" value="m" formControlName="gender"
                                             name="gender" id="male">
                                         <span for="make d-inline-block" style="margin-right: 20px;">ذكر</span>
                                     </div>
                                 </div>
                                 <div class="col-3 col-md-6">
                                     <div class="d-flex justify-content-start align-items-start pb-2">
-                                        <input style="width: 25px;" type="radio" class="defaultRadioButton"  value="f" formControlName="gender"
+                                        <input style="width: 25px;" type="radio" class="defaultRadioButton" (change)="changeGender()"  value="f" formControlName="gender"
                                             name="gender" id="female">
                                         <span for="female d-inline-block" style="margin-right: 20px;">انثى</span>
                                     </div>
@@ -201,7 +200,7 @@
                 <div class="row mt-3">
                     <div class="col-12 col-md-6">
                         <div class="d-flex justify-content-right align-items-center">
-                            <input type="checkbox" class="Square_Sign_checkboxButton"  (change)="isAvailableToWorkChecked=!isAvailableToWorkChecked" style="width: auto;border: none;" value="isAvailableToWork" formControlName="isAvailableToWork" name="isAvailableToWork" id="isAvailableToWork">
+                            <input type="checkbox" class="Square_Sign_checkboxButton"  (change)="changeAvailableToWorkValue()" style="width: auto;border: none;" value="isAvailableToWork" formControlName="isAvailableToWork" name="isAvailableToWork" id="isAvailableToWork">
                             <span for="make d-inline-block">متاح لفرصة عمل</span>
                         </div>
                     </div>
@@ -377,6 +376,7 @@
                             </div>
                         </div>
                         <button type="submit" class="bg-primary-btn-block my-3 mb-4">طلب انضمام</button>
+                        
         </div>
         <div class="text-center">
             تملك حساب بالفعل؟ <a routerLink="/login" class="d-pointer text-decoration-none" style="color: var(--main-color);"> تسجيل دخول</a>

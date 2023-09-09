@@ -72,7 +72,7 @@ input:focus,input:hover,select:focus,select:hover,textarea:focus,textarea:hover{
     height: 130px;
     border-radius: 50% 50%;
     background-position: center;
-    background-size: cover;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
 }
 .user-profile-camera{

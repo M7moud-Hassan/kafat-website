@@ -57,6 +57,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { NgxMatDatetimePickerModule, NgxMatTimepickerModule, NgxMatNativeDateModule } from '@angular-material-components/datetime-picker';
 import { MatSelectModule } from '@angular/material/select';
+import { KafaatModule } from '../kafaat/kafaat.module';
+import { AuthService } from '../kafaat/services/auth.service';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -120,9 +122,11 @@ import { MatSelectModule } from '@angular/material/select';
     NgxMatTimepickerModule,
     NgxMatNativeDateModule,
     NgxMatSelectSearchModule,
-    MatSelectModule
+    MatSelectModule,
+    KafaatModule
   ],
   providers:[
+    AuthService
   ]
 })
 export class DashboardModule { }

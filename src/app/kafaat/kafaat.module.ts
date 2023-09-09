@@ -49,7 +49,12 @@ import { ManashetTabsComponent } from './components/manashet-tabs/manashet-tabs.
 import { GoalsKafaatComponent } from './components/goals-kafaat/goals-kafaat.component';
 import { PostsPeopleComponent } from './components/posts-people/posts-people.component';
 import { NgxMaskModule } from 'ngx-mask';
-
+import { HttpClientModule } from '@angular/common/http';
+import { JwtModule } from "@auth0/angular-jwt";
+import { AuthService } from './services/auth.service';
+export function tokenGetter() {
+  return localStorage.getItem("token");
+}
 @NgModule({
   declarations: [
     PasswordMaskDirective,
@@ -106,9 +111,18 @@ import { NgxMaskModule } from 'ngx-mask';
     SlickCarouselModule,
     RouterModule,
     FormsModule,
+    HttpClientModule,
     ReactiveFormsModule,
-    NgxMaskModule.forRoot()
-  ]
+    NgxMaskModule.forRoot(),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: ["example.com"],
+        disallowedRoutes: ["http://example.com/examplebadroute/"],
+      },
+    }),
+  ],
+
   
 })
 export class KafaatModule { }

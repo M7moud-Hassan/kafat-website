@@ -133,14 +133,15 @@
   
         <div class="dropdown text-center">
           <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-            <strong>m7moud</strong>
+            <!-- <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2"> -->
+            <img src="{{user.userImage}}" alt="" width="32" height="32" class="rounded-circle me-2">
+            <strong>{{user.userName}}</strong>
           </a>
           <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
             <li><a class="dropdown-item" href="#">الاعدادت</a></li>
             <li><a class="dropdown-item" href="#">البروفيل</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#"> تسجيل خروج</a></li>
+            <li><a class="dropdown-item" (click)="logout()"> تسجيل خروج</a></li>
           </ul>
         </div>
     </nav>

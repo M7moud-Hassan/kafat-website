@@ -31,7 +31,7 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
   qualifications:any[]=[];
   specializations:any[]=[];
   workTypes:any[]=[];
-  userProfileImage:any;
+  userProfileImage:string = '/assets/images/male.png';
 
 
   constructor(private service:KafaatMainService,private adminService:MainDashoardService){}
@@ -45,9 +45,39 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
     this.loadFamilyBranches();
     this.loadWorkTypes();
     this.loadQualifications();
-    // this.cv_file = this.form.controls['cvFile'].value ?? this.imagefile ;
-    // cvFile:[null,[Validators.required]],
-    //   userImage:[null,[Validators.required]],
+  }
+  changeGender(){
+    let genderValue = this.gender.value;
+    if(genderValue=='m'){
+      this.userProfileImage = '/assets/images/male.png';
+    }else{
+      this.userProfileImage = '/assets/images/female.png';
+    }
+  }
+  changeAvailableToWorkValue(){
+    this.isAvailableToWorkChecked=!this.isAvailableToWorkChecked
+    if(this.isAvailableToWork.value){
+        this.qualificationId.setValidators([Validators.required]);
+        this.specializationId.setValidators([Validators.required]);
+        this.departmentId.setValidators([Validators.required]);
+        this.workTypeId.setValidators([Validators.required]);
+        this.hoppies.setValidators([Validators.required]);
+        this.cvFile.setValidators([Validators.required]);
+
+    }else{
+      this.qualificationId.clearValidators();
+      this.specializationId.clearValidators();
+      this.departmentId.clearValidators();
+      this.workTypeId.clearValidators();
+      this.hoppies.clearValidators();
+      this.cvFile.clearValidators();
+    }
+        this.qualificationId.updateValueAndValidity();
+        this.specializationId.updateValueAndValidity();
+        this.departmentId.updateValueAndValidity();
+        this.workTypeId.updateValueAndValidity();
+        this.hoppies.updateValueAndValidity();
+        this.cvFile.updateValueAndValidity();
   }
   loadCountries(){
     this.adminService.countryService.getAll().subscribe({
@@ -60,7 +90,6 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
       }
     });
   }
-  
   loadFamilyBranches(){
     this.adminService.familyBranchService.getAll().subscribe({
       next:(res:ResponseVM)=>{
@@ -152,7 +181,6 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
   handleOriginalValue(originalText: string) {
     this.originalPassword = originalText;
   }
-
   createForm(){
     this.form = this.service.formBuilder.group({
       email:['',[Validators.required]],
@@ -166,7 +194,7 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
       lastName:['',[Validators.required]],
       gender:['',[Validators.required]],
       identityNumber:['',[Validators.required]],
-      distinguishedTypeId:[0,[Validators.required]],
+      distinguishedTypeId:[0,[]],
       birthDateInHijri:['',[Validators.required]],
       birthDateInAD:['',[Validators.required]],
       countryId:[0,[Validators.required]],
@@ -180,9 +208,36 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
       departmentId:[0,[Validators.required]],
       workTypeId:[0,[Validators.required]],
       hoppies:['',[Validators.required]],
-      cvFile:[null,[Validators.required]],
-      userImage:[null,[Validators.required]],
+      cvFile:['',[]],
+      userImage:['',[]],
     });
+  }
+ ____loadData(){
+        this.form.controls['email'].setValue('email002@gmail.com');
+        this.form.controls['phoneNumber'].setValue('01282431370');
+        this.form.controls['password'].setValue('asd123ASD!@#');
+        this.form.controls['confirmPassword'].setValue('asd123ASD!@#');
+        this.form.controls['isApproved'].setValue(false);
+        this.form.controls['displayName'].setValue('mahmoud Elsayed');
+        this.form.controls['firstName'].setValue('mahmoud');
+        this.form.controls['middleName'].setValue('elsayed');
+        this.form.controls['lastName'].setValue('abdelmoughiss');
+        this.form.controls['gender'].setValue('m');
+        this.form.controls['identityNumber'].setValue('3893763783673');
+        this.form.controls['distinguishedTypeId'].setValue(1);
+        this.form.controls['birthDateInHijri'].setValue('2000-01-01');
+        this.form.controls['birthDateInAD'].setValue('2000-01-01');
+        this.form.controls['countryId'].setValue(1);
+        this.form.controls['cityId'].setValue(1);
+        this.form.controls['districtId'].setValue(1);
+        this.form.controls['familyBranchId'].setValue(1);
+        this.form.controls['maritalStatus'].setValue('s');
+        this.form.controls['isAvailableToWork'].setValue(true);
+        this.form.controls['qualificationId'].setValue(1);
+        this.form.controls['specializationId'].setValue(1);
+        this.form.controls['departmentId'].setValue(1);
+        this.form.controls['workTypeId'].setValue(1);
+        this.form.controls['hoppies'].setValue('swimming');
   }
   onCvSelected(event: any) {
     const image = event.target.files[0];
@@ -194,9 +249,7 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
     this.fileSize = image.size/(1024*1024);
     this.fileName = image.name;
      this.cv_file = URL.createObjectURL(image);
-     this.form.controls['cvFile'].setValue(this.cv_file);
-   this.formData.append('cvFile',image,"image-"+image.name.toString().replace(' ',''));
-    
+     this.form.controls['cvFile'].setValue(image);    
   }
 
   onUserImageSelected(event: any) {
@@ -207,8 +260,7 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
       return;
     }
     this.userProfileImage = URL.createObjectURL(image);
-     this.form.controls['userImage'].setValue(this.user_Image);
-   this.formData.append('userImage',image,"image-"+image.name.toString().replace(' ',''));
+     this.form.controls['userImage'].setValue(image);
   }
   validateUplodedFile(image:any,isCv:boolean = false):string{
     let imageError = "";
@@ -221,7 +273,7 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
     let fileName = image.name;
      let fileArray:String = fileName.replace(' ','').split(".");
      let fileExtension = fileArray[fileArray.length-1].toLowerCase().toString();
-     debugger;
+    //  debugger;
     if (isCv) {
       if (fileExtension != "jpg" && fileExtension != "png" && fileExtension != "jpeg" && fileExtension != "pdf") {
         imageError = "نوع الملف  غير مسموح به";
@@ -236,7 +288,7 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
     }
     return imageError;
   }
-  AppendFormToFormData():FormData{
+  AppendFormToFormData(){
     this.formData.append('email',this.email.value);
     this.formData.append('phoneNumber',this.phoneNumber.value);
     this.formData.append('password',this.password.value);
@@ -261,27 +313,25 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
     this.formData.append('departmentId',this.departmentId.value);
     this.formData.append('workTypeId',this.workTypeId.value);
     this.formData.append('hoppies',this.hoppies.value);
-    // this.formData.append('cvFile',this.cvFile.value);
-    // this.formData.append('userImage',this.userImage.value);
-
-    return this.formData;
+    this.formData.append('cvFile',this.cvFile.value);
+    this.formData.append('userImage',this.userImage.value);
   }
   
   submit() {
-    debugger;
+    this.AppendFormToFormData();
     // this.service.printFormValues(this.form);
     if(this.form.valid){
-      this.service.profileService.register(this.AppendFormToFormData()).subscribe({
-      // this.service.profileService.register(this.form.value).subscribe({
+      this.service.profileService.register(this.formData).subscribe({
         next:(response:ResponseVM)=>{
           if(response.statusCode == 200){
             this.adminService.toastService.success(response.message);
           }else{
             this.adminService.toastService.error(response.message);
           }
+          this.formData = new FormData();
         },
         error:(error)=>{
-          this.adminService.toastService.error(error.error);
+          this.adminService.toastService.error(error);
         }
       })
     }
@@ -296,7 +346,6 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
     let originValues = event.target.value.split('-').reverse().join('-');
     console.log(originValues)
     this.value1 = originValues;
-    // this.form.controls['birthDate'].setValue(originValues);
     return;
   }
   pickBirthDataInHijri(value: string){
@@ -405,13 +454,5 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
     let id = this.specializationId.value;
     this.loadDepartments(id);
   }
-  // file:[]=[];
-  // // form_Data:FormData=new FormData();
-  // onfileChange(event:any){
-  //   this.file = event.target.files;
-  //   for (let i = 0; i < this.file.length; i++) {
-  //     this.formData.append("image"+i,this.file[i]);
-  //   }
-  // }
 }
 
