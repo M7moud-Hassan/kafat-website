@@ -54,9 +54,10 @@ export class ProgramsComponent implements OnInit ,AfterViewInit {
     });
   }
   editItem(id:any){
+    const element=  this.pageResponse.items.find((value:any)=>value.id==id);
     const dialogRef = this.service.dialog.open(AddProgramComponent, {
       width:this.windowWidth<767?'99%':(this.windowWidth<1300?'50%':'40%'),
-      data:{id:id}
+      data:element
     });
     dialogRef.afterClosed().subscribe(result => {
       this.getPage();
@@ -69,9 +70,9 @@ export class ProgramsComponent implements OnInit ,AfterViewInit {
       width:this.windowWidth<767?'99%':(this.windowWidth<1300?'50%':'40%'),
       data:{
         id:element.id,
-        name:element.name,
-        title:'حذف تصنيف',
-        label:'اسم التصنيف',
+        name:element.title,
+        title:'حذف برنامج',
+        label:'عنوان البرنامج',
         submit:()=>{
           this.service.programsService.delete(element.id).pipe(
             catchError((error) => {

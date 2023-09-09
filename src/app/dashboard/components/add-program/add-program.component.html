@@ -5,18 +5,26 @@
 <div class="title-pop-up">إضافة برنامج</div>
 <form [formGroup]="form" (ngSubmit)="submit()">
     <div class="mb-3">
-        <label class="input-label" for="name">اسم البرنامج</label>
-        <input formControlName="name" type="text" name="name" id="name" [class.is-invalid]="name?.invalid && name?.touched" [class.is-valid]="name?.valid" class="form-control my-1">
-        <div *ngIf="name?.errors && name?.touched">
-            <small *ngIf="name?.hasError('required')"  class="text-danger">يجب ادخال اسم البرنامح</small>
+        <label class="input-label" for="Title">عنوان البرنامج</label>
+        <input formControlName="Title" type="text" name="Title" id="Title" [class.is-invalid]="Title?.invalid && Title?.touched" [class.is-valid]="Title?.valid" class="form-control my-1">
+        <div *ngIf="Title?.errors && Title?.touched">
+            <small *ngIf="Title?.hasError('required')"  class="text-danger">يجب ادخال عنوان البرنامح</small>
         </div>
     </div>
 
     <div class="mb-3">
-        <label class="input-label" for="name"> صورة البرنامج</label>
-        <input formControlName="image" type="file" name="image" id="image" [class.is-invalid]="image?.invalid && image?.touched" [class.is-valid]="image?.valid" class="form-control my-1">
-        <div *ngIf="image?.errors && image?.touched">
-            <small *ngIf="image?.hasError('required')"  class="text-danger">يجب ادخال صورة البرنامج البرنامح</small>
+        <label class="input-label" for="Description">وصف البرنامج </label>
+        <input formControlName="Description" type="text" name="Description" id="Description" [class.is-invalid]="Description?.invalid && Description?.touched" [class.is-valid]="Description?.valid" class="form-control my-1">
+        <div *ngIf="Description?.errors && Description?.touched">
+            <small *ngIf="Description?.hasError('required')"  class="text-danger">يجب ادخال وصف البرنامح</small>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label class="input-label" for="ImageFile"> صورة البرنامج</label>
+        <input  (change)="onFileSelected($event)" formControlName="ImageFile" type="file" name="ImageFile" id="ImageFile" [class.is-invalid]="ImageFile?.invalid && ImageFile?.touched" [class.is-valid]="ImageFile?.valid" class="form-control my-1">
+        <div *ngIf="ImageFile?.errors && ImageFile?.touched">
+            <small *ngIf="ImageFile?.hasError('required')"  class="text-danger">يجب ادخال صورة البرنامج البرنامح</small>
         </div>
     </div>
 

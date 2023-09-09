@@ -1,11 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, throwError } from 'rxjs';
-import { PagedRequest } from 'src/app/kafaat/core/models/paged-request';
+import { Observable } from 'rxjs';
 import { PagedResponse } from 'src/app/kafaat/core/models/paged-response';
 import { ResponseVM } from 'src/app/kafaat/core/models/response-vm';
 import { environment } from 'src/environments/environment.prod';
-import { MainDashoardService } from './main-dashoard.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +11,7 @@ import { MainDashoardService } from './main-dashoard.service';
 export class CountryService {
   controllerName:string = 'country';
   constructor(private http:HttpClient) { }
-  getAllCountries():Observable<ResponseVM>{
+  getAll():Observable<ResponseVM>{
     return this.http.get<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/get-all`);
   }
   getPage(data:any):Observable<PagedResponse>{

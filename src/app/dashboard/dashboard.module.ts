@@ -27,8 +27,36 @@ import { DeleteCountryComponent } from './components/delete-country/delete-count
 import {NgxPaginationModule} from 'ngx-pagination';
 import { ProgramsComponent } from './components/programs/programs.component';
 import { AddProgramComponent } from './components/add-program/add-program.component';
-
-
+import { CitiesComponent } from './components/cities/cities.component';
+import { AddCityComponent } from './components/add-city/add-city.component';
+import { EditCityComponent } from './components/edit-city/edit-city.component';
+import { DistrictsComponent } from './components/districts/districts.component';
+import { EditDistrictComponent } from './components/edit-district/edit-district.component';
+import { AddDistrictComponent } from './components/add-district/add-district.component';
+import { AddQualificationComponent } from './components/add-qualification/add-qualification.component';
+import { EditQualificationComponent } from './components/edit-qualification/edit-qualification.component';
+import { QualificationsComponent } from './components/qualifications/qualifications.component';
+import { AddDepartmentComponent } from './components/add-department/add-department.component';
+import { EditDepartmentComponent } from './components/edit-department/edit-department.component';
+import { DepartmentsComponent } from './components/departments/departments.component';
+import { SpecializationsComponent } from './components/specializations/specializations.component';
+import { EditSpecializationComponent } from './components/edit-specialization/edit-specialization.component';
+import { AddSpecializationsComponent } from './components/add-specializations/add-specializations.component';
+import { DistinguishedTypesComponent } from './components/distinguished-types/distinguished-types.component';
+import { AddDistinguishedTypesComponent } from './components/add-distinguished-types/add-distinguished-types.component';
+import { EditDistinguishedTypesComponent } from './components/edit-distinguished-types/edit-distinguished-types.component';
+import { AddFamilyBranchComponent } from './components/add-family-branch/add-family-branch.component';
+import { EditFamilyBranchComponent } from './components/edit-family-branch/edit-family-branch.component';
+import { FamilyBranchesComponent } from './components/family-branches/family-branches.component';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatButtonModule} from '@angular/material/button';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
+import { NgxMatDatetimePickerModule, NgxMatTimepickerModule, NgxMatNativeDateModule } from '@angular-material-components/datetime-picker';
+import { MatSelectModule } from '@angular/material/select';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -51,6 +79,27 @@ import { AddProgramComponent } from './components/add-program/add-program.compon
       DeleteCountryComponent,
       ProgramsComponent,
       AddProgramComponent,
+      CitiesComponent,
+      AddCityComponent,
+      EditCityComponent,
+      DistrictsComponent,
+      EditDistrictComponent,
+      AddDistrictComponent,
+      AddQualificationComponent,
+      EditQualificationComponent,
+      QualificationsComponent,
+      AddDepartmentComponent,
+      EditDepartmentComponent,
+      DepartmentsComponent,
+      SpecializationsComponent,
+      EditSpecializationComponent,
+      AddSpecializationsComponent,
+      DistinguishedTypesComponent,
+      AddDistinguishedTypesComponent,
+      EditDistinguishedTypesComponent,
+      AddFamilyBranchComponent,
+      EditFamilyBranchComponent,
+      FamilyBranchesComponent,
   ],
   imports: [
     CommonModule,
@@ -60,7 +109,18 @@ import { AddProgramComponent } from './components/add-program/add-program.compon
     ReactiveFormsModule,
     MatPaginatorModule,
     MatCardModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatButtonModule,
+    MatStepperModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    NgxMatDatetimePickerModule,
+    NgxMatTimepickerModule,
+    NgxMatNativeDateModule,
+    NgxMatSelectSearchModule,
+    MatSelectModule
   ],
   providers:[
   ]

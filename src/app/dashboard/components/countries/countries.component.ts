@@ -1,14 +1,9 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { MainDashoardService } from '../../services/main-dashoard.service';
 import { AddCountryComponent } from '../add-country/add-country.component';
-import { MatPaginator, PageEvent } from '@angular/material/paginator';
-import { ResponseVM } from 'src/app/kafaat/core/models/response-vm';
 import { PagedRequest } from 'src/app/kafaat/core/models/paged-request';
-import { SimpleModel } from 'src/app/kafaat/core/models/simple-model';
 import { PagedResponse } from 'src/app/kafaat/core/models/paged-response';
 import { EditCountryComponent } from '../edit-country/edit-country.component';
-import { DeleteCountryComponent } from '../delete-country/delete-country.component';
 import { DialogDeleteComponent } from '../dialog-delete/dialog-delete.component';
 import { catchError, throwError } from 'rxjs';
 
@@ -74,8 +69,8 @@ export class CountriesComponent implements OnInit ,AfterViewInit {
       data:{
         id:element.id,
         name:element.name,
-        title:'حذف تصنيف',
-        label:'اسم التصنيف',
+        title:'حذف دولة',
+        label:'اسم الدولة',
         submit:()=>{
           this.service.countryService.delete(element.id).pipe(
             catchError((error) => {

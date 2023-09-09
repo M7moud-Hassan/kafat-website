@@ -21,6 +21,10 @@ getPage(data:any):Observable<PagedResponse>{
   return this.http.post<PagedResponse>(`${environment.baseApiUrl}/${this.controllerName}/get-page`,data);
 }
 
+getAll():Observable<ResponseVM>{
+  return this.http.get<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/get-all`);
+}
+
 update(data:any):Observable<ResponseVM>{
   return this.http.put<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/edit`,data);
 }

@@ -12,7 +12,8 @@
       <table class="table table-responsive table-hover">
           <tr class="tableHeader">
               <td>رقم </td>
-                <td>اسم البرنامج</td>
+                <td>عنوان البرنامج</td>
+                <td>وصف البرنامج</td>
                 <td>صورة البرنامج</td>
               <td>التحكم</td>
           </tr>
@@ -23,8 +24,9 @@
               { id: 'foo', itemsPerPage: pagedRequest.pageSize, currentPage: pagedRequest.pageNumber, totalItems: pageResponse.totalCount };let i = index">
               <tr id="first_{{i}}" >
                   <td style="cursor: pointer;">{{item.id}}</td>
-                  <td style="cursor: pointer;">{{item.name}}</td>
-                  <td> <img [src]="item.image" alt="صورة البرنامج" width="150px" height="150px"></td>
+                  <td style="cursor: pointer;">{{item.title}}</td>
+                  <td style="cursor: pointer;">{{item.description}}</td>
+                  <td> <img [src]="item.imagePath" [alt]="item.imagePath" width="150px" height="150px"></td>
                   <td>
                     <div>
                       <button class="btn" (click)="editItem(item.id)">

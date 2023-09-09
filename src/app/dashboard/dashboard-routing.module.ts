@@ -17,6 +17,13 @@ import { EditCountryComponent } from './components/edit-country/edit-country.com
 import { AddCountryComponent } from './components/add-country/add-country.component';
 import { CountriesComponent } from './components/countries/countries.component';
 import { ProgramsComponent } from './components/programs/programs.component';
+import { CitiesComponent } from './components/cities/cities.component';
+import { DistrictsComponent } from './components/districts/districts.component';
+import { QualificationsComponent } from './components/qualifications/qualifications.component';
+import { SpecializationsComponent } from './components/specializations/specializations.component';
+import { DepartmentsComponent } from './components/departments/departments.component';
+import { DistinguishedTypesComponent } from './components/distinguished-types/distinguished-types.component';
+import { FamilyBranchesComponent } from './components/family-branches/family-branches.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -35,6 +42,17 @@ const routes: Routes = [
   {path:'update-country/:id',component:EditCountryComponent},
   {path:'add-country',component:AddCountryComponent},
   {path:'countries',component:CountriesComponent},
+  {path:'countries',component:CountriesComponent},
+  {path:'cities',component:CitiesComponent},
+  {path:'districts',component:DistrictsComponent},
+  
+  {path:'qualifications',component:QualificationsComponent},
+  {path:'specializations',component:SpecializationsComponent},
+  {path:'departments',component:DepartmentsComponent},
+
+  {path:'workTypes',component:WorkTypesComponent},
+  {path:'distinguishedTypes',component:DistinguishedTypesComponent},
+  {path:'familyBranches',component:FamilyBranchesComponent},
 ];
 
 @NgModule({
