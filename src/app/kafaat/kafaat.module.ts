@@ -52,6 +52,7 @@ import { NgxMaskModule } from 'ngx-mask';
 import { HttpClientModule } from '@angular/common/http';
 import { JwtModule } from "@auth0/angular-jwt";
 import { AuthService } from './services/auth.service';
+import { AuthSharedService } from './services/auth-shared.service';
 export function tokenGetter() {
   return localStorage.getItem("token");
 }
@@ -122,7 +123,7 @@ export function tokenGetter() {
       },
     }),
   ],
-
+  providers: [AuthSharedService],
   
 })
 export class KafaatModule { }

@@ -7,6 +7,7 @@ import { Location } from '@angular/common';
 import { ProfileService } from './profile.service';
 import { BreadCrumbService } from './bread-crumb.service';
 import { AuthService } from './auth.service';
+import { AuthSharedService } from './auth-shared.service';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,7 @@ export class KafaatMainService {
     private _profileService:ProfileService,
     private _breadCrumbService:BreadCrumbService,
     private _authService:AuthService,
+    private _authSharedService:AuthSharedService,
     ) { }
 
   get formBuilder(): FormBuilder {
@@ -44,6 +46,9 @@ export class KafaatMainService {
   }
   get authService(): AuthService {
     return this._authService;
+  }
+  get authSharedService(): AuthSharedService {
+    return this._authSharedService;
   }
 
 

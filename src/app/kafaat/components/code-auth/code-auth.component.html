@@ -6,7 +6,7 @@
         <div class="registeration">
             <div class="nextPage">
                 <div class="details-title">رمز التحقق</div>
-                <div class="Text-hint mb-4">قم بكتابة رمز التحقق المكون من ٤ أرقام المرسل إلى عنوان البريد الإلكتروني example@domain.com</div>
+                <div class="Text-hint mb-4">قم بكتابة رمز التحقق المكون من ٤ أرقام المرسل إلى عنوان البريد الإلكتروني {{email}}</div>
                             <div class="code d-flex align-items-center justify-content-center" dir="ltr">
                                 <input type="text" class="code-input-item" name="n1" mask="0" [(ngModel)]="verificationCode.n1" [ngClass]="verificationCode.n1 == ''?'input-non-value-border':(errorCode?'input-error-border':'input-value-border')"  >
                                 <input type="text" class="code-input-item" name="n2" mask="0" [(ngModel)]="verificationCode.n2" [ngClass]="verificationCode.n2 == ''?'input-non-value-border':(errorCode?'input-error-border':'input-value-border')"  >

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
 import { KafaatMainService } from '../../services/kafaat-main.service';
 
@@ -7,16 +7,29 @@ import { KafaatMainService } from '../../services/kafaat-main.service';
   templateUrl: './code-auth.component.html',
   styleUrls: ['../profile-layout/profile-layout.component.css','../profile-account-information/profile-account-information.component.css','../registeration/registeration.component.css','../login/login.component.css','./code-auth.component.css']
 })
-export class CodeAuthComponent  implements OnInit {
+export class CodeAuthComponent  implements OnInit, AfterViewInit {
   form:FormGroup = new FormGroup({});
   verificationCode:any={n1:'',n2:'',n3:'',n4:''};
   errorCode:boolean=false;
   isIn60SecondDularion:boolean=false;
+  email:string = 'email';
   constructor(private service:KafaatMainService) {
     this.verificationCode={n1:'',n2:'',n3:'',n4:''};
   }
+  ngAfterViewInit(): void {
+    // this.service.authSharedService.getForgerEmail().subscribe({
+    //   next:(response)=>{
+    //     this.email = response;
+    //   }
+    // })
+  }
   ngOnInit(): void {
     this.createForm();
+    this.service.authSharedService.getForgerEmail().subscribe({
+      next:(response)=>{
+        this.email = response;
+      }
+    })
   }
   createForm(){
     this.form = this.service.formBuilder.group({

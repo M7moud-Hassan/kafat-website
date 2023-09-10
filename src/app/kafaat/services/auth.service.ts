@@ -81,7 +81,7 @@ export class AuthService {
   }
 
   forgetPassword(model: any): Observable<ResponseVM> {
-    return this.http.post<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/forget-password`, model);
+    return this.http.post<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/forget-password?email=${model}`,model);
   }
   changePassword(model: any): Observable<ResponseVM> {
     return this.http.post<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/change-password`, model);

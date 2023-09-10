@@ -10,7 +10,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { NgxMaskModule } from 'ngx-mask';
 import { DashboardLayoutComponent } from './layout-pages/dashboard-layout/dashboard-layout.component';
 import { ToastrModule } from 'ngx-toastr';
-// import { JwtModule } from '@auth0/angular-jwt';
+// import { MatProgressBarModule } from '@angular/material/progress-bar';
+
+
 
 @NgModule({
   declarations: [
@@ -26,11 +28,8 @@ import { ToastrModule } from 'ngx-toastr';
     MatDialogModule,
     NgxMaskModule.forRoot(),
     ToastrModule.forRoot(), 
-    // JwtModule.forRoot({
-    //   // Configuration options (if needed)
-    // }),
+    // MatProgressBarModule,
   ],
-  // providers: [provideNgxMask()],
   bootstrap: [AppComponent],
   providers:[
   ]

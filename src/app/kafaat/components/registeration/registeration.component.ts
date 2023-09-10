@@ -308,16 +308,29 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
     this.formData.append('familyBranchId',this.familyBranchId.value);
     this.formData.append('maritalStatus',this.maritalStatus.value);
     this.formData.append('isAvailableToWork',this.isAvailableToWork.value);
-    this.formData.append('qualificationId',this.qualificationId.value);
-    this.formData.append('specializationId',this.specializationId.value);
-    this.formData.append('departmentId',this.departmentId.value);
-    this.formData.append('workTypeId',this.workTypeId.value);
-    this.formData.append('hoppies',this.hoppies.value);
-    this.formData.append('cvFile',this.cvFile.value);
+    if(this.isAvailableToWork.value){
+
+      this.formData.append('qualificationId',this.qualificationId.value);
+      this.formData.append('specializationId',this.specializationId.value);
+      this.formData.append('departmentId',this.departmentId.value);
+      this.formData.append('workTypeId',this.workTypeId.value);
+      this.formData.append('hoppies',this.hoppies.value);
+      this.formData.append('cvFile',this.cvFile.value);
+    }
     this.formData.append('userImage',this.userImage.value);
   }
-  
+  setValuesToNullIfMemberNotAvailableToWork(){
+    if(!this.isAvailableToWork.value){
+      this.form.controls['qualificationId'].setValue(null);
+      this.form.controls['specializationId'].setValue(null);
+      this.form.controls['departmentId'].setValue(null);
+      this.form.controls['workTypeId'].setValue(null);
+      this.form.controls['hoppies'].setValue(null);
+      this.form.controls['cvFile'].setValue(null);
+    }
+  }
   submit() {
+    this.setValuesToNullIfMemberNotAvailableToWork();
     this.AppendFormToFormData();
     // this.service.printFormValues(this.form);
     if(this.form.valid){
@@ -331,7 +344,13 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
           this.formData = new FormData();
         },
         error:(error)=>{
-          this.adminService.toastService.error(error);
+          let errorMessage = 'حدث خطأ غير متوقع';
+          if (error.error && typeof error.error === 'string') {
+            errorMessage = error.error; // Use the error message from the 'error' property
+          } else if (error.message) {
+            errorMessage = error.message; // Use the 'message' property if available
+          }
+          this.adminService.toastService.error(errorMessage);
         }
       })
     }
