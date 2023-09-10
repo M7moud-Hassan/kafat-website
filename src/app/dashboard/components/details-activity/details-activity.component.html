@@ -1,1 +1,97 @@
-<p>details-activity works!</p>
+<div class="container">
+    <div class="row g-3">
+        <div class="col-12 col-md-4 border">
+            <img [src]="activity.imagePath" width="200px" height="200px"  alt="not found">
+        </div>
+        <div class="col-12 col-md-8 row g-4">
+            <div class="col-4">
+                الاسم
+            </div>
+            <div class="col-8">
+                {{activity.name}}
+            </div>
+            <div class="col-4">
+                مكان
+            </div>
+            <div  class="col-8">
+                {{activity.place}}
+            </div>
+
+            <div class="col-4">
+                المشرف
+            </div>
+            <div  class="col-8">
+                {{activity.supervisorUserName}}
+            </div>
+            <div class="col-4">
+                تاريخ
+            </div>
+            <div  class="col-8">
+                {{activity.date}}
+            </div>
+        </div>
+        <div class="col-12 row mt-4 border align-items-center py-3">
+            <div class="col-2">
+                التفاصيل
+            </div>
+            <div class="col-10">
+                {{activity.description}}
+            </div>
+        </div>
+       <div class="border row py-3">
+        <div class="col-2">
+            من
+        </div>
+        <div class="col-10 col-md-4">
+            {{activity.from}}
+        </div>
+        <div class="col-2">
+            الي
+        </div>
+        <div class="col-10 col-md-4">
+            {{activity.to}}
+        </div>
+       </div>
+
+       <div class="row border py-3">
+        <div class="col-2">
+            نوع النشاط
+        </div>
+        <div class="col-10 col-md-4">
+            {{activity.activityTypeName}}
+        </div>
+        <div class="col-2">
+           البرنامج
+        </div>
+        <div class="col-10 col-md-4">
+            {{activity.programTitle}}
+        </div>
+       </div>
+
+        <div class="row border py-3">
+            <div class="col-4">
+                اقصي عدد المشاركين
+           </div>
+           <div class="col-6 col-md-2">
+               {{activity.maximumParticipants}}
+           </div>
+           <div class="col-2">
+              سعر المشاركة
+           </div>
+           <div class="col-10 col-md-4">
+               {{activity.ticketPrice}}
+           </div>
+   
+        </div>
+        <div class="col-12 row mt-3 border py-3">
+            <div class="col-2">
+                الفئات
+            </div>
+            <div class="col-10">
+                <span style="display: inline;" class="px-4" *ngFor="let item of activity.userCategories">
+                    {{item.userCategory.name}}
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

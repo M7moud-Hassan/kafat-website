@@ -80,7 +80,7 @@ export class AddActivityComponent {
   loadActivity(){
     this.service.activityService.getById(this.id).subscribe(response=>{
       if(response.statusCode=='200'){
-        console.log(response.data)
+        
         this.activity=response.data;
         this.createForm()
 }    })
@@ -139,7 +139,7 @@ loadSupervisors(){
 }
 
 onChangeFilter(event:any){
-console.log(console.log(event.value));
+
 
 }
   ImagePath:File
@@ -155,14 +155,15 @@ console.log(console.log(event.value));
         to:[this.activity.to,[Validators.required]],
       });
 
+      console.log(this.activity.programId)
       this.group2=this.service.formBuilder.group({
         maximumParticipants:[this.activity.maximumParticipants,[Validators.required]],
         ticketPrice:[this.activity.ticketPrice,[Validators.required]],
         imagePath:[this.activity.imagePath,[Validators.required]],
         programId:[this.activity.programId,[Validators.required]],
         supervisorId:[this.activity.supervisorId,[Validators.required]],
-        userCategoryId:[this.activity.userCategories,[Validators.required]],
-        ActivityTypeId:[this.activity.ActivityTypeId,[Validators.required]]
+        userCategoryId:[this.activity.categories,[Validators.required]],
+        ActivityTypeId:[this.activity.activityTypeId,[Validators.required]]
       })
     }else{
       this.group1 = this.service.formBuilder.group({
@@ -293,11 +294,10 @@ var dateString = this.group1.value.to;
 var dateObject = new Date(dateString);
 const userCategoriesData:number[] = this.group2.value.userCategoryId;
 var To = dateObject.toISOString().slice(0, 19).replace("T", " ") + ".0000000";
- console.log(this.group2.value.userCategoryId)
-      formData.append('Id', '0');
+     
       formData.append('Report', 'empty');
       formData.append('name', this.group1.value.name);
-      formData.append('description', this.group1.value.Description);
+      formData.append('description', this.group1.value.description);
       formData.append('place', this.group1.value.place);
       formData.append('date', date);
       formData.append('from', From);
@@ -311,21 +311,29 @@ var To = dateObject.toISOString().slice(0, 19).replace("T", " ") + ".0000000";
         formData.append(`UserCategories[${index}]`, category.toString());
       });
       formData.append('ActivityTypeId', this.group2.value.ActivityTypeId);
-     this.service.activityService.add(formData).subscribe(response=>{
-      if(response.statusCode=='200'){
-        this.service.toastService.success(response.message)
+      if(this.activity){
+        formData.append('Id', this.activity.id);
+        this.service.activityService.update(formData).subscribe(response=>{
+          if(response.statusCode=='200'){
+            this.service.toastService.success(response.message)
+          }else{
+            this.service.toastService.error(response.message);
+          }
+         })
       }else{
-        this.service.toastService.error(response.message);
+        formData.append('Id', '0');
+        this.service.activityService.add(formData).subscribe(response=>{
+          if(response.statusCode=='200'){
+            this.service.toastService.success(response.message)
+          }else{
+            this.service.toastService.error(response.message);
+          }
+         })
       }
-     })
+     
     }else{
       this.service.toastService.error("افحص المدخلات");
     }
-  }
-
-  isOptionSelected(element: any): boolean {
-    console.log(element)
-    return element.id === 8;
   }
   
 }
