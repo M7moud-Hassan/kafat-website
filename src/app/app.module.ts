@@ -26,6 +26,7 @@ import { ToastrModule } from 'ngx-toastr';
     MatDialogModule,
     NgxMaskModule.forRoot(),
     ToastrModule.forRoot(), 
+  
   ],
   // providers: [provideNgxMask()],
   bootstrap: [AppComponent],

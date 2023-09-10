@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { MainDashoardService } from '../../services/main-dashoard.service';
 import { DateAdapter, ThemePalette } from '@angular/material/core';
 import * as moment from 'moment';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-add-activity',
   templateUrl: './add-activity.component.html',
@@ -12,6 +13,7 @@ export class AddActivityComponent {
   group1:FormGroup = new FormGroup({});
   group2:FormGroup = new FormGroup({});
   filter:FormGroup = new FormGroup({});
+  id:number
   filterSupervisor:FormGroup = new FormGroup({});
   filterActivityType:FormGroup = new FormGroup({});
   filterUserActivity:FormGroup = new FormGroup({});
@@ -40,12 +42,20 @@ export class AddActivityComponent {
   activityTypes:any[]
   activityTypesFilter:any[]
   fileName=""
+  NameActivity=""
 
-  constructor(private service:MainDashoardService,private dateAdapter: DateAdapter<Date>) {
+  constructor(private service:MainDashoardService,private dateAdapter: DateAdapter<Date>,private route: ActivatedRoute) {
     this.dateAdapter.setLocale('en-GB'); 
+    this.route.params.subscribe(params => {
+      this.id = params['id']; 
+      
+    });
   }
   isLinear = false;
-  ngOnInit(): void {
+ async ngOnInit(): Promise<void> {
+    if(this.id){
+     await this.loadActivity();
+    }
     this.createForm();
     this.loadProjects();
     this.loadSupervisors();
@@ -65,6 +75,15 @@ export class AddActivityComponent {
       this.userCategories = this.userCategoriesFilter.filter(value => value.name.includes(newValue.filterInput3));
     });
 
+  }
+  activity:any
+  loadActivity(){
+    this.service.activityService.getById(this.id).subscribe(response=>{
+      if(response.statusCode=='200'){
+        console.log(response.data)
+        this.activity=response.data;
+        this.createForm()
+}    })
   }
 
   loadProjects(){
@@ -125,24 +144,46 @@ console.log(console.log(event.value));
 }
   ImagePath:File
   createForm(){
+    if(this.activity){
+      this.NameActivity=this.activity.name
+      this.group1 = this.service.formBuilder.group({
+        name:[this.activity.name,[Validators.required]],
+        description:[this.activity.description,[Validators.required]],
+        place:[this.activity.place,[Validators.required]],
+        date:[this.activity.date,[Validators.required]],
+        from:[this.activity.from,[Validators.required]],
+        to:[this.activity.to,[Validators.required]],
+      });
+
+      this.group2=this.service.formBuilder.group({
+        maximumParticipants:[this.activity.maximumParticipants,[Validators.required]],
+        ticketPrice:[this.activity.ticketPrice,[Validators.required]],
+        imagePath:[this.activity.imagePath,[Validators.required]],
+        programId:[this.activity.programId,[Validators.required]],
+        supervisorId:[this.activity.supervisorId,[Validators.required]],
+        userCategoryId:[this.activity.userCategories,[Validators.required]],
+        ActivityTypeId:[this.activity.ActivityTypeId,[Validators.required]]
+      })
+    }else{
+      this.group1 = this.service.formBuilder.group({
+        name:['',[Validators.required]],
+        description:['',[Validators.required]],
+        place:['',[Validators.required]],
+        date:['',[Validators.required]],
+        from:['',[Validators.required]],
+        to:['',[Validators.required]],
+      });
+      this.group2=this.service.formBuilder.group({
+        maximumParticipants:[null,[Validators.required]],
+        ticketPrice:[null,[Validators.required]],
+        imagePath:['',[Validators.required]],
+        programId:[null,[Validators.required]],
+        supervisorId:[null,[Validators.required]],
+        userCategoryId:[[],[Validators.required]],
+        ActivityTypeId:[null,[Validators.required]]
+      })
+    }
     
-    this.group1 = this.service.formBuilder.group({
-      name:['',[Validators.required]],
-      description:['',[Validators.required]],
-      place:['',[Validators.required]],
-      date:['',[Validators.required]],
-      from:['',[Validators.required]],
-      to:['',[Validators.required]],
-    });
-    this.group2=this.service.formBuilder.group({
-      maximumParticipants:[null,[Validators.required]],
-      ticketPrice:[null,[Validators.required]],
-      imagePath:['',[Validators.required]],
-      programId:[null,[Validators.required]],
-      supervisorId:[null,[Validators.required]],
-      userCategoryId:[[],[Validators.required]],
-      ActivityTypeId:[null,[Validators.required]]
-    })
     this.filter=this.service.formBuilder.group({
       filterInput:['']
     })
@@ -280,6 +321,11 @@ var To = dateObject.toISOString().slice(0, 19).replace("T", " ") + ".0000000";
     }else{
       this.service.toastService.error("افحص المدخلات");
     }
+  }
+
+  isOptionSelected(element: any): boolean {
+    console.log(element)
+    return element.id === 8;
   }
   
 }

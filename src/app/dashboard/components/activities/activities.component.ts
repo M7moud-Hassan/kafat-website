@@ -6,6 +6,7 @@ import { MainDashoardService } from '../../services/main-dashoard.service';
 import { AddCountryComponent } from '../add-country/add-country.component';
 import { DialogDeleteComponent } from '../dialog-delete/dialog-delete.component';
 import { EditCountryComponent } from '../edit-country/edit-country.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-activities',
@@ -16,7 +17,7 @@ export class ActivitiesComponent implements OnInit ,AfterViewInit {
   windowWidth: number = 0;
   pageResponse:PagedResponse={page:1,pageSize:10,totalCount:10,hasNextPage:false,hasPreviousPage:false,items:[]};
   pagedRequest:PagedRequest = {pageNumber:1,pageSize:5,name:''};
-  constructor(public service:MainDashoardService) {
+  constructor(public service:MainDashoardService,private router: Router) {
   }
   ngOnInit(): void {
     this.getPage();
@@ -93,6 +94,11 @@ export class ActivitiesComponent implements OnInit ,AfterViewInit {
         }
       },
     });
+  }
+
+  openActivity(id:number){
+    console.log(id)
+    this.router.navigate(['/admin/details-activity', id]);
   }
 }
 

@@ -24,10 +24,13 @@ import { SpecializationsComponent } from './components/specializations/specializ
 import { DepartmentsComponent } from './components/departments/departments.component';
 import { DistinguishedTypesComponent } from './components/distinguished-types/distinguished-types.component';
 import { FamilyBranchesComponent } from './components/family-branches/family-branches.component';
+import { DetailsActivityComponent } from './components/details-activity/details-activity.component';
 
-const routes: Routes = [
+export const routes: Routes = [
   {path:'',component:HomeComponent},
   {path:'activities',component:ActivitiesComponent},
+  {path:'details-activity/:id',component:DetailsActivityComponent},
+  {path:'edit-activity/:id',component:AddActivityComponent},
   {path:'add-activity',component:AddActivityComponent},
   {path:'update-activity/:id',component:UpdateActivityComponent},
   {path:'user-category-show',component:UserCategoryShowComponent},

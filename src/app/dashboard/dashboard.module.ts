@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { DashboardRoutingModule } from './dashboard-routing.module';
+import { DashboardRoutingModule, routes } from './dashboard-routing.module';
 import { HomeComponent } from './components/home/home.component';
 import { ActivitiesComponent } from './components/activities/activities.component';
 import { AddActivityComponent } from './components/add-activity/add-activity.component';
@@ -57,6 +57,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { NgxMatDatetimePickerModule, NgxMatTimepickerModule, NgxMatNativeDateModule } from '@angular-material-components/datetime-picker';
 import { MatSelectModule } from '@angular/material/select';
+import { DetailsActivityComponent } from './components/details-activity/details-activity.component';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -100,6 +101,7 @@ import { MatSelectModule } from '@angular/material/select';
       AddFamilyBranchComponent,
       EditFamilyBranchComponent,
       FamilyBranchesComponent,
+      DetailsActivityComponent,
   ],
   imports: [
     CommonModule,
@@ -120,7 +122,8 @@ import { MatSelectModule } from '@angular/material/select';
     NgxMatTimepickerModule,
     NgxMatNativeDateModule,
     NgxMatSelectSearchModule,
-    MatSelectModule
+    MatSelectModule,
+   
   ],
   providers:[
   ]
