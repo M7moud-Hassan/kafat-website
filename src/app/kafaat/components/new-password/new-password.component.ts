@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
 import { KafaatMainService } from '../../services/kafaat-main.service';
+import { MainDashoardService } from 'src/app/dashboard/services/main-dashoard.service';
+import { ResponseVM } from '../../core/models/response-vm';
 
 @Component({
   selector: 'app-new-password',
@@ -10,35 +12,59 @@ import { KafaatMainService } from '../../services/kafaat-main.service';
 export class NewPasswordComponent implements OnInit {
   isPasswordVisible:boolean = false;
   isPasswordVisible2:boolean = false;
+  userEmail:string = '';
   form:FormGroup = new FormGroup({});
-  constructor(private service:KafaatMainService) {}
+  constructor(private service:KafaatMainService,private adminService:MainDashoardService) {}
   ngOnInit(): void {
     this.createForm();
+    this.getForgetEmailFromObserver();
   }
   createForm(){
     this.form = this.service.formBuilder.group({
-      password:['',[Validators.required,Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$")]],
-      confirmPassword:['',[Validators.required,Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$")]],
+      newPassword:['',[Validators.required,Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$")]],
+      confirmPassword:['',[Validators.required,Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$")]],
+      email:['',[]],
     });
   }
-  get password(){
-    return this.form.controls['password'];
+  getForgetEmailFromObserver(){
+    this.userEmail = this.service.authSharedService.getForgetEmail() ?? '';
+  }
+  get newPassword(){
+    return this.form.controls['newPassword'];
   }
   get confirmPassword(){
     return this.form.controls['confirmPassword'];
   }
+  get email(){
+    return this.form.controls['email'];
+  }
   get isPasswordFieldsIdentical():boolean{
-    return this.password.value == this.confirmPassword.value;
+    return this.newPassword.value == this.confirmPassword.value;
   }
   submit() {
     //  this.service.printFormValues(this.form);
+    this.getForgetEmailFromObserver();
+    this.email.setValue(this.userEmail);
     if(this.form.valid){
-      this.service.authService.changePassword(this.form.value).subscribe({
-        next:(response)=>{
-
+      this.form.removeControl('confirmPassword');
+      this.service.authService.createNewPassword(this.form.value).subscribe({
+        next:(response:ResponseVM)=>{
+          if(response.statusCode==200){
+                this.adminService.router.navigate(['/']).then(val=>{
+                this.adminService.toastService.success(response.message);
+              });
+          }else{
+            this.adminService.toastService.error(response.message);
+          }
         },
         error:(error)=>{
-
+          let errorMessage = 'حدث خطأ غير متوقع';
+          if (error.error && typeof error.error === 'string') {
+            errorMessage = error.error; // Use the error message from the 'error' property
+          } else if (error.message) {
+            errorMessage = error.message; // Use the 'message' property if available
+          }
+          this.adminService.toastService.error(errorMessage);
         }
       })
     }

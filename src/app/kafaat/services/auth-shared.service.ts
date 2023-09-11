@@ -8,13 +8,16 @@ export class AuthSharedService {
 
   constructor() { }
 
-  private forgetEmailSubject = new BehaviorSubject<string>('');
+  private forgetEmailSubject = new BehaviorSubject<any>(null);
 
-  setForgerEmail(data: string) {
-    this.forgetEmailSubject.next(data);
+  setForgetEmail(email: string) {
+    localStorage.setItem('forgetEmail',email);
+    // this.forgetEmailSubject.next(data);
   }
 
-  getForgerEmail() {
-    return this.forgetEmailSubject.asObservable();
+  getForgetEmail() {
+    let email = localStorage.getItem('forgetEmail');
+    return email;
+    // return this.forgetEmailSubject.asObservable();
   }
 }

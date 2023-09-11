@@ -34,7 +34,7 @@ export class ForgottenPasswordComponent implements OnInit {
         next: (response: ResponseVM) => {
           if (response.statusCode == 200) {
             this.adminService.toastService.success(response.message);
-            this.service.authSharedService.setForgerEmail(response.data.email);
+            this.service.authSharedService.setForgetEmail(response.data.email);
             this.service.router.navigate(['/code-auth']);
           } else {
             this.adminService.toastService.error(response.message);

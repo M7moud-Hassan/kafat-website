@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { DashboardRoutingModule } from './dashboard-routing.module';
+import { DashboardRoutingModule, routes } from './dashboard-routing.module';
 import { HomeComponent } from './components/home/home.component';
 import { ActivitiesComponent } from './components/activities/activities.component';
 import { AddActivityComponent } from './components/add-activity/add-activity.component';
@@ -59,6 +59,8 @@ import { NgxMatDatetimePickerModule, NgxMatTimepickerModule, NgxMatNativeDateMod
 import { MatSelectModule } from '@angular/material/select';
 import { KafaatModule } from '../kafaat/kafaat.module';
 import { AuthService } from '../kafaat/services/auth.service';
+import { DetailsActivityComponent } from './components/details-activity/details-activity.component';
+
 @NgModule({
   declarations: [
     HomeComponent,
@@ -102,6 +104,7 @@ import { AuthService } from '../kafaat/services/auth.service';
       AddFamilyBranchComponent,
       EditFamilyBranchComponent,
       FamilyBranchesComponent,
+      DetailsActivityComponent,
   ],
   imports: [
     CommonModule,

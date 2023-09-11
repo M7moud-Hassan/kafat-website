@@ -7,7 +7,7 @@
                 <div class="col-12 col-md-6">
                     <mat-form-field class="w-100">
                         <mat-label class="input-label" for="name">نوع النشاط</mat-label>
-                        <input matInput formControlName="name" type="text" name="name" id="name"
+                        <input matInput formControlName="name" [value]="NameActivity" type="text" name="name" id="name"
                             [class.is-invalid]="name?.invalid && name?.touched" [class.is-valid]="name?.valid"
                             class="form-control">
                         <div *ngIf="name?.errors && name?.touched">
@@ -168,7 +168,7 @@
                                 <ngx-mat-select-search [formControl]="filterInput"
                                     placeholderLabel="البحث عن برنامج"></ngx-mat-select-search>
                             </mat-option>
-                            <mat-option *ngFor="let element of projects" [value]="element.id">
+                            <mat-option *ngFor="let element of projects" [value]="element.id" [selected]="isOptionSelected(element)">
                                 {{element.title}}
                             </mat-option>
                         </mat-select>

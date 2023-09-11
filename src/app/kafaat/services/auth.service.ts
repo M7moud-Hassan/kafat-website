@@ -86,8 +86,11 @@ export class AuthService {
   changePassword(model: any): Observable<ResponseVM> {
     return this.http.post<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/change-password`, model);
   }
-  validateSentCode(model: any): Observable<ResponseVM> {
-    return this.http.post<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/validate-sent-code`, model);
+  checkCode(model: any): Observable<ResponseVM> {
+    return this.http.post<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/check-code`, model);
   }
-
+  createNewPassword(model: any): Observable<ResponseVM> {
+    return this.http.post<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/create-new-password`, model);
+  }
+  
 }

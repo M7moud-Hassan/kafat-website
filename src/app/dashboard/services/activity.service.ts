@@ -20,4 +20,8 @@ export class ActivityService {
   getPage(data:any):Observable<PagedResponse>{
     return this.http.post<PagedResponse>(`${environment.baseApiUrl}/${this.controllerName}/get-page`,data);
   }
+
+  getById(id:any):Observable<ResponseVM>{
+    return this.http.get<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/get-by-id/${id}`);
+  }
 }
