@@ -736,3 +736,13 @@ height: 76px;
   align-items: center;
   justify-content: center;
 }
+
+.mdc-text-field--filled{
+  background-color: white !important;
+}
+.mdc-text-field--filled:hover{
+  background-color: white !important;
+}
+.mdc-line-ripple{
+  display: none !important;
+}

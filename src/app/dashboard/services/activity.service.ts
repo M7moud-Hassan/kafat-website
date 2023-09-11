@@ -17,11 +17,21 @@ export class ActivityService {
     return this.http.post<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/Add`,data);
   }
 
+  update(data:any):Observable<ResponseVM>{
+    return this.http.put<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/Update`,data);
+  }
+  delete(id:any):Observable<ResponseVM>{
+    return this.http.delete<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/Delete/${id}`);
+  }
+
   getPage(data:any):Observable<PagedResponse>{
     return this.http.post<PagedResponse>(`${environment.baseApiUrl}/${this.controllerName}/get-page`,data);
   }
 
   getById(id:any):Observable<ResponseVM>{
     return this.http.get<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/get-by-id/${id}`);
+  }
+  getDetails(id:any):Observable<ResponseVM>{
+    return this.http.get<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/get-activity-details-id/${id}`); 
   }
 }

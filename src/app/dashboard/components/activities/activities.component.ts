@@ -70,10 +70,10 @@ export class ActivitiesComponent implements OnInit ,AfterViewInit {
       data:{
         id:element.id,
         name:element.name,
-        title:'حذف دولة',
-        label:'اسم الدولة',
+        title:'حذف نشاط',
+        label:'اسم النشاط',
         submit:()=>{
-          this.service.countryService.delete(element.id).pipe(
+          this.service.activityService.delete(element.id).pipe(
             catchError((error) => {
               console.error(error);
               this.service.toastService.error('افحص السيرفر');
