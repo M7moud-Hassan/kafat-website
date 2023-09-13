@@ -1,15 +1,19 @@
 import { AfterViewInit, Component, OnInit ,Renderer2 } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
 import { KafaatMainService } from '../../services/kafaat-main.service';
+import { MainDashoardService } from 'src/app/dashboard/services/main-dashoard.service';
+import { ResponseVM } from '../../core/models/response-vm';
+import { IProfile } from '../../core/models/Iprofile';
 
 @Component({
   selector: 'app-profile-account-information',
   templateUrl: './profile-account-information.component.html',
   styleUrls: ['../profile-layout/profile-layout.component.css','./profile-account-information.component.css']
 })
-export class ProfileAccountInformationComponent  implements OnInit , AfterViewInit {
+export class ProfileAccountInformationComponent  implements OnInit {
   isPasswordPageVisible:boolean = false;
-  form:FormGroup = new FormGroup({});
+  profile:IProfile={} as IProfile;
+  // form:FormGroup = new FormGroup({});
   imagefile:any = "";
   fileName:string="";
   fileSize:number=0;
@@ -22,103 +26,228 @@ export class ProfileAccountInformationComponent  implements OnInit , AfterViewIn
   distinguishedTypes:any[]=[];
   departments:any[]=[];
   qualifications:any[]=[];
-  specialists:any[]=[];
+  specializations:any[]=[];
   workTypes:any[]=[];
+  userProfileImage:string = '/assets/images/male.png';
 
 
-  constructor(private service:KafaatMainService){}
-  ngAfterViewInit(): void {
-    this.handleOriginalValue(this.form.controls['password'].value);
+  constructor(private service:KafaatMainService,private adminService:MainDashoardService){
+    this.loadProfile();
+  }
+  onUserImageSelected(event: any) {
+    const image = event.target.files[0];
+     let checkResult = this.validateUplodedFile(image);
+     if(checkResult!=''){
+      this.adminService.toastService.warning(checkResult);
+      return;
+    }
+    this.userProfileImage = URL.createObjectURL(image);
+    //  this.form.controls['userImage'].setValue(image);
+  }
+  validateUplodedFile(image:any,isCv:boolean = false):string{
+    let imageError = "";
+    let maxLimitedSize = 1024*1024*10;
+    let _fileSize = image.size;  //in MB
+    if(_fileSize>maxLimitedSize){
+      imageError = "حجم الملف يتجاوز الحد المسموح به";
+      return imageError;
+    }
+    let fileName = image.name;
+     let fileArray:String = fileName.replace(' ','').split(".");
+     let fileExtension = fileArray[fileArray.length-1].toLowerCase().toString();
+    //  debugger;
+    if (isCv) {
+      if (fileExtension != "jpg" && fileExtension != "png" && fileExtension != "jpeg" && fileExtension != "pdf") {
+        imageError = "نوع الملف  غير مسموح به";
+        return imageError;
+      }
+    }
+    else {
+      if (fileExtension != "jpg" && fileExtension != "png" && fileExtension != "jpeg") {
+        imageError = "نوع الملف  غير مسموح به";
+        return imageError;
+      }
+    }
+    return imageError;
   }
   ngOnInit(): void {
     this.isPasswordPageVisible = false;
-    this.createForm();
-    this.loadFormData();
+    this.loadProfile();
     this.loadCountries();
-    this.loadCities();
-    this.loadDistricts();
-    this.loadDistinguishedTypes();
+    this.loadAllCities();
+    this.loadAllDistrict();
     this.loadFamilyBranches();
-    this.loadDepartments();
-    this.loadSpecialists();
+    this.loadDistinguishedTypes();
     this.loadWorkTypes();
     this.loadQualifications();
-    this.imagefile = this.form.controls['image'].value ?? this.imagefile ;
-    this.replacePasswordWithX();
+    this.loadAllSpecializations();
+    this.loadAllDepartments();
   }
   valueEmitted(event: any) {
     this.isPasswordPageVisible = event;
   }
-  replacePasswordWithX(){
-    let passLength = this.password.toString().length;
-    let newPass = 'x'.padStart(passLength, 'x');
-    this.form.controls['password'].patchValue(newPass);
-  }
   loadCountries(){
-    this.countries = this.service.profileService.loadContries();
-  }
-  loadCities(){
-    this.cities = this.service.profileService.loadCities();
-  }
-  loadDistricts(){
-    this.districts = this.service.profileService.loadDistricts();
-  }
-  loadFamilyBranches(){
-    this.cities = this.service.profileService.loadFamilyBranches();
-  }
-  loadDistinguishedTypes(){
-    this.districts = this.service.profileService.loaddifferences();
-  }
-  loadDepartments(){
-    this.departments = this.service.profileService.loadDepartments();
-  }
-  loadQualifications(){
-    this.qualifications = this.service.profileService.loadQualifications();
-  }
-  loadSpecialists(){
-    this.specialists = this.service.profileService.loadSpecialists();
-  }
-  loadWorkTypes(){
-    this.workTypes = this.service.profileService.loadWorkTypes();
-  }
-  handleOriginalValue(originalText: string) {
-    this.originalPassword = originalText;
-  }
-  createForm(){
-    this.form = this.service.formBuilder.group({
-      userId:['',[Validators.required]],
-      userName:['',[Validators.required]],
-      email:['',[Validators.required]],
-      phone:['',[Validators.required]],
-      password:['',[Validators.required]],
-      firstName:['',[Validators.required]],
-      middleName:['',[Validators.required]],
-      lastName:['',[Validators.required]],
-      gender:['',[Validators.required]],
-      identityNumber:['',[Validators.required]],
-      birthDate:['',[Validators.required]],
-      birthDateHijry:['',[Validators.required]],
-      twitterLink:['',[Validators.required]],
-      facebookLink:['',[Validators.required]],
-      maritalStatus:['',[Validators.required]],
-      country:['',[Validators.required]],
-      city:['',[Validators.required]],
-      district:['',[Validators.required]],
-      familyBranch:['',[Validators.required]],
-      nickName:['',[Validators.required]],
-      differences:['',[Validators.required]],
-      isAvailableToWork:['',[Validators.required]],
-      qualification:['',[Validators.required]],
-      specialization:['',[Validators.required]],
-      department:['',[Validators.required]],
-      workType:['',[Validators.required]],
-      favourites:['',[Validators.required]],
-      image:['',[Validators.required]],
+    this.adminService.countryService.getAll().subscribe({
+      next:(res:ResponseVM)=>{
+        if(res.statusCode==200){
+          this.countries = res.data
+        }else{
+          this.adminService.toastService.error(res.message);
+        }
+      }
     });
   }
-  loadFormData(){
-    let model = this.service.profileService.loadProfileData({id:18617});
-    this.form.patchValue(model);
+  loadAllCities(){
+    this.adminService.cityService.getAll().subscribe({
+      next:(res:ResponseVM)=>{
+        if(res.statusCode==200){
+          this.cities = res.data
+        }else{
+          this.adminService.toastService.error(res.message);
+        }
+      }
+    });
+  }
+  loadAllDistrict(){
+    this.adminService.districtService.getAll().subscribe({
+      next:(res:ResponseVM)=>{
+        if(res.statusCode==200){
+          this.districts = res.data
+        }else{
+          this.adminService.toastService.error(res.message);
+        }
+      }
+    });
+  }
+  loadFamilyBranches(){
+    this.adminService.familyBranchService.getAll().subscribe({
+      next:(res:ResponseVM)=>{
+        if(res.statusCode==200){
+          this.familyBranches = res.data
+        }else{
+          this.adminService.toastService.error(res.message);
+        }
+      }
+    });
+  }
+  loadDistinguishedTypes(){
+    this.adminService.distinguishedTypeService.getAll().subscribe({
+      next:(res:ResponseVM)=>{
+        if(res.statusCode==200){
+          this.distinguishedTypes = res.data
+        }else{
+          this.adminService.toastService.error(res.message);
+        }
+      }
+    });
+  }
+  loadQualifications(){
+    this.adminService.qualificationService.getAll().subscribe({
+      next:(res:ResponseVM)=>{
+        if(res.statusCode==200){
+          this.qualifications = res.data
+        }else{
+          this.adminService.toastService.error(res.message);
+        }
+      }
+    });
+  }
+  loadAllSpecializations(){
+    this.adminService.specializationService.getAll().subscribe({
+      next:(res:ResponseVM)=>{
+        if(res.statusCode==200){
+          this.specializations = res.data
+        }else{
+          this.adminService.toastService.error(res.message);
+        }
+      }
+    });
+  }
+  loadAllDepartments(){
+    this.adminService.departmentService.getAll().subscribe({
+      next:(res:ResponseVM)=>{
+        if(res.statusCode==200){
+          this.departments = res.data
+        }else{
+          this.adminService.toastService.error(res.message);
+        }
+      }
+    });
+  }
+  loadSpecializations(id:any){
+    this.adminService.specializationService.getAllByQualificationId(id).subscribe({
+      next:(res:ResponseVM)=>{
+        if(res.statusCode==200){
+          this.specializations = res.data
+        }else{
+          this.adminService.toastService.error(res.message);
+        }
+      }
+    });
+  }
+  loadDepartments(id:any){
+    this.adminService.departmentService.getAllBySpecializationId(id).subscribe({
+      next:(res:ResponseVM)=>{
+        if(res.statusCode==200){
+          this.departments = res.data
+        }else{
+          this.adminService.toastService.error(res.message);
+        }
+      }
+    });
+  }
+  loadWorkTypes(){
+   this.adminService.workTypeService.getAll().subscribe({
+      next:(res:ResponseVM)=>{
+        if(res.statusCode==200){
+          this.workTypes = res.data
+        }else{
+          this.adminService.toastService.error(res.message);
+        }
+      }
+    });
+  }
+  loadCities(id:any){
+    this.adminService.cityService.getAllByCountryId(id).subscribe({
+      next:(res:ResponseVM)=>{
+        if(res.statusCode==200){
+          this.cities = res.data
+        }else{
+          this.adminService.toastService.error(res.message);
+        }
+      }
+    });
+  }
+  loadDistricts(id:any){
+      this.adminService.districtService.getAllByCityId(id).subscribe({
+      next:(res:ResponseVM)=>{
+        if(res.statusCode==200){
+          this.districts = res.data
+        }else{
+          this.adminService.toastService.error(res.message);
+        }
+      }
+    });
+  }
+  loadProfile(){
+    let User_Email = this.service.authService.currentUser().email;
+    this.service.profileService.getUserProfile(User_Email).subscribe({
+      next:(res:ResponseVM)=>{
+        if(res.statusCode==200){
+          this.profile = res.data as IProfile;
+        }else{
+          this.adminService.toastService.error(res.message);
+        }
+      },error:(error)=>{
+        let errorMessage = 'حدث خطأ غير متوقع';
+        if (error.error && typeof error.error === 'string') {
+          errorMessage = error.error; // Use the error message from the 'error' property
+        } else if (error.message) {
+          errorMessage = error.message; // Use the 'message' property if available
+        }
+        this.adminService.toastService.error(errorMessage);
+      }
+    });
   }
 
 
@@ -141,116 +270,11 @@ export class ProfileAccountInformationComponent  implements OnInit , AfterViewIn
       this.imagefile = URL.createObjectURL(file);
     };
     reader.readAsDataURL(file);
-    this.form.controls['image'].setValue(this.imagefile);
+    // this.form.controls['image'].setValue(this.imagefile);
   }
   
-  submit() {
-    this.service.printFormValues(this.form);
-    if(this.form.valid){
-      this.service.profileService.editProfile(this.form.value).subscribe({
-        next:(response)=>{
-
-        },
-        error:(error)=>{
-
-        }
-      })
-    }
-  }
   back(){
     this.service.back;
   } 
-  value1:any;
-  isDate:boolean = true;
-  pickBirthDataInMilady(value: string){
-    let originValues = value.split('-').reverse().join('-');
-    this.value1 = originValues;
-    this.form.controls['birthDate'].setValue(originValues);
-    return;
-  }
-  pickBirthDataInHijri(value: string){
-    this.form.controls['birthDateHijry'].setValue(value);
-  }
 
-  get userId(){
-    return this.form.controls['userId'];
-  }
-  get userName(){
-    return this.form.controls['userName'];
-  }
-  get email(){
-    return this.form.controls['email'];
-  }
-  get phone(){
-    return this.form.controls['phone'];
-  }
-  get password(){
-    return this.form.controls['password'];
-  }
-  get firstName(){
-    return this.form.controls['firstName'];
-  }
-  get middleName(){
-    return this.form.controls['middleName'];
-  }
-  get lastName(){
-    return this.form.controls['lastName'];
-  }
-  get gender(){
-    return this.form.controls['gender'];
-  }
-  get identityNumber(){
-    return this.form.controls['identityNumber'];
-  }
-  get birthDate(){
-    return this.form.controls['birthDate'];
-  }
-  get birthDateHijry(){
-    return this.form.controls['birthDateHijry'];
-  }
-  get twitterLink(){
-    return this.form.controls['twitterLink'];
-  }
-  get facebookLink(){
-    return this.form.controls['facebookLink'];
-  }
-  get maritalStatus(){
-    return this.form.controls['maritalStatus'];
-  }
-  get country(){
-    return this.form.controls['country'];
-  }
-  get city(){
-    return this.form.controls['city'];
-  }
-  get district(){
-    return this.form.controls['district'];
-  }
-  get familyBranch(){
-    return this.form.controls['familyBranch'];
-  }
-  get nickName(){
-    return this.form.controls['nickName'];
-  }
-  get differences(){
-    return this.form.controls['differences'];
-  }
-  get isAvailableToWork(){
-    return this.form.controls['isAvailableToWork'];
-  }
-  get qualification(){
-    return this.form.controls['qualification'];
-  }
-  get specialization(){
-    return this.form.controls['specialization'];
-  }
-  get department(){
-    return this.form.controls['department'];
-  }
-  get workType(){
-    return this.form.controls['workType'];
-  }
-  get favourites(){
-    return this.form.controls['favourites'];
-  }
 }
