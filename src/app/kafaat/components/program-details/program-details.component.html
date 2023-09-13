@@ -1,12 +1,12 @@
 <app-navbar typeNav="dark" [active]=1></app-navbar>
-<app-page-header-labeled Header="المتميزون" Label="متميزو الشهر في جميع البرامج"></app-page-header-labeled>
+<app-page-header-labeled [Header]="program.title" [Label]="program.subTitle"></app-page-header-labeled>
     <app-bread-crumb></app-bread-crumb>
 <div class="row">
     <div class="col-12 col-md-4">
         <div class="statistic-container-right">
             <div class="statistic-item">
                 <img src="/assets/images/light-bulb.svg" width="48" height="48">
-                <span class="statistic-number">934</span>
+                <span class="statistic-number">{{program.activityCount}}</span>
                 <span class="statistic-label">عدد المناشط</span>
             </div>
         </div>
@@ -15,7 +15,7 @@
         <div class="statistic-container">
             <div class="statistic-item">
                 <img src="/assets/images/document-duplicate.svg" width="48" height="48">
-                <span class="statistic-number">1634</span>
+                <span class="statistic-number">{{program.postsCount}}</span>
                 <span class="statistic-label">عدد المشاركات</span>
             </div>
         </div>
@@ -24,7 +24,7 @@
         <div class="statistic-container-left">
             <div class="statistic-item">
                 <img src="/assets/images/user-group.svg" width="48" height="48">
-                <span class="statistic-number">8726</span>
+                <span class="statistic-number">{{program.participantsCount}}</span>
                 <span class="statistic-label">عدد المشاركين</span>
             </div>
         </div>
@@ -36,16 +36,13 @@
             <div class="program-descriprion-image-name-container">
                 <!-- <img src="/assets/images/book.svg" width="149" height="135"> -->
                 <div class="card-image"></div>
-                 <span class="program-descriprion-name">برنامج قارئ</span>
+                 <span class="program-descriprion-name">{{program.title}}</span>
             </div>
         </div>
         <div class="col-12 col-md-9">
             <div class="program-descriprion-words">
                 <div class="text-container">
-                    <p class="text-content">
-                        وصف مبسط ومختصر لبرنامج قارئ وما يهدف اليه وما يحاول تعزيزه ونشره،وصف مبسط ومختصر لبرنامج قارئ وما يهـــــــدف اليه وما يحاول تعزيزه ونشرهوصف مبسط ومختصر لبرنامج قارئ وما يهدف اليه وما يحاول تعزيزه ونشره, وصف مبســـــــــــــــــط ومختصر لبرنامج قارئ وما يهدف اليه وما يحاول تعزيزه ونشره، وصف مبسط ومختصر لبرنامج قارئ وما يهدف اليه وما يحـــاول تعزيزه ونشره،وصف مبسط ومختصر لبرنامج قارئ وما يهدف اليه وما يحاول تعزيزه ونشرهوصف مبسط ومختصر لبرنامج قارئ وما يهدف اليه وما يحاول تعزيزه ونشرهوصف مبســـــــــــــــــط ومختصر لبرنامج قارئ وما يهدف اليه وما يحـــاول تعزيزه ونشــــــره
-                        عزيزه ونشره،وصف مبسط ومختصر لبرنامج قارئ وما يهدف اليه وما يحاول تعزيزه ونشرهوصف مبسط ومختصر لبرنامج قارئ وما يهدف اليه وما يحاول تعزيزه ونشرهوصف مبســـــــــــــــــط ومختصر لبرنامج قارئ وما يهدف اليه وما يحـــاول تعزيزه ونشــــــره
-                    </p>
+                    <p class="text-content">{{program.description}}</p>
                   </div>
             </div>
         </div>

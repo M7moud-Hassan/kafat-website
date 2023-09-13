@@ -1,4 +1,6 @@
 import { Component, Input, Renderer2 ,OnInit, Output, EventEmitter, HostListener} from '@angular/core';
+import { ProgramsService } from 'src/app/kafaat/services/programs.service';
+
 
 @Component({
   selector: 'app-navbar',
@@ -10,13 +12,21 @@ export class NavbarComponent implements OnInit{
   @Input() active:number=-1;
   @Output() handleOpenNav = new EventEmitter<boolean>();
 
-  constructor(private renderer: Renderer2) {
+  programs:any[]
+  constructor(private service:ProgramsService) {
     
     
   }
   ngOnInit(): void {
+    this.loadPrograms();
   
-  
+  }
+  loadPrograms(){
+    this.service.geAll().subscribe(response=>{
+      if(response.statusCode=='200'){
+        this.programs=response.data;
+      }
+    })
   }
   openNav(): void {
     document.getElementById("mySidenav")!.style.width = "75%";

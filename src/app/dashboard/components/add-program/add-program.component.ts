@@ -23,17 +23,27 @@ export class AddProgramComponent implements OnInit {
         Title:[this.data.title,[Validators.required]],
         Description:[this.data.description,[Validators.required]],
         ImageFile:[null,[Validators.required]],
+        subTitle:[this.data.subTitle],
+        imageDes:[null,[Validators.required]],
       });
     }else{
       this.form = this.service.formBuilder.group({
         Title:['',[Validators.required]],
         Description:['',[Validators.required]],
         ImageFile:[null,[Validators.required]],
+        subTitle:['',[Validators.required]],
+        imageDes:[null,[Validators.required]],
       });
     }
   }
+  get subTitle(){
+    return this.form.controls['subTitle'];
+  }
   get Title(){
     return this.form.controls['Title'];
+  }
+  get imageDes(){
+    return this.form.controls['imageDes'];
   }
   get ImageFile(){
     return this.form.controls['ImageFile'];
@@ -42,11 +52,19 @@ export class AddProgramComponent implements OnInit {
     return this.form.controls['Description'];
   }
   fileIn:File;
+  fileInR:File;
 
   onFileSelected(event: any): void {
     const file = (event.target as HTMLInputElement).files?.[0];
     if (file) {
       this.fileIn=file;
+    }
+  }
+
+  onFileSelectedImageDes(event: any):void{
+    const file = (event.target as HTMLInputElement).files?.[0];
+    if (file) {
+      this.fileInR=file;
     }
   }
   
@@ -58,6 +76,8 @@ export class AddProgramComponent implements OnInit {
         formData.append('Description', this.form.value.Description);
         formData.append('ImageFile', this.fileIn);
         formData.append('CreatedBy', '1');
+        formData.append('SubTitle',this.form.value.subTitle);
+        formData.append('ImageDesFile',this.fileInR);
         if(this.data){
           formData.append('id', this.data.id);
           this.service.programsService.update(formData).subscribe({

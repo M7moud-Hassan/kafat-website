@@ -3,10 +3,10 @@
       <div ngxSlickItem *ngFor="let slide of slides;let i = index" class="slide d-pointer">
         <div class="carousal-home-item d-flex align-items-center justify-content-center m-4"
         (mouseenter)="onCarouselItemMouseEnter(i)" (mouseleave)="onCarouselItemMouseLeave(i)">
-            <img src="{{slide.img}}" alt="Programs" (click)="onItemClick(slide, i)">
+            <img src="{{slide.imagePath}}" alt="Programs" (click)="onItemClick(slide, slide.id)">
         </div>
-        <p [id]="'p'+i" class="fs-6 fw-bold text-center p-title" (click)="onItemClick(slide, i)">{{slide.title}}</p>
-        <p class="text-center small" (click)="onItemClick(slide, i)"> {{slide.subTitle}}</p>
+        <p [id]="'p'+i" class="fs-6 fw-bold text-center p-title" (click)="onItemClick(slide, slide.id)">{{slide.title}}</p>
+        <p class="text-center small" (click)="onItemClick(slide, slide.id)">منشط {{slide.activityCount}}</p>
         </div>
     </ngx-slick-carousel>
     <div class="text-center">
