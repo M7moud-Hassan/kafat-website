@@ -1,6 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
 import { KafaatMainService } from '../../services/kafaat-main.service';
+import { MainDashoardService } from 'src/app/dashboard/services/main-dashoard.service';
+import { ResponseVM } from '../../core/models/response-vm';
 
 @Component({
   selector: 'app-profile-change-password',
@@ -11,7 +13,7 @@ export class ProfileChangePasswordComponent  implements OnInit {
   form:FormGroup = new FormGroup({});
   
   
-  constructor(private service:KafaatMainService){}
+  constructor(private service:KafaatMainService,private adminService:MainDashoardService){}
 
   ngOnInit(): void {
     this.createForm();
@@ -23,8 +25,8 @@ export class ProfileChangePasswordComponent  implements OnInit {
 
   createForm(){
     this.form = this.service.formBuilder.group({
-      userId:['123',[Validators.required]],
-      currentPassword:['',[Validators.required]],
+      email:['',[Validators.required]],
+      oldPassword:['',[Validators.required]],
       newPassword:['',[Validators.required,Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$")]],
       confirmPassword:['',[Validators.required,Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$")]],
     });
@@ -33,21 +35,41 @@ export class ProfileChangePasswordComponent  implements OnInit {
     return this.newPassword.value == this.confirmPassword.value;
   }
   submit() {
-    this.service.printFormValues(this.form);
-    if(this.form.valid || this.isPasswordFieldsIdentical){
+    // this.service.printFormValues(this.form);
+    let _email = this.service.authService.currentUser().email;
+    this.form.controls['email'].setValue(_email);
+    if(this.form.valid && this.isPasswordFieldsIdentical){
+      this.form.removeControl('confirmPassword');
       this.service.profileService.changePassword(this.form.value).subscribe({
-        next:(response)=>{
-
-        },
-        error:(error)=>{
-
+        next:(res:ResponseVM)=>{
+          if (res.statusCode == 200) {
+            if (res.data) {
+              this.adminService.toastService.success(res.message);
+            } 
+            else {
+              this.adminService.toastService.warning(res.message);
+            }
+          } 
+          else {
+            this.adminService.toastService.error(res.message);
+          }
+          this.changePage();
+        },error:(error)=>{
+          let errorMessage = 'حدث خطأ غير متوقع';
+          if (error.error && typeof error.error === 'string') {
+            errorMessage = error.error; // Use the error message from the 'error' property
+          } else if (error.message) {
+            errorMessage = error.message; // Use the 'message' property if available
+          }
+          this.adminService.toastService.error(errorMessage);
+          this.changePage();
         }
-      })
+      });
     }
   }
   
-  get currentPassword(){
-    return this.form.controls['currentPassword'];
+  get oldPassword(){
+    return this.form.controls['oldPassword'];
   }
   get newPassword(){
     return this.form.controls['newPassword'];

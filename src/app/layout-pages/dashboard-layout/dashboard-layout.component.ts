@@ -11,6 +11,7 @@ import { environment } from 'src/environments/environment.prod';
 export class DashboardLayoutComponent implements OnInit, AfterViewInit {
   user:UserData = {} as UserData;
   apiURL:string = environment.baseApiUrl;
+  userProfileImage:any;
   constructor(private authService:AuthService){}
   ngAfterViewInit(): void {
     this.getCurrentUSer();
@@ -19,12 +20,14 @@ export class DashboardLayoutComponent implements OnInit, AfterViewInit {
   }
 
   getCurrentUSer(){
-
     this.user = this.authService.currentUser();
     if(this.user.userImage.includes("assets/male.png")){
-      this.user.userImage = '/assets/images/male.png'
+      this.userProfileImage = '/assets/images/male.png'
     }else if(this.user.userImage.includes("assets/female.png")){
-      this.user.userImage = '/assets/images/female.png'
+      this.userProfileImage= '/assets/images/female.png'
+    }
+    else{
+      this.userProfileImage = this.user.userImage;
     }
   }
   logout(){

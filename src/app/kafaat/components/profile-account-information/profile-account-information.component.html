@@ -18,7 +18,7 @@
         <!-- username -->
         <div class="input-surrounding">
             <div class="input-element w-100">
-                <input type="text" name="userName" id="userName" [(ngModel)]="profile.displayName"
+                <input type="text" name="userName" id="userName" (blur)="EditField('UserName')"  [(ngModel)]="profile.displayName"
                     class="input-element-icon person-icon" >
                 <label for="userName">اسم المستخدم</label>
             </div>
@@ -29,8 +29,7 @@
         <!-- email -->
         <div class="input-surrounding">
             <div class="input-element w-100">
-                <input type="text" name="email" id="email" [(ngModel)]="profile.email" class="input-element-icon email-icon"
-                    >
+                <input type="text" name="email" id="email" (blur)="EditField('Email')"  [(ngModel)]="profile.email" class="input-element-icon email-icon">
                 <label for="email">البريد الإلكتروني</label>
             </div>
             <div *ngIf="false">
@@ -40,7 +39,7 @@
         <!-- phone -->
         <div class="input-surrounding">
             <div class="input-element w-100">
-                <input type="text" name="phoneNumber" id="phoneNumber" [(ngModel)]="profile.phoneNumber" class="input-element-icon phone-icon"
+                <input type="text" name="phoneNumber" id="phoneNumber" (blur)="EditField('Phone')" [(ngModel)]="profile.phoneNumber" class="input-element-icon phone-icon"
                     >
                 <label for="phoneNumber">رقم الجوال</label>
             </div>
@@ -68,7 +67,7 @@
             <div class="col-12 col-md-4">
                 <div class="input-surrounding">
                     <div class="input-element-none-icon w-100">
-                        <input type="text" name="firstName" id="firstName" [(ngModel)]="profile.firstName" class="none-icon"
+                        <input type="text" name="firstName" id="firstName" (blur)="EditField('FirstName')" [(ngModel)]="profile.firstName" class="none-icon"
                             >
                         <label for="firstName">الاسم الاول</label>
                     </div>
@@ -80,7 +79,7 @@
             <div class="col-12 col-md-4">
                 <div class="input-surrounding">
                     <div class="input-element-none-icon w-100">
-                        <input type="text" name="middleName" id="middleName" [(ngModel)]="profile.middleName"
+                        <input type="text" name="middleName" id="middleName" (blur)="EditField('MiddleName')" [(ngModel)]="profile.middleName"
                             class="none-icon" >
                         <label for="middleName">الاسم الاوسط</label>
                     </div>
@@ -93,7 +92,7 @@
             <div class="col-12 col-md-4">
                 <div class="input-surrounding">
                     <div class="input-element-none-icon w-100">
-                        <input type="text" name="lastName" id="lastName" [(ngModel)]="profile.lastName" class="none-icon"
+                        <input type="text" name="lastName" id="lastName" (blur)="EditField('LastName')" [(ngModel)]="profile.lastName" class="none-icon"
                             >
                         <label for="lastName">الاسم الاخير</label>
                     </div>
@@ -111,14 +110,14 @@
                     <div class="row">
                         <div class="col-3 col-md-6">
                             <div class="d-flex justify-content-start align-items-start pb-2">
-                                <input type="radio" class="defaultRadioButton" style="width: 30px;" value="m" [(ngModel)]="profile.gender"
+                                <input type="radio" class="defaultRadioButton" style="width: 30px;" (change)="EditField('Gender')" value="m" [(ngModel)]="profile.gender"
                                     name="gender" id="male">
                                 <span for="make d-inline-block" style="margin-right: 20px;">ذكر</span>
                             </div>
                         </div>
                         <div class="col-3 col-md-6">
                             <div class="d-flex justify-content-start align-items-start pb-2">
-                                <input type="radio" class="defaultRadioButton" style="width: 30px;" value="f" [(ngModel)]="profile.gender"
+                                <input type="radio" class="defaultRadioButton" style="width: 30px;" (change)="EditField('Gender')" value="f" [(ngModel)]="profile.gender"
                                     name="gender" id="female">
                                 <span for="female d-inline-block" style="margin-right: 20px;">انثى</span>
                             </div>
@@ -131,7 +130,7 @@
         <!--   identityNumber -->
         <div class="input-surrounding mt-4">
             <div class="input-element-none-icon w-100">
-                <input type="text" name="identityNumber" id="identityNumber" [(ngModel)]="profile.identityNumber"
+                <input type="text" name="identityNumber" id="identityNumber" (blur)="EditField('IdentityNumber')" [(ngModel)]="profile.identityNumber"
                     class="none-icon" >
                 <label for="identityNumber">رقم الهوية</label>
             </div>
@@ -144,14 +143,14 @@
             <div class="col-12 col-md-6">
                 <div class="input-element-none-icon w-100 mt-4 ">
                     <input type="date" name="birthDate"
-                        id="birthDate" [(ngModel)]="profile.birthDateInAD" class="none-icon">
+                        id="birthDate" [(ngModel)]="profile.birthDateInAD" (change)="EditField('BirthDateInAD')" class="none-icon">
                     <label for="birthDate">تاريخ الميلاد (ميلادي)</label>
                 </div>
             </div>
             <div class="col-12 col-md-6">
                 <div class="input-element-none-icon w-100 mt-4 ">
-                    <input type="date" name="birthDateHijry"
-                        id="birthDateHijry" [(ngModel)]="profile.birthDateInHijri" class="none-icon">
+                    <input type="date" name="birthDateHijry" [value]="profile.birthDateInHijri"
+                        id="birthDateHijry" [(ngModel)]="profile.birthDateInHijri" (change)="EditField('BirthDateInHijri')" class="none-icon">
                     <label for="birthDateHijry">تاريخ الميلاد (هجري)</label>
                 </div>
             </div>
@@ -160,14 +159,14 @@
         <div class="row">
             <div class="col-12 col-md-6">
                 <div class="input-element-none-icon w-100 mt-4 ">
-                    <input type="text" name="twitterLink" id="twitterLink" [(ngModel)]="profile.twitterLink"
+                    <input type="text" name="twitterLink" id="twitterLink" (blur)="EditField('TwitterLink')" [(ngModel)]="profile.twitterLink"
                         class="none-icon">
                     <label for="twitterLink">رابط تويتر (اختياري)</label>
                 </div>
             </div>
             <div class="col-12 col-md-6 ">
                 <div class="input-element-none-icon w-100 mt-4 ">
-                    <input type="text" name="facebookLink" id="facebookLink" [(ngModel)]="profile.facebookLink"
+                    <input type="text" name="facebookLink" id="facebookLink" (blur)="EditField('FacebookLink')" [(ngModel)]="profile.facebookLink"
                         class="none-icon">
                     <label for="facebookLink">رابط الفيسبوك (اختياري)</label>
                 </div>
@@ -182,14 +181,14 @@
                         <div class="col-3 col-md-6">
                             <div class="d-flex justify-content-start align-items-start pb-2">
                                 <input type="radio" class="defaultRadioButton" style="width: 30px;" value="m"
-                                    [(ngModel)]="profile.maritalStatus" name="maritalStatus" id="male">
+                                    [(ngModel)]="profile.maritalStatus" (change)="EditField('MaritalStatus')" name="maritalStatus" id="male">
                                 <span for="make d-inline-block" style="margin-right: 20px;">متزوج</span>
                             </div>
                         </div>
                         <div class="col-3 col-md-6">
                             <div class="d-flex justify-content-start align-items-start pb-2">
                                 <input type="radio" class="defaultRadioButton" style="width: 30px;" value="s"
-                                    [(ngModel)]="profile.maritalStatus" name="maritalStatus" id="female">
+                                    [(ngModel)]="profile.maritalStatus" (change)="EditField('MaritalStatus')" name="maritalStatus" id="female">
                                 <span for="female d-inline-block" style="margin-right: 20px;">اعزب</span>
                             </div>
                         </div>
@@ -203,8 +202,8 @@
                     <!-- country -->
                     <div class="input-surrounding">
                         <div class="select-element select-input w-100">
-                            <select type="text" name="country" id="country" [(ngModel)]="profile.countryId" >
-                                <option *ngFor="let item of countries" value="{{item.id}}">{{item.name}}</option>
+                            <select type="text" name="country" id="country" (change)="loadAllCitiesRelated(profile.countryId);isCountryChanged=true;profile.cityId=0" [(ngModel)]="profile.countryId" >
+                                <option [selected]="item.id==profile.countryId" *ngFor="let item of countries" value="{{item.id}}">{{item.name}}</option>
                             </select>
                             <label for="country">الدولة</label>
                         </div>
@@ -217,8 +216,9 @@
                     <!-- city -->
                     <div class="input-surrounding">
                         <div class="select-element select-input w-100">
-                            <select type="text" name="city" id="city" [(ngModel)]="profile.cityId" >
-                                <option *ngFor="let item of cities" value="{{item.id}}">{{item.name}}</option>
+                            <select type="text" name="city" id="city" (change)="loadAllDistrictRelated(profile.cityId);isCityChanged=true;isCountryChanged=false;profile.districtId=0;" [(ngModel)]="profile.cityId" >
+                                <option [selected]="isCountryChanged" value="0" [disabled]="true">اختر المدينة</option>
+                                <option [selected]="item.id==profile.cityId" *ngFor="let item of cities" value="{{item.id}}">{{item.name}}</option>
                             </select>
                             <label for="city">المدينة</label>
                         </div>
@@ -231,8 +231,9 @@
                     <!-- district -->
                     <div class="input-surrounding">
                         <div class="select-element select-input w-100">
-                            <select type="text" name="district" id="district" [(ngModel)]="profile.districtId" >
-                                <option *ngFor="let item of districts" value="{{item.id}}">{{item.name}}</option>
+                            <select type="text" name="district" id="district" (change)="EditField('District')" [(ngModel)]="profile.districtId" >
+                                <option [selected]="isCityChanged" value="0" [disabled]="true">اختر الحى</option>
+                                <option [selected]="item.id==profile.districtId" *ngFor="let item of districts" value="{{item.id}}">{{item.name}}</option>
                             </select>
                             <label for="district">الحى</label>
                         </div>
@@ -245,8 +246,9 @@
         </div>
         <div class="input-surrounding">
             <div class="select-element select-input w-100">
-                <select type="text" name="familyBranch" id="familyBranch" [(ngModel)]="profile.familyBranchId" >
-                    <option *ngFor="let item of familyBranches" value="{{item.id}}">{{item.name}}</option>
+                <select type="text" name="familyBranch" id="familyBranch" (change)="EditField('FamilyBranch')" [(ngModel)]="profile.familyBranchId" >
+                    <option [selected]="profile.familyBranchId == null" [disabled]="profile.familyBranchId != null" value="null"style="color: var(--neutral50-color);font-size: 12px;">اختر فرع العائلة</option>
+                    <option [selected]="item.id==profile.familyBranchId" *ngFor="let item of familyBranches" value="{{item.id}}">{{item.name}}</option>
                 </select>
                 <label for="familyBranch">فرع الأسرة</label>
             </div>
@@ -256,7 +258,7 @@
         </div>
         <div class="input-surrounding">
             <div class="input-element-none-icon w-100">
-                <input type="text" name="nickName" id="nickName" [(ngModel)]="profile.nickName" class="none-icon"
+                <input type="text" name="nickName" id="nickName" (blur)="EditField('NickName')" [(ngModel)]="profile.nickName" class="none-icon"
                     >
                 <label for="nickName">الكنية</label>
             </div>
@@ -266,8 +268,9 @@
         </div>
         <div class="input-surrounding">
             <div class="select-element select-input w-100">
-                <select type="text" name="distinguishedTypeId" id="distinguishedTypeId" [(ngModel)]="profile.distinguishedTypeId" >
-                    <option *ngFor="let item of distinguishedTypes" value="{{item.id}}">{{item.name}}</option>
+                <select type="text" name="distinguishedTypeId" id="distinguishedTypeId" (change)="EditField('DistinguishedType')" [(ngModel)]="profile.distinguishedTypeId" >
+                    <option [selected]="profile.distinguishedTypeId == null" [disabled]="profile.distinguishedTypeId != null" value="null" style="color: var(--neutral50-color);font-size: 12px;">اختر فرع العائلة</option>
+                    <option [selected]="item.id==profile.distinguishedTypeId" *ngFor="let item of distinguishedTypes" value="{{item.id}}">{{item.name}}</option>
                 </select>
                 <label for="distinguishedTypeId">وجه التميز</label>
             </div>
@@ -281,7 +284,7 @@
         <div class="row">
             <div class="col-12 col-md-6">
                 <div class="d-flex justify-content-right align-items-center">
-                    <input type="checkbox" class="Square_Sign_checkboxButton" style="width: auto; border: none;" value="isAvailableToWork" [(ngModel)]="profile.isAvailableToWork" name="isAvailableToWork" id="isAvailableToWork">
+                    <input type="checkbox" class="Square_Sign_checkboxButton" [checked]="profile.isAvailableToWork==true" (change)="EditField('IsAvailableToWork')" style="width: auto; border: none;"  [(ngModel)]="profile.isAvailableToWork" name="isAvailableToWork" id="isAvailableToWork">
                     <span for="make d-inline-block">متاح لفرصة عمل</span>
                 </div>
             </div>
@@ -292,8 +295,8 @@
                 <!-- qualification -->
                 <div class="input-surrounding">
                     <div class="select-element select-input w-100">
-                        <select type="text" name="qualification" id="qualification" [(ngModel)]="profile.qualificationId" >
-                            <option *ngFor="let item of qualifications" value="{{item.id}}">{{item.name}}</option>
+                        <select type="text" name="qualification" id="qualification" (change)="loadRelatedSpecializations(profile.qualificationId);isQualificationChanged=true;profile.specializationId=0" [(ngModel)]="profile.qualificationId" >
+                            <option [selected]="item.id==profile.qualificationId" *ngFor="let item of qualifications" value="{{item.id}}">{{item.name}}</option>
                         </select>
                         <label for="qualification">المؤهل</label>
                     </div>
@@ -306,8 +309,9 @@
                 <!-- specialization -->
                 <div class="input-surrounding">
                     <div class="select-element select-input w-100">
-                        <select type="text" name="specialization" id="specialization" [(ngModel)]="profile.specializationId" >
-                            <option *ngFor="let item of specializations" value="{{item.id}}">{{item.name}}</option>
+                        <select type="text" name="specialization" id="specialization" (change)="loadRelatedDepartments(profile.specializationId);isSpecializationChanged=true;isQualificationChanged=false;profile.departmentId=0;" [(ngModel)]="profile.specializationId" >
+                            <option [selected]="isQualificationChanged" value="0" [disabled]="true">اختر التخصص</option>
+                            <option [selected]="item.id==profile.specializationId" *ngFor="let item of specializations" value="{{item.id}}">{{item.name}}</option>
                         </select>
                         <label for="specialization">التخصص</label>
                     </div>
@@ -320,8 +324,11 @@
                 <!-- department -->
                 <div class="input-surrounding">
                     <div class="select-element select-input w-100">
-                        <select type="text" name="department" id="department" [(ngModel)]="profile.departmentId" >
-                            <option *ngFor="let item of departments" value="{{item.id}}">{{item.name}}</option>
+                        <select type="text" name="department" id="department" (change)="EditField('Department')" [(ngModel)]="profile.departmentId" >
+                            <option *ngFor="let item of " value="{{item.id}}">{{item.name}}</option>
+                            <option [selected]="isSpecializationChanged" value="0" [disabled]="true">اختر القسم</option>
+                                <option [selected]="item.id==profile.departmentId" *ngFor="let item of departments" value="{{item.id}}">{{item.name}}</option>
+
                         </select>
                         <label for="department">القسم</label>
                     </div>
@@ -336,8 +343,9 @@
                 <!-- workType -->
                 <div class="input-surrounding">
                     <div class="select-element select-input w-100">
-                        <select type="text" name="workType" id="workType" [(ngModel)]="profile.workTypeId" >
-                            <option *ngFor="let item of workTypes" value="{{item.id}}">{{item.name}}</option>
+                        <select type="text" name="workType" id="workType" (change)="EditField('WorkType')" [(ngModel)]="profile.workTypeId" >
+                            <option [selected]="profile.workTypeId == null" [disabled]="profile.workTypeId != null" value="null"style="color: var(--neutral50-color);font-size: 12px;">اختر نوع العمل</option>
+                            <option [selected]="item.id==profile.workTypeId" *ngFor="let item of workTypes" value="{{item.id}}">{{item.name}}</option>
                         </select>
                         <label for="workType">نوع العمل</label>
                     </div>
@@ -349,7 +357,7 @@
             <div class="col-12 col-md-6 pb-2">
                 <!-- specialization -->
                 <div class="input-element-none-icon w-100 mt-4 ">
-                    <input type="text" name="hoppies" id="hoppies" [(ngModel)]="profile.hoppies"
+                    <input type="text" name="hoppies" id="hoppies" (blur)="EditField('Hoppies')" [(ngModel)]="profile.hoppies"
                         class="none-icon">
                     <label for="hoppies">الهوايات</label>
                 </div>
