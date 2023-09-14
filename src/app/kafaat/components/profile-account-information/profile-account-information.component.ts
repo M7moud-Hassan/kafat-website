@@ -1,9 +1,10 @@
-import { AfterViewInit, Component, OnInit ,Renderer2 } from '@angular/core';
-import { FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 import { KafaatMainService } from '../../services/kafaat-main.service';
 import { MainDashoardService } from 'src/app/dashboard/services/main-dashoard.service';
 import { ResponseVM } from '../../core/models/response-vm';
 import { IProfile } from '../../core/models/Iprofile';
+import { FieldNames } from '../../core/static/field-names';
+import { EditFieldRequest } from '../../core/models/edit-field-request';
 
 @Component({
   selector: 'app-profile-account-information',
@@ -13,12 +14,10 @@ import { IProfile } from '../../core/models/Iprofile';
 export class ProfileAccountInformationComponent  implements OnInit {
   isPasswordPageVisible:boolean = false;
   profile:IProfile={} as IProfile;
-  // form:FormGroup = new FormGroup({});
   imagefile:any = "";
   fileName:string="";
   fileSize:number=0;
   errorMessage:string = "";
-  originalPassword: string = '';
   countries:any[]=[];
   cities:any[]=[];
   districts:any[]=[];
@@ -30,10 +29,8 @@ export class ProfileAccountInformationComponent  implements OnInit {
   workTypes:any[]=[];
   userProfileImage:string = '/assets/images/male.png';
 
+  constructor(private service:KafaatMainService,private adminService:MainDashoardService){}
 
-  constructor(private service:KafaatMainService,private adminService:MainDashoardService){
-    this.loadProfile();
-  }
   onUserImageSelected(event: any) {
     const image = event.target.files[0];
      let checkResult = this.validateUplodedFile(image);
@@ -230,8 +227,10 @@ export class ProfileAccountInformationComponent  implements OnInit {
     });
   }
   loadProfile(){
-    let User_Email = this.service.authService.currentUser().email;
-    this.service.profileService.getUserProfile(User_Email).subscribe({
+    let _email = this.service.authService.currentUser().email;
+    let model = {"email":_email};
+    // alert(User_Email);
+    this.service.profileService.getUserProfile(model).subscribe({
       next:(res:ResponseVM)=>{
         if(res.statusCode==200){
           this.profile = res.data as IProfile;
@@ -249,8 +248,6 @@ export class ProfileAccountInformationComponent  implements OnInit {
       }
     });
   }
-
-
   onFileSelected(event: any) {
     this.errorMessage = "";
     const file: File = event.target.files[0];
@@ -271,10 +268,86 @@ export class ProfileAccountInformationComponent  implements OnInit {
     };
     reader.readAsDataURL(file);
     // this.form.controls['image'].setValue(this.imagefile);
-  }
-  
+  } 
   back(){
     this.service.back;
   } 
-
+  EditField(fieldName:string){
+    let _email = this.service.authService.currentUser().email;
+    let newValue:any ;
+    if(fieldName==FieldNames.UserName){
+      newValue = this.profile.displayName;
+    }
+    else if(fieldName==FieldNames.Phone){
+      newValue = this.profile.phoneNumber;
+    }
+    else if(fieldName==FieldNames.Email){
+      newValue = this.profile.email;
+    }
+    else if(fieldName==FieldNames.FirstName){
+      newValue = this.profile.firstName;
+    }
+    else if(fieldName==FieldNames.MiddleName){
+      newValue = this.profile.middleName;
+    }
+    else if(fieldName==FieldNames.LastName){
+      newValue = this.profile.lastName;
+    }
+    else if(fieldName==FieldNames.IdentityNumber){
+      newValue = this.profile.identityNumber;
+    }
+    else if(fieldName==FieldNames.FacebookLink){
+      newValue = this.profile.facebookLink;
+    }
+    else if(fieldName==FieldNames.TwitterLink){
+      newValue = this.profile.twitterLink;
+    }
+    else if(fieldName==FieldNames.NickName){
+      newValue = this.profile.nickName;
+    }
+    else if(fieldName==FieldNames.Hoppies){
+      newValue = this.profile.hoppies;
+    }else if(fieldName==FieldNames.IsAvailableToWork){
+      newValue = this.profile.isAvailableToWork;
+    }
+    else if(fieldName==FieldNames.Gender){
+      newValue = this.profile.gender;
+    }
+    else if(fieldName==FieldNames.MaritalStatus){
+      newValue = this.profile.maritalStatus;
+    }
+    else if(fieldName==FieldNames.BirthDateInAD){
+      newValue = this.profile.birthDateInAD;
+    }
+    else if(fieldName==FieldNames.BirthDateInHijri){
+      newValue = this.profile.birthDateInHijri;
+    }
+    else if(fieldName==FieldNames.FamilyBranch){
+      newValue = this.profile.familyBranchId;
+    }
+    else if(fieldName==FieldNames.WorkType){
+      newValue = this.profile.workTypeId;
+    }
+    else if(fieldName==FieldNames.DistinguishedType){
+      newValue = this.profile.distinguishedTypeId;
+    }
+    let model:EditFieldRequest = {Email:_email,FieldName:fieldName,NewValue:newValue};
+    this.service.profileService.editProfile(model).subscribe({
+      next:(res:ResponseVM)=>{
+        if(res.statusCode==200){
+          this.adminService.toastService.success(res.message);
+        }else{
+          this.adminService.toastService.warning(res.message);
+        }
+      },error:(error)=>{
+        let errorMessage = 'حدث خطأ غير متوقع';
+        if (error.error && typeof error.error === 'string') {
+          errorMessage = error.error; // Use the error message from the 'error' property
+        } else if (error.message) {
+          errorMessage = error.message; // Use the 'message' property if available
+        }
+        this.adminService.toastService.error(errorMessage);
+      }
+    });
+  }
 }
