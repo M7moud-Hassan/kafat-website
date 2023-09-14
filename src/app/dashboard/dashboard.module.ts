@@ -66,7 +66,7 @@ import { ImagesActivityComponent } from './components/images-activity/images-act
 import { VideosActivityComponent } from './components/videos-activity/videos-activity.component';
 import { AddImagesActivityComponent } from './components/add-images-activity/add-images-activity.component';
 import { AddVideoActivityComponent } from './components/add-video-activity/add-video-activity.component';
-
+import { AddReportComponent } from './components/add-report/add-report.component';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -117,6 +117,7 @@ import { AddVideoActivityComponent } from './components/add-video-activity/add-v
       VideosActivityComponent,
       AddImagesActivityComponent,
       AddVideoActivityComponent,
+      AddReportComponent,
   ],
   imports: [
     CommonModule,
@@ -139,6 +140,7 @@ import { AddVideoActivityComponent } from './components/add-video-activity/add-v
     NgxMatSelectSearchModule,
     MatSelectModule,
     KafaatModule
+    
   ],
   providers:[
     AuthService

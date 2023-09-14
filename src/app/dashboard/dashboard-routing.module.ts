@@ -28,12 +28,14 @@ import { DetailsActivityComponent } from './components/details-activity/details-
 import { AttachmentsActivityComponent } from './components/attachments-activity/attachments-activity.component';
 import { ImagesActivityComponent } from './components/images-activity/images-activity.component';
 import { VideosActivityComponent } from './components/videos-activity/videos-activity.component';
+import { AddReportComponent } from './components/add-report/add-report.component';
 
 export const routes: Routes = [
   {path:'',component:HomeComponent},
   {path:'activities',component:ActivitiesComponent},
   {path:'details-activity/:id',component:DetailsActivityComponent},
   {path:'images-activity/:id',component:ImagesActivityComponent},
+  {path:'report-activity/:id',component:AddReportComponent},
   {path:'videos-activity/:id',component:VideosActivityComponent},
   {path:'attachments-activity/:id',component:AttachmentsActivityComponent},
   {path:'edit-activity/:id',component:AddActivityComponent},
