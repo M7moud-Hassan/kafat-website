@@ -28,6 +28,10 @@ export class ProfileAccountInformationComponent  implements OnInit {
   specializations:any[]=[];
   workTypes:any[]=[];
   userProfileImage:string = '/assets/images/male.png';
+  isCountryChanged:boolean=false;
+  isCityChanged:boolean=false;
+  isQualificationChanged:boolean=false;
+  isSpecializationChanged:boolean=false;
 
   constructor(private service:KafaatMainService,private adminService:MainDashoardService){}
 
@@ -39,7 +43,29 @@ export class ProfileAccountInformationComponent  implements OnInit {
       return;
     }
     this.userProfileImage = URL.createObjectURL(image);
-    //  this.form.controls['userImage'].setValue(image);
+
+    let formData:FormData =  new FormData();
+    let _userEmail = this.service.authService.currentUser().email;
+    formData.append("Email",_userEmail);
+    formData.append("FieldName",'UserImage');
+    formData.append("NewValue",image);
+    this.service.profileService.uploadFile(formData).subscribe({
+      next:(res:ResponseVM)=>{
+        if(res.statusCode==200){
+          this.adminService.toastService.success(res.message);
+        }else{
+          this.adminService.toastService.warning(res.message);
+        }
+      },error:(error)=>{
+        let errorMessage = 'حدث خطأ غير متوقع';
+        if (error.error && typeof error.error === 'string') {
+          errorMessage = error.error; 
+        } else if (error.message) {
+          errorMessage = error.message;
+        }
+        this.adminService.toastService.error(errorMessage);
+      }
+    });
   }
   validateUplodedFile(image:any,isCv:boolean = false):string{
     let imageError = "";
@@ -70,15 +96,6 @@ export class ProfileAccountInformationComponent  implements OnInit {
   ngOnInit(): void {
     this.isPasswordPageVisible = false;
     this.loadProfile();
-    this.loadCountries();
-    this.loadAllCities();
-    this.loadAllDistrict();
-    this.loadFamilyBranches();
-    this.loadDistinguishedTypes();
-    this.loadWorkTypes();
-    this.loadQualifications();
-    this.loadAllSpecializations();
-    this.loadAllDepartments();
   }
   valueEmitted(event: any) {
     this.isPasswordPageVisible = event;
@@ -87,29 +104,31 @@ export class ProfileAccountInformationComponent  implements OnInit {
     this.adminService.countryService.getAll().subscribe({
       next:(res:ResponseVM)=>{
         if(res.statusCode==200){
-          this.countries = res.data
+          this.countries = res.data;
+          this.loadAllCitiesRelated(this.profile.countryId);
         }else{
           this.adminService.toastService.error(res.message);
         }
       }
     });
   }
-  loadAllCities(){
-    this.adminService.cityService.getAll().subscribe({
+  loadAllCitiesRelated(id:number){
+    this.adminService.cityService.getAllByCountryId(id).subscribe({
       next:(res:ResponseVM)=>{
         if(res.statusCode==200){
-          this.cities = res.data
+          this.cities = res.data;
+          this.loadAllDistrictRelated(this.profile.cityId);
         }else{
           this.adminService.toastService.error(res.message);
         }
       }
     });
   }
-  loadAllDistrict(){
-    this.adminService.districtService.getAll().subscribe({
+  loadAllDistrictRelated(id:number){
+    this.adminService.districtService.getAllByCityId(id).subscribe({
       next:(res:ResponseVM)=>{
         if(res.statusCode==200){
-          this.districts = res.data
+          this.districts = res.data;
         }else{
           this.adminService.toastService.error(res.message);
         }
@@ -142,7 +161,8 @@ export class ProfileAccountInformationComponent  implements OnInit {
     this.adminService.qualificationService.getAll().subscribe({
       next:(res:ResponseVM)=>{
         if(res.statusCode==200){
-          this.qualifications = res.data
+          this.qualifications = res.data;
+          this.loadRelatedSpecializations(this.profile.qualificationId);
         }else{
           this.adminService.toastService.error(res.message);
         }
@@ -153,7 +173,8 @@ export class ProfileAccountInformationComponent  implements OnInit {
     this.adminService.specializationService.getAll().subscribe({
       next:(res:ResponseVM)=>{
         if(res.statusCode==200){
-          this.specializations = res.data
+          this.specializations = res.data;
+          this.loadRelatedDepartments(this.profile.specializationId);
         }else{
           this.adminService.toastService.error(res.message);
         }
@@ -171,7 +192,7 @@ export class ProfileAccountInformationComponent  implements OnInit {
       }
     });
   }
-  loadSpecializations(id:any){
+  loadRelatedSpecializations(id:any){
     this.adminService.specializationService.getAllByQualificationId(id).subscribe({
       next:(res:ResponseVM)=>{
         if(res.statusCode==200){
@@ -182,7 +203,7 @@ export class ProfileAccountInformationComponent  implements OnInit {
       }
     });
   }
-  loadDepartments(id:any){
+  loadRelatedDepartments(id:any){
     this.adminService.departmentService.getAllBySpecializationId(id).subscribe({
       next:(res:ResponseVM)=>{
         if(res.statusCode==200){
@@ -227,13 +248,27 @@ export class ProfileAccountInformationComponent  implements OnInit {
     });
   }
   loadProfile(){
-    let _email = this.service.authService.currentUser().email;
+    let _user = this.service.authService.currentUser();
+    let _email = _user.email;
     let model = {"email":_email};
     // alert(User_Email);
+
     this.service.profileService.getUserProfile(model).subscribe({
       next:(res:ResponseVM)=>{
         if(res.statusCode==200){
           this.profile = res.data as IProfile;
+          this.loadCountries();
+          this.loadAllCitiesRelated(this.profile.countryId);
+          this.loadAllDistrictRelated(this.profile.cityId);
+
+          this.loadFamilyBranches();
+          this.loadDistinguishedTypes();
+          this.loadWorkTypes();
+
+          this.loadQualifications();
+          this.loadRelatedSpecializations(this.profile.qualificationId);
+          this.loadRelatedDepartments(this.profile.specializationId);
+          this.getUserImage(this.profile.userImagePath);
         }else{
           this.adminService.toastService.error(res.message);
         }
@@ -331,7 +366,33 @@ export class ProfileAccountInformationComponent  implements OnInit {
     else if(fieldName==FieldNames.DistinguishedType){
       newValue = this.profile.distinguishedTypeId;
     }
+    else if(fieldName==FieldNames.District){
+      this.isCityChanged = false;
+      let address = {
+        "countryId":this.profile.countryId,
+        "cityId":this.profile.cityId,
+        "districtId":this.profile.districtId,
+      }
+      newValue = address;
+    }
+    else if(fieldName==FieldNames.Department){
+      this.isSpecializationChanged = false;
+      let learning = {
+        "qualificationId":this.profile.qualificationId,
+        "specializationId":this.profile.specializationId,
+        "departmentId":this.profile.departmentId,
+      }
+      newValue = learning;
+    }
     let model:EditFieldRequest = {Email:_email,FieldName:fieldName,NewValue:newValue};
+    if(fieldName==FieldNames.UserName || fieldName==FieldNames.Phone || fieldName==FieldNames.Email || fieldName==FieldNames.FirstName || 
+      fieldName==FieldNames.MiddleName || fieldName==FieldNames.LastName || fieldName==FieldNames.TwitterLink || fieldName==FieldNames.FacebookLink
+      || fieldName==FieldNames.IdentityNumber || fieldName==FieldNames.NickName || fieldName==FieldNames.Hoppies){
+        if(model.NewValue==null || model.NewValue.length < 3){
+          this.adminService.toastService.warning('القيمة المدخلة قصيرة جدا');
+          return;
+        }
+      }
     this.service.profileService.editProfile(model).subscribe({
       next:(res:ResponseVM)=>{
         if(res.statusCode==200){
@@ -349,5 +410,15 @@ export class ProfileAccountInformationComponent  implements OnInit {
         this.adminService.toastService.error(errorMessage);
       }
     });
+  }
+  getUserImage(img:any){
+    if(img.includes("assets/male.png")){
+      this.userProfileImage = '/assets/images/male.png'
+    }else if(img.includes("assets/female.png")){
+      this.userProfileImage= '/assets/images/female.png'
+    }
+    else{
+      this.userProfileImage = img;
+    }
   }
 }

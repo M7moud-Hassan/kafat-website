@@ -202,7 +202,7 @@
                     <!-- country -->
                     <div class="input-surrounding">
                         <div class="select-element select-input w-100">
-                            <select type="text" name="country" id="country" [(ngModel)]="profile.countryId" >
+                            <select type="text" name="country" id="country" (change)="loadAllCitiesRelated(profile.countryId);isCountryChanged=true;profile.cityId=0" [(ngModel)]="profile.countryId" >
                                 <option [selected]="item.id==profile.countryId" *ngFor="let item of countries" value="{{item.id}}">{{item.name}}</option>
                             </select>
                             <label for="country">الدولة</label>
@@ -216,7 +216,8 @@
                     <!-- city -->
                     <div class="input-surrounding">
                         <div class="select-element select-input w-100">
-                            <select type="text" name="city" id="city" [(ngModel)]="profile.cityId" >
+                            <select type="text" name="city" id="city" (change)="loadAllDistrictRelated(profile.cityId);isCityChanged=true;isCountryChanged=false;profile.districtId=0;" [(ngModel)]="profile.cityId" >
+                                <option [selected]="isCountryChanged" value="0" [disabled]="true">اختر المدينة</option>
                                 <option [selected]="item.id==profile.cityId" *ngFor="let item of cities" value="{{item.id}}">{{item.name}}</option>
                             </select>
                             <label for="city">المدينة</label>
@@ -230,7 +231,8 @@
                     <!-- district -->
                     <div class="input-surrounding">
                         <div class="select-element select-input w-100">
-                            <select type="text" name="district" id="district" [(ngModel)]="profile.districtId" >
+                            <select type="text" name="district" id="district" (change)="EditField('District')" [(ngModel)]="profile.districtId" >
+                                <option [selected]="isCityChanged" value="0" [disabled]="true">اختر الحى</option>
                                 <option [selected]="item.id==profile.districtId" *ngFor="let item of districts" value="{{item.id}}">{{item.name}}</option>
                             </select>
                             <label for="district">الحى</label>
@@ -293,8 +295,8 @@
                 <!-- qualification -->
                 <div class="input-surrounding">
                     <div class="select-element select-input w-100">
-                        <select type="text" name="qualification" id="qualification" [(ngModel)]="profile.qualificationId" >
-                            <option *ngFor="let item of qualifications" value="{{item.id}}">{{item.name}}</option>
+                        <select type="text" name="qualification" id="qualification" (change)="loadRelatedSpecializations(profile.qualificationId);isQualificationChanged=true;profile.specializationId=0" [(ngModel)]="profile.qualificationId" >
+                            <option [selected]="item.id==profile.qualificationId" *ngFor="let item of qualifications" value="{{item.id}}">{{item.name}}</option>
                         </select>
                         <label for="qualification">المؤهل</label>
                     </div>
@@ -307,8 +309,9 @@
                 <!-- specialization -->
                 <div class="input-surrounding">
                     <div class="select-element select-input w-100">
-                        <select type="text" name="specialization" id="specialization" [(ngModel)]="profile.specializationId" >
-                            <option *ngFor="let item of specializations" value="{{item.id}}">{{item.name}}</option>
+                        <select type="text" name="specialization" id="specialization" (change)="loadRelatedDepartments(profile.specializationId);isSpecializationChanged=true;isQualificationChanged=false;profile.departmentId=0;" [(ngModel)]="profile.specializationId" >
+                            <option [selected]="isQualificationChanged" value="0" [disabled]="true">اختر التخصص</option>
+                            <option [selected]="item.id==profile.specializationId" *ngFor="let item of specializations" value="{{item.id}}">{{item.name}}</option>
                         </select>
                         <label for="specialization">التخصص</label>
                     </div>
@@ -321,8 +324,11 @@
                 <!-- department -->
                 <div class="input-surrounding">
                     <div class="select-element select-input w-100">
-                        <select type="text" name="department" id="department" [(ngModel)]="profile.departmentId" >
-                            <option *ngFor="let item of departments" value="{{item.id}}">{{item.name}}</option>
+                        <select type="text" name="department" id="department" (change)="EditField('Department')" [(ngModel)]="profile.departmentId" >
+                            <option *ngFor="let item of " value="{{item.id}}">{{item.name}}</option>
+                            <option [selected]="isSpecializationChanged" value="0" [disabled]="true">اختر القسم</option>
+                                <option [selected]="item.id==profile.departmentId" *ngFor="let item of departments" value="{{item.id}}">{{item.name}}</option>
+
                         </select>
                         <label for="department">القسم</label>
                     </div>

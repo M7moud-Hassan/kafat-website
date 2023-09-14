@@ -18,11 +18,18 @@ export class ProfileService {
   editProfile(model:EditFieldRequest):Observable<ResponseVM>{
     return this.http.post<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/edit-user-profile`,model);
   }
+  uploadFile(model:any):Observable<ResponseVM>{
+    // let m:EditFieldRequest = {Email:'mabdelmoughiss@gmail.com',FieldName:'UserImage',NewValue:'imagehere'};
+    // return this.http.post<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/upload-file`,model);
+    return this.http.post<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/upload-profile-file`,model);
+  }
   getUserProfile(model:any):Observable<ResponseVM>{
     return this.http.post<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/get-user-profile`,model);
   }
   changePassword(model:any):Observable<ResponseVM>{
-    return this.http.post<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/`,model);
+    return this.http.post<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/change-password`,model);
   }
-
+  deleteAccount(model:any):Observable<ResponseVM>{
+    return this.http.post<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/delete-account`,model);
+  }
 }
