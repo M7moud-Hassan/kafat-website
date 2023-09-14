@@ -17,7 +17,6 @@ export interface RegisterationVM {
         familyBranchId:number,
         maritalStatus:string,
         isAvailableToWork:boolean,
-        distinguishedTypeId?:number,
         qualificationId?:number,
         specializationId?:number,
         departmentId?:number,

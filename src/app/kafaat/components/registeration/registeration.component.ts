@@ -26,7 +26,6 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
   cities:any[]=[];
   districts:any[]=[];
   familyBranches:any[]=[];
-  distinguishedTypes:any[]=[];
   departments:any[]=[];
   qualifications:any[]=[];
   specializations:any[]=[];
@@ -41,7 +40,6 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
   ngOnInit(): void {
     this.createForm();
     this.loadCountries();
-    this.loadDistinguishedTypes();
     this.loadFamilyBranches();
     this.loadWorkTypes();
     this.loadQualifications();
@@ -95,17 +93,6 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
       next:(res:ResponseVM)=>{
         if(res.statusCode==200){
           this.familyBranches = res.data
-        }else{
-          this.adminService.toastService.error(res.message);
-        }
-      }
-    });
-  }
-  loadDistinguishedTypes(){
-    this.adminService.distinguishedTypeService.getAll().subscribe({
-      next:(res:ResponseVM)=>{
-        if(res.statusCode==200){
-          this.distinguishedTypes = res.data
         }else{
           this.adminService.toastService.error(res.message);
         }
@@ -194,7 +181,6 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
       lastName:['',[Validators.required]],
       gender:['',[Validators.required]],
       identityNumber:['',[Validators.required]],
-      distinguishedTypeId:[0,[]],
       birthDateInHijri:['',[Validators.required]],
       birthDateInAD:['',[Validators.required]],
       countryId:[0,[Validators.required]],
@@ -224,7 +210,6 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
         this.form.controls['lastName'].setValue('abdelmoughiss');
         this.form.controls['gender'].setValue('m');
         this.form.controls['identityNumber'].setValue('3893763783673');
-        this.form.controls['distinguishedTypeId'].setValue(1);
         this.form.controls['birthDateInHijri'].setValue('2000-01-01');
         this.form.controls['birthDateInAD'].setValue('2000-01-01');
         this.form.controls['countryId'].setValue(1);
@@ -299,7 +284,6 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
     this.formData.append('lastName',this.lastName.value);
     this.formData.append('gender',this.gender.value);
     this.formData.append('identityNumber',this.identityNumber.value);
-    this.formData.append('distinguishedTypeId',this.distinguishedTypeId.value);
     this.formData.append('birthDateInHijri',this.birthDateInHijri.value);
     this.formData.append('birthDateInAD',this.birthDateInAD.value);
     this.formData.append('countryId',this.countryId.value);
@@ -403,9 +387,6 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
   }
   get identityNumber(){
     return this.form.controls['identityNumber'];
-  }
-  get distinguishedTypeId(){
-    return this.form.controls['distinguishedTypeId'];
   }
   get birthDateInHijri(){
     return this.form.controls['birthDateInHijri'];

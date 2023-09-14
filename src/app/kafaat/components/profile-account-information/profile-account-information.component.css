@@ -214,3 +214,36 @@
   background-color: var(--neutral40-color);
   cursor: pointer;
 }
+.user-profile-container{
+  position: relative;
+  width: 130px;
+  height: 130px;
+  border-radius: 50% 50%;
+  /* border: 1px solid var(--main-color); */
+  overflow: hidden;
+  box-shadow: 0px 0px 5px var(--main-color);
+}
+.user-profile-image{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 130px;
+  height: 130px;
+  border-radius: 50% 50%;
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+.user-profile-camera{
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  width: 130px;
+  height: 60px;
+  background-color: rgba(0, 0, 0, 0.212);
+  cursor: pointer;
+}
+.camera-icon{
+  font-size: 30px;
+  color: var(--main-color);
+}
