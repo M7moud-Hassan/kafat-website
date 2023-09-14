@@ -25,11 +25,17 @@ import { DepartmentsComponent } from './components/departments/departments.compo
 import { DistinguishedTypesComponent } from './components/distinguished-types/distinguished-types.component';
 import { FamilyBranchesComponent } from './components/family-branches/family-branches.component';
 import { DetailsActivityComponent } from './components/details-activity/details-activity.component';
+import { AttachmentsActivityComponent } from './components/attachments-activity/attachments-activity.component';
+import { ImagesActivityComponent } from './components/images-activity/images-activity.component';
+import { VideosActivityComponent } from './components/videos-activity/videos-activity.component';
 
 export const routes: Routes = [
   {path:'',component:HomeComponent},
   {path:'activities',component:ActivitiesComponent},
   {path:'details-activity/:id',component:DetailsActivityComponent},
+  {path:'images-activity/:id',component:ImagesActivityComponent},
+  {path:'videos-activity/:id',component:VideosActivityComponent},
+  {path:'attachments-activity/:id',component:AttachmentsActivityComponent},
   {path:'edit-activity/:id',component:AddActivityComponent},
   {path:'add-activity',component:AddActivityComponent},
   {path:'update-activity/:id',component:UpdateActivityComponent},

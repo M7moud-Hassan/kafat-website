@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { DialogVideoImageComponent } from 'src/app/shared/components/dialog-video-image/dialog-video-image.component';
 
 @Component({
@@ -7,6 +7,7 @@ import { DialogVideoImageComponent } from 'src/app/shared/components/dialog-vide
   styleUrls: ['./manashet-details-image-gallery-page.component.css']
 })
 export class ManashetDetailsImageGalleryPageComponent {
+  @Input() items:any=[]
   @ViewChild('dialog', { static: false }) dialogComponent: DialogVideoImageComponent | undefined;
   openModal(){
     console.log(this.dialogComponent)

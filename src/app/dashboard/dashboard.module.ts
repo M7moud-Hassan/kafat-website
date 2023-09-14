@@ -60,6 +60,12 @@ import { MatSelectModule } from '@angular/material/select';
 import { KafaatModule } from '../kafaat/kafaat.module';
 import { AuthService } from '../kafaat/services/auth.service';
 import { DetailsActivityComponent } from './components/details-activity/details-activity.component';
+import { AttachmentsActivityComponent } from './components/attachments-activity/attachments-activity.component';
+import { AddAttachmentActivityComponent } from './components/add-attachment-activity/add-attachment-activity.component';
+import { ImagesActivityComponent } from './components/images-activity/images-activity.component';
+import { VideosActivityComponent } from './components/videos-activity/videos-activity.component';
+import { AddImagesActivityComponent } from './components/add-images-activity/add-images-activity.component';
+import { AddVideoActivityComponent } from './components/add-video-activity/add-video-activity.component';
 
 @NgModule({
   declarations: [
@@ -105,6 +111,12 @@ import { DetailsActivityComponent } from './components/details-activity/details-
       EditFamilyBranchComponent,
       FamilyBranchesComponent,
       DetailsActivityComponent,
+      AttachmentsActivityComponent,
+      AddAttachmentActivityComponent,
+      ImagesActivityComponent,
+      VideosActivityComponent,
+      AddImagesActivityComponent,
+      AddVideoActivityComponent,
   ],
   imports: [
     CommonModule,

@@ -56,39 +56,21 @@
         <a *ngFor="let nav of navList" (click)="selectItem(nav.id)" ngClass="{{nav.isSelected?'active-navigation-button':'inactive-navigation-button'}}">{{nav.label}}</a> 
     </div>
     <div class="manashet-items">
-        <div *ngIf="navList[0].isSelected"> 
-            <app-manashet-item></app-manashet-item> 
-            <app-manashet-item></app-manashet-item> 
-            <app-manashet-item></app-manashet-item> 
+        <div *ngIf="navList[0].isSelected" class="row">  
+            <app-manashet-item  *ngFor="let a of allActivities" [title]="a.title" (click)="onClickItem(a.id)" [description]="a.description" [imagePath]="a.imagePath"
+            [statusActivity]="a.statusActivity" [programTitle]="program.title" ></app-manashet-item> 
         </div>
-        <div *ngIf="navList[1].isSelected"> 
-            <app-manashet-item></app-manashet-item> 
-            <app-manashet-item></app-manashet-item> 
-            <app-manashet-item></app-manashet-item> 
-            <app-manashet-item></app-manashet-item> 
+        <div *ngIf="navList[1].isSelected" class="row"> 
+            <app-manashet-item *ngFor="let a of nextActivity" [title]="a.title" [description]="a.description" [imagePath]="a.imagePath"
+            [statusActivity]="a.statusActivity" [programTitle]="program.title" ></app-manashet-item> 
         </div>
-        <div *ngIf="navList[2].isSelected"> 
-            <app-manashet-item></app-manashet-item> 
-            <app-manashet-item></app-manashet-item> 
-            <app-manashet-item></app-manashet-item> 
-            <app-manashet-item></app-manashet-item> 
-            <app-manashet-item></app-manashet-item> 
+        <div *ngIf="navList[2].isSelected" class="row"> 
+            <app-manashet-item *ngFor="let a of underwayActivity" [title]="a.title" [description]="a.description" [imagePath]="a.imagePath"
+            [statusActivity]="a.statusActivity" [programTitle]="program.title" ></app-manashet-item> 
         </div>
-        <div *ngIf="navList[3].isSelected"> 
-            <app-manashet-item></app-manashet-item> 
-            <app-manashet-item></app-manashet-item> 
-            <app-manashet-item></app-manashet-item> 
-            <app-manashet-item></app-manashet-item> 
-            <app-manashet-item></app-manashet-item> 
-            <app-manashet-item></app-manashet-item> 
-            <app-manashet-item></app-manashet-item> 
-            <app-manashet-item></app-manashet-item> 
-            <app-manashet-item></app-manashet-item> 
-            <app-manashet-item></app-manashet-item> 
-            <app-manashet-item></app-manashet-item> 
-            <app-manashet-item></app-manashet-item> 
-            <app-manashet-item></app-manashet-item> 
-            <app-manashet-item></app-manashet-item> 
+        <div *ngIf="navList[3].isSelected" class="row"> 
+            <app-manashet-item  *ngFor="let a of nextActivity" [title]="a.title" [description]="a.description" [imagePath]="a.imagePath"
+            [statusActivity]="a.statusActivity" [programTitle]="program.title" ></app-manashet-item> 
         </div>
     </div>
 </div>

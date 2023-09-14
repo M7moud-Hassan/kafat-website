@@ -18,7 +18,7 @@ import { PostsPeopleComponent } from './components/posts-people/posts-people.com
 const routes: Routes = [
   {path:'',component:HomePageComponent},
   {path:'program-details/:id',component:ProgramDetailsComponent},
-  {path:'event-details',component:ManshatDetailsComponent},
+  {path:'activity-details/:id',component:ManshatDetailsComponent},
   {path:'event-details-in-progress',component:ManshatDetailsInProgressComponent},
   {path:'breadcrumb',component:BreadCrumbComponent},
   {path:'about',component:AboutPageComponent},

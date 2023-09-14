@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProgramsService } from '../../services/programs.service';
 
 @Component({
@@ -12,7 +12,11 @@ export class ProgramDetailsComponent implements OnInit {
   navList:any[]=[];
   id:any
   program:any
-  constructor(private route:ActivatedRoute,private service:ProgramsService) {
+  allActivities:any[]
+  pastActivity:any[]
+  nextActivity:any[]
+  underwayActivity:any[]
+  constructor(private route:ActivatedRoute,private service:ProgramsService,private router:Router) {
     this.route.params.subscribe(value=>{
       this.id=value['id']
     })
@@ -26,6 +30,10 @@ export class ProgramDetailsComponent implements OnInit {
     this.service.getById(this.id).subscribe(response=>{
       if(response.statusCode=='200'){
         this.program=response.data
+        this.allActivities=response.data.activities
+        this.pastActivity=this.allActivities.filter(a=>a.statusActivity==2);
+        this.underwayActivity=this.allActivities.filter(a=>a.statusActivity==0);
+        this.nextActivity=this.allActivities.filter(a=>a.statusActivity==1);
       }
       console.log(response.data)
     })
@@ -43,5 +51,9 @@ export class ProgramDetailsComponent implements OnInit {
   }
   onTabSelected(index:any){
     this.tabNumberIsActive = index;
+  }
+
+  onClickItem(id:number){
+    this.router.navigate(['/kafaat/activity-details/',id])
   }
 }
