@@ -60,6 +60,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { KafaatModule } from '../kafaat/kafaat.module';
 import { AuthService } from '../kafaat/services/auth.service';
 import { DetailsActivityComponent } from './components/details-activity/details-activity.component';
+import { AddContactInformationComponent } from './components/add-contact-information/add-contact-information.component';
+import { EditContactInformationComponent } from './components/edit-contact-information/edit-contact-information.component';
+import { ContactInformationsComponent } from './components/contact-informations/contact-informations.component';
 
 @NgModule({
   declarations: [
@@ -105,6 +108,9 @@ import { DetailsActivityComponent } from './components/details-activity/details-
       EditFamilyBranchComponent,
       FamilyBranchesComponent,
       DetailsActivityComponent,
+      AddContactInformationComponent,
+      EditContactInformationComponent,
+      ContactInformationsComponent,
   ],
   imports: [
     CommonModule,

@@ -25,6 +25,7 @@ import { DepartmentsComponent } from './components/departments/departments.compo
 import { DistinguishedTypesComponent } from './components/distinguished-types/distinguished-types.component';
 import { FamilyBranchesComponent } from './components/family-branches/family-branches.component';
 import { DetailsActivityComponent } from './components/details-activity/details-activity.component';
+import { ContactInformationsComponent } from './components/contact-informations/contact-informations.component';
 
 export const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -56,6 +57,8 @@ export const routes: Routes = [
   {path:'workTypes',component:WorkTypesComponent},
   {path:'distinguishedTypes',component:DistinguishedTypesComponent},
   {path:'familyBranches',component:FamilyBranchesComponent},
+
+  {path:'contactInformation',component:ContactInformationsComponent},
 ];
 
 @NgModule({
