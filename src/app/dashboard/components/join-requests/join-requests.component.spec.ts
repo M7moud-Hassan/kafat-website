@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DeleteCountryComponent } from './delete-country.component';
+import { JoinRequestsComponent } from './join-requests.component';
 
-describe('DeleteCountryComponent', () => {
-  let component: DeleteCountryComponent;
-  let fixture: ComponentFixture<DeleteCountryComponent>;
+describe('JoinRequestsComponent', () => {
+  let component: JoinRequestsComponent;
+  let fixture: ComponentFixture<JoinRequestsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DeleteCountryComponent ]
+      declarations: [ JoinRequestsComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DeleteCountryComponent);
+    fixture = TestBed.createComponent(JoinRequestsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

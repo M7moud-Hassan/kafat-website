@@ -14,9 +14,10 @@ import { WinnerComponent } from './components/winner/winner.component';
 import { PostsSlidesComponent } from './components/posts-slides/posts-slides.component';
 import { AllProgramsComponent } from './components/all-programs/all-programs.component';
 import { PostsPeopleComponent } from './components/posts-people/posts-people.component';
+import { MemberGuard } from '../dashboard/core/guards/member.guard';
 
 const routes: Routes = [
-  {path:'',component:HomePageComponent},
+  {path:'',component:HomePageComponent,},
   {path:'program-details',component:ProgramDetailsComponent},
   {path:'event-details',component:ManshatDetailsComponent},
   {path:'event-details-in-progress',component:ManshatDetailsInProgressComponent},
@@ -26,7 +27,7 @@ const routes: Routes = [
   {path:'payment',component:PaymentComponent},
   {path:'payment-success',component:PaymentSuccessComponent},
   {path:'contact-us',component:ContactUsComponent},
-  {path:'profile',component:ProfileLayoutComponent},
+  {path:'profile',component:ProfileLayoutComponent,canActivate:[MemberGuard]},
   {path:'winners',component:WinnerComponent},
   {path:'famous-posts',component:PostsSlidesComponent},
   {path:'post-people',component:PostsPeopleComponent},

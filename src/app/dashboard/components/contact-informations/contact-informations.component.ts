@@ -1,10 +1,6 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MainDashoardService } from '../../services/main-dashoard.service';
 import { ResponseVM } from 'src/app/kafaat/core/models/response-vm';
-import { AddContactInformationComponent } from '../add-contact-information/add-contact-information.component';
-import { EditContactInformationComponent } from '../edit-contact-information/edit-contact-information.component';
-import { DialogDeleteComponent } from '../dialog-delete/dialog-delete.component';
-import { catchError, throwError } from 'rxjs';
 import { FormGroup, Validators } from '@angular/forms';
 
 @Component({
