@@ -28,5 +28,7 @@ export class MembersService {
   approveMembership(model:userEmailModel):Observable<ResponseVM>{
     return this.http.post<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/approve-to-user-account`,model);
   }
-  
+  restoreUserToJoinRequestState(model:userEmailModel):Observable<ResponseVM>{
+    return this.http.post<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/restore-user-account-to-join-request-state`,model);
+  }
 }

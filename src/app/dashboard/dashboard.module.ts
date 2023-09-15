@@ -64,6 +64,7 @@ import { AdminsComponent } from './components/admins/admins.component';
 import { MembersComponent } from './components/members/members.component';
 import { JoinRequestsComponent } from './components/join-requests/join-requests.component';
 import { ConfirmPopUpComponent } from './components/confirm-pop-up/confirm-pop-up.component';
+import { UserProfilePopUpComponent } from './components/user-profile-pop-up/user-profile-pop-up.component';
 
 @NgModule({
   declarations: [
@@ -113,6 +114,7 @@ import { ConfirmPopUpComponent } from './components/confirm-pop-up/confirm-pop-u
       MembersComponent,
       JoinRequestsComponent,
       ConfirmPopUpComponent,
+      UserProfilePopUpComponent,
   ],
   imports: [
     CommonModule,
