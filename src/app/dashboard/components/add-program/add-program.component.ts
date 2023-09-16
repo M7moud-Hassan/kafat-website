@@ -75,7 +75,7 @@ export class AddProgramComponent implements OnInit {
         formData.append('Title', this.form.value.Title);
         formData.append('Description', this.form.value.Description);
         formData.append('ImageFile', this.fileIn);
-        formData.append('CreatedBy', '1');
+        formData.append('CreatedBy', 'b70729f6-b640-4ac6-8e82-82151345b361');
         formData.append('SubTitle',this.form.value.subTitle);
         formData.append('ImageDesFile',this.fileInR);
         if(this.data){

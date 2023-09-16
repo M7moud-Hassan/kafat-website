@@ -306,7 +306,7 @@ var To = dateObject.toISOString().slice(0, 19).replace("T", " ") + ".0000000";
       formData.append('ticketPrice', this.group2.value.ticketPrice);
       formData.append('imagePath', this.ImagePath);
       formData.append('programId', this.group2.value.programId);
-      formData.append('supervisorId', '1');
+      formData.append('supervisorId', 'b70729f6-b640-4ac6-8e82-82151345b361');
       userCategoriesData.forEach((category, index) => {
         formData.append(`UserCategories[${index}]`, category.toString());
       });
