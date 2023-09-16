@@ -23,7 +23,6 @@ import { AddCountryComponent } from './components/add-country/add-country.compon
 import { EditCountryComponent } from './components/edit-country/edit-country.component';
 import { CountriesComponent } from './components/countries/countries.component';
 import { DialogDeleteComponent } from './components/dialog-delete/dialog-delete.component';
-import { DeleteCountryComponent } from './components/delete-country/delete-country.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { ProgramsComponent } from './components/programs/programs.component';
 import { AddProgramComponent } from './components/add-program/add-program.component';
@@ -60,6 +59,12 @@ import { MatSelectModule } from '@angular/material/select';
 import { KafaatModule } from '../kafaat/kafaat.module';
 import { AuthService } from '../kafaat/services/auth.service';
 import { DetailsActivityComponent } from './components/details-activity/details-activity.component';
+import { ContactInformationsComponent } from './components/contact-informations/contact-informations.component';
+import { AdminsComponent } from './components/admins/admins.component';
+import { MembersComponent } from './components/members/members.component';
+import { JoinRequestsComponent } from './components/join-requests/join-requests.component';
+import { ConfirmPopUpComponent } from './components/confirm-pop-up/confirm-pop-up.component';
+import { UserProfilePopUpComponent } from './components/user-profile-pop-up/user-profile-pop-up.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +85,6 @@ import { DetailsActivityComponent } from './components/details-activity/details-
       EditCountryComponent,
       CountriesComponent,
       DialogDeleteComponent,
-      DeleteCountryComponent,
       ProgramsComponent,
       AddProgramComponent,
       CitiesComponent,
@@ -105,6 +109,12 @@ import { DetailsActivityComponent } from './components/details-activity/details-
       EditFamilyBranchComponent,
       FamilyBranchesComponent,
       DetailsActivityComponent,
+      ContactInformationsComponent,
+      AdminsComponent,
+      MembersComponent,
+      JoinRequestsComponent,
+      ConfirmPopUpComponent,
+      UserProfilePopUpComponent,
   ],
   imports: [
     CommonModule,

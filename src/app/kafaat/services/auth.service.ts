@@ -65,9 +65,11 @@ export class AuthService {
     }
   }
   logout() {
+    let userRole = this.currentUser().role;
     this.isLoggedIn = false;
     localStorage.removeItem('token');
-    this.service.router.navigate(['/login'], { replaceUrl: true });
+
+    this.service.router.navigate([userRole==UserRoles.Admin?'/admin-login':'/login'], { replaceUrl: true });
   }
   IsUserLoggenIn(): boolean {
     let token = this.GetToken();

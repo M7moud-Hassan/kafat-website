@@ -234,7 +234,9 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
     this.fileSize = image.size/(1024*1024);
     this.fileName = image.name;
      this.cv_file = URL.createObjectURL(image);
-     this.form.controls['cvFile'].setValue(image);    
+    //  this.form.controls['cvFile'].setValue(image);  
+     this.formData.append('cvFile',image);
+     console.log(this.formData.get('cvFile'));
   }
 
   onUserImageSelected(event: any) {
@@ -245,7 +247,9 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
       return;
     }
     this.userProfileImage = URL.createObjectURL(image);
-     this.form.controls['userImage'].setValue(image);
+    //  this.form.controls['userImage'].setValue(image);
+     this.formData.append('userImage',image);
+     console.log(this.formData.get('userImage'));
   }
   validateUplodedFile(image:any,isCv:boolean = false):string{
     let imageError = "";
@@ -293,15 +297,20 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
     this.formData.append('maritalStatus',this.maritalStatus.value);
     this.formData.append('isAvailableToWork',this.isAvailableToWork.value);
     if(this.isAvailableToWork.value){
-
       this.formData.append('qualificationId',this.qualificationId.value);
       this.formData.append('specializationId',this.specializationId.value);
       this.formData.append('departmentId',this.departmentId.value);
       this.formData.append('workTypeId',this.workTypeId.value);
       this.formData.append('hoppies',this.hoppies.value);
-      this.formData.append('cvFile',this.cvFile.value);
     }
-    this.formData.append('userImage',this.userImage.value);
+    if(!this.formData.has('userImage')){
+      // alert("empty image");
+      this.formData.append('userImage','DEFAULT_IMAGE');
+    }
+    if(!this.formData.has('cvFile')){
+      // alert("empty cv file");
+      this.formData.append('cvFile','NO_CV_PROVIDED');
+    }
   }
   setValuesToNullIfMemberNotAvailableToWork(){
     if(!this.isAvailableToWork.value){
@@ -310,13 +319,21 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
       this.form.controls['departmentId'].setValue(null);
       this.form.controls['workTypeId'].setValue(null);
       this.form.controls['hoppies'].setValue(null);
-      this.form.controls['cvFile'].setValue(null);
     }
   }
   submit() {
-    this.setValuesToNullIfMemberNotAvailableToWork();
+    if(this.isAvailableToWork.value == true && !this.formData.has('cvFile')){
+      this.errorMessage = "من فضلك قم بارفاق السيرة الذاتية";
+      return;
+    }
     this.AppendFormToFormData();
+    this.setValuesToNullIfMemberNotAvailableToWork();
+    // return;
     // this.service.printFormValues(this.form);
+    
+    this.formData.forEach((value, key) => {
+      console.log(`${key}: ${value}`);
+    });
     if(this.form.valid){
       this.service.profileService.register(this.formData).subscribe({
         next:(response:ResponseVM)=>{

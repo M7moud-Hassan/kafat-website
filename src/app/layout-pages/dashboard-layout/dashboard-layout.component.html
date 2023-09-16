@@ -128,7 +128,33 @@
                 
             </ul>
         </li>
-            
+        <li class="nav-item">
+            <a href="#" class="nav-link" data-bs-toggle="collapse" data-bs-target="#mainlinknumber3" aria-expanded="false">
+                 المستخدمين<i class="fas fa-chevron-down float-end"></i>
+            </a>
+            <ul class="collapse list-unstyled" id="mainlinknumber3">
+                <li class="nav-item">
+                    <a href="/admin/join-requests" class="nav-link">طلبات الانضمام</a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="/admin/members" class="nav-link">الأعضاء</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/admins" class="nav-link">المشرفين</a>
+                </li>
+                <li class="nav-item">
+                    <hr>
+                </li>                
+            </ul>
+        </li>
+        
+        <li class="nav-item">
+            <a routerLink="/admin/contactInformation" class="nav-link"  routerLinkActive="active" >
+                معلومات التواصل
+            </a>
+        </li>
+        
+        <!--   -->
         </ul>
   
         <div class="dropdown text-center">
@@ -139,7 +165,7 @@
           </a>
           <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
             <li><a class="dropdown-item" href="#">الاعدادت</a></li>
-            <li><a class="dropdown-item" href="#">البروفيل</a></li>
+            <li><a class="dropdown-item" (click)="viewMyProfile()">البروفيل</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" (click)="logout()"> تسجيل خروج</a></li>
           </ul>

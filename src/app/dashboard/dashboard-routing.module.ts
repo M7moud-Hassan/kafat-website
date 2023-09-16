@@ -25,6 +25,10 @@ import { DepartmentsComponent } from './components/departments/departments.compo
 import { DistinguishedTypesComponent } from './components/distinguished-types/distinguished-types.component';
 import { FamilyBranchesComponent } from './components/family-branches/family-branches.component';
 import { DetailsActivityComponent } from './components/details-activity/details-activity.component';
+import { ContactInformationsComponent } from './components/contact-informations/contact-informations.component';
+import { AdminsComponent } from './components/admins/admins.component';
+import { MembersComponent } from './components/members/members.component';
+import { JoinRequestsComponent } from './components/join-requests/join-requests.component';
 
 export const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -56,6 +60,12 @@ export const routes: Routes = [
   {path:'workTypes',component:WorkTypesComponent},
   {path:'distinguishedTypes',component:DistinguishedTypesComponent},
   {path:'familyBranches',component:FamilyBranchesComponent},
+
+  {path:'contactInformation',component:ContactInformationsComponent},
+
+  {path:'admins',component:AdminsComponent},
+  {path:'members',component:MembersComponent},
+  {path:'join-requests',component:JoinRequestsComponent},
 ];
 
 @NgModule({
