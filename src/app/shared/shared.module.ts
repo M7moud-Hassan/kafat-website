@@ -27,6 +27,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProgramMinComponent } from './components/program-min/program-min.component';
 import { RouterModule } from '@angular/router';
 import { DialogVideoImageComponent } from './components/dialog-video-image/dialog-video-image.component';
+import { MainDashoardService } from '../dashboard/services/main-dashoard.service';
+import { DashboardModule } from '../dashboard/dashboard.module';
 
 @NgModule({
   declarations: [
@@ -95,8 +97,7 @@ import { DialogVideoImageComponent } from './components/dialog-video-image/dialo
     DatePickerComponent,
     ProgramMinComponent,
     DialogVideoImageComponent
-  
-
-  ]
+  ],
+  // providers: [MainDashoardService],
 })
 export class SharedModule { }
