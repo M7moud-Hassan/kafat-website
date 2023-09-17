@@ -1,23 +1,23 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { changeUserRoleModel, userEmailModel } from '../../core/models/member-models';
-import { catchError, throwError } from 'rxjs';
-import { ConfirmPopUpComponent } from '../confirm-pop-up/confirm-pop-up.component';
+import { PagedRequest } from 'src/app/kafaat/core/models/paged-request';
 import { PagedResponse } from 'src/app/kafaat/core/models/paged-response';
 import { MainDashoardService } from '../../services/main-dashoard.service';
-import { PagedRequest } from 'src/app/kafaat/core/models/paged-request';
-import { UserRoles } from 'src/app/kafaat/core/user-roles';
-import { UserProfilePopUpComponent } from '../user-profile-pop-up/user-profile-pop-up.component';
+import { KafaatMainService } from 'src/app/kafaat/services/kafaat-main.service';
+import { ContactUsAddOrUpdateResponsePopUpComponent } from '../contact-us-add-or-update-response-pop-up/contact-us-add-or-update-response-pop-up.component';
+import { DialogDeleteComponent } from '../dialog-delete/dialog-delete.component';
+import { catchError, throwError } from 'rxjs';
+import { ConfirmPopUpComponent } from '../confirm-pop-up/confirm-pop-up.component';
 
 @Component({
-  selector: 'app-members',
-  templateUrl: './members.component.html',
-  styleUrls: ['./members.component.css']
+  selector: 'app-contact-us-list-not-sent',
+  templateUrl: './contact-us-list-not-sent.component.html',
+  styleUrls: ['./contact-us-list-not-sent.component.css']
 })
-export class MembersComponent implements OnInit ,AfterViewInit {
+export class ContactUsListNotSentComponent implements OnInit ,AfterViewInit {
   windowWidth: number = 0;
   pageResponse:PagedResponse={page:1,pageSize:10,totalCount:0,hasNextPage:false,hasPreviousPage:false,items:[]};
   pagedRequest:PagedRequest = {pageNumber:1,pageSize:5,name:''};
-  constructor(public service:MainDashoardService) {
+  constructor(public service:MainDashoardService,private kafaatMainService:KafaatMainService) {
   }
   ngOnInit(): void {
     this.getPage();
@@ -39,91 +39,92 @@ export class MembersComponent implements OnInit ,AfterViewInit {
     this.getPage();
   }
   getPage(){
-    this.service.membersService.getMembersPage(this.pagedRequest).subscribe({
+    this.kafaatMainService.contactUsService.getPageNotSent(this.pagedRequest).subscribe({
       next:(res:PagedResponse)=>{
           this.pageResponse = res;
       }
     });
   }
-
-  restoreUserToJoinRequestState(id:any){
+  updateResponse(id:any): void {
     const element=  this.pageResponse.items.find((value:any)=>value.id==id);
-    let model:userEmailModel = {email:element.email};
-    const dialogRef = this.service.dialog.open(ConfirmPopUpComponent, {
+    const dialogRef = this.service.dialog.open(ContactUsAddOrUpdateResponsePopUpComponent, {
       width:this.windowWidth<767?'99%':(this.windowWidth<1300?'50%':'40%'),
       data:{
-        id:element.id,
-        name:element.name,
-        title:' تأكيد الإعادة إلى حالة طلب الإنضمام',
-        confirmationMessage:`هل حقاً تريد إعادة المستخدم ${element.name} إلى حالة طلب الإنضمام فى نظام كفاءات ؟`,
-        submit:()=>{
-          this.service.membersService.restoreUserToJoinRequestState(model).pipe(
-            catchError((error) => {
-              console.error(error);
-              this.service.toastService.error('افحص السيرفر');
-              return throwError(error);
-            })
-          ).subscribe((response) => {
-            if(response.statusCode == 200){
-              this.service.toastService.success(response.message)
-            }else{
-              this.service.toastService.error(response.message);
-            }
-            this.getPage();
-          });
-        }
-        ,
-        fun:()=>{
-           this.getPage();
-        }
-      },
-    });
-  }
-  changeUserRoleship(id:any){
-    const element=  this.pageResponse.items.find((value:any)=>value.id==id);
-    let userRole = element.role;
-    let model:changeUserRoleModel = {email:element.email,role:userRole==UserRoles.Admin?UserRoles.Member:UserRoles.Admin};
-    const dialogRef = this.service.dialog.open(ConfirmPopUpComponent, {
-      width:this.windowWidth<767?'99%':(this.windowWidth<1300?'50%':'40%'),
-      data:{
-        id:element.id,
-        name:element.name,
-        title:'تغيير وظيفة مستخدم داخل نظام كفاءات',
-        confirmationMessage:`هل حقا تريد تغيير الدور الوظيفى للمستخدم  ${element.name} من ${userRole==UserRoles.Member?'عضو':'مشرف'}  إلى ${userRole==UserRoles.Admin?'عضو':'مشرف'} ؟`,
-        submit:()=>{
-          this.service.membersService.changeUserRole(model).pipe(
-            catchError((error) => {
-              console.error(error);
-              this.service.toastService.error('افحص السيرفر');
-              return throwError(error);
-            })
-          ).subscribe((response) => {
-            if(response.statusCode == 200){
-              this.service.toastService.success(response.message)
-            }else{
-              this.service.toastService.error(response.message);
-            }
-            this.getPage();
-          });
-        }
-        ,
-        fun:()=>{
-           this.getPage();
-        }
-      },
-    });
-  }
-  viewUserProfile(id:any){
-    const element=  this.pageResponse.items.find((value:any)=>value.id==id);
-    const dialogRef = this.service.dialog.open(UserProfilePopUpComponent, {
-      width:this.windowWidth<767?'99%':(this.windowWidth<1300?'60%':'50%'),
-      data:{
-        email:element.email,
+        id:id,
+        message:element.message,
+        responseMessage:element.responseMessage,
+        is_responseMessage_control_Disabled:false
       }
-    })
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.getPage();
+    });
+  }
+  deleteItem(id:number){
+    const element=  this.pageResponse.items.find((value:any)=>value.id==id);
+    const dialogRef = this.service.dialog.open(DialogDeleteComponent, {
+      width:this.windowWidth<767?'99%':(this.windowWidth<1300?'50%':'40%'),
+      data:{
+        id:element.id,
+        name:element.message,
+        title:'حذف رسالة زائر',
+        label:'الرسالة',
+        submit:()=>{
+          this.kafaatMainService.contactUsService.delete(element.id).pipe(
+            catchError((error) => {
+              console.error(error);
+              this.service.toastService.error('افحص السيرفر');
+              return throwError(error);
+            })
+          ).subscribe((response) => {
+            if(response.statusCode=="200"){
+              this.service.toastService.success(response.message)
+              this.getPage();
+            }else{
+              this.service.toastService.error(response.message);
+            }
+          });
+        }
+        ,
+        fun:()=>{
+           this.getPage();
+        }
+      },
+    });
+  }
+  sendResponeseToTheVisitor(id:any){
+    const element=  this.pageResponse.items.find((value:any)=>value.id==id);
+    const dialogRef = this.service.dialog.open(ConfirmPopUpComponent, {
+      width:this.windowWidth<767?'99%':(this.windowWidth<1300?'50%':'40%'),
+      data:{
+        id:element.id,
+        name:element.name,
+        title:' تأكيد إرسال الرسالة إلى الزائر',
+        confirmationMessage:`هل حقا تريد ارسال الرسالة إلى الزائر ${element.userName} ؟`,
+        submit:()=>{
+          this.kafaatMainService.contactUsService.sendResponse(id).pipe(
+            catchError((error) => {
+              console.error(error);
+              this.service.toastService.error('افحص السيرفر');
+              return throwError(error);
+            })
+          ).subscribe((response) => {
+            if(response.statusCode == 200){
+              this.service.toastService.success(response.message)
+            }else{
+              this.service.toastService.error(response.message);
+            }
+            this.getPage();
+          });
+        }
+        ,
+        fun:()=>{
+           this.getPage();
+        }
+      },
+    });
   }
 }
-
 
 
 

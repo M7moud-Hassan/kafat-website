@@ -8,11 +8,13 @@ import { ProfileService } from './profile.service';
 import { BreadCrumbService } from './bread-crumb.service';
 import { AuthService } from './auth.service';
 import { AuthSharedService } from './auth-shared.service';
+import { ContactUsService } from './contact-us.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class KafaatMainService {
+  toastService: any;
 
   constructor(
     private _formBuilder:FormBuilder,
@@ -24,6 +26,7 @@ export class KafaatMainService {
     private _breadCrumbService:BreadCrumbService,
     private _authService:AuthService,
     private _authSharedService:AuthSharedService,
+    private _contactUsService:ContactUsService,
     ) { }
 
   get formBuilder(): FormBuilder {
@@ -49,6 +52,9 @@ export class KafaatMainService {
   }
   get authSharedService(): AuthSharedService {
     return this._authSharedService;
+  }
+  get contactUsService(): ContactUsService {
+    return this._contactUsService;
   }
 
 

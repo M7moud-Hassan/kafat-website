@@ -65,6 +65,12 @@ import { MembersComponent } from './components/members/members.component';
 import { JoinRequestsComponent } from './components/join-requests/join-requests.component';
 import { ConfirmPopUpComponent } from './components/confirm-pop-up/confirm-pop-up.component';
 import { UserProfilePopUpComponent } from './components/user-profile-pop-up/user-profile-pop-up.component';
+import { MainDashoardService } from './services/main-dashoard.service';
+import { SharedModule } from '../shared/shared.module';
+import { ContactUsListNewComponent } from './components/contact-us-list-new/contact-us-list-new.component';
+import { ContactUsListSentComponent } from './components/contact-us-list-sent/contact-us-list-sent.component';
+import { ContactUsListNotSentComponent } from './components/contact-us-list-not-sent/contact-us-list-not-sent.component';
+import { ContactUsAddOrUpdateResponsePopUpComponent } from './components/contact-us-add-or-update-response-pop-up/contact-us-add-or-update-response-pop-up.component';
 
 @NgModule({
   declarations: [
@@ -115,6 +121,10 @@ import { UserProfilePopUpComponent } from './components/user-profile-pop-up/user
       JoinRequestsComponent,
       ConfirmPopUpComponent,
       UserProfilePopUpComponent,
+      ContactUsListNewComponent,
+      ContactUsListSentComponent,
+      ContactUsListNotSentComponent,
+      ContactUsAddOrUpdateResponsePopUpComponent,
   ],
   imports: [
     CommonModule,
@@ -136,10 +146,11 @@ import { UserProfilePopUpComponent } from './components/user-profile-pop-up/user
     NgxMatNativeDateModule,
     NgxMatSelectSearchModule,
     MatSelectModule,
-    KafaatModule
+    KafaatModule,
+    SharedModule
   ],
   providers:[
     AuthService
-  ]
+  ],
 })
 export class DashboardModule { }
