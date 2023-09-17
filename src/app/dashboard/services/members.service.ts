@@ -31,4 +31,7 @@ export class MembersService {
   restoreUserToJoinRequestState(model:userEmailModel):Observable<ResponseVM>{
     return this.http.post<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/restore-user-account-to-join-request-state`,model);
   }
+  sendEmailToUser(model:any):Observable<ResponseVM>{
+    return this.http.post<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/send-mail-to-user`,model);
+  }
 }

@@ -46,9 +46,10 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
   }
   changeGender(){
     let genderValue = this.gender.value;
-    if(genderValue=='m'){
+    let userImageIsDefault = this.userProfileImage == '/assets/images/male.png' ||  this.userProfileImage == '/assets/images/female.png';
+    if(genderValue=='m' && userImageIsDefault){
       this.userProfileImage = '/assets/images/male.png';
-    }else{
+    }else if(genderValue=='f' && userImageIsDefault){
       this.userProfileImage = '/assets/images/female.png';
     }
   }
@@ -198,6 +199,32 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
       userImage:['',[]],
     });
   }
+  markFormAsTouched(){
+    this.form.controls['email'].markAsTouched();
+    this.form.controls['phoneNumber'].markAsTouched();
+    this.form.controls['password'].markAsTouched();
+    this.form.controls['confirmPassword'].markAsTouched();
+    this.form.controls['isApproved'].markAsTouched();
+    this.form.controls['displayName'].markAsTouched();
+    this.form.controls['firstName'].markAsTouched();
+    this.form.controls['middleName'].markAsTouched();
+    this.form.controls['lastName'].markAsTouched();
+    this.form.controls['gender'].markAsTouched();
+    this.form.controls['identityNumber'].markAsTouched();
+    this.form.controls['birthDateInHijri'].markAsTouched();
+    this.form.controls['birthDateInAD'].markAsTouched();
+    this.form.controls['countryId'].markAsTouched();
+    this.form.controls['cityId'].markAsTouched();
+    this.form.controls['districtId'].markAsTouched();
+    this.form.controls['familyBranchId'].markAsTouched();
+    this.form.controls['maritalStatus'].markAsTouched();
+    this.form.controls['isAvailableToWork'].markAsTouched();
+    this.form.controls['qualificationId'].markAsTouched();
+    this.form.controls['specializationId'].markAsTouched();
+    this.form.controls['departmentId'].markAsTouched();
+    this.form.controls['workTypeId'].markAsTouched();
+    this.form.controls['hoppies'].markAsTouched();
+  }
  ____loadData(){
         this.form.controls['email'].setValue('email002@gmail.com');
         this.form.controls['phoneNumber'].setValue('01282431370');
@@ -225,6 +252,7 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
         this.form.controls['hoppies'].setValue('swimming');
   }
   onCvSelected(event: any) {
+    this.errorMessage="";
     const image = event.target.files[0];
      let checkResult = this.validateUplodedFile(image,true);
      if(checkResult!=''){
@@ -322,8 +350,10 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
     }
   }
   submit() {
+    this.markFormAsTouched();
     if(this.isAvailableToWork.value == true && !this.formData.has('cvFile')){
       this.errorMessage = "من فضلك قم بارفاق السيرة الذاتية";
+      this.isNextPageVisible = true;
       return;
     }
     this.AppendFormToFormData();

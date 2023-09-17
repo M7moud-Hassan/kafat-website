@@ -31,7 +31,7 @@ export class AuthService {
     return this.isUserAuthSubject.asObservable();
   }
 
-  login(model: any) {
+  login(model: any,fromAdminForm:boolean = false) {
     this.http.post<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/login`, model).subscribe({
       next: (response: ResponseVM) => {
         if (response.statusCode == 200) {
@@ -39,7 +39,7 @@ export class AuthService {
           this.SetOrUpdateToken(response.data.token);
           this.isLoggedIn = true;
           this.isUserAuthSubject.next(true);
-          if(this.currentUser().role==UserRoles.Admin){
+          if(this.currentUser().role==UserRoles.Admin && fromAdminForm){
             this.service.router.navigate(['/admin'], { replaceUrl: true });
           }else{
             this.service.router.navigate(['/kafaat'], { replaceUrl: true });
