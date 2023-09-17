@@ -1,4 +1,5 @@
 import { Component, Input, Renderer2 ,OnInit, Output, EventEmitter, HostListener} from '@angular/core';
+import { KafaatMainService } from 'src/app/kafaat/services/kafaat-main.service';
 
 @Component({
   selector: 'app-navbar',
@@ -6,17 +7,21 @@ import { Component, Input, Renderer2 ,OnInit, Output, EventEmitter, HostListener
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit{
+  isUserAuth:boolean=false;
+  userName:string='';
   @Input() typeNav: string="light";
   @Input() active:number=-1;
   @Output() handleOpenNav = new EventEmitter<boolean>();
 
-  constructor(private renderer: Renderer2) {
-    
-    
+  constructor(private renderer: Renderer2,private service:KafaatMainService) {
+    this.service.authService.isUserAuthSubj.subscribe(status=>{
+      this.isUserAuth = status;
+    })
   }
   ngOnInit(): void {
-  
-  
+    if(this.isUserAuth){
+      this.userName = this.service.authService.currentUser().userName;
+    }
   }
   openNav(): void {
     document.getElementById("mySidenav")!.style.width = "75%";
@@ -43,5 +48,8 @@ export class NavbarComponent implements OnInit{
     }else{
       document.getElementById('navbar')!.style.display='block';
     }
+  }
+  logout(){
+    this.service.authService.logoutWithoutRedirect();
   }
 }

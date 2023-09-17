@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { BehaviorSubject, Observable } from "rxjs";
 import { MainDashoardService } from "src/app/dashboard/services/main-dashoard.service";
 import { environment } from "src/environments/environment.prod";
 import { ResponseVM } from "../core/models/response-vm";
@@ -16,7 +16,20 @@ export class AuthService {
   controllerName: string = 'account';
   isLoggedIn = false;
   jwt: JwtHelperService = new JwtHelperService();
-  constructor(private http: HttpClient, private service: MainDashoardService) { }
+  private isUserAuthSubject:BehaviorSubject<boolean>;
+  constructor(private http: HttpClient, private service: MainDashoardService) { 
+    this.isUserAuthSubject = new BehaviorSubject<boolean>(this.isUserAuth);
+  }
+  get isUserAuth():boolean{
+    return localStorage.getItem('token')?true:false;
+  }
+  get isUserAuthSubj():Observable<boolean>{
+    /*
+    note :- we use asObservable function to return only Observable
+            as it can also returns behavoirSubject.
+    */
+    return this.isUserAuthSubject.asObservable();
+  }
 
   login(model: any) {
     this.http.post<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/login`, model).subscribe({
@@ -25,6 +38,7 @@ export class AuthService {
           this.service.toastService.success(response.message);
           this.SetOrUpdateToken(response.data.token);
           this.isLoggedIn = true;
+          this.isUserAuthSubject.next(true);
           if(this.currentUser().role==UserRoles.Admin){
             this.service.router.navigate(['/admin'], { replaceUrl: true });
           }else{
@@ -68,8 +82,15 @@ export class AuthService {
     let userRole = this.currentUser().role;
     this.isLoggedIn = false;
     localStorage.removeItem('token');
-
+    this.isUserAuthSubject.next(false);
     this.service.router.navigate([userRole==UserRoles.Admin?'/admin-login':'/login'], { replaceUrl: true });
+  }
+  logoutWithoutRedirect() {
+    let userRole = this.currentUser().role;
+    this.isLoggedIn = false;
+    localStorage.removeItem('token');
+    this.isUserAuthSubject.next(false);
+    // this.service.router.navigate([userRole==UserRoles.Admin?'/admin-login':'/login'], { replaceUrl: true });
   }
   IsUserLoggenIn(): boolean {
     let token = this.GetToken();
