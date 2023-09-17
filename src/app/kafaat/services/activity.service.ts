@@ -12,7 +12,7 @@ export class ActivityService {
   constructor(private http:HttpClient) {
 
    }
-   getAllDetails(id:any):Observable<ResponseVM>{
-    return this.http.get<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/get-activity-details-id/${id}`)
+   getAllDetails(data:any):Observable<ResponseVM>{
+    return this.http.post<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/get-activity-details-id/`,data)
    }
 }

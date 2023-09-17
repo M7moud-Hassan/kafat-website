@@ -8,6 +8,11 @@ import { ProfileService } from './profile.service';
 import { BreadCrumbService } from './bread-crumb.service';
 import { AuthService } from './auth.service';
 import { AuthSharedService } from './auth-shared.service';
+import { ActivityService } from './activity.service';
+import { ActivityParticipantsService } from './activity-participants.service';
+import { ToastrService } from 'ngx-toastr';
+import { PostActivityService } from './post-activity.service';
+import { ProgramsService } from './programs.service';
 
 @Injectable({
   providedIn: 'root'
@@ -24,8 +29,25 @@ export class KafaatMainService {
     private _breadCrumbService:BreadCrumbService,
     private _authService:AuthService,
     private _authSharedService:AuthSharedService,
+    private _activityService:ActivityService,
+    private _activityParticipantsService:ActivityParticipantsService,
+    private _toastService:ToastrService,
+    private _postService:PostActivityService,
+    private _programService:ProgramsService,
     ) { }
 
+    get programService():ProgramsService{
+      return this._programService;
+    }
+    get toastService(): ToastrService {
+      return this._toastService;
+    }
+    get activityParticipantsService():ActivityParticipantsService{
+      return this._activityParticipantsService;
+    }
+    get postsActivity():PostActivityService{
+      return this._postService;
+    }
   get formBuilder(): FormBuilder {
     return this._formBuilder;
   }
@@ -49,6 +71,9 @@ export class KafaatMainService {
   }
   get authSharedService(): AuthSharedService {
     return this._authSharedService;
+  }
+  get activityService():ActivityService{
+    return this._activityService;
   }
 
 

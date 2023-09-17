@@ -29,6 +29,12 @@ import { AttachmentsActivityComponent } from './components/attachments-activity/
 import { ImagesActivityComponent } from './components/images-activity/images-activity.component';
 import { VideosActivityComponent } from './components/videos-activity/videos-activity.component';
 import { AddReportComponent } from './components/add-report/add-report.component';
+import { ContactInformationsComponent } from './components/contact-informations/contact-informations.component';
+import { AdminsComponent } from './components/admins/admins.component';
+import { MembersComponent } from './components/members/members.component';
+import { JoinRequestsComponent } from './components/join-requests/join-requests.component';
+import { ParticipantsComponent } from './components/participants/participants.component';
+import { PostsComponent } from './components/posts/posts.component';
 
 export const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -37,6 +43,8 @@ export const routes: Routes = [
   {path:'images-activity/:id',component:ImagesActivityComponent},
   {path:'report-activity/:id',component:AddReportComponent},
   {path:'videos-activity/:id',component:VideosActivityComponent},
+  {path:'participants/:id',component:ParticipantsComponent},
+  {path:'posts/:id',component:PostsComponent},
   {path:'attachments-activity/:id',component:AttachmentsActivityComponent},
   {path:'edit-activity/:id',component:AddActivityComponent},
   {path:'add-activity',component:AddActivityComponent},
@@ -64,6 +72,12 @@ export const routes: Routes = [
   {path:'workTypes',component:WorkTypesComponent},
   {path:'distinguishedTypes',component:DistinguishedTypesComponent},
   {path:'familyBranches',component:FamilyBranchesComponent},
+
+  {path:'contactInformation',component:ContactInformationsComponent},
+
+  {path:'admins',component:AdminsComponent},
+  {path:'members',component:MembersComponent},
+  {path:'join-requests',component:JoinRequestsComponent},
 ];
 
 @NgModule({

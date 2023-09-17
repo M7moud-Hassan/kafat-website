@@ -31,8 +31,8 @@ export class ActivityService {
   getById(id:any):Observable<ResponseVM>{
     return this.http.get<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/get-by-id/${id}`);
   }
-  getDetails(id:any):Observable<ResponseVM>{
-    return this.http.get<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/get-activity-details-id/${id}`); 
+  getDetails(data:any):Observable<ResponseVM>{
+    return this.http.post<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/get-activity-details-id/`,data); 
   }
 
   getٌReport(id:any):Observable<ResponseVM>{

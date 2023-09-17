@@ -11,6 +11,8 @@ import { RegisterationSucceededComponent } from './kafaat/components/registerati
 import { DashboardLayoutComponent } from './layout-pages/dashboard-layout/dashboard-layout.component';
 import { HomeComponent } from './dashboard/components/home/home.component';
 import { LoginComponent as AdminLogin } from './dashboard/components/login/login.component' ;
+import { AdminGuard } from './dashboard/core/guards/admin.guard';
+import { MemberGuard } from './dashboard/core/guards/member.guard';
 
 const routes: Routes = [
   {path:'',component:KafaatLayoutComponent,children:[
@@ -19,7 +21,7 @@ const routes: Routes = [
   ]},
   {path:'',component:DashboardLayoutComponent,children:[
     {path:'',component:HomeComponent},
-    {path:'admin',loadChildren:()=>import('./dashboard/dashboard.module').then(m=>m.DashboardModule)},
+    {path:'admin',loadChildren:()=>import('./dashboard/dashboard.module').then(m=>m.DashboardModule),canActivate:[AdminGuard]},
   ]},
   {path:'admin-login',component:AdminLogin},
   {path:'registeration',component:RegisterationComponent},

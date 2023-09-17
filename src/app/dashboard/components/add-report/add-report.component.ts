@@ -2,11 +2,13 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
 import { MainDashoardService } from '../../services/main-dashoard.service';
 import { ActivatedRoute } from '@angular/router';
+
 @Component({
   selector: 'app-add-report',
   templateUrl: './add-report.component.html',
   styleUrls: ['./add-report.component.css']
 })
+
 export class AddReportComponent implements OnInit{
   data:any={}
   form:FormGroup = new FormGroup({});
@@ -59,5 +61,4 @@ export class AddReportComponent implements OnInit{
     }else{
       this.service.toastService.error('افحص المدخلات')
     }
-  }
-}
+  }}

@@ -18,6 +18,9 @@ import { DistinguishedTypeService } from './distinguished-type.service';
 import { FamilyBranchService } from './family-branch.service';
 import { UploadFileService } from './upload-file.service';
 import { AttachmentsActivityService } from './attachments-activity.service';
+import { ContactInformationService } from './contact-information.service';
+import { MembersService } from './members.service';
+import { ActivityParticipantsService } from './activity-participants.service';
 
 @Injectable({
   providedIn: 'root'
@@ -45,8 +48,14 @@ export class MainDashoardService {
     private _familyBranchService :FamilyBranchService,
     private _uploadFileService :UploadFileService,
     private _activityAttachments:AttachmentsActivityService,
+    private _activityParticipants:ActivityParticipantsService,
+    private _contactInformationService :ContactInformationService,
+    private _membersService :MembersService,
     ) { }
 
+   get activityParticipantsService(){
+return this._activityParticipants;
+    }
   get formBuilder(): FormBuilder {
     return this._formBuilder;
   }
@@ -105,6 +114,12 @@ get attachmentsActivity():AttachmentsActivityService{
   }
   get uploadFileService(): UploadFileService {
     return this._uploadFileService;
+  }
+  get contactInformationService(): ContactInformationService {
+    return this._contactInformationService;
+  }
+  get membersService(): MembersService {
+    return this._membersService;
   }
 
 

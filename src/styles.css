@@ -17,6 +17,25 @@
     font-family: 'alex-700';
     src: url('/assets/fonts/alexandria/Alexandria-Bold.ttf') format('truetype');
 }
+.pageUser .ql-toolbar{
+  position: relative;
+  top: 180px;
+  z-index: 20;
+  text-align: left;
+  border: none !important;
+  
+}
+.pageUser .ql-editor{
+  font-size: 18px;
+  position: relative;
+  top: -40px;
+  height: 140px;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  text-align: right;
+  padding-top: 30px !important;
+}
 :root {
     --primary-color: #E6F1F9;
     --main-color: #005183;
