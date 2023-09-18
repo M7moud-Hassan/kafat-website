@@ -34,4 +34,7 @@ export class MembersService {
   sendEmailToUser(model:any):Observable<ResponseVM>{
     return this.http.post<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/send-mail-to-user`,model);
   }
+  deleteAccount(email:any):Observable<ResponseVM>{
+    return this.http.delete<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/delete-account?email=${email}`);
+  }
 }

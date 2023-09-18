@@ -13,6 +13,7 @@
           <tr class="tableHeader">
               <td>رقم </td>
                 <td>اسم التخصص</td>
+                <td>المؤهل</td>
               <td>التحكم</td>
           </tr>
            <tr class="mt-3">
@@ -23,6 +24,7 @@
               <tr id="first_{{i}}" >
                   <td style="cursor: pointer;">{{item.id}}</td>
                   <td style="cursor: pointer;">{{item.name}}</td>
+                  <td style="cursor: pointer;">{{item.qualificationName}}</td>
                   <td>
                     <div>
                       <button class="btn" (click)="editItem(item.id)">

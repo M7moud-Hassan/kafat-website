@@ -252,6 +252,7 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
         this.form.controls['hoppies'].setValue('swimming');
   }
   onCvSelected(event: any) {
+    event.preventDefault();
     this.errorMessage="";
     const image = event.target.files[0];
      let checkResult = this.validateUplodedFile(image,true);
@@ -268,6 +269,7 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
   }
 
   onUserImageSelected(event: any) {
+    event.preventDefault();
     const image = event.target.files[0];
      let checkResult = this.validateUplodedFile(image);
      if(checkResult!=''){
@@ -369,6 +371,7 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
         next:(response:ResponseVM)=>{
           if(response.statusCode == 200){
             this.adminService.toastService.success(response.message);
+            this.service.router.navigate(['/'],{ replaceUrl: true });
           }else{
             this.adminService.toastService.error(response.message);
           }
