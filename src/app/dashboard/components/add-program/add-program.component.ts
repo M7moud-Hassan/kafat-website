@@ -4,6 +4,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ResponseVM } from 'src/app/kafaat/core/models/response-vm';
 import { MainDashoardService } from '../../services/main-dashoard.service';
 import { AddCountryComponent } from '../add-country/add-country.component';
+import { AuthService } from 'src/app/kafaat/services/auth.service';
 
 @Component({
   selector: 'app-add-program',
@@ -13,7 +14,7 @@ import { AddCountryComponent } from '../add-country/add-country.component';
 export class AddProgramComponent implements OnInit {
   form:FormGroup = new FormGroup({});
   constructor(private service:MainDashoardService,private dialogRef: MatDialogRef<AddCountryComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,){}
+    @Inject(MAT_DIALOG_DATA) public data: any,private authService:AuthService){}
   ngOnInit(): void {
     this.createForm();
   }
@@ -75,7 +76,7 @@ export class AddProgramComponent implements OnInit {
         formData.append('Title', this.form.value.Title);
         formData.append('Description', this.form.value.Description);
         formData.append('ImageFile', this.fileIn);
-        formData.append('CreatedBy', '2357bdf3-bcb9-4ebb-8a39-ad9bc0bcb159');
+        formData.append('CreatedBy',this.authService.currentUser().id);
         formData.append('SubTitle',this.form.value.subTitle);
         formData.append('ImageDesFile',this.fileInR);
         if(this.data){

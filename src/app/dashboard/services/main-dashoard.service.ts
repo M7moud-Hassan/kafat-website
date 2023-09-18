@@ -21,6 +21,7 @@ import { AttachmentsActivityService } from './attachments-activity.service';
 import { ContactInformationService } from './contact-information.service';
 import { MembersService } from './members.service';
 import { ActivityParticipantsService } from './activity-participants.service';
+import { PostService } from './post.service';
 
 @Injectable({
   providedIn: 'root'
@@ -51,8 +52,12 @@ export class MainDashoardService {
     private _activityParticipants:ActivityParticipantsService,
     private _contactInformationService :ContactInformationService,
     private _membersService :MembersService,
+    private _postService:PostService,
     ) { }
 
+    get postService():PostService{
+      return this._postService;
+    }
    get activityParticipantsService(){
 return this._activityParticipants;
     }
@@ -68,6 +73,7 @@ return this._activityParticipants;
   get activityService(): ActivityService {
     return this._activityService;
   }
+  
 
   get countryService(): CountryService {
     return this._countryService;

@@ -765,3 +765,7 @@ height: 76px;
 .mdc-line-ripple{
   display: none !important;
 }
+
+td{
+  vertical-align: middle;
+}

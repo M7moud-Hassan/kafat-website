@@ -74,6 +74,13 @@ import { ConfirmPopUpComponent } from './components/confirm-pop-up/confirm-pop-u
 import { UserProfilePopUpComponent } from './components/user-profile-pop-up/user-profile-pop-up.component';
 import { ParticipantsComponent } from './components/participants/participants.component';
 import { PostsComponent } from './components/posts/posts.component';
+import { MainDashoardService } from './services/main-dashoard.service';
+import { SharedModule } from '../shared/shared.module';
+import { ContactUsListNewComponent } from './components/contact-us-list-new/contact-us-list-new.component';
+import { ContactUsListSentComponent } from './components/contact-us-list-sent/contact-us-list-sent.component';
+import { ContactUsListNotSentComponent } from './components/contact-us-list-not-sent/contact-us-list-not-sent.component';
+import { ContactUsAddOrUpdateResponsePopUpComponent } from './components/contact-us-add-or-update-response-pop-up/contact-us-add-or-update-response-pop-up.component';
+import { AddPostComponent } from './components/add-post/add-post.component';
 
 @NgModule({
   declarations: [
@@ -133,7 +140,11 @@ import { PostsComponent } from './components/posts/posts.component';
       UserProfilePopUpComponent,
       ParticipantsComponent,
       PostsComponent,
-      
+      ContactUsListNewComponent,
+      ContactUsListSentComponent,
+      ContactUsListNotSentComponent,
+      ContactUsAddOrUpdateResponsePopUpComponent,
+      // AddPostComponent,
   ],
   imports: [
     CommonModule,
@@ -155,11 +166,14 @@ import { PostsComponent } from './components/posts/posts.component';
     NgxMatNativeDateModule,
     NgxMatSelectSearchModule,
     MatSelectModule,
-    KafaatModule
-    
+    KafaatModule,
+    SharedModule,
+   
+
   ],
   providers:[
     AuthService
-  ]
+  ],
+ 
 })
 export class DashboardModule { }

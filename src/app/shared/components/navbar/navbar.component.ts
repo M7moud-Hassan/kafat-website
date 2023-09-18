@@ -12,7 +12,7 @@ export class NavbarComponent implements OnInit{
   @Input() active:number=-1;
   @Output() handleOpenNav = new EventEmitter<boolean>();
 
-  programs:any[]
+  programs:any[]=[]
   constructor(private service:ProgramsService) {
     
     

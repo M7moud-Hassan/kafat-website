@@ -14,6 +14,7 @@ export class ContactInformationsComponent implements OnInit {
   constructor(private service:MainDashoardService){}
   ngOnInit(): void {
     this.createForm();
+    this.get();
   }
   createForm(){
     this. form = this.service.formBuilder.group({
@@ -30,12 +31,40 @@ export class ContactInformationsComponent implements OnInit {
       youtubeLink:['',[Validators.required]],
     });
   }
+  get(){
+    this.service.contactInformationService.get().subscribe({
+      next:(res:ResponseVM)=>{
+        if (res.statusCode == 200) {
+          this.form.controls['title'].setValue(res.data.title);
+          this.form.controls['location'].setValue(res.data.location);
+          this.form.controls['email'].setValue(res.data.email);
+          this.form.controls['facebookLink'].setValue(res.data.facebookLink);
+          this.form.controls['whatsapp'].setValue(res.data.whatsapp);
+          this.form.controls['twitterLink'].setValue(res.data.twitterLink);
+          this.form.controls['instagramLink'].setValue(res.data.instagramLink);
+          this.form.controls['telegramLink'].setValue(res.data.telegramLink);
+          this.form.controls['snapchatLink'].setValue(res.data.snapchatLink);
+          this.form.controls['youtubeLink'].setValue(res.data.youtubeLink);
+        } 
+        else {
+          this.service.toastService.error(res.message);
+        }
+      },error:(error)=>{
+        let errorMessage = 'حدث خطأ غير متوقع';
+        if (error.error && typeof error.error === 'string') {
+          errorMessage = error.error; // Use the error message from the 'error' property
+        } else if (error.message) {
+          errorMessage = error.message; // Use the 'message' property if available
+        }
+        this.service.toastService.error(errorMessage);
+      }
+    });
+  }
  
   
   submit(){
-    this.service.printFormValues(this.form);
-    return;
-    this.service.contactInformationService.add(this.form.value).subscribe({
+    // this.service.printFormValues(this.form);
+    this.service.contactInformationService.createOrUpdate(this.form.value).subscribe({
       next:(res:ResponseVM)=>{
         if (res.statusCode == 200) {
           if (res.data) {

@@ -21,4 +21,7 @@ export class ActivityParticipantsService {
   removeDis(data:any):Observable<ResponseVM>{
     return this.http.post<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/remove-distinguished`,data);
   }
+  getAll(data:any):Observable<ResponseVM>{
+    return this.http.get<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/get-all-participants/${data}`);
+  }
 }

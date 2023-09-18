@@ -13,6 +13,8 @@ import { ActivityParticipantsService } from './activity-participants.service';
 import { ToastrService } from 'ngx-toastr';
 import { PostActivityService } from './post-activity.service';
 import { ProgramsService } from './programs.service';
+import { ContactUsService } from './contact-us.service';
+
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +36,8 @@ export class KafaatMainService {
     private _toastService:ToastrService,
     private _postService:PostActivityService,
     private _programService:ProgramsService,
+    private _contactUsService:ContactUsService,
+
     ) { }
 
     get programService():ProgramsService{
@@ -75,8 +79,9 @@ export class KafaatMainService {
   get activityService():ActivityService{
     return this._activityService;
   }
-
-
+  get contactUsService(): ContactUsService {
+    return this._contactUsService;
+  }
 
 
   get back(){

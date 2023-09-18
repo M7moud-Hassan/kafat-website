@@ -35,6 +35,9 @@ import { MembersComponent } from './components/members/members.component';
 import { JoinRequestsComponent } from './components/join-requests/join-requests.component';
 import { ParticipantsComponent } from './components/participants/participants.component';
 import { PostsComponent } from './components/posts/posts.component';
+import { ContactUsListNewComponent } from './components/contact-us-list-new/contact-us-list-new.component';
+import { ContactUsListSentComponent } from './components/contact-us-list-sent/contact-us-list-sent.component';
+import { ContactUsListNotSentComponent } from './components/contact-us-list-not-sent/contact-us-list-not-sent.component';
 
 export const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -78,6 +81,10 @@ export const routes: Routes = [
   {path:'admins',component:AdminsComponent},
   {path:'members',component:MembersComponent},
   {path:'join-requests',component:JoinRequestsComponent},
+
+  {path:'contact-us-list-new',component:ContactUsListNewComponent},
+  {path:'contact-us-list-sent',component:ContactUsListSentComponent},
+  {path:'contact-us-list-not-sent',component:ContactUsListNotSentComponent},
 ];
 
 @NgModule({

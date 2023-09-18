@@ -14,13 +14,7 @@ constructor(private http:HttpClient) { }
 get():Observable<ResponseVM>{
   return this.http.get<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/get`);
 }
-add(data:any):Observable<ResponseVM>{
-  return this.http.post<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/add`,data);
-}
-update(data:any):Observable<ResponseVM>{
-  return this.http.put<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/edit`,data);
-}
-delete(id:any):Observable<ResponseVM>{
-  return this.http.delete<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/delete?id=${id}`);
+createOrUpdate(model:any):Observable<ResponseVM>{
+  return this.http.post<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/add-or-update`,model);
 }
 }

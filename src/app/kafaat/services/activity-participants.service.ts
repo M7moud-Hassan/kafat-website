@@ -15,4 +15,7 @@ export class ActivityParticipantsService {
   add(data:any):Observable<ResponseVM>{
     return this.http.post<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/join-activity`,data);
   }
+  getDistinguishs(id:any):Observable<ResponseVM>{
+    return this.http.get<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/get-distinguishs/${id}`);
+  }
 }

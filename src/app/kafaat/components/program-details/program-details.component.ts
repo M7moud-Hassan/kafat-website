@@ -12,10 +12,10 @@ export class ProgramDetailsComponent implements OnInit {
   navList:any[]=[];
   id:any
   program:any
-  allActivities:any[]
-  pastActivity:any[]
-  nextActivity:any[]
-  underwayActivity:any[]
+  allActivities:any[]=[]
+  pastActivity:any[]=[]
+  nextActivity:any[]=[]
+  underwayActivity:any[]=[]
   constructor(private route:ActivatedRoute,private service:ProgramsService,private router:Router) {
     this.route.params.subscribe(value=>{
       this.id=value['id']

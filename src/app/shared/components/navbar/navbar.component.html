@@ -22,11 +22,10 @@
                             <a class="dropdown-item py-2" routerLinkActive="active" [routerLink]="['/kafaat/program-details', item.id]" *ngIf="!isLast">{{ item.title }}</a>
                           </li>
                           
-                              <li>
+                        <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" outerLinkActive="active"   [routerLink]="['/kafaat/program-details',programs[programs.length-1].id]">{{programs[programs.length-1].title}}</a></li>
-   
+                        <li><a *ngIf="programs" class="dropdown-item" outerLinkActive="active"   [routerLink]="['/kafaat/program-details',programs[programs.length-1].id]">{{programs[programs.length-1].title}}</a></li>
                 
                     </ul>
                 </li>

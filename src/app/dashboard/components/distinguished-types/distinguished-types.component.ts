@@ -14,7 +14,7 @@ import { EditDistinguishedTypesComponent } from '../edit-distinguished-types/edi
 })
 export class DistinguishedTypesComponent implements OnInit ,AfterViewInit {
   windowWidth: number = 0;
-  pageResponse:PagedResponse={page:1,pageSize:10,totalCount:10,hasNextPage:false,hasPreviousPage:false,items:[]};
+  pageResponse:PagedResponse={page:1,pageSize:10,totalCount:0,hasNextPage:false,hasPreviousPage:false,items:[]};
   pagedRequest:PagedRequest = {pageNumber:1,pageSize:5,name:''};
   constructor(public service:MainDashoardService) {
   }
