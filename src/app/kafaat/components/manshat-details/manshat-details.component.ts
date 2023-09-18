@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivityService } from '../../services/activity.service';
+import { ActivatedRoute } from '@angular/router';
+import { KafaatMainService } from '../../services/kafaat-main.service';
 
 @Component({
   selector: 'app-manshat-details',
@@ -8,25 +11,44 @@ import { Component, OnInit } from '@angular/core';
 export class ManshatDetailsComponent implements OnInit {
   tabNumberIsActive:number = 0;
   navigationItemsList:any[]=[];
+  id:number
+  attchments:any[]=[]
+  images:any[]=[]
+  activity:any
+  videos:any
 
-  ngOnInit(): void {
-    // this.loadNavigationItemsList();
+  constructor(private service:KafaatMainService,private route:ActivatedRoute) {
+    this.route.params.subscribe(param=>{
+      this.id=param['id']
+    })
   }
 
-  // loadNavigationItemsList(){
-  //   this.navigationItemsList = [
-  //     {id:1,label:'تقرير المنشط',url:'#',isSelected:true},
-  //     {id:2,label:'المرفقات',url:'#',isSelected:false},
-  //     {id:3,label:'معرض الصور',url:'#',isSelected:false},
-  //     {id:4,label:'معرض الفيديو',url:'#',isSelected:false},
-  //     {id:5,label:'المشاركات',url:'#',isSelected:false},
-  //     {id:6,label:'المتميزون',url:'#',isSelected:false},
-  //   ];
-  // }
-  // chageNavigationLink(id:any){
-  //   debugger;
-  //   this.navigationItemsList.map(x=>x.id==id?x.isSelected=true:x.isSelected=false);
-  // }
+  ngOnInit(): void {
+    this.loadData()
+  }
+
+  loadData(){
+    this.service.activityService.getAllDetails({id:this.id,idParti:this.service.authService.currentUser().id}).subscribe(response=>{
+      if(response.statusCode=='200'){
+        this.activity=response.data
+        this.attchments=this.activity.attachments;
+        this.images=this.activity.images
+       this.videos=this.activity.videos
+      }
+    })
+  }
+
+  JoinActivity(){
+    this.service.activityParticipantsService.add({ActivityId:this.id,ParticipantId:this.service.authService.currentUser().id}).subscribe(response=>{
+      if(response.statusCode=='200'){
+      this.service.toastService.success(response.message);
+      this.activity.isParticipant=true;
+      }else{
+        this.service.toastService.error(response.message); 
+      }
+    })
+  }
+
   onTabSelected(index:any){
     this.tabNumberIsActive = index;
   }

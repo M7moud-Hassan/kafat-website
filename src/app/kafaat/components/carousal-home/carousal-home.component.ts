@@ -1,5 +1,7 @@
 import { Component, ViewChild, OnInit, Input } from '@angular/core';
 import { SlickCarouselComponent } from 'ngx-slick-carousel';
+import { ProgramsService } from '../../services/programs.service';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-carousal-home',
@@ -7,12 +9,21 @@ import { SlickCarouselComponent } from 'ngx-slick-carousel';
   styleUrls: ['./carousal-home.component.css']
 })
 export class CarousalHomeComponent implements OnInit {
-  @Input() slides: ItemCarousal[] = [];
   @ViewChild('slickCarousel', { static: false }) slickCarousel: SlickCarouselComponent | undefined;
-
-
+  slides:any[]
+constructor(private service:ProgramsService,private router:Router) {
+ 
+  
+}
   ngOnInit(): void {
-
+    this.loadPrograms();
+  }
+  loadPrograms(){
+    this.service.geAll().subscribe(response=>{
+      if(response.statusCode=='200'){
+        this.slides=response.data
+      }
+    })
   }
   slideConfig = {
     "slidesToShow": 5,
@@ -56,10 +67,11 @@ export class CarousalHomeComponent implements OnInit {
     this.slickCarousel!.slickPrev();
   }
 
-  onItemClick(item: ItemCarousal, index: number) {
-    if (item.onClickItem) {
-      item.onClickItem(item, index);
-    }
+  onItemClick(item: any, index: number) {
+    // if (item.onClickItem) {
+    //   item.onClickItem(item, index);
+    // }
+    this.router.navigate([`/kafaat/program-details/`+index])
   }
 
 
@@ -76,9 +88,3 @@ export class CarousalHomeComponent implements OnInit {
 
 }
 
-export interface ItemCarousal {
-  img: String;
-  title: String;
-  subTitle: String;
-  onClickItem: ((item: this, index: number) => void) | null;
-}

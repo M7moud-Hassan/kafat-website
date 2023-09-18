@@ -17,6 +17,9 @@ import { PostsPeopleComponent } from './components/posts-people/posts-people.com
 import { MemberGuard } from '../dashboard/core/guards/member.guard';
 
 const routes: Routes = [
+  {path:'',component:HomePageComponent},
+  {path:'program-details/:id',component:ProgramDetailsComponent},
+  {path:'activity-details/:id',component:ManshatDetailsComponent},
   {path:'',component:HomePageComponent,},
   {path:'program-details',component:ProgramDetailsComponent},
   {path:'event-details',component:ManshatDetailsComponent},

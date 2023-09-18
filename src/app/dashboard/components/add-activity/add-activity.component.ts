@@ -4,6 +4,7 @@ import { MainDashoardService } from '../../services/main-dashoard.service';
 import { DateAdapter, ThemePalette } from '@angular/material/core';
 import * as moment from 'moment';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from 'src/app/kafaat/services/auth.service';
 @Component({
   selector: 'app-add-activity',
   templateUrl: './add-activity.component.html',
@@ -43,8 +44,7 @@ export class AddActivityComponent {
   activityTypesFilter:any[]
   fileName=""
   NameActivity=""
-
-  constructor(private service:MainDashoardService,private dateAdapter: DateAdapter<Date>,private route: ActivatedRoute) {
+  constructor(private service:MainDashoardService,private dateAdapter: DateAdapter<Date>,private route: ActivatedRoute,private authService:AuthService) {
     this.dateAdapter.setLocale('en-GB'); 
     this.route.params.subscribe(params => {
       this.id = params['id']; 
@@ -279,6 +279,8 @@ onChangeFilter(event:any){
 
   onSubmit(){
     if(this.group1.valid && this.group2.valid){
+     
+      
       const formData = new FormData();
 
       var dateString = this.group1.value.date;
@@ -306,7 +308,7 @@ var To = dateObject.toISOString().slice(0, 19).replace("T", " ") + ".0000000";
       formData.append('ticketPrice', this.group2.value.ticketPrice);
       formData.append('imagePath', this.ImagePath);
       formData.append('programId', this.group2.value.programId);
-      formData.append('supervisorId', '1');
+      formData.append('supervisorId', this.authService.currentUser().id);
       userCategoriesData.forEach((category, index) => {
         formData.append(`UserCategories[${index}]`, category.toString());
       });

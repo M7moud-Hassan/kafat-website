@@ -10,5 +10,10 @@ export class ProgramMinComponent {
   @Input() image:string='';
   @Input() title:string='';
   @Input() image2:string='';
+  @Input() description:string=''
+  @Input() numpaticipants:number=0
+  @Input() numActivites:number=0
+ 
+
 
 }

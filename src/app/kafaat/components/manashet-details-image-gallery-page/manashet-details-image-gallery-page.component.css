@@ -1,7 +1,7 @@
 .image-galley-item{
     height: 300px;
     border-radius: 8px;
-    background-image: url('/assets/images/p6.png');
+    
     background-repeat: no-repeat;
     background-size: cover;
     margin: 10px;

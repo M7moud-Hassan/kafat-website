@@ -28,6 +28,7 @@ import { ToastrModule } from 'ngx-toastr';
     MatDialogModule,
     NgxMaskModule.forRoot(),
     ToastrModule.forRoot(), 
+    
     // MatProgressBarModule,
   ],
   bootstrap: [AppComponent],

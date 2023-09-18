@@ -115,6 +115,7 @@ export function tokenGetter() {
     HttpClientModule,
     ReactiveFormsModule,
     NgxMaskModule.forRoot(),
+  
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,

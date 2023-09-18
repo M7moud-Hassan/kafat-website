@@ -9,7 +9,7 @@ import { MainDashoardService } from '../../services/main-dashoard.service';
 })
 export class DetailsActivityComponent implements OnInit{
   id:number
-  categories:any[]=["ddkkd","dkdkd","ddkdkkdkd"]
+  categories:any[]=[]
   constructor(private route: ActivatedRoute,private service:MainDashoardService) {
     this.route.params.subscribe(params => {
       this.id = params['id']; 
@@ -23,7 +23,7 @@ export class DetailsActivityComponent implements OnInit{
   activity:any
 
   loadData(){
-    this.service.activityService.getDetails(this.id).subscribe(response=>{
+    this.service.activityService.getDetails({id:this.id,idParti:'45'}).subscribe(response=>{
       if(response.statusCode=='200')
       this.activity=response.data;
     console.log(this.activity)

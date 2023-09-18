@@ -17,8 +17,11 @@ import { WorkTypeService } from './work-type.service';
 import { DistinguishedTypeService } from './distinguished-type.service';
 import { FamilyBranchService } from './family-branch.service';
 import { UploadFileService } from './upload-file.service';
+import { AttachmentsActivityService } from './attachments-activity.service';
 import { ContactInformationService } from './contact-information.service';
 import { MembersService } from './members.service';
+import { ActivityParticipantsService } from './activity-participants.service';
+import { PostService } from './post.service';
 
 @Injectable({
   providedIn: 'root'
@@ -45,10 +48,19 @@ export class MainDashoardService {
     private _distinguishedTypeService :DistinguishedTypeService,
     private _familyBranchService :FamilyBranchService,
     private _uploadFileService :UploadFileService,
+    private _activityAttachments:AttachmentsActivityService,
+    private _activityParticipants:ActivityParticipantsService,
     private _contactInformationService :ContactInformationService,
     private _membersService :MembersService,
+    private _postService:PostService,
     ) { }
 
+    get postService():PostService{
+      return this._postService;
+    }
+   get activityParticipantsService(){
+return this._activityParticipants;
+    }
   get formBuilder(): FormBuilder {
     return this._formBuilder;
   }
@@ -61,6 +73,7 @@ export class MainDashoardService {
   get activityService(): ActivityService {
     return this._activityService;
   }
+  
 
   get countryService(): CountryService {
     return this._countryService;
@@ -83,7 +96,9 @@ export class MainDashoardService {
   get toastService(): ToastrService {
     return this._toastService;
   }
-
+get attachmentsActivity():AttachmentsActivityService{
+  return this._activityAttachments;
+}
   get qualificationService(): QualificationService {
     return this._qualificationService;
   }

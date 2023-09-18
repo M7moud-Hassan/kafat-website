@@ -18,18 +18,15 @@
                         <span [class]="active==1?'active':''"></span>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item py-2" routerLinkActive="active"   routerLink="/kafaat/program-details">برنامج قارئ</a></li>
-                        <li><a class="dropdown-item py-2" outerLinkActive="active"   routerLink="/kafaat/program-details">برنامج كاتب</a></li>
-                        <li><a class="dropdown-item py-2" outerLinkActive="active"   routerLink="/kafaat/program-details">برنامج متحدث</a></li>
-                        <li><a class="dropdown-item py-2" outerLinkActive="active"   routerLink="/kafaat/program-details">برنامج مبتكر</a></li>
-                        <li><a class="dropdown-item py-2" outerLinkActive="active"   routerLink="/kafaat/program-details">برنامج موهوب</a></li>
-                        <li><a class="dropdown-item py-2" outerLinkActive="active"   routerLink="/kafaat/program-details">برنامج قائد </a></li>
-                        <li><a class="dropdown-item py-2" outerLinkActive="active"   routerLink="/kafaat/program-details">برنامج متفوق </a></li>
-                        <li><a class="dropdown-item py-2" outerLinkActive="active"   routerLink="/kafaat/program-details">برنامج مثقف </a></li>
+                        <li *ngFor="let item of programs; let isLast = last">
+                            <a class="dropdown-item py-2" routerLinkActive="active" [routerLink]="['/kafaat/program-details', item.id]" *ngIf="!isLast">{{ item.title }}</a>
+                          </li>
+                          
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" outerLinkActive="active"   routerLink="/kafaat/program-details">برنامج مثقف</a></li>
+                        <li><a *ngIf="programs" class="dropdown-item" outerLinkActive="active"   [routerLink]="['/kafaat/program-details',programs[programs.length-1].id]">{{programs[programs.length-1].title}}</a></li>
+                
                     </ul>
                 </li>
                 <li class="nav-item">
@@ -84,18 +81,14 @@
                         
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item py-2" routerLinkActive="active"   routerLink="/kafaat/program-details">برنامج قارئ</a></li>
-                        <li><a class="dropdown-item py-2" outerLinkActive="active"   routerLink="/kafaat/program-details">برنامج كاتب</a></li>
-                        <li><a class="dropdown-item py-2" outerLinkActive="active"   routerLink="/kafaat/program-details">برنامج متحدث</a></li>
-                        <li><a class="dropdown-item py-2" outerLinkActive="active"   routerLink="/kafaat/program-details">برنامج مبتكر</a></li>
-                        <li><a class="dropdown-item py-2" outerLinkActive="active"   routerLink="/kafaat/program-details">برنامج موهوب</a></li>
-                        <li><a class="dropdown-item py-2" outerLinkActive="active"   routerLink="/kafaat/program-details">برنامج قائد </a></li>
-                        <li><a class="dropdown-item py-2" outerLinkActive="active"   routerLink="/kafaat/program-details">برنامج متفوق </a></li>
-                        <li><a class="dropdown-item py-2" outerLinkActive="active"   routerLink="/kafaat/program-details">برنامج مثقف </a></li>
-                        <li>
+                        <li *ngFor="let item of programs; let isLast = last">
+                            <a class="dropdown-item py-2" routerLinkActive="active" [routerLink]="['/kafaat/program-details', item.id]" *ngIf="!isLast">{{ item.title }}</a>
+                          </li>
+                          
+                              <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" outerLinkActive="active"   routerLink="/kafaat/program-details">برنامج مثقف</a></li>
+                        <li><a class="dropdown-item" outerLinkActive="active"   [routerLink]="['/kafaat/program-details',programs[programs.length-1].id]">{{programs[programs.length-1].title}}</a></li>
    
                     </ul>
                 </li>
@@ -152,16 +145,10 @@
                     <span [class]="active==1?'active':''"> البرامج</span>
                   </a>
                   <ul class="dropdown-menu w-100 border-0" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item py-2" routerLinkActive="active"   routerLink="/kafaat/program-details">برنامج قارئ</a></li>
-                    <li><a class="dropdown-item py-2" outerLinkActive="active"   routerLink="/kafaat/program-details">برنامج كاتب</a></li>
-                    <li><a class="dropdown-item py-2" outerLinkActive="active"   routerLink="/kafaat/program-details">برنامج متحدث</a></li>
-                    <li><a class="dropdown-item py-2" outerLinkActive="active"   routerLink="/kafaat/program-details">برنامج مبتكر</a></li>
-                    <li><a class="dropdown-item py-2" outerLinkActive="active"   routerLink="/kafaat/program-details">برنامج موهوب</a></li>
-                    <li><a class="dropdown-item py-2" outerLinkActive="active"   routerLink="/kafaat/program-details">برنامج قائد </a></li>
-                    <li><a class="dropdown-item py-2" outerLinkActive="active"   routerLink="/kafaat/program-details">برنامج متفوق </a></li>
-                    <li><a class="dropdown-item py-2" outerLinkActive="active"   routerLink="/kafaat/program-details">برنامج مثقف </a></li>
+                    <li *ngFor="let item of programs">
+                        <a class="dropdown-item py-2" routerLinkActive="active" [routerLink]="['/kafaat/program-details', item.id]">{{ item.title }}</a>
+                      </li>
                     
-                    <li><a class="dropdown-item" outerLinkActive="active"   routerLink="/kafaat/program-details">برنامج مثقف</a></li>
 
                   </ul>
                 </li>

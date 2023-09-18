@@ -1,5 +1,8 @@
 export interface PagedRequest{
     pageNumber:number,
     pageSize:number,
-    name?:string
+    name?:string,
+    id?:number,
+    type?:number
+
 }

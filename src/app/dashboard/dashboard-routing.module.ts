@@ -25,10 +25,16 @@ import { DepartmentsComponent } from './components/departments/departments.compo
 import { DistinguishedTypesComponent } from './components/distinguished-types/distinguished-types.component';
 import { FamilyBranchesComponent } from './components/family-branches/family-branches.component';
 import { DetailsActivityComponent } from './components/details-activity/details-activity.component';
+import { AttachmentsActivityComponent } from './components/attachments-activity/attachments-activity.component';
+import { ImagesActivityComponent } from './components/images-activity/images-activity.component';
+import { VideosActivityComponent } from './components/videos-activity/videos-activity.component';
+import { AddReportComponent } from './components/add-report/add-report.component';
 import { ContactInformationsComponent } from './components/contact-informations/contact-informations.component';
 import { AdminsComponent } from './components/admins/admins.component';
 import { MembersComponent } from './components/members/members.component';
 import { JoinRequestsComponent } from './components/join-requests/join-requests.component';
+import { ParticipantsComponent } from './components/participants/participants.component';
+import { PostsComponent } from './components/posts/posts.component';
 import { ContactUsListNewComponent } from './components/contact-us-list-new/contact-us-list-new.component';
 import { ContactUsListSentComponent } from './components/contact-us-list-sent/contact-us-list-sent.component';
 import { ContactUsListNotSentComponent } from './components/contact-us-list-not-sent/contact-us-list-not-sent.component';
@@ -37,6 +43,12 @@ export const routes: Routes = [
   {path:'',component:HomeComponent},
   {path:'activities',component:ActivitiesComponent},
   {path:'details-activity/:id',component:DetailsActivityComponent},
+  {path:'images-activity/:id',component:ImagesActivityComponent},
+  {path:'report-activity/:id',component:AddReportComponent},
+  {path:'videos-activity/:id',component:VideosActivityComponent},
+  {path:'participants/:id',component:ParticipantsComponent},
+  {path:'posts/:id',component:PostsComponent},
+  {path:'attachments-activity/:id',component:AttachmentsActivityComponent},
   {path:'edit-activity/:id',component:AddActivityComponent},
   {path:'add-activity',component:AddActivityComponent},
   {path:'update-activity/:id',component:UpdateActivityComponent},

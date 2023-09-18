@@ -4,6 +4,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ResponseVM } from 'src/app/kafaat/core/models/response-vm';
 import { MainDashoardService } from '../../services/main-dashoard.service';
 import { AddCountryComponent } from '../add-country/add-country.component';
+import { AuthService } from 'src/app/kafaat/services/auth.service';
 
 @Component({
   selector: 'app-add-program',
@@ -13,7 +14,7 @@ import { AddCountryComponent } from '../add-country/add-country.component';
 export class AddProgramComponent implements OnInit {
   form:FormGroup = new FormGroup({});
   constructor(private service:MainDashoardService,private dialogRef: MatDialogRef<AddCountryComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,){}
+    @Inject(MAT_DIALOG_DATA) public data: any,private authService:AuthService){}
   ngOnInit(): void {
     this.createForm();
   }
@@ -23,17 +24,27 @@ export class AddProgramComponent implements OnInit {
         Title:[this.data.title,[Validators.required]],
         Description:[this.data.description,[Validators.required]],
         ImageFile:[null,[Validators.required]],
+        subTitle:[this.data.subTitle],
+        imageDes:[null,[Validators.required]],
       });
     }else{
       this.form = this.service.formBuilder.group({
         Title:['',[Validators.required]],
         Description:['',[Validators.required]],
         ImageFile:[null,[Validators.required]],
+        subTitle:['',[Validators.required]],
+        imageDes:[null,[Validators.required]],
       });
     }
   }
+  get subTitle(){
+    return this.form.controls['subTitle'];
+  }
   get Title(){
     return this.form.controls['Title'];
+  }
+  get imageDes(){
+    return this.form.controls['imageDes'];
   }
   get ImageFile(){
     return this.form.controls['ImageFile'];
@@ -42,11 +53,19 @@ export class AddProgramComponent implements OnInit {
     return this.form.controls['Description'];
   }
   fileIn:File;
+  fileInR:File;
 
   onFileSelected(event: any): void {
     const file = (event.target as HTMLInputElement).files?.[0];
     if (file) {
       this.fileIn=file;
+    }
+  }
+
+  onFileSelectedImageDes(event: any):void{
+    const file = (event.target as HTMLInputElement).files?.[0];
+    if (file) {
+      this.fileInR=file;
     }
   }
   
@@ -57,7 +76,9 @@ export class AddProgramComponent implements OnInit {
         formData.append('Title', this.form.value.Title);
         formData.append('Description', this.form.value.Description);
         formData.append('ImageFile', this.fileIn);
-        formData.append('CreatedBy', '1');
+        formData.append('CreatedBy',this.authService.currentUser().id);
+        formData.append('SubTitle',this.form.value.subTitle);
+        formData.append('ImageDesFile',this.fileInR);
         if(this.data){
           formData.append('id', this.data.id);
           this.service.programsService.update(formData).subscribe({

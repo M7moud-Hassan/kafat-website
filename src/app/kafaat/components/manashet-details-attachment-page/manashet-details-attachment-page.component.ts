@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-manashet-details-attachment-page',
@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./manashet-details-attachment-page.component.css']
 })
 export class ManashetDetailsAttachmentPageComponent {
-
+  @Input() files:any[]=[]
 }

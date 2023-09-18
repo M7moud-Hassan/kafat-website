@@ -59,12 +59,21 @@ import { MatSelectModule } from '@angular/material/select';
 import { KafaatModule } from '../kafaat/kafaat.module';
 import { AuthService } from '../kafaat/services/auth.service';
 import { DetailsActivityComponent } from './components/details-activity/details-activity.component';
+import { AttachmentsActivityComponent } from './components/attachments-activity/attachments-activity.component';
+import { AddAttachmentActivityComponent } from './components/add-attachment-activity/add-attachment-activity.component';
+import { ImagesActivityComponent } from './components/images-activity/images-activity.component';
+import { VideosActivityComponent } from './components/videos-activity/videos-activity.component';
+import { AddImagesActivityComponent } from './components/add-images-activity/add-images-activity.component';
+import { AddVideoActivityComponent } from './components/add-video-activity/add-video-activity.component';
+import { AddReportComponent } from './components/add-report/add-report.component';
 import { ContactInformationsComponent } from './components/contact-informations/contact-informations.component';
 import { AdminsComponent } from './components/admins/admins.component';
 import { MembersComponent } from './components/members/members.component';
 import { JoinRequestsComponent } from './components/join-requests/join-requests.component';
 import { ConfirmPopUpComponent } from './components/confirm-pop-up/confirm-pop-up.component';
 import { UserProfilePopUpComponent } from './components/user-profile-pop-up/user-profile-pop-up.component';
+import { ParticipantsComponent } from './components/participants/participants.component';
+import { PostsComponent } from './components/posts/posts.component';
 import { MainDashoardService } from './services/main-dashoard.service';
 import { SharedModule } from '../shared/shared.module';
 import { ContactUsListNewComponent } from './components/contact-us-list-new/contact-us-list-new.component';
@@ -72,6 +81,7 @@ import { ContactUsListSentComponent } from './components/contact-us-list-sent/co
 import { ContactUsListNotSentComponent } from './components/contact-us-list-not-sent/contact-us-list-not-sent.component';
 import { ContactUsAddOrUpdateResponsePopUpComponent } from './components/contact-us-add-or-update-response-pop-up/contact-us-add-or-update-response-pop-up.component';
 import { SendEmailPopUpComponent } from './components/send-email-pop-up/send-email-pop-up.component';
+import { AddPostComponent } from './components/add-post/add-post.component';
 
 @NgModule({
   declarations: [
@@ -116,17 +126,27 @@ import { SendEmailPopUpComponent } from './components/send-email-pop-up/send-ema
       EditFamilyBranchComponent,
       FamilyBranchesComponent,
       DetailsActivityComponent,
+      AttachmentsActivityComponent,
+      AddAttachmentActivityComponent,
+      ImagesActivityComponent,
+      VideosActivityComponent,
+      AddImagesActivityComponent,
+      AddVideoActivityComponent,
+      AddReportComponent,
       ContactInformationsComponent,
       AdminsComponent,
       MembersComponent,
       JoinRequestsComponent,
       ConfirmPopUpComponent,
       UserProfilePopUpComponent,
+      ParticipantsComponent,
+      PostsComponent,
       ContactUsListNewComponent,
       ContactUsListSentComponent,
       ContactUsListNotSentComponent,
       ContactUsAddOrUpdateResponsePopUpComponent,
       SendEmailPopUpComponent,
+      // AddPostComponent,
   ],
   imports: [
     CommonModule,
@@ -149,10 +169,13 @@ import { SendEmailPopUpComponent } from './components/send-email-pop-up/send-ema
     NgxMatSelectSearchModule,
     MatSelectModule,
     KafaatModule,
-    SharedModule
+    SharedModule,
+   
+
   ],
   providers:[
     AuthService
   ],
+ 
 })
 export class DashboardModule { }
