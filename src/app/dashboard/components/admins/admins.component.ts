@@ -7,6 +7,7 @@ import { MainDashoardService } from '../../services/main-dashoard.service';
 import { PagedRequest } from 'src/app/kafaat/core/models/paged-request';
 import { UserRoles } from 'src/app/kafaat/core/user-roles';
 import { UserProfilePopUpComponent } from '../user-profile-pop-up/user-profile-pop-up.component';
+import { SendEmailPopUpComponent } from '../send-email-pop-up/send-email-pop-up.component';
 
 @Component({
   selector: 'app-admins',
@@ -121,6 +122,16 @@ export class AdminsComponent implements OnInit ,AfterViewInit {
         email:element.email,
       }
     });
+  }
+  sendEmailToUser(id:any){
+    const element=  this.pageResponse.items.find((value:any)=>value.id==id);
+    const dialogRef = this.service.dialog.open(SendEmailPopUpComponent, {
+      width:this.windowWidth<767?'99%':(this.windowWidth<1300?'60%':'50%'),
+      data:{
+        id:element.id,
+        email:element.email,
+      }
+    })
   }
 }
 

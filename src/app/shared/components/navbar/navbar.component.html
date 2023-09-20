@@ -35,11 +35,17 @@
                 <li class="nav-item">
                     <a  [class]="typeNav=='dark'?'nav-link  text-dark':'nav-link text-light'" routerLinkActive="active"  aria-current="page" routerLink ="/kafaat/contact-us">تواصل معنا</a>
                 </li>
-                <li class="nav-item">
+                <li *ngIf="!isUserAuth"  class="nav-item">
                     <a routerLink="/login" class="bg-primary-btn text-light py-3" aria-current="page" routerLinkActive="active" >تسجيل دخول</a>
                 </li>
-                <li class="nav-item">
+                <li *ngIf="!isUserAuth" class="nav-item">
                     <a [class]="typeNav=='dark'?'nav-link text-main':'nav-link text-light'" routerLink="/registeration" outerLinkActive="active"  aria-current="page" href="#">طلب انضمام</a>
+                </li>
+                <li *ngIf="isUserAuth"  class="nav-item">
+                    <a (click)="logout()" class="bg-primary-btn text-light py-3" aria-current="page" routerLinkActive="active" >تسجيل خروج</a>
+                </li>
+                <li *ngIf="isUserAuth" class="nav-item">
+                    <a [class]="typeNav=='dark'?'nav-link text-main':'nav-link text-light'"  outerLinkActive="active"  aria-current="page" >{{userName}}</a>
                 </li>
                 <li class="nav-item">
                     <!-- <hr class="d-none d-sm-block bg-light mx-3 my-0 h-100" style="width: 2px;"> -->
@@ -92,11 +98,18 @@
                 <li class="nav-item">
                     <a  class="nav-link text-dark" aria-current="page" routerLinkActive="active"  aria-current="page" routerLink ="/kafaat/contact-us"><span [class]="active==3?'active':''">تواصل معنا</span></a>
                 </li>
-                <li class="nav-item">
+                <li *ngIf="!isUserAuth" class="nav-item">
                     <a class="bg-primary-btn text-light py-3" aria-current="page" href="#" routerLink="/login" outerLinkActive="active"><span>تسجيل دخول</span></a>
                 </li>
-                <li class="nav-item">
+                <li *ngIf="!isUserAuth" class="nav-item">
                     <a class="nav-link text-main" aria-current="page" routerLink="/registeration" outerLinkActive="active" ><span>طلب انضمام</span></a>
+                </li>
+
+                <li *ngIf="isUserAuth" class="nav-item">
+                    <a class="bg-primary-btn text-light py-3" aria-current="page" (click)="logout()" outerLinkActive="active"><span>تسجيل خروج</span></a>
+                </li>
+                <li *ngIf="isUserAuth" class="nav-item">
+                    <a class="nav-link text-main" aria-current="page" outerLinkActive="active" ><span>{{userName}}</span></a>
                 </li>
                 <li class="nav-item">
                     <!-- <hr class="d-none d-sm-block bg-light mx-3 my-0 h-100" style="width: 2px;"> -->
@@ -152,9 +165,13 @@
           </nav>
     </div>
     <hr>
-    <div class="px-2 text-center">
+    <div *ngIf="!isUserAuth" class="px-2 text-center">
         <a class="bg-primary-btn w-100" routerLink="/login" outerLinkActive="active">تسجيل دخول</a>
         <a routerLink="/registeration" outerLinkActive="active"  class="text-decoration-none " href="#"><h5 class="text-main fw-bold mt-2 fs-3">طلب انضمام</h5></a>
+    </div>
+    <div *ngIf="isUserAuth" class="px-2 text-center">
+        <a class="bg-primary-btn w-100" (click)="logout()" outerLinkActive="active">تسجيل خروج</a>
+        <a routerLinkActive="active"  class="text-decoration-none " ><h5 class="text-main fw-bold mt-2 fs-3">{{userName}}</h5></a>
     </div>
     <hr>
     <div class="d-flex align-items-center justify-content-around w-50 mx-auto">

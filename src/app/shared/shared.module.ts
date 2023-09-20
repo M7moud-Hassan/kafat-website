@@ -29,6 +29,8 @@ import { RouterModule } from '@angular/router';
 import { DialogVideoImageComponent } from './components/dialog-video-image/dialog-video-image.component';
 import { MainDashoardService } from '../dashboard/services/main-dashoard.service';
 import { DashboardModule } from '../dashboard/dashboard.module';
+import { SpinnerComponent } from './components/spinner/spinner.component';
+import { SpinnersInterceptor } from './core/Interceptors/spinners.interceptor';
 
 @NgModule({
   declarations: [
@@ -62,6 +64,7 @@ import { DashboardModule } from '../dashboard/dashboard.module';
     DatePickerComponent,
     ProgramMinComponent,
     DialogVideoImageComponent,
+    SpinnerComponent,
   ],
   imports: [
     CommonModule,
@@ -69,7 +72,7 @@ import { DashboardModule } from '../dashboard/dashboard.module';
     RouterModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   exports:[
     FooterComponent,
@@ -96,8 +99,15 @@ import { DashboardModule } from '../dashboard/dashboard.module';
     ScrollNavComponent,
     DatePickerComponent,
     ProgramMinComponent,
-    DialogVideoImageComponent
+    DialogVideoImageComponent,
+    SpinnerComponent
   ],
-  // providers: [MainDashoardService],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: SpinnersInterceptor,
+      multi: true
+    }
+  ],
 })
 export class SharedModule { }

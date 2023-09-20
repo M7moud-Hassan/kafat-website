@@ -1,4 +1,5 @@
 import { Component, Input, Renderer2 ,OnInit, Output, EventEmitter, HostListener} from '@angular/core';
+import { KafaatMainService } from 'src/app/kafaat/services/kafaat-main.service';
 import { ProgramsService } from 'src/app/kafaat/services/programs.service';
 
 
@@ -8,21 +9,27 @@ import { ProgramsService } from 'src/app/kafaat/services/programs.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit{
+  isUserAuth:boolean=false;
+  userName:string='';
+  programs:any[]=[];
   @Input() typeNav: string="light";
   @Input() active:number=-1;
   @Output() handleOpenNav = new EventEmitter<boolean>();
 
-  programs:any[]=[]
-  constructor(private service:ProgramsService) {
-    
-    
+  constructor(private renderer: Renderer2,private service:KafaatMainService,private Programservice:ProgramsService) {
+    this.service.authService.isUserAuthSubj.subscribe(status=>{
+      this.isUserAuth = status;
+    });
   }
   ngOnInit(): void {
+    if (this.isUserAuth) {
+      this.userName = this.service.authService.currentUser().userName;
+    }
     this.loadPrograms();
-  
   }
+  
   loadPrograms(){
-    this.service.geAll().subscribe(response=>{
+    this.Programservice.geAll().subscribe(response=>{
       if(response.statusCode=='200'){
         this.programs=response.data;
       }
@@ -53,5 +60,8 @@ export class NavbarComponent implements OnInit{
     }else{
       document.getElementById('navbar')!.style.display='block';
     }
+  }
+  logout(){
+    this.service.authService.logoutWithoutRedirect();
   }
 }

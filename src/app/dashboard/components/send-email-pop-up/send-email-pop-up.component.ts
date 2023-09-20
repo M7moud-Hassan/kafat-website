@@ -1,42 +1,44 @@
-import { Component, OnInit ,Inject} from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
+import { KafaatMainService } from 'src/app/kafaat/services/kafaat-main.service';
 import { MainDashoardService } from '../../services/main-dashoard.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ResponseVM } from 'src/app/kafaat/core/models/response-vm';
-import { KafaatMainService } from 'src/app/kafaat/services/kafaat-main.service';
 
 @Component({
-  selector: 'app-contact-us-add-or-update-response-pop-up',
-  templateUrl: './contact-us-add-or-update-response-pop-up.component.html',
-  styleUrls: ['./contact-us-add-or-update-response-pop-up.component.css']
+  selector: 'app-send-email-pop-up',
+  templateUrl: './send-email-pop-up.component.html',
+  styleUrls: ['./send-email-pop-up.component.css']
 })
-export class ContactUsAddOrUpdateResponsePopUpComponent implements OnInit {
+export class SendEmailPopUpComponent implements OnInit {
   form:FormGroup = new FormGroup({});
-  userMessage:string='msg';
-  isDisabled:boolean = false;
-  constructor(private service:KafaatMainService,private adminService:MainDashoardService,private dialogRef: MatDialogRef<ContactUsAddOrUpdateResponsePopUpComponent>,@Inject(MAT_DIALOG_DATA) public data: any){}
+  email:string = '';
+  constructor(private service:KafaatMainService,private adminService:MainDashoardService,private dialogRef: MatDialogRef<SendEmailPopUpComponent>,@Inject(MAT_DIALOG_DATA) public data: any){}
   ngOnInit(): void {
     this.createForm();
-    this.userMessage=this.data.message;
-    this.responseMessage.setValue(this.data.responseMessage);
-    this.isDisabled = this.data.is_responseMessage_control_Disabled;
+    this.email=this.data.email;
+    this.id.setValue(this.data.id);
   }
   createForm(){
     this.form = this.service.formBuilder.group({
       id:['',[Validators.required]],
-      responseMessage:['',[Validators.required]],
+      message:['',[Validators.required]],
+      subject:['',[Validators.required]],
     });
-  }
-  get responseMessage(){
-    return this.form.controls['responseMessage'];
   }
   get id(){
     return this.form.controls['id'];
   }
+  get subject(){
+    return this.form.controls['subject'];
+  }
+  get message(){
+    return this.form.controls['message'];
+  }
   submit() {
     this.id.setValue(`${this.data.id}`);
     if(this.form.valid){
-      this.service.contactUsService.addOrUpdateResponse(this.form.value).subscribe({
+      this.adminService.membersService.sendEmailToUser(this.form.value).subscribe({
         next:(response:ResponseVM)=>{
           if(response.statusCode==200){
             this.adminService.toastService.success(response.message);

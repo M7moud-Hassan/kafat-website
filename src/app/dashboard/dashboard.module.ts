@@ -80,6 +80,7 @@ import { ContactUsListNewComponent } from './components/contact-us-list-new/cont
 import { ContactUsListSentComponent } from './components/contact-us-list-sent/contact-us-list-sent.component';
 import { ContactUsListNotSentComponent } from './components/contact-us-list-not-sent/contact-us-list-not-sent.component';
 import { ContactUsAddOrUpdateResponsePopUpComponent } from './components/contact-us-add-or-update-response-pop-up/contact-us-add-or-update-response-pop-up.component';
+import { SendEmailPopUpComponent } from './components/send-email-pop-up/send-email-pop-up.component';
 import { AddPostComponent } from './components/add-post/add-post.component';
 
 @NgModule({
@@ -144,6 +145,7 @@ import { AddPostComponent } from './components/add-post/add-post.component';
       ContactUsListSentComponent,
       ContactUsListNotSentComponent,
       ContactUsAddOrUpdateResponsePopUpComponent,
+      SendEmailPopUpComponent,
       // AddPostComponent,
   ],
   imports: [
