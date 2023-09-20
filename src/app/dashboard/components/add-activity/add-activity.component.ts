@@ -45,7 +45,7 @@ export class AddActivityComponent {
   fileName=""
   NameActivity=""
   constructor(private service:MainDashoardService,private dateAdapter: DateAdapter<Date>,private route: ActivatedRoute,private authService:AuthService) {
-    this.dateAdapter.setLocale('en-GB'); 
+    this.dateAdapter.setLocale('ar-EG'); 
     this.route.params.subscribe(params => {
       this.id = params['id']; 
       

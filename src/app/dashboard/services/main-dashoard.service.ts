@@ -22,6 +22,7 @@ import { ContactInformationService } from './contact-information.service';
 import { MembersService } from './members.service';
 import { ActivityParticipantsService } from './activity-participants.service';
 import { PostService } from './post.service';
+import { KafaatFounderService } from './kafaat-founder.service';
 
 @Injectable({
   providedIn: 'root'
@@ -53,6 +54,7 @@ export class MainDashoardService {
     private _contactInformationService :ContactInformationService,
     private _membersService :MembersService,
     private _postService:PostService,
+    private _kafaatFounderService:KafaatFounderService,
     ) { }
 
     get postService():PostService{
@@ -127,6 +129,9 @@ get attachmentsActivity():AttachmentsActivityService{
   get membersService(): MembersService {
     return this._membersService;
   }
+  get kafaatFounderService(): KafaatFounderService {
+    return this._kafaatFounderService;
+  }
 
 
 
@@ -145,5 +150,16 @@ get attachmentsActivity():AttachmentsActivityService{
       }
     }
     alert(displayedValues);
+  }
+  mapFormValuesToFormData(myForm:FormGroup): FormData {
+    let formData = new FormData();
+    let  i = 0;
+    for (const controlName in myForm.controls) {
+      i++;
+      if (myForm.controls.hasOwnProperty(controlName)) {
+        formData.append(`${controlName}`,`${myForm.controls[controlName].value}`);
+      }
+    }
+    return formData;
   }
 }
