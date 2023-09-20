@@ -1,116 +1,21 @@
 <app-navbar typeNav="dark" [active]=1></app-navbar>
 <app-page-header-labeled Header="المتميزون" Label="متميزو الشهر في جميع البرامج"></app-page-header-labeled>
-    <app-bread-crumb></app-bread-crumb>
+    <app-bread-crumb title="البرامج" subTitles="جميع البرامج"></app-bread-crumb>
 <div class="page-padding">
     <div class="card shadow-X-Large p-4">
-        <app-scroll-nav></app-scroll-nav>
+        <app-scroll-nav (numberSelected)="onselect($event)"></app-scroll-nav>
         <div class="card-body">
-            <div class="row text-center">
-                <div class="col-12 col-md-3">
-                    <app-item-carousal-angle imgPath="assets/images/person.png"></app-item-carousal-angle>
-                    <p>ناصر بن حمد بن الماجد</p>
-                    <p class="primary-padge">برنامج كاتب</p>
-                    <p class="text-main">الكتابة الفعالة</p>
+            <div class="row text-center g-2">
+                <div class="col-12 col-md-3" *ngFor="let item of items">
+                    <app-item-carousal-angle [imgPath]="item.imagePath"></app-item-carousal-angle>
+                    <p>{{item.nameParticipant}}</p>
+                    <p class="primary-padge">{{item.programName}}</p>
+                    <p class="text-main">{{item.activityName}}</p>
                 </div>
-                <div class="col-12 col-md-3">
-                    <app-item-carousal-angle></app-item-carousal-angle>
-                    <p>ناصر بن حمد بن الماجد</p>
-                    <p class="primary-padge">برنامج كاتب</p>
-                    <p class="text-main">الكتابة الفعالة</p>
-                </div>
-                <div class="col-12 col-md-3">
-                    <app-item-carousal-angle></app-item-carousal-angle>
-                    <p>ناصر بن حمد بن الماجد</p>
-                    <p class="primary-padge">برنامج كاتب</p>
-                    <p class="text-main">الكتابة الفعالة</p>
-                </div>
-                <div class="col-12 col-md-3">
-                    <app-item-carousal-angle></app-item-carousal-angle>
-                    <p>ناصر بن حمد بن الماجد</p>
-                    <p class="primary-padge">برنامج كاتب</p>
-                    <p class="text-main">الكتابة الفعالة</p>
-                </div>
+               
             </div>
-            
-            <div class="row text-center mt-2">
-                <div class="col-12 col-md-3">
-                    <app-item-carousal-angle imgPath="assets/images/person.png"></app-item-carousal-angle>
-                    <p>ناصر بن حمد بن الماجد</p>
-                    <p class="primary-padge">برنامج كاتب</p>
-                    <p class="text-main">الكتابة الفعالة</p>
-                </div>
-                <div class="col-12 col-md-3">
-                    <app-item-carousal-angle></app-item-carousal-angle>
-                    <p>ناصر بن حمد بن الماجد</p>
-                    <p class="primary-padge">برنامج كاتب</p>
-                    <p class="text-main">الكتابة الفعالة</p>
-                </div>
-                <div class="col-12 col-md-3">
-                    <app-item-carousal-angle></app-item-carousal-angle>
-                    <p>ناصر بن حمد بن الماجد</p>
-                    <p class="primary-padge">برنامج كاتب</p>
-                    <p class="text-main">الكتابة الفعالة</p>
-                </div>
-                <div class="col-12 col-md-3">
-                    <app-item-carousal-angle></app-item-carousal-angle>
-                    <p>ناصر بن حمد بن الماجد</p>
-                    <p class="primary-padge">برنامج كاتب</p>
-                    <p class="text-main">الكتابة الفعالة</p>
-                </div>
-            </div>
-            <div class="row text-center mt-2">
-                <div class="col-12 col-md-3">
-                    <app-item-carousal-angle imgPath="assets/images/person.png"></app-item-carousal-angle>
-                    <p>ناصر بن حمد بن الماجد</p>
-                    <p class="primary-padge">برنامج كاتب</p>
-                    <p class="text-main">الكتابة الفعالة</p>
-                </div>
-                <div class="col-12 col-md-3">
-                    <app-item-carousal-angle></app-item-carousal-angle>
-                    <p>ناصر بن حمد بن الماجد</p>
-                    <p class="primary-padge">برنامج كاتب</p>
-                    <p class="text-main">الكتابة الفعالة</p>
-                </div>
-                <div class="col-12 col-md-3">
-                    <app-item-carousal-angle></app-item-carousal-angle>
-                    <p>ناصر بن حمد بن الماجد</p>
-                    <p class="primary-padge">برنامج كاتب</p>
-                    <p class="text-main">الكتابة الفعالة</p>
-                </div>
-                <div class="col-12 col-md-3">
-                    <app-item-carousal-angle></app-item-carousal-angle>
-                    <p>ناصر بن حمد بن الماجد</p>
-                    <p class="primary-padge">برنامج كاتب</p>
-                    <p class="text-main">الكتابة الفعالة</p>
-                </div>
-            </div>
-            <div class="row text-center mt-2">
-                <div class="col-12 col-md-3">
-                    <app-item-carousal-angle imgPath="assets/images/person.png"></app-item-carousal-angle>
-                    <p>ناصر بن حمد بن الماجد</p>
-                    <p class="primary-padge">برنامج كاتب</p>
-                    <p class="text-main">الكتابة الفعالة</p>
-                </div>
-                <div class="col-12 col-md-3">
-                    <app-item-carousal-angle></app-item-carousal-angle>
-                    <p>ناصر بن حمد بن الماجد</p>
-                    <p class="primary-padge">برنامج كاتب</p>
-                    <p class="text-main">الكتابة الفعالة</p>
-                </div>
-                <div class="col-12 col-md-3">
-                    <app-item-carousal-angle></app-item-carousal-angle>
-                    <p>ناصر بن حمد بن الماجد</p>
-                    <p class="primary-padge">برنامج كاتب</p>
-                    <p class="text-main">الكتابة الفعالة</p>
-                </div>
-                <div class="col-12 col-md-3">
-                    <app-item-carousal-angle></app-item-carousal-angle>
-                    <p>ناصر بن حمد بن الماجد</p>
-                    <p class="primary-padge">برنامج كاتب</p>
-                    <p class="text-main">الكتابة الفعالة</p>
-                </div>
-            </div>
-            <app-paginations></app-paginations>
+        
+            <app-paginations *ngIf="pageResponse.totalCount>16"></app-paginations>
         </div>
     </div>
 </div>

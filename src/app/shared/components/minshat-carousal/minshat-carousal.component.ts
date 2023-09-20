@@ -1,5 +1,6 @@
 import { Component, ViewChild,OnInit } from '@angular/core';
 import { SlickCarouselComponent } from 'ngx-slick-carousel';
+import { KafaatMainService } from 'src/app/kafaat/services/kafaat-main.service';
 
 @Component({
   selector: 'app-minshat-carousal',
@@ -7,13 +8,25 @@ import { SlickCarouselComponent } from 'ngx-slick-carousel';
   styleUrls: ['../manashet-item/manashet-item.component.css','./minshat-carousal.component.css']
 })
 export class MinshatCarousalComponent implements OnInit {
-   slides=[1,2,3,4,5,6,7,8]
+   slides:any
+   
+   constructor(private service:KafaatMainService) {
+   }
+   loadData(){
+    this.service.activityService.getHigthLigthActivities().subscribe(response=>{
+      if(response.statusCode=='200'){
+        this.slides=response.data;
+        this.maxlength= this.slides.length
+      }
+    })
+   }
    @ViewChild('slickCarousel', { static: false }) slickCarousel: SlickCarouselComponent | undefined;
    currentSlideIndex = 0;
    swapSlideIndex=false;
    maxlength=0;
    ngOnInit(): void {
-     this.maxlength= this.slides.length
+    this.loadData();
+   
     }
    slideConfig = {
     "slidesToShow": 3,
@@ -63,26 +76,7 @@ export class MinshatCarousalComponent implements OnInit {
     this.slickCarousel!.slickPrev()
   }
 
-  data=[
-   {
-    image:'assets/images/car1.png',
-    title:'تأملات في السيرة النبوية',
-    subTitle:'برنامج مثقف',
-    des:'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة هذا النص هو مثال لنص يمكن أن يستبدل في ',
-   },
-   {
-    image:'assets/images/car2.png',
-  
-    subTitle:'برنامج كاتب',
-    des:'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة هذا النص هو مثال لنص يمكن أن يستبدل في '
-   },
-   {
-    image:'assets/images/car3.png',
-   
-    subTitle:'برنامج ماهر',
-    des:'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة هذا النص هو مثال لنص يمكن أن يستبدل في'
-   }
-  ]
+ 
 
   onMouseEnter(index:number):void{
     document.getElementById('d'+index)!.style.top='0';

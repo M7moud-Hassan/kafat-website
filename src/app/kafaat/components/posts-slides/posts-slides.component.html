@@ -3,7 +3,7 @@
     <app-bread-crumb></app-bread-crumb>
 <div class="page-padding mt-4">
     <div class="card shadow-X-Large">
-        <app-scroll-nav></app-scroll-nav>
+        <app-scroll-nav (numberSelected)="onselect($event)"></app-scroll-nav>
     <div class="card-body">
         <!-- <div class="container mx-auto">
             <div>
@@ -22,105 +22,20 @@
             </div>
         </div>   -->
     
-        <div class="row" >
-            <div class="col-12 col-md-4">
+        <div class="row g-3" >
+            <div class="col-12 col-md-4" *ngFor="let item of items">
                 <div class="card shadow-medium border">
                     <div class="card-body p-0 m-0">
-                        <img src="assets/images/img-post2.png" width="100%" alt="">
-                        <p class="text-center pt-3">محمد بن فهد بن محمد العبدالله</p>
-                        <p class="truncate-lines-2 small px-2">من مشاركات أعضاء نادي القراءة للمرحلة الابتدائية (قراءة كتاب أيتام لكن عظماء واستخراج فوائد منه)</p>
+                        <img [src]="item.imagePath" width="100%" alt="">
+                        <p class="text-center pt-3">{{item.nameParicipant}}</p>
+                        <p class="truncate-lines-2 small px-2">{{item.post}}</p>
                         <span class="text-main float-start p-4 d-pointer">عرض المزيد</span>
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-md-4">
-                <div class="card shadow-medium border">
-                    <div class="card-body p-0 m-0">
-                        <img src="assets/images/img-post2.png" width="100%" alt="">
-                        <p class="text-center pt-3">محمد بن فهد بن محمد العبدالله</p>
-                        <p class="truncate-lines-2 small px-2">من مشاركات أعضاء نادي القراءة للمرحلة الابتدائية (قراءة كتاب أيتام لكن عظماء واستخراج فوائد منه)</p>
-                        <span class="text-main float-start p-4 d-pointer">عرض المزيد</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-4">
-                <div class="card shadow-medium border">
-                    <div class="card-body p-0 m-0">
-                        <img src="assets/images/post1.png" width="100%" alt="">
-                        <p class="text-center pt-3">محمد بن فهد بن محمد العبدالله</p>
-                        <p class="truncate-lines-2 small px-2">من مشاركات أعضاء نادي القراءة للمرحلة الابتدائية (قراءة كتاب أيتام لكن عظماء واستخراج فوائد منه)</p>
-                        <span class="text-main float-start p-4 d-pointer">عرض المزيد</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row mt-4" >
-            <div class="col-12 col-md-4">
-                <div class="card shadow-medium border">
-                    <div class="card-body p-0 m-0">
-                        <img src="assets/images/img-post2.png" width="100%" alt="">
-                        <p class="text-center pt-3">محمد بن فهد بن محمد العبدالله</p>
-                        <p class="truncate-lines-2 small px-2">من مشاركات أعضاء نادي القراءة للمرحلة الابتدائية (قراءة كتاب أيتام لكن عظماء واستخراج فوائد منه)</p>
-                        <span class="text-main float-start p-4 d-pointer">عرض المزيد</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-4">
-                <div class="card shadow-medium border">
-                    <div class="card-body p-0 m-0">
-                        <img src="assets/images/img-post2.png" width="100%" alt="">
-                        <p class="text-center pt-3">محمد بن فهد بن محمد العبدالله</p>
-                        <p class="truncate-lines-2 small px-2">من مشاركات أعضاء نادي القراءة للمرحلة الابتدائية (قراءة كتاب أيتام لكن عظماء واستخراج فوائد منه)</p>
-                        <span class="text-main float-start p-4 d-pointer">عرض المزيد</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-4">
-                <div class="card shadow-medium border">
-                    <div class="card-body p-0 m-0">
-                        <img src="assets/images/post1.png" width="100%" alt="">
-                        <p class="text-center pt-3">محمد بن فهد بن محمد العبدالله</p>
-                        <p class="truncate-lines-2 small px-2">من مشاركات أعضاء نادي القراءة للمرحلة الابتدائية (قراءة كتاب أيتام لكن عظماء واستخراج فوائد منه)</p>
-                        <span class="text-main float-start p-4 d-pointer">عرض المزيد</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row my-4" >
-            <div class="col-12 col-md-4">
-                <div class="card shadow-medium border">
-                    <div class="card-body p-0 m-0">
-                        <img src="assets/images/img-post2.png" width="100%" alt="">
-                        <p class="text-center pt-3">محمد بن فهد بن محمد العبدالله</p>
-                        <p class="truncate-lines-2 small px-2">من مشاركات أعضاء نادي القراءة للمرحلة الابتدائية (قراءة كتاب أيتام لكن عظماء واستخراج فوائد منه)</p>
-                        <span class="text-main float-start p-4 d-pointer">عرض المزيد</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-4">
-                <div class="card shadow-medium border">
-                    <div class="card-body p-0 m-0">
-                        <img src="assets/images/img-post2.png" width="100%" alt="">
-                        <p class="text-center pt-3">محمد بن فهد بن محمد العبدالله</p>
-                        <p class="truncate-lines-2 small px-2">من مشاركات أعضاء نادي القراءة للمرحلة الابتدائية (قراءة كتاب أيتام لكن عظماء واستخراج فوائد منه)</p>
-                        <span class="text-main float-start p-4 d-pointer">عرض المزيد</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-4">
-                <div class="card shadow-medium border">
-                    <div class="card-body p-0 m-0">
-                        <img src="assets/images/post1.png" width="100%" alt="">
-                        <p class="text-center pt-3">محمد بن فهد بن محمد العبدالله</p>
-                        <p class="truncate-lines-2 small px-2">من مشاركات أعضاء نادي القراءة للمرحلة الابتدائية (قراءة كتاب أيتام لكن عظماء واستخراج فوائد منه)</p>
-                        <span class="text-main float-start p-4 d-pointer">عرض المزيد</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+           
         
-        <app-paginations></app-paginations>
+        <app-paginations *ngIf="pageResponse.totalCount>16"></app-paginations>
     </div>
     </div>
 </div>

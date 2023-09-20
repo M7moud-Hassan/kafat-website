@@ -2,19 +2,19 @@
 <div class="container pb-4" dir="ltr">
     <ngx-slick-carousel #slickCarousel  class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
 
-        <div  [class]="data[i%3].title?'manashet-card-container slide mx-2':'manashet-card-container slide mx-2 item-hover-top'"   ngxSlickItem *ngFor="let slide of slides;let i = index"
+        <div  [class]="slides[i%3].title?'manashet-card-container slide mx-2':'manashet-card-container slide mx-2 item-hover-top'"   ngxSlickItem *ngFor="let slide of slides;let i = index"
         (mouseenter)="onMouseEnter(i)" (mouseleave)="onMouseLeave(i)">
-            <img [src]="data[i%3].image" width="100%" height="230">
+            <img [src]="slides[i%3].imagePath" width="100%" height="230">
              <div class="manashet-card-details">
                 <div class="manashet-card-details-title-container">
-                    <div class="manashet-card-details-title" *ngIf="data[i%3].title">{{data[i%3].title}}</div>
+                    <div class="manashet-card-details-title" *ngIf="slides[i%3].name">{{slides[i%3].name}}</div>
                     <div class="manashet-card-details-badge">
                         <span class="primary-padge">جاري</span>
                     </div>
                 </div>
-               <div [class]="data[i%3].title?'':'item-hover-top-details'" [id]="'d'+i" dir="rtl">
-                <div class="manashet-card-details-program-name">{{data[i%3].subTitle}}</div>
-                <div class="manashet-card-details-program-details-words">{{data[i%3].des}}</div>
+               <div [class]="slides[i%3].programs?'':'item-hover-top-details'" [id]="'d'+i" dir="rtl">
+                <div class="manashet-card-details-program-name">{{slides[i%3].subTitle}}</div>
+                <div class="manashet-card-details-program-details-words">{{slides[i%3].description}}</div>
                 <a routerLink="#" class="manashet-card-details-more-link">عرض المزيد</a>
                </div>
              </div>

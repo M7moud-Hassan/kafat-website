@@ -1,24 +1,25 @@
-<ngx-slick-carousel dir="ltr" #slickCarousel  class="card-header d-flex justify-content-center" #slickModal="slick-carousel" [config]="slideConfig">
+<ngx-slick-carousel dir="ltr" #slickCarousel  class="card-header w-100 d-flex justify-content-center" #slickModal="slick-carousel" [config]="slideConfig">
     <div ngxSlickItem [ngClass]="index==0?'active-navigation-button':'inactive-navigation-button'" (click)="onTap(0)">
         جميع البرامج
     </div>
-    <div ngxSlickItem [ngClass]="index==1?'active-navigation-button':'inactive-navigation-button'" (click)="onTap(1)">
-        برنامج قارئ
+    <div  *ngFor="let item of items; let i=index" ngxSlickItem [ngClass]="index==item.id?'active-navigation-button':'inactive-navigation-button'" (click)="onTap(item.id)">
+       {{item.title}}
+    </div>
+    <!-- <div ngxSlickItem [ngClass]="index==2?'active-navigation-button':'inactive-navigation-button'" (click)="onTap(2)">
+        برنامج كاتب
+    </div>
+    <div ngxSlickItem [ngClass]="index==2?'active-navigation-button':'inactive-navigation-button'" (click)="onTap(2)">
+        برنامج كاتب
     </div>
     <div ngxSlickItem [ngClass]="index==2?'active-navigation-button':'inactive-navigation-button'" (click)="onTap(2)">
         برنامج كاتب
     </div>
     <div ngxSlickItem [ngClass]="index==3?'active-navigation-button':'inactive-navigation-button'" (click)="onTap(3)">
         برنامج مبتكر
-    </div>
-    <div ngxSlickItem [ngClass]="index==4?'active-navigation-button':'inactive-navigation-button'" (click)="onTap(4)">
-        برنامج موهوب 
-    </div>
-    <div ngxSlickItem [ngClass]="index==5?'active-navigation-button':'inactive-navigation-button'" (click)="onTap(5)">
-        برنامج قائد
-    </div>
+    </div> -->
+    <div *ngFor="let i of getIterationCount()"></div>
 
-    <div ngxSlickItem [ngClass]="index==6?'active-navigation-button':'inactive-navigation-button'" (click)="onTap(6)">
+    <div ngxSlickItem *ngIf="items.length>5" [ngClass]="index==6?'active-navigation-button':'inactive-navigation-button'" (click)="onTap(6)">
         المزيد <img src="assets/images/list.svg" alt="" class="me-2 d-inline"> 
     </div>
 </ngx-slick-carousel>

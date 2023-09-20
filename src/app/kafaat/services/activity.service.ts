@@ -15,4 +15,8 @@ export class ActivityService {
    getAllDetails(data:any):Observable<ResponseVM>{
     return this.http.post<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/get-activity-details-id/`,data)
    }
+   getHigthLigthActivities():Observable<ResponseVM>{
+    return this.http.get<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/get-higthlight-activity/`)
+   }
+
 }
