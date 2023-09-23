@@ -13,6 +13,7 @@ export class AddKafaatFounderComponent implements OnInit {
   isOrderVisibale:boolean = false;
   kafaatFounderImage:string = "/assets/images/person.png";
   orderArray:number[]=[];
+  isImageUpdated:boolean = false;
   form:FormGroup = new FormGroup({});
   constructor(private service:MainDashoardService,private dialogRef: MatDialogRef<AddKafaatFounderComponent>){
     this.orderArray = Array.from({ length: 50 }, (_, index) => index + 1);
@@ -26,7 +27,7 @@ export class AddKafaatFounderComponent implements OnInit {
       position:['',[Validators.required]],
       gender:['',[Validators.required]],
       positionOrder:[0,[Validators.required]],
-      imagePath:['',[Validators.required]],
+      imageFile:[null,[]],
     });
   }
   get name(){
@@ -41,14 +42,18 @@ export class AddKafaatFounderComponent implements OnInit {
   get positionOrder(){
     return this.form.controls['positionOrder'];
   }
-  get imagePath(){
-    return this.form.controls['imagePath'];
+  get imageFile(){
+    return this.form.controls['imageFile'];
   }
   
   submit() {
     // this.service.printFormValues(this.form);
     let formDataModel = this.service.mapFormValuesToFormData(this.form);
-    // if(formDataModel.has('cvFile'))
+    if(this.imageFile.value == null){
+      formDataModel.append('imageFile','DEFAULT_IMAGE');
+    }else{
+      formDataModel.append('imageFile',this.imageFile.value);
+    }
     if(this.form.valid){
       this.service.kafaatFounderService.add(formDataModel).subscribe({
         next:(response:ResponseVM)=>{
@@ -84,6 +89,7 @@ export class AddKafaatFounderComponent implements OnInit {
     }
   }
   onUserImageSelected(event: any) {
+    this.isImageUpdated = true;
     event.preventDefault();
     const image = event.target.files[0];
      let checkResult = this.validateUplodedFile(image);
@@ -92,9 +98,7 @@ export class AddKafaatFounderComponent implements OnInit {
       return;
     }
     this.kafaatFounderImage = URL.createObjectURL(image);
-     this.form.controls['imagePath'].setValue(image);
-    //  this.formData.append('userImage',image);
-    //  console.log(this.formData.get('userImage'));
+     this.form.controls['imageFile'].setValue(image);
   }
   validateUplodedFile(image:any,isCv:boolean = false):string{
     let imageError = "";

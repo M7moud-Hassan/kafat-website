@@ -158,6 +158,7 @@ get attachmentsActivity():AttachmentsActivityService{
       i++;
       if (myForm.controls.hasOwnProperty(controlName)) {
         formData.append(`${controlName}`,`${myForm.controls[controlName].value}`);
+        console.log(`${controlName}`,`${myForm.controls[controlName].value}`);
       }
     }
     return formData;

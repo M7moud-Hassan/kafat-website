@@ -24,7 +24,7 @@
               { id: 'foo', itemsPerPage: pagedRequest.pageSize, currentPage: pagedRequest.pageNumber, totalItems: pageResponse.totalCount };let i = index">
               <tr id="first_{{i}}" >
                   <td class="table-date" style="cursor: pointer;">
-                    <div class="user-image" style="background-image: url('{{item.imagePath}}');"></div>
+                  <div class="user-image" style="background-image: url({{item.imagePath}});"></div>
                 </td>
                   <td class="table-date" style="cursor: pointer;">{{item.name}}</td>
                   <td class="table-date" style="cursor: pointer;">{{item.position}}</td>
