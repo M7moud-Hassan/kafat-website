@@ -9,6 +9,7 @@ import { ResponseVM } from '../../core/models/response-vm';
 })
 export class GoalsKafaatComponent implements OnInit,AfterViewInit {
   items:any[] = [];
+  test:string="ali";
   constructor(private service:KafaatMainService){}
   ngAfterViewInit(): void {
     this.getItems();
@@ -27,5 +28,7 @@ export class GoalsKafaatComponent implements OnInit,AfterViewInit {
       }
     })
   }
-
+  trackByFn(index: number, item: any): any {
+    return item.id; // Replace 'id' with the actual identifier property of your item
+  }
 }

@@ -23,6 +23,7 @@ import { MembersService } from './members.service';
 import { ActivityParticipantsService } from './activity-participants.service';
 import { PostService } from './post.service';
 import { KafaatFounderService } from './kafaat-founder.service';
+import { DocumentedImageService } from 'src/app/kafaat/services/documented-image.service';
 
 @Injectable({
   providedIn: 'root'
@@ -55,6 +56,7 @@ export class MainDashoardService {
     private _membersService :MembersService,
     private _postService:PostService,
     private _kafaatFounderService:KafaatFounderService,
+    private _documentedImageService:DocumentedImageService,
     ) { }
 
     get postService():PostService{
@@ -131,6 +133,9 @@ get attachmentsActivity():AttachmentsActivityService{
   }
   get kafaatFounderService(): KafaatFounderService {
     return this._kafaatFounderService;
+  }
+  get documentedImageService(): DocumentedImageService {
+    return this._documentedImageService;
   }
 
 

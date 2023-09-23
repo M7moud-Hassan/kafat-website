@@ -85,6 +85,7 @@ import { AddPostComponent } from './components/add-post/add-post.component';
 import { AddKafaatFounderComponent } from './components/add-kafaat-founder/add-kafaat-founder.component';
 import { EditKafaatFounderComponent } from './components/edit-kafaat-founder/edit-kafaat-founder.component';
 import { KafaatFoundersComponent } from './components/kafaat-founders/kafaat-founders.component';
+import { DocumentedImagesComponent } from './components/documented-images/documented-images.component';
 
 @NgModule({
   declarations: [
@@ -152,6 +153,7 @@ import { KafaatFoundersComponent } from './components/kafaat-founders/kafaat-fou
       AddKafaatFounderComponent,
       EditKafaatFounderComponent,
       KafaatFoundersComponent,
+      DocumentedImagesComponent,
       // AddPostComponent,
   ],
   imports: [
