@@ -1,7 +1,7 @@
 <div class="general-container">
     <div class="mb-4 fw-bolder fs-5 pb-4"> نوثق اهم اللحظات </div>
     <div class="row">
-        <div class="image-container">
+        <div class="image-container" style="height: 600px;">
             <div class="image-bg-1" style="background-image: url('{{imageNumber1}}');"></div>
             <div class="icon-camera d-pointer">
                 <div class="row">
@@ -141,7 +141,7 @@
                     <div class="image-bg-6" style="background-image: url('{{imageNumber6}}');"></div>
                     <div class="icon-camera d-pointer" >
                         <div class="row">
-                            <div class="col-12 col-md-5">
+                            <div class="col-12 ">
                                 <div (click)="eventImage6.click()" class="d-pointer"  class="d-flex align-items-center justify-content-center" style="min-height: 70px;">
                                     <i class="fas fa-camera camera-icon" ></i>
                                 </div>
@@ -149,10 +149,10 @@
                                     <input type="file" name="image6"  accept="image/*" (change)="onChangeImage($event,6)" #eventImage6 style="display:none">
                                 </div>
                             </div>
-                            <div *ngIf="imageInfo[5].isSaveButtonShown==true" class="col-12 col-md-2 d-flex align-items-center justify-content-center" style="min-height: 70px;">
+                            <div *ngIf="imageInfo[5].isSaveButtonShown==true" class="col-12 d-flex align-items-center justify-content-center" style="min-height: 70px;">
                                 <button (click)="saveImage()" class="bg-primary-opacity-btn">حــفظ</button>
                             </div>
-                            <div class="col-12 col-md-5">
+                            <div class="col-12 ">
                                 <div class="image-size-description d-flex align-items-center justify-content-center" style="min-height: 70px;">
                                     أبعاد الصورة [ عرض : 447 , ارتفاع : 1225 ]
                                 </div>
