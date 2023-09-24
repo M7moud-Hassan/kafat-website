@@ -37,4 +37,10 @@ export class MembersService {
   deleteAccount(email:any):Observable<ResponseVM>{
     return this.http.delete<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/delete-account?email=${email}`);
   }
+  changeUserCategory(model:any):Observable<ResponseVM>{
+    return this.http.post<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/change-user-category`,model);
+  }
+  getUserCategory(email:any):Observable<ResponseVM>{
+    return this.http.get<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/get-user-category?email=${email}`);
+  }
 }
