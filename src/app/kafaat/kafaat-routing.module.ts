@@ -15,6 +15,7 @@ import { PostsSlidesComponent } from './components/posts-slides/posts-slides.com
 import { AllProgramsComponent } from './components/all-programs/all-programs.component';
 import { PostsPeopleComponent } from './components/posts-people/posts-people.component';
 import { MemberGuard } from '../dashboard/core/guards/member.guard';
+import { PdfPopupComponent } from './components/pdf-popup/pdf-popup.component';
 
 const routes: Routes = [
   {path:'',component:HomePageComponent},
@@ -36,6 +37,7 @@ const routes: Routes = [
   {path:'post-people',component:PostsPeopleComponent},
   {path:'profile',component:ProfileLayoutComponent},
   {path:'programs',component:AllProgramsComponent},
+  {path:'pdf',component:PdfPopupComponent},
 ];
 
 @NgModule({

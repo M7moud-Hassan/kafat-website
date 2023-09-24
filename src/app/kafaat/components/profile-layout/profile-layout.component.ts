@@ -17,6 +17,7 @@ constructor(private dialog:MatDialog) {
 
   ngOnInit(): void {
     this.loadNavigationItemsList();
+    this.windowWidth = window.innerWidth;
   }
 
   ngAfterViewInit() {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ContactInformationModel } from 'src/app/dashboard/core/models/contact-information-model';
 import { MainDashoardService } from 'src/app/dashboard/services/main-dashoard.service';
 import { ResponseVM } from 'src/app/kafaat/core/models/response-vm';
@@ -10,19 +10,33 @@ import { ResponseVM } from 'src/app/kafaat/core/models/response-vm';
 })
 export class FooterComponent implements OnInit {
   year:any;
-  contactInformationItems:ContactInformationModel = {} as ContactInformationModel;
+  contactInformationItems:ContactInformationModel = {
+    id:0,
+    email:'',
+    facebookLink:'',
+    instagramLink:'',
+    location:'',
+    snapchatLink:'',
+    telegramLink:'',
+    title:'',
+    twitterLink:'',
+    whatsapp:'',
+    youtubeLink:''
+  };
   constructor(private service:MainDashoardService){
     this.year = new Date().getFullYear();
   }
+
   ngOnInit(): void {
     this.get();
   }
+  
 
   get(){
     this.service.contactInformationService.get().subscribe({
       next:(res:ResponseVM)=>{
         if (res.statusCode == 200) {
-          this.contactInformationItems = res.data;
+          this.contactInformationItems = res.data as ContactInformationModel;
         } 
         else {
           this.service.toastService.error(res.message);
