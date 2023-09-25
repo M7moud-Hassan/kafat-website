@@ -32,3 +32,13 @@
 .dropdown-menu{
     border-top: 3px solid var(--main-color);
 }
+.user-profile-image{
+    display: inline-block;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-right: 10px;
+}

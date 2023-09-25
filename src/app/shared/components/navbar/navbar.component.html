@@ -45,15 +45,15 @@
                     <a (click)="logout()" class="bg-primary-btn text-light py-3" aria-current="page" routerLinkActive="active" >تسجيل خروج</a>
                 </li>
                 <li *ngIf="isUserAuth" class="nav-item">
-                    <a [class]="typeNav=='dark'?'nav-link text-main':'nav-link text-light'"  outerLinkActive="active"  aria-current="page" >{{userName}}</a>
+                    <a [class]="typeNav=='dark'?'nav-link text-main':'nav-link text-light'"  class="d-pointer d-flex align-items-center" routerLink="/kafaat/profile"   outerLinkActive="active"  aria-current="page" >{{userName}} <div style="background-image: url({{userImage}});" class="user-profile-image"></div> </a>
                 </li>
                 <li class="nav-item">
                     <!-- <hr class="d-none d-sm-block bg-light mx-3 my-0 h-100" style="width: 2px;"> -->
                     <div [class]="typeNav=='dark'?'divider-line bg-dark mx-3 my-0':'divider-line bg-light mx-3 my-0'" >&nbsp;</div>
                 </li>
                 <li class="d-flex align-items-center">
-                    <a href="#" class="mx-2"><img [src]="typeNav=='light'?'assets/images/facebook.svg':'assets/images/facebook-dark.svg'" alt="facebook.svg"></a>
-                    <a href="#" class="mx-2"><img [src]="typeNav=='light'?'assets/images/twitter.svg':'assets/images/twitter-dark.svg'" alt="twitter.svg"></a>
+                    <a routerLink="{{contactInformationLinks.facebookLink}}" class="mx-2"><img [src]="typeNav=='light'?'assets/images/facebook.svg':'assets/images/facebook-dark.svg'" alt="facebook.svg"></a>
+                    <a routerLink="{{contactInformationLinks.twitterLink}}" class="mx-2"><img [src]="typeNav=='light'?'assets/images/twitter.svg':'assets/images/twitter-dark.svg'" alt="twitter.svg"></a>
                     <a href="#" class="mx-2"><img [src]="typeNav=='light'?'assets/images/linkedin.svg':'assets/images/linkedin-dark.svg'" alt="linkedin.svg"></a>
                 </li>
             </ul>
@@ -109,15 +109,15 @@
                     <a class="bg-primary-btn text-light py-3" aria-current="page" (click)="logout()" outerLinkActive="active"><span>تسجيل خروج</span></a>
                 </li>
                 <li *ngIf="isUserAuth" class="nav-item">
-                    <a class="nav-link text-main" aria-current="page" outerLinkActive="active" ><span>{{userName}}</span></a>
+                    <a class="nav-link text-main" aria-current="page" outerLinkActive="active" style="color: var(--main-color);" class="d-pointer d-flex align-items-center text-decoration-none" routerLink="/kafaat/profile"  >{{userName}}<div style="background-image: url({{userImage}});" class="user-profile-image"></div></a>
                 </li>
                 <li class="nav-item">
                     <!-- <hr class="d-none d-sm-block bg-light mx-3 my-0 h-100" style="width: 2px;"> -->
                     <div class="divider-line bg-dark mx-3 my-0">&nbsp;</div>
                 </li>
                 <li class="d-flex align-items-center">
-                    <a href="#" class="mx-2"><img src="assets/images/facebook-dark.svg" alt="facebook.svg"></a>
-                    <a href="#" class="mx-2"><img src="assets/images/twitter-dark.svg" alt="twitter.svg"></a>
+                    <a routerLink="{{contactInformationLinks.facebookLink}}" class="mx-2"><img src="assets/images/facebook-dark.svg" alt="facebook.svg"></a>
+                    <a routerLink="{{contactInformationLinks.twitterLink}}" class="mx-2"><img src="assets/images/twitter-dark.svg" alt="twitter.svg"></a>
                     <a href="#" class="mx-2"><img src="assets/images/linkedin-dark.svg" alt="linkedin.svg"></a>
                 </li>
             </ul>
@@ -171,12 +171,13 @@
     </div>
     <div *ngIf="isUserAuth" class="px-2 text-center">
         <a class="bg-primary-btn w-100" (click)="logout()" outerLinkActive="active">تسجيل خروج</a>
-        <a routerLinkActive="active"  class="text-decoration-none " ><h5 class="text-main fw-bold mt-2 fs-3">{{userName}}</h5></a>
+        <!-- small screen -->
+        <a routerLinkActive="active"   style="color: var(--main-color);text-decoration: none; text-align: center; display: block;font-size: 16px;" class="d-pointer text-decoration-none my-3 justify-content-center d-flex align-items-center" routerLink="/kafaat/profile"  >{{userName}} <div style="background-image: url({{userImage}});" class="user-profile-image"></div></a>
     </div>
     <hr>
     <div class="d-flex align-items-center justify-content-around w-50 mx-auto">
-        <a href="#" class="mx-2"><img src='assets/images/facebook-dark.svg' alt="facebook.svg"></a>
-        <a href="#" class="mx-2"><img src='assets/images/twitter-dark.svg' alt="twitter.svg"></a>
+        <a routerLink="{{contactInformationLinks.facebookLink}}" class="mx-2"><img src='assets/images/facebook-dark.svg' alt="facebook.svg"></a>
+        <a routerLink="{{contactInformationLinks.twitterLink}}"  class="mx-2"><img src='assets/images/twitter-dark.svg' alt="twitter.svg"></a>
         <a href="#" class="mx-2"><img src='assets/images/linkedin-dark.svg' alt="linkedin.svg"></a>
     </div>
 </div>

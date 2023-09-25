@@ -1,4 +1,7 @@
 import { Component, Input, Renderer2 ,OnInit, Output, EventEmitter, HostListener} from '@angular/core';
+import { ContactInformationModel } from 'src/app/dashboard/core/models/contact-information-model';
+import { MainDashoardService } from 'src/app/dashboard/services/main-dashoard.service';
+import { ResponseVM } from 'src/app/kafaat/core/models/response-vm';
 import { KafaatMainService } from 'src/app/kafaat/services/kafaat-main.service';
 import { ProgramsService } from 'src/app/kafaat/services/programs.service';
 
@@ -11,12 +14,14 @@ import { ProgramsService } from 'src/app/kafaat/services/programs.service';
 export class NavbarComponent implements OnInit{
   isUserAuth:boolean=false;
   userName:string='';
+  userImage:string = '/assets/images/male.png'
   programs:any[]=[];
+  contactInformationLinks:any;
   @Input() typeNav: string="light";
   @Input() active:number=-1;
   @Output() handleOpenNav = new EventEmitter<boolean>();
 
-  constructor(private renderer: Renderer2,private service:KafaatMainService,private Programservice:ProgramsService) {
+  constructor(private renderer: Renderer2,private service:KafaatMainService,private adminService:MainDashoardService,private Programservice:ProgramsService) {
     this.service.authService.isUserAuthSubj.subscribe(status=>{
       this.isUserAuth = status;
     });
@@ -24,10 +29,32 @@ export class NavbarComponent implements OnInit{
   ngOnInit(): void {
     if (this.isUserAuth) {
       this.userName = this.service.authService.currentUser().userName;
+      this.userImage = this.service.authService.currentUser().userImage;
     }
     this.loadPrograms();
+    this.getContactInformationLinks();
   }
-  
+  getContactInformationLinks(){
+    this.adminService.contactInformationService.get().subscribe({
+      next:(res:ResponseVM)=>{
+        if (res.statusCode == 200) {
+          this.contactInformationLinks = res.data as ContactInformationModel;
+          this.contactInformationLinks.facebookLink
+        } 
+        else {
+          this.service.toastService.error(res.message);
+        }
+      },error:(error)=>{
+        let errorMessage = 'حدث خطأ غير متوقع';
+        if (error.error && typeof error.error === 'string') {
+          errorMessage = error.error; // Use the error message from the 'error' property
+        } else if (error.message) {
+          errorMessage = error.message; // Use the 'message' property if available
+        }
+        this.service.toastService.error(errorMessage);
+      }
+    });
+  }
   loadPrograms(){
     this.Programservice.geAll().subscribe(response=>{
       if(response.statusCode=='200'){
