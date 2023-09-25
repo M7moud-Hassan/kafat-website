@@ -1,7 +1,8 @@
 <div class="image-galley-container">
     <div class="row">
         <div *ngFor="let item of items" class="col-12 col-md-4">
-            <div (click)="openModal()" [style.background-image]="'url('+item.path+');'" class="image-galley-item d-pointer">
+            
+            <div (click)="openModal(item.path)" [style]="'background-image:url('+item.path+');'" class="image-galley-item d-pointer">
             </div>
         </div>
     </div>

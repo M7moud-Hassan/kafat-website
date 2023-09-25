@@ -47,7 +47,8 @@ export class ProgramsComponent implements OnInit ,AfterViewInit {
   }
   addItem(): void {
     const dialogRef = this.service.dialog.open(AddProgramComponent, {
-      width:this.windowWidth<767?'99%':(this.windowWidth<1300?'50%':'40%')
+      width:this.windowWidth<767?'99%':(this.windowWidth<1300?'50%':'40%'),
+      height:'95vh'
     });
     dialogRef.afterClosed().subscribe(result => {
       this.getPage();
@@ -57,7 +58,8 @@ export class ProgramsComponent implements OnInit ,AfterViewInit {
     const element=  this.pageResponse.items.find((value:any)=>value.id==id);
     const dialogRef = this.service.dialog.open(AddProgramComponent, {
       width:this.windowWidth<767?'99%':(this.windowWidth<1300?'50%':'40%'),
-      data:element
+      data:element,
+      height:'95vh'
     });
     dialogRef.afterClosed().subscribe(result => {
       this.getPage();
@@ -96,6 +98,8 @@ export class ProgramsComponent implements OnInit ,AfterViewInit {
       },
     });
   }
+
+  
 }
 
 

@@ -1,6 +1,6 @@
 <app-navbar typeNav="dark" [active]=1></app-navbar>
 <app-page-header-labeled Header="المتميزون" Label="متميزو الشهر في جميع البرامج"></app-page-header-labeled>
-    <app-bread-crumb title="البرامج" subTitles="جميع البرامج"></app-bread-crumb>
+    <app-bread-crumb title="الرئسية" subSubSubTitle="المتميزون"></app-bread-crumb>
 <div class="page-padding">
     <div class="card shadow-X-Large p-4">
         <app-scroll-nav (numberSelected)="onselect($event)"></app-scroll-nav>
@@ -14,8 +14,10 @@
                 </div>
                
             </div>
-        
-            <app-paginations *ngIf="pageResponse.totalCount>16"></app-paginations>
+            <!-- *ngIf="pageResponse.totalCount>16" -->
+            <app-paginations [pagesNumber]="pagesNumber" [currentPage]="pageResponse.page"
+            [hasNextPage]="pageResponse.hasNextPage" [hasPreviousPage]="pageResponse.hasPreviousPage" 
+            (next)="next($event)" (back)="back($event)"></app-paginations>
         </div>
     </div>
 </div>

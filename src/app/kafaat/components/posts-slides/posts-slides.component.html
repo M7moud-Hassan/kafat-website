@@ -1,6 +1,6 @@
 <app-navbar typeNav="dark" [active]=1></app-navbar>
 <app-page-header-labeled Header="المشاركات" Label="جميع مشاركات الأعضاء في مختلف المناشط"></app-page-header-labeled>
-    <app-bread-crumb></app-bread-crumb>
+<app-bread-crumb title="الرئسية" subSubSubTitle="المشاركات"></app-bread-crumb>
 <div class="page-padding mt-4">
     <div class="card shadow-X-Large">
         <app-scroll-nav (numberSelected)="onselect($event)"></app-scroll-nav>
@@ -28,14 +28,16 @@
                     <div class="card-body p-0 m-0">
                         <img [src]="item.imagePath" width="100%" alt="">
                         <p class="text-center pt-3">{{item.nameParicipant}}</p>
-                        <p class="truncate-lines-2 small px-2">{{item.post}}</p>
+                        <p class="truncate-lines-2 small px-2" [innerHTML]="item.post"></p>
                         <span class="text-main float-start p-4 d-pointer">عرض المزيد</span>
                     </div>
                 </div>
             </div>
            
         
-        <app-paginations *ngIf="pageResponse.totalCount>16"></app-paginations>
+            <app-paginations [pagesNumber]="pagesNumber" [currentPage]="pageResponse.page"
+            [hasNextPage]="pageResponse.hasNextPage" [hasPreviousPage]="pageResponse.hasPreviousPage" 
+            (next)="next($event)" (back)="back($event)"></app-paginations>
     </div>
     </div>
 </div>

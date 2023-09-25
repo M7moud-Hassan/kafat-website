@@ -9,7 +9,7 @@
                     <div class="truncate-2-lines attachments-item-details-title">
                        {{item.title}}
                     </div>
-                    <button class="bg-primary-btn mt-3"><img [src]="item.path" class="ms-2" width="20" height="20"/>تحميل الملف </button>
+                    <button class="bg-primary-btn mt-3" (click)="download(item.id)"><img [src]="item.path" class="ms-2" width="20" height="20"/>تحميل الملف </button>
                 </div>
             </div>
         </div>

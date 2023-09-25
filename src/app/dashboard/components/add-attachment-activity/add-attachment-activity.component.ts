@@ -3,6 +3,7 @@ import { FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ResponseVM } from 'src/app/kafaat/core/models/response-vm';
 import { MainDashoardService } from '../../services/main-dashoard.service';
+import { AuthService } from 'src/app/kafaat/services/auth.service';
 
 @Component({
   selector: 'app-add-attachment-activity',
@@ -11,7 +12,7 @@ import { MainDashoardService } from '../../services/main-dashoard.service';
 })
 export class AddAttachmentActivityComponent implements OnInit {
   form:FormGroup = new FormGroup({});
-  constructor(private service:MainDashoardService,private dialogRef: MatDialogRef<AddAttachmentActivityComponent>,
+  constructor(private service:MainDashoardService,private authService:AuthService,private dialogRef: MatDialogRef<AddAttachmentActivityComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,){}
   ngOnInit(): void {
     this.createForm();
@@ -51,7 +52,7 @@ export class AddAttachmentActivityComponent implements OnInit {
         const formData = new FormData();
         formData.append('Title', this.form.value.Title);
         formData.append('Path', this.fileIn);
-        formData.append('UploadedBy', '1');
+        formData.append('UploadedBy',this.authService.currentUser().id);
         formData.append('ActivityId',this.data.activityId);
         formData.append('type','0');
        
@@ -75,6 +76,8 @@ export class AddAttachmentActivityComponent implements OnInit {
         this.service.attachmentsActivity.add(formData).subscribe({
         next:(response:ResponseVM)=>{
           if(response.statusCode==200){
+            console.log(response.data);
+            
             this.service.toastService.success(response.message);
             this.closeDialog();
           }else{

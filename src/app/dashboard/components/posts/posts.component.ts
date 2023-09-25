@@ -54,7 +54,8 @@ export class PostsComponent implements OnInit ,AfterViewInit {
   addItem(): void {
     const dialogRef = this.service.dialog.open(AddPostComponent, {
       width:this.windowWidth<767?'99%':(this.windowWidth<1300?'50%':'40%'),
-      data:{idActivity:this.id}
+      data:{idActivity:this.id},
+      height:'95vh'
     });
     dialogRef.afterClosed().subscribe(result => {
       this.getPage();
@@ -103,6 +104,8 @@ export class PostsComponent implements OnInit ,AfterViewInit {
       },
     });
   }
+
+  
 }
 
 

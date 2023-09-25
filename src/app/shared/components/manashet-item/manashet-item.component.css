@@ -117,7 +117,7 @@
     top: -15px;
     border: 10px solid rgb(197 192 192 / 15%);
     border-radius: 50% 50%;
-    background-image: url('/assets/images/p5.png');
+    /* background-image: url('/assets/images/p5.png'); */
     border-image-outset: 4px;
     background-repeat: no-repeat;
     background-position: center;

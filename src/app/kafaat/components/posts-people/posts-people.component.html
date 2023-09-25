@@ -1,14 +1,14 @@
 <app-navbar typeNav="dark" [active]=1></app-navbar>
 <app-page-header-labeled Header="المشاركات" Label="جميع مشاركات الأعضاء في مختلف المناشط"></app-page-header-labeled>
-    <app-bread-crumb></app-bread-crumb>
+<app-bread-crumb title="الرئسية" subSubSubTitle="المشاركات"></app-bread-crumb>
 <div class="page-padding mt-4">
     <div class="card shadow-X-Large">
-        <app-scroll-nav></app-scroll-nav>
+        <app-scroll-nav (numberSelected)="onselect($event)"></app-scroll-nav>
     <div class="card-body">
        <div *ngFor="let item of items">
         <div class="container mx-auto">
             <div>
-                 <img [src]="item.imageParticipant" alt="person">
+                 <img [src]="item.imageParticipant" alt="person" width="50" height="50">
                  <span class="text-main">{{item.nameParticipant}}</span>
             </div>
             <div class="d-flex">
@@ -17,8 +17,8 @@
                 <span class="text-main">{{item.activityName}}</span>
             </div>
     
-            <div class="mt-4">
-                {{item.post}}
+            <div class="mt-4" [innerHTML]="item.post">
+                
                 <!-- <p>هل تبادلنا العطاء؟</p>
                 <p class="small">كل طفل من أطفالنا بحاجة إلى ولي حريص يكتشف مواهبه وينمي قدراته ، وكل فتى وفتاة من فتياننا وفتياتنا بحاجة للتوجيه والنصح والدعم ، وكل شابةٍ وشابٍ بيننا بحاجة لتطوير المهارات وتبني الأفكار ، وكل شيخٍ بيننا بحاجة للترابط الأسري والتواصل الاجتماعي .. وجميعهم يسعى للبحث عن هذه الحوائج سواءً من الأهل أو جماعة ... <span class="d-pointer text-main">المزيد</span></p> -->
             </div>
@@ -28,7 +28,9 @@
         
   
         
-       <app-paginations *ngIf="pageResponse.totalCount>16"></app-paginations>
+       <app-paginations [pagesNumber]="pagesNumber" [currentPage]="pageResponse.page"
+            [hasNextPage]="pageResponse.hasNextPage" [hasPreviousPage]="pageResponse.hasPreviousPage" 
+            (next)="next($event)" (back)="back($event)"></app-paginations>
     </div>
     </div>
 </div>

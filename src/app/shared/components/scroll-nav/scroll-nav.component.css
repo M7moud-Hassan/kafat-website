@@ -10,3 +10,14 @@
   
     }
   }
+
+  .musharakat-list-content {
+    overflow-x: scroll;
+    /* display: inline-flex;  */
+    white-space: nowrap; 
+    /* padding-top: 50px; */
+    margin-bottom: 30px;
+  }
+  .shared-user-info-list-options-item-update{
+    width: 150x !important;
+  }

@@ -74,7 +74,6 @@ import { ConfirmPopUpComponent } from './components/confirm-pop-up/confirm-pop-u
 import { UserProfilePopUpComponent } from './components/user-profile-pop-up/user-profile-pop-up.component';
 import { ParticipantsComponent } from './components/participants/participants.component';
 import { PostsComponent } from './components/posts/posts.component';
-import { MainDashoardService } from './services/main-dashoard.service';
 import { SharedModule } from '../shared/shared.module';
 import { ContactUsListNewComponent } from './components/contact-us-list-new/contact-us-list-new.component';
 import { ContactUsListSentComponent } from './components/contact-us-list-sent/contact-us-list-sent.component';

@@ -37,10 +37,30 @@ constructor(private service:KafaatMainService) {
     })
   }
   loadDataById(){
+    console.log("asssss");
+    
     this.service.programService.getAllPostsById(this.pagedRequest).subscribe(response=>{
       this.pageResponse=response;
       this.items=this.pageResponse.items;
      })
+  }
+
+
+  get pagesNumber(): any {
+    const totalCount = this.pageResponse.totalCount;
+    const pageSize = this.pagedRequest.pageSize;
+    
+    
+    
+    return Math.ceil(totalCount / pageSize);
+  }
+  next(evetn:number){
+    this.pagedRequest = {pageNumber:evetn,pageSize:16,name:''};
+    this.loadData()
+  }
+  back(event:number){
+    this.pagedRequest = {pageNumber:event,pageSize:16,name:''};
+    this.loadData()
   }
   
 }

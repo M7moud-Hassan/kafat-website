@@ -19,4 +19,8 @@ export class ActivityService {
     return this.http.get<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/get-higthlight-activity/`)
    }
 
+   getActivitiesParticipants(id:any):Observable<ResponseVM>{
+    return this.http.get<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/get-activities-participants/${id}`)
+   }
+
 }

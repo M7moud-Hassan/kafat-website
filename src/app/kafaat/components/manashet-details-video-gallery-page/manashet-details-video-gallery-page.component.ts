@@ -9,10 +9,10 @@ import { DialogVideoImageComponent } from 'src/app/shared/components/dialog-vide
 export class ManashetDetailsVideoGalleryPageComponent {
   @Input() items:any[]=[]
   @ViewChild('dialog', { static: false }) dialogComponent: DialogVideoImageComponent | undefined;
-  openModal(){
+  openModal(path:any){
     console.log(this.dialogComponent)
     if (this.dialogComponent) {
-      this.dialogComponent.openVideo("https://youtu.be/z94DAHxH_iw?si=agSSDRSaA9RPo2yZ");
+      this.dialogComponent.openVideo(path);
     }
   }
 }

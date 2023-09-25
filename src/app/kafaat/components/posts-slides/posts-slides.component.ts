@@ -43,4 +43,20 @@ constructor(private service:KafaatMainService) {
      })
   }
   
+  get pagesNumber(): any {
+    const totalCount = this.pageResponse.totalCount;
+    const pageSize = this.pagedRequest.pageSize;
+    
+    
+    
+    return Math.ceil(totalCount / pageSize);
+  }
+  next(evetn:number){
+    this.pagedRequest = {pageNumber:evetn,pageSize:16,name:''};
+    this.loadData()
+  }
+  back(event:number){
+    this.pagedRequest = {pageNumber:event,pageSize:16,name:''};
+    this.loadData()
+  }
 }

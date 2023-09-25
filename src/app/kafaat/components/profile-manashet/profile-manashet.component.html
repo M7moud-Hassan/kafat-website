@@ -18,117 +18,42 @@
         <a *ngFor="let nav of navList" (click)="selectItem(nav.id)" ngClass="{{nav.isSelected?'active-navigation-button':'inactive-navigation-button'}}">{{nav.label}}</a> 
     </div>
     <div *ngIf="navList[0].isSelected">
-    <div *ngFor="let item of [1,2,3]" class="manashet-element">
+    <div *ngFor="let item of allActivities" class="manashet-element">
         <div class="image-details-container">
         <div class="element-image">
-            <img src="/assets/images/people.jpg" alt="">
+            <img [src]="item.imagePath" alt="">
         </div>
         <div class="element-details">
-            <div class="program-name">برنامج ماهر</div>
-            <div class="main-title">مهارات الوورد</div>
-            <span class="warning-padge">سابق</span>
+            <div class="program-name">{{item.programs}}</div>
+            <div class="main-title">{{item.name}}</div>
+            <span class="success-padge" *ngIf="item.StatusActivity==2"></span>
+            <span class="warning-padge" *ngIf="item.StatusActivity==1"></span>
+            <span class="primary-padge" *ngIf="item.StatusActivity==0"></span>
             <div class="sub-title mt-2 ">
                 <div>
-                    هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة هذا النص هو مثال لنص يمكن أن يستبدل في 
-                    هذا النص هو مثال لنص يمكن أن يستبدل في نفسي 
+                    {{item.description}}
                 </div>
             </div>
         </div>
     </div>
     <div class="divider"></div>
     </div>
-    <div *ngFor="let item of [1,2]" class="manashet-element">
-        <div class="image-details-container">
-        <div class="element-image">
-            <img src="/assets/images/people.jpg" alt="">
-        </div>
-        <div class="element-details">
-            <div class="program-name">برنامج ماهر</div>
-            <div class="main-title">مهارات الوورد</div>
-            <span class="success-padge">قادم</span>
-            <div class="sub-title mt-2 ">
-                <div>
-                    هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة هذا النص هو مثال لنص يمكن أن يستبدل في 
-                    هذا النص هو مثال لنص يمكن أن يستبدل في نفسي 
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="divider"></div>
-    </div>
-    <div *ngFor="let item of [1]" class="manashet-element">
-        <div class="image-details-container">
-        <div class="element-image">
-            <img src="/assets/images/people.jpg" alt="">
-        </div>
-        <div class="element-details">
-            <div class="program-name">برنامج ماهر</div>
-            <div class="main-title">مهارات الوورد</div>
-            <span class="success-padge">قادم</span>
-            <div class="sub-title mt-2 ">
-                <div>
-                    هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة هذا النص هو مثال لنص يمكن أن يستبدل في 
-                    هذا النص هو مثال لنص يمكن أن يستبدل في نفسي 
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="divider"></div>
-    </div>
-    <div *ngFor="let item of [1,2]" class="manashet-element">
-        <div class="image-details-container">
-        <div class="element-image">
-            <img src="/assets/images/people.jpg" alt="">
-        </div>
-        <div class="element-details">
-            <div class="program-name">برنامج ماهر</div>
-            <div class="main-title">مهارات الوورد</div>
-            <span class="primary-padge">جارى</span>
-            <div class="sub-title mt-2 ">
-                <div>
-                    هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة هذا النص هو مثال لنص يمكن أن يستبدل في 
-                    هذا النص هو مثال لنص يمكن أن يستبدل في نفسي 
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="divider"></div>
-    </div>
-    <div *ngFor="let item of [1,2,3]" class="manashet-element">
-        <div class="image-details-container">
-        <div class="element-image">
-            <img src="/assets/images/people.jpg" alt="">
-        </div>
-        <div class="element-details">
-            <div class="program-name">برنامج ماهر</div>
-            <div class="main-title">مهارات الوورد</div>
-            <span class="warning-padge">سابق</span>
-            <div class="sub-title mt-2 ">
-                <div>
-                    هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة هذا النص هو مثال لنص يمكن أن يستبدل في 
-                    هذا النص هو مثال لنص يمكن أن يستبدل في نفسي 
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="divider"></div>
-    </div>
+   
     </div>
     <!-- Next ------------------------------------->
     <div *ngIf="navList[1].isSelected">
-    <div *ngFor="let item of [1,2,3]" class="manashet-element">
+    <div *ngFor="let item of willActivities" class="manashet-element">
         <div class="image-details-container">
         <div class="element-image">
-            <img src="/assets/images/people.jpg" alt="">
+            <img [src]="item.imagePath" alt="">
         </div>
         <div class="element-details">
-            <div class="program-name">برنامج ماهر</div>
-            <div class="main-title">مهارات الوورد</div>
+            <div class="program-name">{{item.programs}}</div>
+            <div class="main-title">{{item.name}}</div>
             <span class="success-padge">قادم</span>
             <div class="sub-title mt-2 ">
                 <div>
-                    هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة هذا النص هو مثال لنص يمكن أن يستبدل في 
-                    هذا النص هو مثال لنص يمكن أن يستبدل في نفسي 
+                   {{item.description}}
                 </div>
             </div>
         </div>
@@ -138,19 +63,18 @@
 </div>
     <!-- current------------------------------------------------------ -->
     <div *ngIf="navList[2].isSelected">
-    <div *ngFor="let item of [1,2]" class="manashet-element">
+    <div *ngFor="let item of currentActivities" class="manashet-element">
         <div class="image-details-container">
         <div class="element-image">
-            <img src="/assets/images/people.jpg" alt="">
+            <img [src]="item.imagePath" alt="">
         </div>
         <div class="element-details">
-            <div class="program-name">برنامج ماهر</div>
-            <div class="main-title">مهارات الوورد</div>
+            <div class="program-name">{{item.programs}}</div>
+            <div class="main-title">{{item.name}}</div>
             <span class="primary-padge">جارى</span>
             <div class="sub-title mt-2 ">
                 <div>
-                    هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة هذا النص هو مثال لنص يمكن أن يستبدل في 
-                    هذا النص هو مثال لنص يمكن أن يستبدل في نفسي 
+                    {{item.description}}
                 </div>
             </div>
         </div>
@@ -161,19 +85,18 @@
 
      <!-- pevious------------------------------------------------------ -->
      <div *ngIf="navList[3].isSelected">
-     <div *ngFor="let item of [1,2]" class="manashet-element">
+     <div *ngFor="let item of pastActivities" class="manashet-element">
         <div class="image-details-container">
         <div class="element-image">
-            <img src="/assets/images/people.jpg" alt="">
+            <img [src]="item.imagePath" alt="">
         </div>
         <div class="element-details">
-            <div class="program-name">برنامج ماهر</div>
-            <div class="main-title">مهارات الوورد</div>
+            <div class="program-name">{{item.programs}}</div>
+            <div class="main-title">{{item.name}}</div>
             <span class="warning-padge">سابق</span>
             <div class="sub-title mt-2 ">
                 <div>
-                    هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة هذا النص هو مثال لنص يمكن أن يستبدل في 
-                    هذا النص هو مثال لنص يمكن أن يستبدل في نفسي 
+                    {{item.description}}
                 </div>
             </div>
         </div>

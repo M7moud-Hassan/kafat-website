@@ -53,7 +53,8 @@ export class VideosActivityComponent implements OnInit ,AfterViewInit {
   addItem(): void {
     const dialogRef = this.service.dialog.open(AddVideoActivityComponent, {
       width:this.windowWidth<767?'99%':(this.windowWidth<1300?'50%':'40%'),
-      data:{activityId:this.id}
+      data:{activityId:this.id},
+      height:'95vh'
     });
     dialogRef.afterClosed().subscribe(result => {
       this.getPage();
@@ -63,7 +64,8 @@ export class VideosActivityComponent implements OnInit ,AfterViewInit {
     const element=this.pageResponse.items.find(x=>x.id==id)
     const dialogRef = this.service.dialog.open(AddVideoActivityComponent, {
       width:this.windowWidth<767?'99%':(this.windowWidth<1300?'50%':'40%'),
-      data:{...element,activityId:id}
+      data:{...element,activityId:id},
+      height:'95vh'
     });
     dialogRef.afterClosed().subscribe(result => {
       this.getPage();

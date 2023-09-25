@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { KafaatMainService } from '../../services/kafaat-main.service';
 
 @Component({
   selector: 'app-profile-manashet',
@@ -6,12 +7,35 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile-manashet.component.css']
 })
 export class ProfileManashetComponent implements OnInit {
-  hideTest:boolean = true;
+ 
+  currentActivities:any[]
+  pastActivities:any[]
+  willActivities:any[]
+  allActivities:any[]
+  constructor(private service:KafaatMainService) {
+  
+    
+  }
+
+  loadData(){
+    this.service.activityService.getActivitiesParticipants(this.service.authService.currentUser().id).subscribe(res=>{
+      this.allActivities=res.data;
+      console.log(res.data);
+      
+      this.pastActivities=this.allActivities.filter(x=>x.StatusActivity==2);
+      this.hideTest=this.allActivities.length==0;
+      this.willActivities=this.allActivities.filter(x=>x.StatusActivity==1);
+      this.currentActivities=this.allActivities.filter(x=>x.StatusActivity==0);
+     
+    })
+  }
+  hideTest:boolean = null;
   navList:any[]=[];
 
   ngOnInit(): void {
     this.fillNavList();
-    this.hideTest = true;
+    this.loadData();
+    
   }
 
   selectItem(id:any){

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { KafaatMainService } from '../../services/kafaat-main.service';
 
 @Component({
   selector: 'app-profile-musharakat',
@@ -6,32 +7,44 @@ import { Component } from '@angular/core';
   styleUrls: ['./profile-musharakat.component.css']
 })
 export class ProfileMusharakatComponent {
+  /**
+   *
+   */
+  constructor(private service:KafaatMainService) {
+  
+  }
   // hideTest:boolean = true;
   navList:any[]=[];
   isDropDownVisible:boolean=false;
   isDropDownOptionsVisible:boolean=false;
+  allPosts:any[]
+  filterPosts:any[]
 
   ngOnInit(): void {
-    this.fillNavList();
+   // this.fillNavList();
+    this.loadData()
     // this.hideTest = true;
   }
 
-  selectItem(id:any){
-    this.navList.map(x=>x.id==id?x.isSelected=true:x.isSelected=false);
-    if(id==7){
-      this.isDropDownOptionsVisible=!this.isDropDownOptionsVisible;
-    }
+  loadData(){
+    this.service.programService.geAll().subscribe(res=>{
+      this.navList=res.data;
+      this.navList[0].isSelected=true;
+      this.service.postsActivity.getPostsParticipants(this.service.authService.currentUser().id).subscribe(res=>{
+        this.allPosts=res.data
+        this.filterPosts=this.allPosts.filter(x=>x.programName==this.navList[0].title);
+      })
+    })
+   
   }
-  fillNavList(){
-    this.navList = [
-      {id:1,label:'جميع البرامج',isSelected:true},
-      {id:2,label:'برنامج قارئ',isSelected:false},
-      {id:3,label:'برنامج كاتب',isSelected:false},
-      {id:4,label:'برنامج ماهر',isSelected:false},
-      {id:5,label:'برنامج متفوق',isSelected:false},
-      {id:6,label:'برنامج موهوب',isSelected:false},
-      {id:7,label:'المزيد',isSelected:false},
-    ];
+
+  selectItem(title:any){
+
+    this.navList.map(x=>x.title==title?x.isSelected=true:x.isSelected=false);
+    this.filterPosts=this.allPosts.filter(x=>x.programName==title);
+    // if(id==7){
+    //   this.isDropDownOptionsVisible=!this.isDropDownOptionsVisible;
+    // }
   }
   toggleOptions(){
     this.isDropDownVisible = !this.isDropDownVisible;

@@ -11,6 +11,7 @@ export class ManashetItemComponent {
   @Input() imagePath:String=''
   @Input() statusActivity:number=-1
   @Input() programTitle:string=''
+  @Input() circle:boolean=false
 
   isMoreReadEnabled:boolean=true;
 }

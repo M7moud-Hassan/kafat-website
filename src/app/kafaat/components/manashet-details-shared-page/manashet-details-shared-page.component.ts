@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { KafaatMainService } from '../../services/kafaat-main.service';
+import { ToastrService } from 'ngx-toastr';
 declare const Quill: any;
 @Component({
   selector: 'app-manashet-details-shared-page',
@@ -15,7 +16,7 @@ export class ManashetDetailsSharedPageComponent implements AfterViewInit,OnInit 
  item:any
  isDropDownVisible:boolean[];
 
-constructor(private route:ActivatedRoute,private service:KafaatMainService) {
+constructor(private toaster:ToastrService,private route:ActivatedRoute,private service:KafaatMainService) {
   this.route.params.subscribe(prams=>{
     this.id=prams['id']
   })  
@@ -28,6 +29,8 @@ constructor(private route:ActivatedRoute,private service:KafaatMainService) {
     this.service.postsActivity.getAll(this.id).subscribe(response=>{
      
       if(response.statusCode=='200'){
+        console.log("data",response.data);
+        
         this.items=response.data;
         this.isDropDownVisible=[]
         for(var i=0;i>this.items.length;i++){
@@ -125,7 +128,7 @@ if (!isContained) {
           ActivityId:this.id}).subscribe(response=>{
             if(response.statusCode=="200"){
               document.getElementsByClassName('ql-editor')[0].innerHTML='<p><br></p>';
-              this.service.toastService.success(response.message);
+              this.toaster.success(response.message);
               this.loadData();
               this.item=null
             }else{
@@ -147,6 +150,11 @@ if (!isContained) {
     
     }
 
+  }
+
+  checkPost(id:any){
+    
+    return this.service.authService.currentUser().id==id;
   }
   
 

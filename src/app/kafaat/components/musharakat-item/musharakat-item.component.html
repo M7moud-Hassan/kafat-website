@@ -7,8 +7,8 @@
              </div>
              <div class="manashet-card-details">
                  <div class="manashet-card-details-title">{{item.nameParticipant}}</div>
-                <div class="manashet-card-details-program-details-words" [ngClass]="isMoreReadEnabled?'truncate-4-lines':''">
-                    {{item.description}}
+                <div class="manashet-card-details-program-details-words" [ngClass]="isMoreReadEnabled?'truncate-4-lines':''" [innerHTML]="item.description">
+                
                                   </div>
                 <a routerLink="#" (click)="isMoreReadEnabled=!isMoreReadEnabled" *ngIf="isMoreReadEnabled" class="manashet-card-details-more-link">عرض المزيد</a>
                 <a routerLink="#" (click)="isMoreReadEnabled=!isMoreReadEnabled" *ngIf="!isMoreReadEnabled" class="manashet-card-details-more-link">عرض اقل</a>

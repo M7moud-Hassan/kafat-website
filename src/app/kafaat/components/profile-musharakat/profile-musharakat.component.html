@@ -2,9 +2,9 @@
     <div class="main-title">المشاركات</div>
     <div class="tabs-container">
     <div class="musharakat-list-content">
-        <a *ngFor="let nav of navList" (click)="selectItem(nav.id)" ngClass="{{nav.isSelected?'active-navigation-button':'inactive-navigation-button'}}">
-            <img  *ngIf="nav.label=='المزيد'" class="me-1" src="/assets/images/list.svg" height="10px" alt="">
-            {{nav.label}}
+        <a *ngFor="let nav of navList" (click)="selectItem(nav.title)" ngClass="{{nav.isSelected?'active-navigation-button':'inactive-navigation-button'}}">
+            <img  *ngIf="nav.title=='المزيد'" class="me-1" src="/assets/images/list.svg" height="10px" alt="">
+            {{nav.title}}
         </a> 
     </div>
     <div *ngIf="isDropDownOptionsVisible" class="musharakat-options">
@@ -12,13 +12,13 @@
         <a class="shared-user-info-list-options-item-delete">حذف المشاركة</a>
     </div>
 </div>
-    <div class="shared-user-info" *ngFor="let item of [1,23,34,5,5]">
+    <div class="shared-user-info" *ngFor="let item of filterPosts">
         <div class="shared-user-info-container">
-            <div class="sub-title">منذ يومين</div>
+            <div class="sub-title">{{item.create_at}} </div>
             <div>
-                <div class="program-main-primary">برنامج كاتب</div>
+                <div class="program-main-primary">{{item.programName}}</div>
                 <div class="vertical-divider"></div>
-                <div class="program-main-primary">كيف تختار كتابا للقراءة</div>
+                <div class="program-main-primary">{{item.activityName}}</div>
             </div>
             <a (click)="toggleOptions()" class="shared-user-info-list"><img src="/assets/images/list.svg" class="shared-user-info-list-image"></a>
             <div *ngIf="isDropDownVisible" class="shared-user-info-list-options">
@@ -26,7 +26,7 @@
                 <a class="shared-user-info-list-options-item-delete">حذف المشاركة</a>
             </div>
         </div>
-        <div class="shared-title">هل تبادلنا العطاء؟</div>
+        <!-- <div class="shared-title">هل تبادلنا العطاء؟</div>
         <div class="shared-desctiption">
             كل طفل من أطفالنا بحاجة إلى ولي حريص يكتشف مواهبه وينمي قدراته ، وكل فتى وفتاة من فتياننا وفتياتنا بحاجة للتوجيه والنصح والدعم ، وكل شابةٍ وشابٍ بيننا بحاجة لتطوير المهارات وتبني الأفكار ، وكل شيخٍ بيننا بحاجة للترابط الأسري والتواصل الاجتماعي .. وجميعهم يسعى للبحث عن هذه الحوائج سواءً من الأهل أو جماعة
             كل طفل من أطفالنا بحاجة إلى ولي حريص يكتشف مواهبه وينمي قدراته ، وكل فتى وفتاة من فتياننا وفتياتنا بحاجة للتوجيه والنصح والدعم ، وكل شابةٍ وشابٍ بيننا بحاجة لتطوير المهارات وتبني الأفكار ، وكل شيخٍ بيننا بحاجة للترابط الأسري والتواصل الاجتماعي .. وجميعهم يسعى للبحث عن هذه الحوائج سواءً من الأهل أو جماعة
@@ -34,7 +34,8 @@
             كل طفل من أطفالنا بحاجة إلى ولي حريص يكتشف مواهبه وينمي قدراته ، وكل فتى وفتاة من فتياننا وفتياتنا بحاجة للتوجيه والنصح والدعم ، وكل شابةٍ وشابٍ بيننا بحاجة لتطوير المهارات وتبني الأفكار ، وكل شيخٍ بيننا بحاجة للترابط الأسري والتواصل الاجتماعي .. وجميعهم يسعى للبحث عن هذه الحوائج سواءً من الأهل أو جماعة
             كل طفل من أطفالنا بحاجة إلى ولي حريص يكتشف مواهبه وينمي قدراته ، وكل فتى وفتاة من فتياننا وفتياتنا بحاجة للتوجيه والنصح والدعم ، وكل شابةٍ وشابٍ بيننا بحاجة لتطوير المهارات وتبني الأفكار ، وكل شيخٍ بيننا بحاجة للترابط الأسري والتواصل الاجتماعي .. وجميعهم يسعى للبحث عن هذه الحوائج سواءً من الأهل أو جماعة
             كل طفل من أطفالنا بحاجة إلى ولي حريص يكتشف مواهبه وينمي قدراته ، وكل فتى وفتاة من فتياننا وفتياتنا بحاجة للتوجيه والنصح والدعم ، وكل شابةٍ وشابٍ بيننا بحاجة لتطوير المهارات وتبني الأفكار ، وكل شيخٍ بيننا بحاجة للترابط الأسري والتواصل الاجتماعي .. وجميعهم يسعى للبحث عن هذه الحوائج سواءً من الأهل أو جماعة
-        </div>
+        </div> -->
+        {{item.post}}
         <div class="divider"></div>
     </div>
 </div>

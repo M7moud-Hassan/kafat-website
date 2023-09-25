@@ -1,31 +1,41 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ResponseVM } from 'src/app/kafaat/core/models/response-vm';
 import { MainDashoardService } from '../../services/main-dashoard.service';
 import { AddAttachmentActivityComponent } from '../add-attachment-activity/add-attachment-activity.component';
-
+import { AuthService } from 'src/app/kafaat/services/auth.service';
+declare const Quill: any;
 @Component({
   selector: 'app-add-video-activity',
   templateUrl: './add-video-activity.component.html',
   styleUrls: ['./add-video-activity.component.css']
 })
-export class AddVideoActivityComponent  implements OnInit {
+export class AddVideoActivityComponent  implements OnInit, AfterViewInit {
   form:FormGroup = new FormGroup({});
-  constructor(private service:MainDashoardService,private dialogRef: MatDialogRef<AddAttachmentActivityComponent>,
+  @ViewChild('editor', { static: true }) editorElement: ElementRef;
+  constructor(private auth:AuthService,private service:MainDashoardService,private dialogRef: MatDialogRef<AddAttachmentActivityComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,){}
+  ngAfterViewInit(): void {
+    this.initializeQuillEditor()
+  }
   ngOnInit(): void {
     this.createForm();
   }
   createForm(){
     if(this.data.id){
+      console.log("data",this.data);
+      
       this.form = this.service.formBuilder.group({
         Title:[this.data.title,[Validators.required]],
-        fileAttach:[this.data.path,[Validators.required]],
+        videoTitle:[this.data.videoTitle,[Validators.required]],
+        fileAttach:[null,[Validators.required]],
       });
     }else{
       this.form = this.service.formBuilder.group({
         Title:['',[Validators.required]],
+        videoTitle:['',[Validators.required]],
+       
         fileAttach:[null,[Validators.required]],
       });
     }
@@ -36,6 +46,10 @@ export class AddVideoActivityComponent  implements OnInit {
   get fileAttach(){
     return this.form.controls['fileAttach'];
   }
+  get videoTitle(){
+    return this.form.controls['videoTitle'];
+  }
+  
 
   fileIn:File;
 
@@ -48,11 +62,18 @@ export class AddVideoActivityComponent  implements OnInit {
 
   
   submit() {
+    var post=document.getElementsByClassName('ql-editor')[0].innerHTML;
+    if(post=='<p><br></p>'){
+      this.service.toastService.error('ادخل الوصف  ');
+      return;
+    }
     if(this.form.valid){
         const formData = new FormData();
         formData.append('Title', this.form.value.Title);
         formData.append('Path', this.fileIn);
-        formData.append('UploadedBy', '1');
+        formData.append('UploadedBy', this.auth.currentUser().id);
+        formData.append('videoTitle',this.form.value.videoTitle);
+        formData.append('videoDescription',post);
         formData.append('ActivityId',this.data.activityId);
         formData.append('type','2');
        
@@ -61,6 +82,8 @@ export class AddVideoActivityComponent  implements OnInit {
           this.service.attachmentsActivity.update(formData).subscribe({
             next:(response:ResponseVM)=>{
               if(response.statusCode==200){
+                console.log(response.data);
+                
                 this.service.toastService.success(response.message);
                 this.closeDialog();
               }else{
@@ -93,5 +116,33 @@ export class AddVideoActivityComponent  implements OnInit {
   }
   closeDialog(): void {
     this.dialogRef.close();
+  }
+
+  private initializeQuillEditor() {
+    const toolbarOptions = [
+      [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+      [{ "font": [12,15,20,25,30] }],
+      ['bold', 'italic', 'underline', 'strike'],
+      ['blockquote', 'code-block'],
+      [{ 'header': 1 }, { 'header': 2 }],
+      [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+      [{ 'script': 'sub' }, { 'script': 'super' }],
+      [{ 'indent': '-1' }, { 'indent': '+1' }],
+      [{ 'direction': 'rtl' }],
+      [{ 'size': ['small', false, 'large', 'huge'] }],
+      [{ 'color': ['red','white','black','yellow','blue','green'] }, { 'background': ['red','white','black','yellow','blue','green'] }],
+      // [{ 'align': ['rtl','ltr'] }],
+      // ['image', 'video'],
+      ['clean']
+    ];
+
+    const quill = new Quill(this.editorElement.nativeElement, {
+      modules: {
+        toolbar: toolbarOptions
+      },
+      theme: 'snow'
+    });
+  
+    
   }
 }

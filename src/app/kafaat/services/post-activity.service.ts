@@ -25,4 +25,10 @@ export class PostActivityService {
   delete(data:any):Observable<ResponseVM>{
     return this.http.delete<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/delete/${data}`);
   }
+  getHightLight():Observable<ResponseVM>{
+    return this.http.get<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/get-higthlight`);
+  }
+  getPostsParticipants(id:any):Observable<ResponseVM>{
+    return this.http.get<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/get-posts-participants/${id}`);
+  }
 }

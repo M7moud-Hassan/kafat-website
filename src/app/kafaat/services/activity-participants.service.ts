@@ -18,4 +18,11 @@ export class ActivityParticipantsService {
   getDistinguishs(id:any):Observable<ResponseVM>{
     return this.http.get<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/get-distinguishs/${id}`);
   }
+  getActivitiesParticipants(id:any):Observable<ResponseVM>{
+    return this.http.get<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/get-all-activities-Distinguish/${id}`);
+  }
+  getParticipants(id:any):Observable<ResponseVM>{
+    return this.http.get<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/get-all-participants/${id}`);
+  }
+
 }

@@ -22,6 +22,7 @@ import { ContactInformationService } from './contact-information.service';
 import { MembersService } from './members.service';
 import { ActivityParticipantsService } from './activity-participants.service';
 import { PostService } from './post.service';
+import { AccountService } from './account.service';
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +34,7 @@ export class MainDashoardService {
     private _dialog: MatDialog,
     private _router: Router,
     private _location:Location,
+    private _account:AccountService,
     private _activityService:ActivityService,
     private _countryService:CountryService,
     private _cityService:CityService,
@@ -61,8 +63,12 @@ export class MainDashoardService {
    get activityParticipantsService(){
 return this._activityParticipants;
     }
+    
   get formBuilder(): FormBuilder {
     return this._formBuilder;
+  }
+  get accountService(): AccountService {
+    return this._account;
   }
   get dialog(): MatDialog {
     return this._dialog;

@@ -1,8 +1,18 @@
 <div class="breadcrumb-container">
+    <span *ngIf="title">
     <div class="breadcrumb-icon-container"><span class="breadcrumb-icon"><img src="/assets/images/home-light.svg" width="20" height="20"/></span></div>
     <a routerLink="#" class="breadcrumb-active">{{title}}</a>
+    </span>
+    <span *ngIf="subTitles">
     <span class="breadcrumb-seperator">/</span>
     <a routerLink="#" class="breadcrumb-active">{{subTitles}}</a>
+    </span>
+    <span *ngIf="subSubTitle">
     <span class="breadcrumb-seperator">/</span>
     <span class="breadcrumb-inactive">{{subSubTitle}}</span>
+    </span>
+    <span *ngIf="subSubSubTitle">
+    <span class="breadcrumb-seperator">/</span>
+    <span class="breadcrumb-inactive">{{subSubSubTitle}}</span>
+    </span>
 </div>

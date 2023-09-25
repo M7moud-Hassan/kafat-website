@@ -6,14 +6,14 @@
         <div class="card-body row p-0 m-0" [dir]="direction">
             <div class="col-12 col-md-6 p-0 m-0" style="overflow: hidden">
                
-                <img [src]="image" [class]="direction=='rtl'?'custom-border-right':'custom-border-left'" width="100%" height="100%" alt="">
+                <img [src]="image2" height="650px" [class]="direction=='rtl'?'custom-border-right':'custom-border-left'" width="100%" height="100%" alt="">
             
         </div>
             <div class="col-12 col-md-6 p-4 " dir="rtl">
                <div class="p-4 m-4">
-                <img [src]="image2" alt="">
+                <img [src]="image" alt="" width="150px" height="135px">
                 <h3 class="fs-3 fw-bold my-3">{{title}}</h3>
-                <p class="truncate-3-lines">{{description}}</p>
+                <p class="truncate-3-lines" [innerHTML]="description"></p>
                 <div class="row mt-2">
                     <div class="col-6 col-md-4 border-right d-flex">
                         <div><img src="assets/images/light.svg" alt=""></div>
@@ -22,7 +22,7 @@
                             <p class="text-main fs-6 fw-bold lh-sm">{{numActivites}}</p>
                         </div>
                     </div>
-                    <div class="col-6 col-md-4 border-right d-flex">
+                    <div class="col-6 col-md-5 border-right d-flex">
                         <div><img src="assets/images/light.svg" alt=""></div>
                         <div class="ps-2">
                             <p class="small lh-sm" style="font-size: 11px;">عدد المشاركات</p>

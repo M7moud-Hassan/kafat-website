@@ -26,7 +26,7 @@
         <div class="shared-user-info-container">
             <img [src]="item.imageParticipant" class="shared-user-info-image">
             <span class="shared-user-info-username">{{item.nameParticipant}}</span>
-            <a (click)="toggleOptions(i)" class="shared-user-info-list"><img   src="/assets/images/list.svg" class="shared-user-info-list-image listItem"></a>
+            <a (click)="toggleOptions(i)" class="shared-user-info-list" *ngIf="checkPost(item.uid)"><img   src="/assets/images/list.svg" class="shared-user-info-list-image listItem"></a>
             <div *ngIf="isDropDownVisible[i]" class="shared-user-info-list-options">
                 <a class="shared-user-info-list-options-item-update" (click)="edit(item.id)">تعديل المشاركة</a>
                 <a class="shared-user-info-list-options-item-delete" (click)="deleteItem(item.id)">حذف المشاركة</a>

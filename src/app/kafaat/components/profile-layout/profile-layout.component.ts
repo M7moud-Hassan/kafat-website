@@ -12,6 +12,7 @@ import { ProfileDeleteAccountPopUpComponent } from '../profile-delete-account-po
 export class ProfileLayoutComponent implements OnInit,AfterViewInit {
   navigationItemsList:any[]=[];
   windowWidth: number = 0;
+  activities:any[]
 constructor(private dialog:MatDialog) {
 }
 
@@ -36,6 +37,7 @@ constructor(private dialog:MatDialog) {
     ];
   }
   chageNavigationLink(id:any){
+    
     if(id==6){
       this.dialog.open(ProfileLogoutPopUpComponent,{
         width:this.windowWidth<767?'90%':(this.windowWidth<1300?'50%':'30%')

@@ -24,8 +24,6 @@
               "src/favicon.ico",
               "src/assets",
               "src/assets/js",
-             
-              
               {
                 "glob": "**/*",
                 "input": "src/assets/fonts/alexandria",
@@ -33,19 +31,22 @@
               }
             ],
             "styles": [
+              "src/assets/css/styles.min.css",
               "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css",
               "node_modules/slick-carousel/slick/slick.scss",
               "node_modules/slick-carousel/slick/slick-theme.scss",
               "node_modules/bootstrap/dist/css/bootstrap.rtl.min.css",
               "node_modules/ngx-toastr/toastr.css"
+              
              
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/slick-carousel/slick/slick.min.js",
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
-             
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "node_modules/apexcharts/apexcharts.min.js",
+              "node_modules/chart.js/chart.min.js"
             ]
           },
           "configurations": {
@@ -106,17 +107,20 @@
               "src/assets"
             ],
             "styles": [
+              "src/assets/css/styles.min.css",
               "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css",
               "node_modules/slick-carousel/slick/slick.css",
               "node_modules/ngx-toastr/toastr.css"
+              
             
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/slick-carousel/slick/slick.min.js",
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
-              
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "node_modules/apexcharts/apexcharts.min.js",
+              "node_modules/chart.js/chart.min.js"
             ]
           }
         }

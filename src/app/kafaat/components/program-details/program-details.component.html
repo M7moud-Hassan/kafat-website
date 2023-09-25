@@ -1,10 +1,10 @@
 <app-navbar typeNav="dark" [active]=1></app-navbar>
 <app-page-header-labeled [Header]="program.title" [Label]="program.subTitle"></app-page-header-labeled>
-    <app-bread-crumb></app-bread-crumb>
-<div class="row">
+    <app-bread-crumb title="الرئيسية" subTitles="البرامج" [subSubTitle]="program.title"></app-bread-crumb>
+<div class="row container mx-auto">
     <div class="col-12 col-md-4">
         <div class="statistic-container-right">
-            <div class="statistic-item">
+            <div class="statistic-item text-center">
                 <img src="/assets/images/light-bulb.svg" width="48" height="48">
                 <span class="statistic-number">{{program.activityCount}}</span>
                 <span class="statistic-label">عدد المناشط</span>
@@ -13,7 +13,7 @@
     </div>
     <div class="col-12 col-md-4">
         <div class="statistic-container">
-            <div class="statistic-item">
+            <div class="statistic-item text-center">
                 <img src="/assets/images/document-duplicate.svg" width="48" height="48">
                 <span class="statistic-number">{{program.postsCount}}</span>
                 <span class="statistic-label">عدد المشاركات</span>
@@ -22,7 +22,7 @@
     </div>
     <div class="col-12 col-md-4">
         <div class="statistic-container-left">
-            <div class="statistic-item">
+            <div class="statistic-item text-center">
                 <img src="/assets/images/user-group.svg" width="48" height="48">
                 <span class="statistic-number">{{program.participantsCount}}</span>
                 <span class="statistic-label">عدد المشاركين</span>
@@ -35,14 +35,14 @@
         <div class="col-12 col-md-3">
             <div class="program-descriprion-image-name-container">
                 <!-- <img src="/assets/images/book.svg" width="149" height="135"> -->
-                <div class="card-image"></div>
+                <div class="card-image" [style]="'background-image:url('+program.imagePath+');'"></div>
                  <span class="program-descriprion-name">{{program.title}}</span>
             </div>
         </div>
         <div class="col-12 col-md-9">
             <div class="program-descriprion-words">
                 <div class="text-container">
-                    <p class="text-content">{{program.description}}</p>
+                    <p class="text-content" [innerHTML]="program.description"></p>
                   </div>
             </div>
         </div>
@@ -57,19 +57,19 @@
     </div>
     <div class="manashet-items">
         <div *ngIf="navList[0].isSelected" class="row">  
-            <app-manashet-item  *ngFor="let a of allActivities" [title]="a.title" (click)="onClickItem(a.id)" [description]="a.description" [imagePath]="a.imagePath"
+            <app-manashet-item  class="col-12 col-md-4" *ngFor="let a of allActivities; let i=index" [circle]="i%3!=0" [title]="a.name" (click)="onClickItem(a.id)" [description]="a.description" [imagePath]="a.imagePath"
             [statusActivity]="a.statusActivity" [programTitle]="program.title" ></app-manashet-item> 
         </div>
         <div *ngIf="navList[1].isSelected" class="row"> 
-            <app-manashet-item *ngFor="let a of nextActivity" [title]="a.title" [description]="a.description" [imagePath]="a.imagePath"
+            <app-manashet-item *ngFor="let a of nextActivity; let i=index" [circle]="i%3!=0"  class="col-12 col-md-4" [title]="a.name" [description]="a.description" [imagePath]="a.imagePath"
             [statusActivity]="a.statusActivity" [programTitle]="program.title" ></app-manashet-item> 
         </div>
         <div *ngIf="navList[2].isSelected" class="row"> 
-            <app-manashet-item *ngFor="let a of underwayActivity" [title]="a.title" [description]="a.description" [imagePath]="a.imagePath"
+            <app-manashet-item *ngFor="let a of underwayActivity; let i=index" [circle]="i%3!=0"  class="col-12 col-md-4" [title]="a.name" [description]="a.description" [imagePath]="a.imagePath"
             [statusActivity]="a.statusActivity" [programTitle]="program.title" ></app-manashet-item> 
         </div>
         <div *ngIf="navList[3].isSelected" class="row"> 
-            <app-manashet-item  *ngFor="let a of nextActivity" [title]="a.title" [description]="a.description" [imagePath]="a.imagePath"
+            <app-manashet-item  *ngFor="let a of pastActivity; let i=index" [circle]="i%3!=0"  class="col-12 col-md-4" [title]="a.name" [description]="a.description" [imagePath]="a.imagePath"
             [statusActivity]="a.statusActivity" [programTitle]="program.title" ></app-manashet-item> 
         </div>
     </div>

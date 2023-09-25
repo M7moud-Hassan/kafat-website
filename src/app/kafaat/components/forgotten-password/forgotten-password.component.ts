@@ -33,6 +33,8 @@ export class ForgottenPasswordComponent implements OnInit {
       this.service.authService.forgetPassword(this.email.value).subscribe({
         next: (response: ResponseVM) => {
           if (response.statusCode == 200) {
+            console.log(response.data);
+            
             this.adminService.toastService.success(response.message);
             this.service.authSharedService.setForgetEmail(response.data.email);
             this.service.router.navigate(['/code-auth']);

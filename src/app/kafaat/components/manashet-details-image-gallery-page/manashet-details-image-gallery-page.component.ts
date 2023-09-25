@@ -9,10 +9,11 @@ import { DialogVideoImageComponent } from 'src/app/shared/components/dialog-vide
 export class ManashetDetailsImageGalleryPageComponent {
   @Input() items:any=[]
   @ViewChild('dialog', { static: false }) dialogComponent: DialogVideoImageComponent | undefined;
-  openModal(){
+  openModal(path:any){
+   
     console.log(this.dialogComponent)
     if (this.dialogComponent) {
-      this.dialogComponent.openImage("/assets/images/p6.png");
+      this.dialogComponent.openImage(path);
     }
   }
 }

@@ -40,7 +40,7 @@ export class DialogVideoImageComponent {
       this.renderer.setAttribute(
         this.iframe,
         'src',
-        'https://www.youtube.com/embed/Apl8h-P0F9Q'
+        source
       );
       this.renderer.setAttribute(this.iframe, 'title', 'YouTube video player');
       this.renderer.setAttribute(this.iframe, 'frameborder', '0');

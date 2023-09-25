@@ -30,7 +30,10 @@ export class ProgramDetailsComponent implements OnInit {
     this.service.getById(this.id).subscribe(response=>{
       if(response.statusCode=='200'){
         this.program=response.data
+        
         this.allActivities=response.data.activities
+      
+        
         this.pastActivity=this.allActivities.filter(a=>a.statusActivity==2);
         this.underwayActivity=this.allActivities.filter(a=>a.statusActivity==0);
         this.nextActivity=this.allActivities.filter(a=>a.statusActivity==1);
