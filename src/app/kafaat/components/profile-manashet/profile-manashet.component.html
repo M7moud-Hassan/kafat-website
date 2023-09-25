@@ -26,12 +26,13 @@
         <div class="element-details">
             <div class="program-name">{{item.programs}}</div>
             <div class="main-title">{{item.name}}</div>
-            <span class="success-padge" *ngIf="item.StatusActivity==2"></span>
-            <span class="warning-padge" *ngIf="item.StatusActivity==1"></span>
-            <span class="primary-padge" *ngIf="item.StatusActivity==0"></span>
+            <div class="success-padge" *ngIf="item.statusActivity==2">جاري</div>
+            <div class="warning-padge" *ngIf="item.statusActivity==1">قادم</div>
+            <div class="primary-padge" *ngIf="item.statusActivity==0">سابق</div>
+            <br/>
             <div class="sub-title mt-2 ">
-                <div>
-                    {{item.description}}
+                <div [innerHTML]="item.description">
+                
                 </div>
             </div>
         </div>

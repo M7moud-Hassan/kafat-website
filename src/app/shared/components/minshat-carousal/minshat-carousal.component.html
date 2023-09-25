@@ -14,8 +14,8 @@
                 </div>
                <div [class]="slides[i%3].programs?'':'item-hover-top-details'" [id]="'d'+i" dir="rtl">
                 <div class="manashet-card-details-program-name">{{slides[i%3].subTitle}}</div>
-                <div class="manashet-card-details-program-details-words">{{slides[i%3].description}}</div>
-                <a routerLink="#" class="manashet-card-details-more-link">عرض المزيد</a>
+                <div class="manashet-card-details-program-details-words" [innerHTML]="slides[i%3].description"></div>
+                <a [routerLink]="['/kafaat/activity-details',slides[i%3].id]" class="manashet-card-details-more-link">عرض المزيد</a>
                </div>
              </div>
         </div>

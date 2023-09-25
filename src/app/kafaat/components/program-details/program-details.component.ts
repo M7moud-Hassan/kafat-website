@@ -19,6 +19,7 @@ export class ProgramDetailsComponent implements OnInit {
   constructor(private route:ActivatedRoute,private service:ProgramsService,private router:Router) {
     this.route.params.subscribe(value=>{
       this.id=value['id']
+      this.ngOnInit()
     })
   }
 

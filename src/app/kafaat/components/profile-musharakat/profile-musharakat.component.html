@@ -1,6 +1,7 @@
 <div class="Musharkat-container">
     <div class="main-title">المشاركات</div>
-    <div class="tabs-container">
+    <app-scroll-nav (numberSelected)="selectItem($event)"></app-scroll-nav>
+    <!-- <div class="tabs-container">
     <div class="musharakat-list-content">
         <a *ngFor="let nav of navList" (click)="selectItem(nav.title)" ngClass="{{nav.isSelected?'active-navigation-button':'inactive-navigation-button'}}">
             <img  *ngIf="nav.title=='المزيد'" class="me-1" src="/assets/images/list.svg" height="10px" alt="">
@@ -11,7 +12,7 @@
         <a class="shared-user-info-list-options-item-update">تعديل المشاركة</a>
         <a class="shared-user-info-list-options-item-delete">حذف المشاركة</a>
     </div>
-</div>
+</div> -->
     <div class="shared-user-info" *ngFor="let item of filterPosts">
         <div class="shared-user-info-container">
             <div class="sub-title">{{item.create_at}} </div>

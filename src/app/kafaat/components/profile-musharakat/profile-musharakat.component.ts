@@ -38,10 +38,14 @@ export class ProfileMusharakatComponent {
    
   }
 
-  selectItem(title:any){
-
-    this.navList.map(x=>x.title==title?x.isSelected=true:x.isSelected=false);
-    this.filterPosts=this.allPosts.filter(x=>x.programName==title);
+  selectItem(id:any){
+    
+    if(id==0){
+      this.filterPosts=this.allPosts;
+      return;
+    }
+    this.navList.map(x=>x.id==id?x.isSelected=true:x.isSelected=false);
+    this.filterPosts=this.allPosts.filter(x=>x.id==id);
     // if(id==7){
     //   this.isDropDownOptionsVisible=!this.isDropDownOptionsVisible;
     // }
