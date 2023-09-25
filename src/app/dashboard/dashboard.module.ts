@@ -81,6 +81,11 @@ import { ContactUsListNotSentComponent } from './components/contact-us-list-not-
 import { ContactUsAddOrUpdateResponsePopUpComponent } from './components/contact-us-add-or-update-response-pop-up/contact-us-add-or-update-response-pop-up.component';
 import { SendEmailPopUpComponent } from './components/send-email-pop-up/send-email-pop-up.component';
 import { AddPostComponent } from './components/add-post/add-post.component';
+import { AddKafaatFounderComponent } from './components/add-kafaat-founder/add-kafaat-founder.component';
+import { EditKafaatFounderComponent } from './components/edit-kafaat-founder/edit-kafaat-founder.component';
+import { KafaatFoundersComponent } from './components/kafaat-founders/kafaat-founders.component';
+import { DocumentedImagesComponent } from './components/documented-images/documented-images.component';
+import { ChangeUserCategoryPopUpComponent } from './components/change-user-category-pop-up/change-user-category-pop-up.component';
 
 @NgModule({
   declarations: [
@@ -145,6 +150,11 @@ import { AddPostComponent } from './components/add-post/add-post.component';
       ContactUsListNotSentComponent,
       ContactUsAddOrUpdateResponsePopUpComponent,
       SendEmailPopUpComponent,
+      AddKafaatFounderComponent,
+      EditKafaatFounderComponent,
+      KafaatFoundersComponent,
+      DocumentedImagesComponent,
+      ChangeUserCategoryPopUpComponent,
       // AddPostComponent,
   ],
   imports: [

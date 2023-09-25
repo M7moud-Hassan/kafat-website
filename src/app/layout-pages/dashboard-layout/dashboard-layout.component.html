@@ -60,7 +60,7 @@
         
           
           <li class="nav-item">
-            <a href="#" class="nav-link" data-bs-toggle="collapse" data-bs-target="#mainlinknumber2" aria-expanded="false">
+            <a  class="nav-link" data-bs-toggle="collapse" data-bs-target="#mainlinknumber2" aria-expanded="false">
                 بيانات فرعية<i class="fas fa-chevron-down float-end"></i>
             </a>
             <ul class="collapse list-unstyled" id="mainlinknumber2">
@@ -68,51 +68,52 @@
                     <a routerLink="/admin/countries" class="nav-link">الدولة</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/admin/cities" class="nav-link">المدينة</a>
+                    <a routerLink="/admin/cities" class="nav-link">المدينة</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/admin/districts" class="nav-link">الحى</a>
-                </li>
-                <li class="nav-item">
-                    <hr>
-                </li>
-                <li class="nav-item">
-                    <a href="/admin/qualifications" class="nav-link">المؤهل</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/admin/specializations" class="nav-link">التخصص</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/admin/departments" class="nav-link">القسم</a>
+                    <a routerLink="/admin/districts" class="nav-link">الحى</a>
                 </li>
                 <li class="nav-item">
                     <hr>
                 </li>
                 <li class="nav-item">
-                    <a href="/admin/workTypes" class="nav-link">نوع العمل</a>
+                    <a routerLink="/admin/qualifications" class="nav-link">المؤهل</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/admin/distinguishedTypes" class="nav-link">وجه التميز</a>
+                    <a routerLink="/admin/specializations" class="nav-link">التخصص</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/admin/familyBranches" class="nav-link">فرع العائلة</a>
+                    <a routerLink="/admin/departments" class="nav-link">القسم</a>
+                </li>
+                <li class="nav-item">
+                    <hr>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="/admin/workTypes" class="nav-link">نوع العمل</a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="/admin/distinguishedTypes" class="nav-link">وجه التميز</a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="/admin/familyBranches" class="nav-link">فرع العائلة</a>
                 </li>
                 
             </ul>
         </li>
+
         <li class="nav-item">
-            <a href="#" class="nav-link" data-bs-toggle="collapse" data-bs-target="#mainlinknumber3" aria-expanded="false">
+            <a class="nav-link" data-bs-toggle="collapse" data-bs-target="#mainlinknumber3" aria-expanded="false">
                  المستخدمين<i class="fas fa-chevron-down float-end"></i>
             </a>
             <ul class="collapse list-unstyled" id="mainlinknumber3">
                 <li class="nav-item">
-                    <a href="/admin/join-requests" class="nav-link">طلبات الانضمام</a>
+                    <a routerLink="/admin/join-requests" class="nav-link">طلبات الانضمام</a>
                 </li>
                 <li class="nav-item">
                     <a routerLink="/admin/members" class="nav-link">الأعضاء</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/admin/admins" class="nav-link">المشرفين</a>
+                    <a routerLink="/admin/admins" class="nav-link">المشرفين</a>
                 </li>
                 <li class="nav-item">
                     <hr>
@@ -120,7 +121,7 @@
             </ul>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link" data-bs-toggle="collapse" data-bs-target="#mainlinknumber4" aria-expanded="false">
+            <a  class="nav-link" data-bs-toggle="collapse" data-bs-target="#mainlinknumber4" aria-expanded="false">
                  رسائل الزائرين<i class="fas fa-chevron-down float-end"></i>
             </a>
             <ul class="collapse list-unstyled" id="mainlinknumber4">
@@ -144,18 +145,35 @@
                 معلومات التواصل
             </a>
         </li>
+        <li class="nav-item">
+            <a  class="nav-link" data-bs-toggle="collapse" data-bs-target="#mainlinknumber5" aria-expanded="false">
+                  مـــن نــــــــحن<i class="fas fa-chevron-down float-end"></i>
+            </a>
+            <ul class="collapse list-unstyled" id="mainlinknumber5">
+                <li class="nav-item">
+                    <a routerLink="/admin/kafaat-founders" class="nav-link" routerLinkActive="active">
+                        مؤسسوا كفاءات
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="/admin/documented-images" class="nav-link" routerLinkActive="active">
+                         قسم الصور الموثـقــة
+                    </a>
+                </li>               
+            </ul>
+        </li>
         
         <!--   -->
         </ul>
   
         <div class="dropdown text-center">
-          <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+          <a  class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
             <!-- <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2"> -->
             <img src="{{userProfileImage}}" alt="" width="32" height="32" class="rounded-circle me-2">
             <strong>{{user.userName}}</strong>
           </a>
           <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-            <li><a class="dropdown-item" href="#">الاعدادت</a></li>
+            <li><a class="dropdown-item" >الاعدادت</a></li>
             <li><a class="dropdown-item" (click)="viewMyProfile()">البروفيل</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" (click)="logout()"> تسجيل خروج</a></li>

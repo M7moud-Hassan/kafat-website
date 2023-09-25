@@ -53,6 +53,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { JwtModule } from "@auth0/angular-jwt";
 import { AuthService } from './services/auth.service';
 import { AuthSharedService } from './services/auth-shared.service';
+import { PdfPopupComponent } from './components/pdf-popup/pdf-popup.component';
+import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 export function tokenGetter() {
   return localStorage.getItem("token");
 }
@@ -104,6 +106,7 @@ export function tokenGetter() {
     ManashetTabsComponent,
     GoalsKafaatComponent,
     PostsPeopleComponent,
+    PdfPopupComponent,
   ],
   imports: [
     CommonModule,
@@ -114,6 +117,7 @@ export function tokenGetter() {
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    NgxExtendedPdfViewerModule,
     NgxMaskModule.forRoot(),
   
     JwtModule.forRoot({

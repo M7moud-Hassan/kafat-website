@@ -32,8 +32,23 @@
 .item-card:hover{
     background-color: white;
 }
-
-
+.image-catalog{
+    border-radius: 10px;
+}
+.title-documented{
+    font-weight: 600px;
+    line-height: 63px;
+    font-size: 40px;
+    text-align: center;
+    color: var(--main-color);
+  }
+  .about-we{
+    font-size: 65px;
+    font-weight: 600;
+    line-height: 63px;
+    text-align: right;
+    color: white;
+  }
 @media (max-width: 575.98px) {
     .card-about{
         position: relative;

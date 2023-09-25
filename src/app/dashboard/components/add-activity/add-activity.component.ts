@@ -49,10 +49,12 @@ export class AddActivityComponent  implements AfterViewInit{
   activityTypes:any[]
   activityTypesFilter:any[]
   fileName=""
+  NameActivity=""
   constructor(private service:MainDashoardService,private dateAdapter: DateAdapter<Date>,private jak:NgxMatDateAdapter<Date>,private route: ActivatedRoute,private authService:AuthService,
     private router:Router) {
     this.dateAdapter.setLocale('ar-eg'); 
-    jak.setLocale('ar-eg');
+    jak.setLocale('ar-eg')
+
     this.route.params.subscribe(params => {
       this.id = params['id']; 
       

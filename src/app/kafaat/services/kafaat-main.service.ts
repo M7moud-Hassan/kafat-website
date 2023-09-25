@@ -14,6 +14,7 @@ import { ToastrService } from 'ngx-toastr';
 import { PostActivityService } from './post-activity.service';
 import { ProgramsService } from './programs.service';
 import { ContactUsService } from './contact-us.service';
+import { AboutUsService } from './about-us.service';
 
 
 @Injectable({
@@ -37,6 +38,7 @@ export class KafaatMainService {
     private _postService:PostActivityService,
     private _programService:ProgramsService,
     private _contactUsService:ContactUsService,
+    private _aboutUsService:AboutUsService,
 
     ) { }
 
@@ -81,6 +83,9 @@ export class KafaatMainService {
   }
   get contactUsService(): ContactUsService {
     return this._contactUsService;
+  }
+  get aboutUsService(): AboutUsService {
+    return this._aboutUsService;
   }
 
 

@@ -8,6 +8,8 @@ import { PagedRequest } from 'src/app/kafaat/core/models/paged-request';
 import { UserRoles } from 'src/app/kafaat/core/user-roles';
 import { UserProfilePopUpComponent } from '../user-profile-pop-up/user-profile-pop-up.component';
 import { SendEmailPopUpComponent } from '../send-email-pop-up/send-email-pop-up.component';
+import { DialogDeleteComponent } from '../dialog-delete/dialog-delete.component';
+import { ChangeUserCategoryPopUpComponent } from '../change-user-category-pop-up/change-user-category-pop-up.component';
 
 @Component({
   selector: 'app-join-requests',
@@ -132,6 +134,47 @@ export class JoinRequestsComponent implements OnInit ,AfterViewInit {
         email:element.email,
       }
     })
+  }
+  changeUserCategory(id:any){
+    const element=  this.pageResponse.items.find((value:any)=>value.id==id);
+    const dialogRef = this.service.dialog.open(ChangeUserCategoryPopUpComponent, {
+      width:this.windowWidth<767?'99%':(this.windowWidth<1300?'60%':'50%'),
+      data:{
+        id:element.id,
+        email:element.email,
+      }
+    })
+  }
+  deleteAccount(email:string){
+    const dialogRef = this.service.dialog.open(DialogDeleteComponent, {
+      width:this.windowWidth<767?'99%':(this.windowWidth<1300?'50%':'40%'),
+      data:{
+        id:email,
+        name:email,
+        title:'حذف حساب مستخدم',
+        label:'البريد الإليكترونى',
+        submit:()=>{
+          this.service.membersService.deleteAccount(email).pipe(
+            catchError((error) => {
+              console.error(error);
+              this.service.toastService.error('افحص السيرفر');
+              return throwError(error);
+            })
+          ).subscribe((response) => {
+            if(response.statusCode=="200"){
+              this.service.toastService.success(response.message)
+              this.getPage();
+            }else{
+              this.service.toastService.error(response.message);
+            }
+          });
+        }
+        ,
+        fun:()=>{
+           this.getPage();
+        }
+      },
+    });
   }
 }
 
