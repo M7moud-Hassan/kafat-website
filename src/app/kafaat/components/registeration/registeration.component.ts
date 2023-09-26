@@ -370,7 +370,7 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
       this.service.profileService.register(this.formData).subscribe({
         next:(response:ResponseVM)=>{
           if(response.statusCode == 200){
-            this.adminService.toastService.success(response.message);
+            this.service.toastService.success(response.message);
             this.service.router.navigate(['/'],{ replaceUrl: true });
           }else{
             this.adminService.toastService.error(response.message);
