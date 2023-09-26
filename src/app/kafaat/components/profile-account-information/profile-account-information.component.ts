@@ -28,10 +28,12 @@ export class ProfileAccountInformationComponent  implements OnInit {
   specializations:any[]=[];
   workTypes:any[]=[];
   userProfileImage:string = '/assets/images/male.png';
+  userCvFile:any;
   isCountryChanged:boolean=false;
   isCityChanged:boolean=false;
   isQualificationChanged:boolean=false;
   isSpecializationChanged:boolean=false;
+  isNewSelectedFile:boolean=true;
 
   constructor(private service:KafaatMainService,private adminService:MainDashoardService){}
 
@@ -44,11 +46,53 @@ export class ProfileAccountInformationComponent  implements OnInit {
     }
     this.userProfileImage = URL.createObjectURL(image);
 
-    let formData:FormData =  new FormData();
+    const formData =  new FormData();
     let _userEmail = this.service.authService.currentUser().email;
     formData.append("Email",_userEmail);
     formData.append("FieldName",'UserImage');
     formData.append("NewValue",image);
+
+    if(!(formData.has('Email') || formData.has('FieldName') || formData.has('NewValue'))){
+      this.adminService.toastService.warning('البيانات غير مكتملة'); 
+      return;
+    }
+    this.service.profileService.uploadFile(formData).subscribe({
+      next:(res:ResponseVM)=>{
+        if(res.statusCode==200){
+          this.adminService.toastService.success(res.message);
+        }else{
+          this.adminService.toastService.warning(res.message);
+        }
+      },error:(error)=>{
+        let errorMessage = 'حدث خطأ غير متوقع';
+        if (error.error && typeof error.error === 'string') {
+          errorMessage = error.error; 
+        } else if (error.message) {
+          errorMessage = error.message;
+        }
+        this.adminService.toastService.error(errorMessage);
+      }
+    });
+  }
+  onSelectedCVFile(event: any) {
+    const image = event.target.files[0];
+     let checkResult = this.validateUplodedFile(image,true);
+     if(checkResult!=''){
+      this.adminService.toastService.warning(checkResult);
+      return;
+    }
+    this.userCvFile = URL.createObjectURL(image);
+
+    const formData =  new FormData();
+    let _userEmail = this.service.authService.currentUser().email;
+    formData.append("Email",_userEmail);
+    formData.append("FieldName",'CVImage');
+    formData.append("NewValue",image);
+
+    if(!(formData.has('Email') || formData.has('FieldName') || formData.has('NewValue'))){
+      this.adminService.toastService.warning('البيانات غير مكتملة'); 
+      return;
+    }
     this.service.profileService.uploadFile(formData).subscribe({
       next:(res:ResponseVM)=>{
         if(res.statusCode==200){
@@ -269,6 +313,11 @@ export class ProfileAccountInformationComponent  implements OnInit {
           this.loadRelatedSpecializations(this.profile.qualificationId);
           this.loadRelatedDepartments(this.profile.specializationId);
           this.getUserImage(this.profile.userImagePath);
+          this.getUserCvFile(this.profile.cvPath);
+          // this.fileName = this.profile.cvPath;
+          // alert(this.fileName);
+          // this.userProfileImage = this.profile.userImagePath;
+          // alert(this.userProfileImage);
         }else{
           this.adminService.toastService.error(res.message);
         }
@@ -283,27 +332,7 @@ export class ProfileAccountInformationComponent  implements OnInit {
       }
     });
   }
-  onFileSelected(event: any) {
-    this.errorMessage = "";
-    const file: File = event.target.files[0];
-    this.fileSize = file.size / (1024 * 1024);  //in MB
-    this.fileName = file.name;
-    if(this.fileSize.toFixed(2) > '10.00'){
-      this.errorMessage = "حجم الملف يتجاوز الحد المسموح به";
-      return;
-    }
-     let fileExtension:String = this.fileName.replace(".","").split(".")[1].toLowerCase().toString();
-    if(fileExtension!="jpg" || fileExtension != "png" || fileExtension != "pdf"){
-      this.errorMessage = "نوع الملف  غير مسموح به";
-      return;
-    }
-    const reader = new FileReader();
-    reader.onload = () => {
-      this.imagefile = URL.createObjectURL(file);
-    };
-    reader.readAsDataURL(file);
-    // this.form.controls['image'].setValue(this.imagefile);
-  } 
+
   back(){
     this.service.back;
   } 
@@ -420,5 +449,12 @@ export class ProfileAccountInformationComponent  implements OnInit {
     else{
       this.userProfileImage = img;
     }
+  }
+  getUserCvFile(cv:any){
+    this.isNewSelectedFile = false;
+    this.fileSize = 999;
+    this.errorMessage = '';
+    this.fileName = "السيرة الذاتية للعضو " + this.profile.firstName;
+    this.userCvFile = cv;
   }
 }

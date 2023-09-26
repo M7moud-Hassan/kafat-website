@@ -1,6 +1,5 @@
 <div *ngIf="!isPasswordPageVisible" class="input-container">
-    <div class="d-flex justify-content-between align-items-start">
-        <!-- <div class="details-title" (click)="____loadData()">طلب انضمام</div> -->
+    <div class="d-flex justify-content-between align-items-center">
         <div class="details-title">معلومات الحساب</div>
         <div class="user-profile-container">
             <div class="user-profile-image" style="background-image: url('{{userProfileImage}}');">
@@ -375,7 +374,7 @@
                         <div class="cloud-title pb-2">اختر ملف، او اسحبه هنا للرفع</div>
                         <div class="cloud-sub-title">JPG, PNG or PDF, file size no more than 10MB</div>
                     </div>
-                    <input type="file" name="image"   accept="image/*" (change)="onFileSelected($event)" #fileInput style="display:none">
+                    <input type="file" name="image"   accept="image/*" (change)="onSelectedCVFile($event)" #fileInput style="display:none">
                 </div>
             </div>
             <div class="">
@@ -386,9 +385,9 @@
             <small class="error-text">{{errorMessage}}</small>
         </div>
         <div *ngIf="fileSize > 0 && errorMessage == ''" class="p-3 d-flex justify-content-between align-items-center select-file-bg">
-            <div>{{fileSize|number:'1.2-2'}} MB</div>
-            <div>
-                <a class="text-decoration-none d-pointer">عرض</a>
+            <div *ngIf="isNewSelectedFile">{{fileSize|number:'1.2-2'}} MB</div>
+            <div style="text-align: right;">
+                <a class="text-decoration-none d-pointer"> عرض </a>
                 <span class="px-3">{{fileName}}</span>
                 <img src="/assets/images/file-small-image.svg" alt="">
             </div>

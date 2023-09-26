@@ -39,7 +39,6 @@ export class NavbarComponent implements OnInit{
       next:(res:ResponseVM)=>{
         if (res.statusCode == 200) {
           this.contactInformationLinks = res.data as ContactInformationModel;
-          this.contactInformationLinks.facebookLink
         } 
         else {
           this.service.toastService.error(res.message);

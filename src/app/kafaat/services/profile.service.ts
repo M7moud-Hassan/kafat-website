@@ -17,7 +17,7 @@ export class ProfileService {
   editProfile(model:EditFieldRequest):Observable<ResponseVM>{
     return this.http.post<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/edit-user-profile`,model);
   }
-  uploadFile(model:any):Observable<ResponseVM>{
+  uploadFile(model:FormData):Observable<ResponseVM>{
     return this.http.post<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/upload-profile-file`,model);
   }
   getUserProfile(model:any):Observable<ResponseVM>{
