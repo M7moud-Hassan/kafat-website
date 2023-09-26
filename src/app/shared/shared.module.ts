@@ -31,6 +31,7 @@ import { MainDashoardService } from '../dashboard/services/main-dashoard.service
 import { DashboardModule } from '../dashboard/dashboard.module';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { SpinnersInterceptor } from './core/Interceptors/spinners.interceptor';
+import { CvImagePopupComponent } from './components/cv-image-popup/cv-image-popup.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { SpinnersInterceptor } from './core/Interceptors/spinners.interceptor';
     ProgramMinComponent,
     DialogVideoImageComponent,
     SpinnerComponent,
+    CvImagePopupComponent,
   ],
   imports: [
     CommonModule,
@@ -100,7 +102,8 @@ import { SpinnersInterceptor } from './core/Interceptors/spinners.interceptor';
     DatePickerComponent,
     ProgramMinComponent,
     DialogVideoImageComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    CvImagePopupComponent
   ],
   providers: [
     {

@@ -1,17 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { KafaatMainService } from '../../services/kafaat-main.service';
 import { MainDashoardService } from 'src/app/dashboard/services/main-dashoard.service';
 import { ResponseVM } from '../../core/models/response-vm';
 import { IProfile } from '../../core/models/Iprofile';
 import { FieldNames } from '../../core/static/field-names';
 import { EditFieldRequest } from '../../core/models/edit-field-request';
+import { CvImagePopupComponent } from 'src/app/shared/components/cv-image-popup/cv-image-popup.component';
 
 @Component({
   selector: 'app-profile-account-information',
   templateUrl: './profile-account-information.component.html',
   styleUrls: ['../profile-layout/profile-layout.component.css','./profile-account-information.component.css']
 })
-export class ProfileAccountInformationComponent  implements OnInit {
+export class ProfileAccountInformationComponent  implements OnInit, AfterViewInit {
+  windowWidth: number = 0;
   isPasswordPageVisible:boolean = false;
   profile:IProfile={} as IProfile;
   imagefile:any = "";
@@ -37,6 +39,9 @@ export class ProfileAccountInformationComponent  implements OnInit {
 
   constructor(private service:KafaatMainService,private adminService:MainDashoardService){}
 
+  ngAfterViewInit() {
+    this.windowWidth = window.innerWidth;
+  }
   onUserImageSelected(event: any) {
     const image = event.target.files[0];
      let checkResult = this.validateUplodedFile(image);
@@ -456,5 +461,24 @@ export class ProfileAccountInformationComponent  implements OnInit {
     this.errorMessage = '';
     this.fileName = "السيرة الذاتية للعضو " + this.profile.firstName;
     this.userCvFile = cv;
+  }
+  showCV(){
+    const cvFileName = this.profile.cvPath;
+    if(cvFileName.toLowerCase().includes('.pdf')){
+      this.showPDFCv(cvFileName);
+    }else{
+      this.showImageCv(cvFileName);
+    }
+  }
+  showPDFCv(cv:any){}
+  showImageCv(cv:any){
+    const dialogRef = this.service.dialog.open(CvImagePopupComponent, {
+      // width:this.windowWidth<767?'99%':(this.windowWidth<1300?'60%':'50%'),
+      width:'75%',
+      height:'90%',
+      data:{
+        cvImage:cv,
+      }
+    })
   }
 }
