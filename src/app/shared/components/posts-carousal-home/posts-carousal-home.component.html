@@ -1,3 +1,4 @@
+<div  *ngIf="slides.length>0">
 <div class=" container d-flex align-items-center px-4 " >
     <div class="d-none d-sm-block ms-4 ps-4">
         <img src="assets/images/next-carousal.svg" alt="next-carousal" class="d-pointer" (click)="scrollNext()">
@@ -31,3 +32,5 @@
 <div class="text-center pb-4">
     <a class="bg-primary-btn mt-4" routerLink="/kafaat/famous-posts">تصفح كل المشاركات</a>
 </div>
+</div>
+<app-empty-data *ngIf="slides.length==0" [inputText]="'لا يوجد مشاركات لعرضها'"></app-empty-data>

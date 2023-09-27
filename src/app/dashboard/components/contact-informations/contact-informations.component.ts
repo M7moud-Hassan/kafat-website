@@ -30,6 +30,7 @@ export class ContactInformationsComponent implements OnInit {
       snapchatLink:['',[Validators.required]],
       youtubeLink:['',[Validators.required]],
       linkedInLink:['',[Validators.required]],
+      introductoryVideoLink:['',[Validators.required]],
     });
   }
   get(){
@@ -48,6 +49,7 @@ export class ContactInformationsComponent implements OnInit {
           this.form.controls['snapchatLink'].setValue(res.data.snapchatLink);
           this.form.controls['youtubeLink'].setValue(res.data.youtubeLink);
           this.form.controls['linkedInLink'].setValue(res.data.linkedInLink);
+          this.form.controls['introductoryVideoLink'].setValue(res.data.introductoryVideoLink);
         } 
         else {
           this.service.toastService.error(res.message);

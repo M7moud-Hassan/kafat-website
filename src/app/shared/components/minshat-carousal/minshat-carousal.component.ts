@@ -8,7 +8,7 @@ import { KafaatMainService } from 'src/app/kafaat/services/kafaat-main.service';
   styleUrls: ['../manashet-item/manashet-item.component.css','./minshat-carousal.component.css']
 })
 export class MinshatCarousalComponent implements OnInit {
-   slides:any
+   slides:any[]=[];
    
    constructor(private service:KafaatMainService) {
    }

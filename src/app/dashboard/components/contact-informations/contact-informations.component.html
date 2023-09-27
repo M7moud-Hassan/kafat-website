@@ -3,7 +3,7 @@
         <div class="col-12 col-md-2"></div>
         <div class="col-12 col-md-8">
             <form [formGroup]="form" (ngSubmit)="submit()">
-            <div class="mb-4 fw-bolder fs-5 pb-4">معلومات التواصل </div>
+            <div class="mb-4 fw-bolder fs-5 pb-4 d-flex justify-content-start align-items-center"> <div class="info-image image-logo"></div> <div class="d-inline-block ms-3" style="border-bottom: 4px solid #005183; padding-bottom: 15px;">معلومات التواصل</div> </div>
             <div class="row mb-3">
                 <div class="col-10">
                     <div class="input-box">
@@ -115,8 +115,17 @@
                     </div>
                 </div>
                 <div class="col-2">
-                    <!-- <img src="/assets/images/title_contact_info.png" class="image-logo"> -->
                     <div class="image-4 image-logo"></div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-10">
+                    <div class="input-box">
+                        <input type="text" spellcheck="false" name="introductoryVideoLink" id="introductoryVideoLink" formControlName="introductoryVideoLink" placeholder="رابط  الفيديو التعريفى">
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="image-6 image-logo"></div>
                 </div>
             </div>
             <div class="row mt-5">

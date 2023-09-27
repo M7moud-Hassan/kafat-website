@@ -32,6 +32,7 @@ import { DashboardModule } from '../dashboard/dashboard.module';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { SpinnersInterceptor } from './core/Interceptors/spinners.interceptor';
 import { CvImagePopupComponent } from './components/cv-image-popup/cv-image-popup.component';
+import { EmptyDataComponent } from './components/empty-data/empty-data.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { CvImagePopupComponent } from './components/cv-image-popup/cv-image-popu
     DialogVideoImageComponent,
     SpinnerComponent,
     CvImagePopupComponent,
+    EmptyDataComponent,
   ],
   imports: [
     CommonModule,
@@ -103,7 +105,8 @@ import { CvImagePopupComponent } from './components/cv-image-popup/cv-image-popu
     ProgramMinComponent,
     DialogVideoImageComponent,
     SpinnerComponent,
-    CvImagePopupComponent
+    CvImagePopupComponent,
+    EmptyDataComponent
   ],
   providers: [
     {

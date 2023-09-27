@@ -42,4 +42,7 @@ export class ActivityService {
   addReport(data:any):Observable<ResponseVM>{
     return this.http.post<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/add-report`,data);
   }
+  getLastDistinguishedMembers():Observable<ResponseVM>{
+    return this.http.get<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/get-last-distinguished-members`);
+   }
 }

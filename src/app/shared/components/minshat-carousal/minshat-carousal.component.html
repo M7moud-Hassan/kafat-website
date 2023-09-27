@@ -25,3 +25,4 @@
         <img src="assets/images/next-carousal.svg" (click)="scrollNext()" alt="next-carousal" class="mx-4 d-pointer">
     </div>
     </div>
+<app-empty-data *ngIf="slides.length==0" [inputText]="'لا يوجد مناشط لعرضها'"></app-empty-data>

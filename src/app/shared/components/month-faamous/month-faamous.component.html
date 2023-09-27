@@ -1,26 +1,10 @@
 <div class="container text-center p-4">
-    <div class="row p-4 m-4">
-        <div class="col-12 col-md-3 text-center my-2 my-sm-0">
-            <app-item-carousal-angle imgPath="assets/images/person.png"></app-item-carousal-angle>
-            <p>ناصر بن حمد بن الماجد</p>
-            <div class="primary-padge">برنامج كاتب</div>
-        </div>
-        <div class="col-12 col-md-3 text-center my-2 my-sm-0">
-            <app-item-carousal-angle imgPath="assets/images/img-contact.png"></app-item-carousal-angle>
-            <p>ناصر بن حمد بن الماجد</p>
-            <div class="primary-padge">برنامج قارئ</div>
-        </div>
-        <div class="col-12 col-md-3 text-center my-2 my-sm-0">
-            <app-item-carousal-angle imgPath="assets/images/img-contact.png"></app-item-carousal-angle>
-            <p>ناصر بن حمد بن الماجد</p>
-            <div class="primary-padge">برنامج متفوق</div>
-        </div>
-        <div class="col-12 col-md-3 text-center my-2 my-sm-0">
-            <app-item-carousal-angle imgPath="assets/images/img-contact.png"></app-item-carousal-angle>
-            <p>ناصر بن حمد بن الماجد</p>
-            <div class="primary-padge">برنامج ماهر</div>
-        </div>
-        
+    <div class="row p-4 m-4 d-flex justify-content-center align-items-center">
+        <div *ngFor="let item of distinguishedMembers" class="col-12 col-md-3 text-center my-2 my-sm-0">
+            <app-item-carousal-angle imgPath="{{item.image}}"></app-item-carousal-angle>
+            <p>{{item.memberName}}</p>
+            <div class="primary-padge">{{item.activityName}}</div>
+        </div>       
     </div>
     <a class="bg-primary-btn my-2" routerLink="/kafaat/winners">عرض كل المتميزون</a>
 </div>

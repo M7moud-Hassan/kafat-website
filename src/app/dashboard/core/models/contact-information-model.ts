@@ -10,7 +10,8 @@ export interface ContactInformationModel {
     twitterLink:string,
     telegramLink:string,
     snapchatLink:string,
-    linkedInLink:string
+    linkedInLink:string,
+    introductoryVideoLink:string
 }
 
 
