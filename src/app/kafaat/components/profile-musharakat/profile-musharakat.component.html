@@ -39,4 +39,6 @@
         {{item.post}}
         <div class="divider"></div>
     </div>
+    <app-empty-data *ngIf="filterPosts.length==0" [inputText]="'لا يوجد مشاركات لعرضها'"></app-empty-data>
+
 </div>

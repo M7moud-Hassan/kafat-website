@@ -102,6 +102,7 @@ export class ProfileAccountInformationComponent  implements OnInit, AfterViewIni
       next:(res:ResponseVM)=>{
         if(res.statusCode==200){
           this.adminService.toastService.success(res.message);
+          this.getUserCvFile(this.profile.cvPath);
         }else{
           this.adminService.toastService.warning(res.message);
         }
@@ -318,7 +319,12 @@ export class ProfileAccountInformationComponent  implements OnInit, AfterViewIni
           this.loadRelatedSpecializations(this.profile.qualificationId);
           this.loadRelatedDepartments(this.profile.specializationId);
           this.getUserImage(this.profile.userImagePath);
-          this.getUserCvFile(this.profile.cvPath);
+          if(this.profile.cvPath == ""){
+            this.fileSize = 0;
+            this.errorMessage = 'لا توجد سيرة ذاتية تم اختيارها';
+          }else{
+            this.getUserCvFile(this.profile.cvPath);
+          }
           // this.fileName = this.profile.cvPath;
           // alert(this.fileName);
           // this.userProfileImage = this.profile.userImagePath;

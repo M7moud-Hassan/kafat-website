@@ -19,10 +19,8 @@ export class MonthFaamousComponent implements OnInit {
     this.service.activityService.getLastDistinguishedMembers().subscribe({
       next:(res:ResponseVM)=>{
         if(res.statusCode == 200){
-          // var allMembers:any[] = res.data.sort(() => Math.random() - 0.5);
-          // this.distinguishedMembers = allMembers.slice(0,4);
-          this.distinguishedMembers = res.data;
-          // alert(this.distinguishedMembers.length);
+          this.distinguishedMembers = res.data.sort(() => Math.random() - 0.5) as any[];
+          this.distinguishedMembers = this.distinguishedMembers.slice(0,4);
         }
       },
       error:(error)=>{

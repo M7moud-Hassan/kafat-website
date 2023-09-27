@@ -62,6 +62,8 @@
     <div class="divider"></div>
     </div>
 </div>
+<app-empty-data *ngIf="navList[1].isSelected && willActivities.length==0" [inputText]="'لا يوجد مناشط قادمة لعرضها'"></app-empty-data>
+
     <!-- current------------------------------------------------------ -->
     <div *ngIf="navList[2].isSelected">
     <div *ngFor="let item of currentActivities" class="manashet-element">
@@ -83,6 +85,7 @@
     <div class="divider"></div>
     </div>
     </div>
+    <app-empty-data *ngIf="navList[2].isSelected && currentActivities.length==0" [inputText]="'لا يوجد مناشط حالية لعرضها'"></app-empty-data>
 
      <!-- pevious------------------------------------------------------ -->
      <div *ngIf="navList[3].isSelected">
@@ -105,5 +108,6 @@
     <div class="divider"></div>
     </div>
     </div>
+    <app-empty-data *ngIf="navList[3].isSelected && pastActivities.length==0" [inputText]="'لا يوجد مناشط سابقة لعرضها'"></app-empty-data>
 
 </div>

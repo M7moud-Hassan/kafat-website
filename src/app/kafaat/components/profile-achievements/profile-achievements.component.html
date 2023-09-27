@@ -25,6 +25,7 @@
                     </div>
                 </div>
             </div>
+            <app-empty-data *ngIf="filterItems.length==0" [inputText]="'لا يوجد انجازات لعرضها'"></app-empty-data>
         </div>
     </div>
     </div>

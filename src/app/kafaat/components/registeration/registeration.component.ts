@@ -370,8 +370,8 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
       this.service.profileService.register(this.formData).subscribe({
         next:(response:ResponseVM)=>{
           if(response.statusCode == 200){
-            this.service.toastService.success(response.message);
-            this.service.router.navigate(['/'],{ replaceUrl: true });
+            // this.service.toastService.success(response.message);
+            this.service.router.navigate(['/kafaat/request-send-success']);
           }else{
             this.adminService.toastService.error(response.message);
           }
