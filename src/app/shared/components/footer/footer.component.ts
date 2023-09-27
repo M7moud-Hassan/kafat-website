@@ -21,7 +21,8 @@ export class FooterComponent implements OnInit {
     title:'',
     twitterLink:'',
     whatsapp:'',
-    youtubeLink:''
+    youtubeLink:'',
+    linkedInLink:'',
   };
   constructor(private service:MainDashoardService){
     this.year = new Date().getFullYear();

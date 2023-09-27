@@ -1,4 +1,4 @@
-import { Component, ViewChild,OnInit } from '@angular/core';
+import { Component, ViewChild,OnInit, Output, EventEmitter } from '@angular/core';
 import { SlickCarouselComponent } from 'ngx-slick-carousel';
 import { KafaatMainService } from 'src/app/kafaat/services/kafaat-main.service';
 
@@ -12,11 +12,14 @@ export class MinshatCarousalComponent implements OnInit {
    
    constructor(private service:KafaatMainService) {
    }
+  //  @Output() slidesLength_dataEvent = new EventEmitter<number>();
+
    loadData(){
     this.service.activityService.getHigthLigthActivities().subscribe(response=>{
       if(response.statusCode=='200'){
         this.slides=response.data;
-        this.maxlength= this.slides.length
+        this.maxlength= this.slides.length;
+        // this.slidesLength_dataEvent.emit(this.slides.length);
       }
     })
    }

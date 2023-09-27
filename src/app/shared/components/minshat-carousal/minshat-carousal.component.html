@@ -1,5 +1,5 @@
 
-<div class="container pb-4" dir="ltr">
+<div *ngIf="slides.length>0" class="container pb-4" dir="ltr">
     <ngx-slick-carousel #slickCarousel  class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
 
         <div  [class]="slides[i%3].title?'manashet-card-container slide mx-2':'manashet-card-container slide mx-2 item-hover-top'"   ngxSlickItem *ngFor="let slide of slides;let i = index"

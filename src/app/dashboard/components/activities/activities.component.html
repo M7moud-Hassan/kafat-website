@@ -1,7 +1,8 @@
 <div class="row page-list-header d-flex justify-content-between align-items-center">
     <div class="col-12 col-md-7">
       <div class="mainPageTitle mb-3">المناشط</div>
-      <a routerLink="/admin/add-activity" class="bg-primary-outline-btn p-2 d-block" >اضافة منشط</a>
+      <br>
+      <a routerLink="/admin/add-activity" class="bg-primary-outline-btn p-2" >اضافة منشط</a>
     </div>
     <div class="col-12 col-md-5">
       <input type="text" style="outline: none; border: 1px solid var(--main-color);box-shadow: none;" (keyup.enter)="getPageByName()" [(ngModel)]="pagedRequest.name" placeholder="ابحث عن منشط" class="form-control">

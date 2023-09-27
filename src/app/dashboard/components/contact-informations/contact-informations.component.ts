@@ -29,12 +29,14 @@ export class ContactInformationsComponent implements OnInit {
       telegramLink:['',[Validators.required]],
       snapchatLink:['',[Validators.required]],
       youtubeLink:['',[Validators.required]],
+      linkedInLink:['',[Validators.required]],
     });
   }
   get(){
     this.service.contactInformationService.get().subscribe({
       next:(res:ResponseVM)=>{
         if (res.statusCode == 200) {
+          this.form.controls['id'].setValue(res.data.id);
           this.form.controls['title'].setValue(res.data.title);
           this.form.controls['location'].setValue(res.data.location);
           this.form.controls['email'].setValue(res.data.email);
@@ -45,6 +47,7 @@ export class ContactInformationsComponent implements OnInit {
           this.form.controls['telegramLink'].setValue(res.data.telegramLink);
           this.form.controls['snapchatLink'].setValue(res.data.snapchatLink);
           this.form.controls['youtubeLink'].setValue(res.data.youtubeLink);
+          this.form.controls['linkedInLink'].setValue(res.data.linkedInLink);
         } 
         else {
           this.service.toastService.error(res.message);
