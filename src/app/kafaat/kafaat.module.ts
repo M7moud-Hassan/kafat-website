@@ -55,6 +55,14 @@ import { AuthService } from './services/auth.service';
 import { AuthSharedService } from './services/auth-shared.service';
 import { PdfPopupComponent } from './components/pdf-popup/pdf-popup.component';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+// import { MomentDateAdapter } from '@angular/material-moment-adapter';
+import { MAT_DATE_FORMATS, MAT_DATE_LOCALE, DateAdapter, MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
+import { NgxMatDatetimePickerModule, NgxMatTimepickerModule, NgxMatNativeDateModule } from '@angular-material-components/datetime-picker';
+import { DateOfHegiraComponent } from './components/date-of-hegira/date-of-hegira.component';
+import { DateOfBirthComponent } from './components/date-of-birth/date-of-birth.component';
 export function tokenGetter() {
   return localStorage.getItem("token");
 }
@@ -106,7 +114,8 @@ export function tokenGetter() {
     ManashetTabsComponent,
     GoalsKafaatComponent,
     PostsPeopleComponent,
-    PdfPopupComponent,
+    DateOfHegiraComponent,
+    DateOfBirthComponent
   ],
   imports: [
     CommonModule,
@@ -117,9 +126,16 @@ export function tokenGetter() {
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NgxExtendedPdfViewerModule,
     NgxMaskModule.forRoot(),
-  
+    NgxExtendedPdfViewerModule,
+    PdfViewerModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    NgxMatDatetimePickerModule,
+    NgxMatTimepickerModule,
+    NgxMatNativeDateModule,
+    MatInputModule,
+    MatInputModule ,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
@@ -128,7 +144,8 @@ export function tokenGetter() {
       },
     }),
   ],
-  providers: [AuthSharedService],
+  providers: [AuthSharedService, 
+ ],
   
 })
 export class KafaatModule { }
