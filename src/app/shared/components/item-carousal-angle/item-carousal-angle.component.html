@@ -19,7 +19,7 @@
     <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_783_55679" result="shape"/>
     </filter>
     <pattern id="pattern" patternContentUnits="objectBoundingBox" width="1" height="1">
-    <use xlink:href="#image0_783_55679" transform="translate(0 -0.0185041) scale(0.000366838)"/>
+    <use [attr.xlink:href]="'#-' + imgPath" transform="translate(0 -0.0185041) scale(0.000366838)"/>
     </pattern>
     <filter id="filter1_di_783_55679" x="6.97363" y="6" width="223.902" height="223.902" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
     <feFlood flood-opacity="0" result="BackgroundImageFix"/>
@@ -40,6 +40,6 @@
     <clipPath id="clip0_783_55679">
     <rect width="214.795" height="214.795" fill="white" transform="translate(12.2236 7.07959)"/>
     </clipPath>
-    <image id="image0_783_55679" width="2726" height="4096" [attr.href]="imgPath"></image>
+    <image id="-{{imgPath}}" width="2726" height="4096" [attr.href]="imgPath"></image>
     </defs>
     </svg> 

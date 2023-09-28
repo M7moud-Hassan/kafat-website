@@ -17,6 +17,7 @@ import { PostsPeopleComponent } from './components/posts-people/posts-people.com
 import { MemberGuard } from '../dashboard/core/guards/member.guard';
 import { PdfPopupComponent } from './components/pdf-popup/pdf-popup.component';
 import { RegisterationSucceededComponent } from './components/registeration-succeeded/registeration-succeeded.component';
+import { MaskedImageComponent } from '../shared/components/masked-image/masked-image.component';
 
 const routes: Routes = [
   {path:'',component:HomePageComponent},
@@ -40,6 +41,7 @@ const routes: Routes = [
   {path:'programs',component:AllProgramsComponent},
   {path:'request-send-success',component:RegisterationSucceededComponent},
   {path:'pdf',component:PdfPopupComponent},
+  {path:'mask',component:MaskedImageComponent},
 ];
 
 @NgModule({

@@ -27,12 +27,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProgramMinComponent } from './components/program-min/program-min.component';
 import { RouterModule } from '@angular/router';
 import { DialogVideoImageComponent } from './components/dialog-video-image/dialog-video-image.component';
-import { MainDashoardService } from '../dashboard/services/main-dashoard.service';
-import { DashboardModule } from '../dashboard/dashboard.module';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { SpinnersInterceptor } from './core/Interceptors/spinners.interceptor';
 import { CvImagePopupComponent } from './components/cv-image-popup/cv-image-popup.component';
 import { EmptyDataComponent } from './components/empty-data/empty-data.component';
+import { MaskedImageComponent } from './components/masked-image/masked-image.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +68,7 @@ import { EmptyDataComponent } from './components/empty-data/empty-data.component
     SpinnerComponent,
     CvImagePopupComponent,
     EmptyDataComponent,
+    MaskedImageComponent
   ],
   imports: [
     CommonModule,
@@ -106,7 +106,8 @@ import { EmptyDataComponent } from './components/empty-data/empty-data.component
     DialogVideoImageComponent,
     SpinnerComponent,
     CvImagePopupComponent,
-    EmptyDataComponent
+    EmptyDataComponent,
+    MaskedImageComponent
   ],
   providers: [
     {

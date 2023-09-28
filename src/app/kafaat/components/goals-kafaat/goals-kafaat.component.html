@@ -1,4 +1,4 @@
-<div class="section3">
+<div *ngIf="items.length>0" class="section3">
 <div class="page-padding">
 <div class="row">
     <div class="col-12 col-md-4"></div>
@@ -14,17 +14,22 @@
 <div class="text-center mt-4 pt-4">
    
     <div style="width: 300px;" class="mx-auto">
-        <app-item-carousal-angle  imgPath="{{items[0].imagePath}}"></app-item-carousal-angle>
+        <app-masked-image [inputImageUrl]="items[0].imagePath" inputWidth="215" inputHeight="215"></app-masked-image>
     </div>
-    <p> {{items[0].name}} </p>
+    <p class="mt-3"> {{items[0].name}} </p>
     <p class="small">{{items[0].position}}</p>
 </div>
 
-<div class="row mt-4 pt-4 px-4 text-center">
+<div class="row mt-4 pt-4 px-4 text-center d-flex justify-content-center align-content-center">
     <ng-container *ngFor="let item of items.slice(1,items.length);let i = index; trackBy: trackByFn">
-        <div class="col-6 col-md-3 p-4">
-            <app-item-carousal-angle Key="{{item.id}}" imgPath="{{item.imagePath}}"></app-item-carousal-angle>
-            <p>{{item.name}}</p>
+        <div class="d-inline-block d-sm-none p-4" style="width: auto ;">
+            <app-masked-image [inputImageUrl]="item.imagePath" inputWidth="150" inputHeight="150"></app-masked-image>
+            <p class="mt-3">{{item.name}}</p>
+            <p class="small">{{item.position}}</p>
+        </div>
+        <div class="d-none d-md-inline-block p-4" style="width: auto ;">
+            <app-masked-image [inputImageUrl]="item.imagePath" inputWidth="215" inputHeight="215"></app-masked-image>
+            <p class="mt-3">{{item.name}}</p>
             <p class="small">{{item.position}}</p>
         </div>
     </ng-container>
@@ -48,3 +53,5 @@
     </div>
     </div>
 </div>
+<app-empty-data *ngIf="items.length==0" [inputText]="'لا يوجد اعضاء ممن اسسوا كفاءات لعرضهم'"></app-empty-data>
+
