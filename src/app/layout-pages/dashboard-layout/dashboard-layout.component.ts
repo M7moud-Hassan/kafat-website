@@ -1,4 +1,4 @@
-import { Component, OnInit,AfterViewInit } from '@angular/core';
+import { Component, OnInit,AfterViewInit, HostListener } from '@angular/core';
 import { UserProfilePopUpComponent } from 'src/app/dashboard/components/user-profile-pop-up/user-profile-pop-up.component';
 import { UserData } from 'src/app/kafaat/core/models/UserData';
 import { AuthService } from 'src/app/kafaat/services/auth.service';
@@ -22,7 +22,10 @@ export class DashboardLayoutComponent implements OnInit, AfterViewInit {
   }
   ngOnInit(): void {
   }
-
+  @HostListener('window:resize', ['$event'])
+  onWindowResize(event: Event) {
+    this.windowWidth = window.innerWidth;
+  }
   getCurrentUSer(){
     this.user = this.service.authService.currentUser();
     if(this.user.userImage.includes("assets/male.png")){

@@ -1,8 +1,18 @@
-<div class="wrapper">
+<div class="wrapper position-relative">
+    <button *ngIf="isSidebarActive" type="button" id="sidebarCollapse"(click)="toggleSidebar()" class="navbar-btn position-absolute" style="top: 20px; right: 20px;background-color: var(--main-color)">
+        <span style="background-color: white;"></span>
+        <span style="background-color: white;"></span>
+        <span style="background-color: white;"></span>
+    </button>
     <!-- Sidebar Holder -->
     <nav id="sidebar" [class]="isSidebarActive?'active':''">
         <div class="sidebar-header">
-            <div class="text-center fw-bold fs-5">نظام كفاءات</div>
+            <button type="button" id="sidebarCollapse"(click)="toggleSidebar()" class="navbar-btn mb-3">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="text-center  fw-bold fs-5">نظام كفاءات</div>
         </div>
   
         <ul class="list-unstyled components">
@@ -182,9 +192,8 @@
     </nav>
   
     <!-- Page Content Holder -->
-    <div id="content">
-  
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div id="content" [class]="windowWidth>770?'pt-5':''">
+        <nav  *ngIf="windowWidth<770" class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
   
                 <button type="button" id="sidebarCollapse"(click)="toggleSidebar()" class="navbar-btn">
@@ -192,28 +201,6 @@
                     <span></span>
                     <span></span>
                 </button>
-                <!-- <button class="btn btn-light d-inline-block d-lg-none ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-          </button> -->
-  
-          
-          <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Page</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Page</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Page</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Page</a>
-                </li>
-            </ul>
-        </div> -->
             </div>
         </nav>
         
