@@ -34,11 +34,11 @@
             </td>
                   <td>
                     <div>
-                        <button class="btn" (click)="openActivity(item.id)">
+                        <button appTooltip="تفاصيل النشاط" class="btn" (click)="openActivity(item.id)">
                             <i class="fa-solid fa-up-right-from-square" style="color: rgb(7, 196, 7);"></i></button>
-                      <a class="btn" [routerLink]="['/admin/edit-activity',item.id]">
+                      <a appTooltip="تعديل النشاط" class="btn" [routerLink]="['/admin/edit-activity',item.id]">
                         <i class="far fa-edit" style="color: rgb(7, 196, 7);"></i></a>
-                      <button *ngIf="item.canDelete" class="btn" (click)="deleteItem(item.id)"><i
+                      <button appTooltip="حذف النشاط" *ngIf="item.canDelete" class="btn" (click)="deleteItem(item.id)"><i
                           class="far fa-trash-alt" style="color: rgb(245, 29, 29);"></i></button>
                     </div>    
                   </td>

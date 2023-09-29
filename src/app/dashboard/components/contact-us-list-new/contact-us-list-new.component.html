@@ -31,8 +31,8 @@
                   <td class="table-date">
                     <div>
                       <!-- <button class="btn action-button" data-toggle="tooltip" data-placement="top" title="Tooltip on top" (click)="restoreUserToJoinRequestState(item.id)"><i class="fa-solid fa-user-xmark" style="color: red;"></i></button> -->
-                      <button class="btn action-button" (click)="addResponse(item.id)"><i class="fa-solid fa-eye" style="color: var(--main-color)"></i></button>
-                      <button class="btn action-button" (click)="deleteItem(item.id)"><i class="far fa-trash-alt" style="color: rgb(245, 29, 29);"></i></button>
+                      <button appTooltip="إضافة رد" class="btn action-button" (click)="addResponse(item.id)"><i class="fa-solid fa-eye" style="color: var(--main-color)"></i></button>
+                      <button appTooltip="حذف الرسالة" class="btn action-button" (click)="deleteItem(item.id)"><i class="far fa-trash-alt" style="color: rgb(245, 29, 29);"></i></button>
                     </div>    
                   </td>
               </tr>

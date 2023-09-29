@@ -25,9 +25,9 @@
                   <td style="cursor: pointer;">{{item.name}}</td>
                   <td>
                     <div>
-                      <button class="btn" (click)="editItem(item.id)">
+                      <button class="btn" appTooltip="تعديل نوع التميز" (click)="editItem(item.id)">
                         <i class="far fa-edit" style="color: rgb(7, 196, 7);"></i></button>
-                      <button class="btn" (click)="deleteItem(item.id)"><i
+                      <button class="btn" appTooltip="حذف نوع التميز" (click)="deleteItem(item.id)"><i
                           class="far fa-trash-alt" style="color: rgb(245, 29, 29);"></i></button>
                     </div>    
                   </td>
