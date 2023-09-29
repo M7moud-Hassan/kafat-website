@@ -1,4 +1,3 @@
-<div class="popup-container">
-    <ngx-extended-pdf-viewer [src]="pdfUrl" [useBrowserLocale]="true"></ngx-extended-pdf-viewer>
-    <!-- <button (click)="closePopup()">Close</button> -->
-  </div>
+<pdf-viewer [src]="data.cvPdf"
+              style="width: 100%; height: 500px"
+  ></pdf-viewer>

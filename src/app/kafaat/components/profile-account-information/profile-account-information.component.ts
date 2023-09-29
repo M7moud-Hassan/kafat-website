@@ -6,6 +6,7 @@ import { IProfile } from '../../core/models/Iprofile';
 import { FieldNames } from '../../core/static/field-names';
 import { EditFieldRequest } from '../../core/models/edit-field-request';
 import { CvImagePopupComponent } from 'src/app/shared/components/cv-image-popup/cv-image-popup.component';
+import { PdfPopupComponent } from '../pdf-popup/pdf-popup.component';
 
 @Component({
   selector: 'app-profile-account-information',
@@ -476,7 +477,15 @@ export class ProfileAccountInformationComponent  implements OnInit, AfterViewIni
       this.showImageCv(cvFileName);
     }
   }
-  showPDFCv(cv:any){}
+  showPDFCv(cv:any){
+    this.service.dialog.open(PdfPopupComponent,{
+      width:'75%',
+      height:'90%',
+      data:{
+        cvPdf:cv,
+      }
+    })
+  }
   showImageCv(cv:any){
     const dialogRef = this.service.dialog.open(CvImagePopupComponent, {
       // width:this.windowWidth<767?'99%':(this.windowWidth<1300?'60%':'50%'),
