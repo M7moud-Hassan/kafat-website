@@ -30,7 +30,7 @@ export class ScrollNavComponent  implements OnInit,AfterViewInit{
         for(var i=0;i<length;i++){
           this.itemsDisplay.push(this.items.pop())
       }
-      if(this.items)
+      if(this.items.length>0)
       this.itemsDisplay.push({title:'المزيد',id:-1})
     }
    })

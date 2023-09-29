@@ -17,6 +17,7 @@ export class ManshatDetailsComponent implements OnInit {
   images:any[]=[]
   activity:any
   videos:any
+  isUserCaterory=false;
   @ViewChild('alert', { static: false }) myElement: ElementRef;
 
   constructor(private service:KafaatMainService,private route:ActivatedRoute,private router:Router) {
@@ -40,6 +41,7 @@ export class ManshatDetailsComponent implements OnInit {
 
     this.service.activityService.getAllDetails({id:this.id,idParti:idPart}).subscribe(response=>{
       if(response.statusCode=='200'){
+  console.log("data",response.data);
   
         
         this.activity=response.data
@@ -116,6 +118,11 @@ export class ManshatDetailsComponent implements OnInit {
     }catch(e){
       return false;
     }
+  }
+
+  checkUserCategory():boolean{
+
+   return this.activity.userCategories.includes('فــئة ب');
   }
 }
 

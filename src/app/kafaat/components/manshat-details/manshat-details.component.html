@@ -1,6 +1,7 @@
 <app-navbar typeNav="dark"></app-navbar>
 <app-navigation-to-back-header [Title]="activity.name" [statusActivity]="activity.statusActivity"></app-navigation-to-back-header>
-<app-bread-crumb title="الرئسية" subTitles="البرامج" [subSubTitle]="activity.programTitle" [subSubSubTitle]="activity.name"></app-bread-crumb>
+<app-bread-crumb title="الرئسية" subTitles="البرامج" subTitlesRouteLink="/kafaat/programs"
+ [subSubSubTitleRouteLink]="'/kafaat/activity-details/1'+id" [subSubTitle]="activity.programTitle" [subSubSubTitle]="activity.name"></app-bread-crumb>
 <div class="row mt-4 mb-2">
     
     <div class="col-10 mx-auto" #alert>
@@ -70,12 +71,14 @@
                         <img src="assets/images/done.svg" width="24" height="24">
                         <span style="color: #008243;"> تم الانضمام</span>
                     </div>
-
-                    <div class="manshat-info-item" *ngIf="activity.isOpen == 1 && !activity.isParticipant && checkLogin()">
+                    <div *ngIf="activity.isOpen == 1 && !activity.isParticipant && checkLogin() &&checkUserCategory()">
+                        <p *ngIf="activity.ticketPrice>0"><span class="fs-5 fw-bold">{{activity.ticketPrice}}</span> ريال سعودي</p>
+                    <div class="manshat-info-item" >
                        <div class="bg-primary-btn w-100 text-center" (click)="JoinActivity()">
                         انضمام
                        </div>
                     </div>
+                </div>
                 </div>
             </div>
         </div>

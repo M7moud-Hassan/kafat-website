@@ -11,7 +11,7 @@ declare const Quill: any;
 })
 
 export class AddReportComponent implements OnInit , AfterViewInit{
-  data:any;
+  repoert:any;
   form:FormGroup = new FormGroup({});
   id:number;
   @ViewChild('editor', { static: true }) editorElement: ElementRef;
@@ -23,12 +23,14 @@ export class AddReportComponent implements OnInit , AfterViewInit{
     
   }
   ngAfterViewInit(): void {
-    this.getReportDate();
-    this.initializeQuillEditor();
+    
+  
   }
   ngOnInit(): void {
+    this.getReportDate();
   }
-  private initializeQuillEditor() {
+  private initializeQuillEditor(data:String) {
+
     const toolbarOptions = [
       [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
       [{ "font": [12,15,20,25,30] }],
@@ -45,19 +47,26 @@ export class AddReportComponent implements OnInit , AfterViewInit{
       // ['image', 'video'],
       ['clean']
     ];
-
+ this.editorElement.nativeElement.innerHTML=data  
     const quill = new Quill(this.editorElement.nativeElement, {
       modules: {
         toolbar: toolbarOptions
       },
       theme: 'snow'
-    });    
+    });  
+   
   }
   getReportDate(){
     this.service.activityService.getٌReport(this.id).subscribe(response=>{
       if(response.statusCode=='200'){
-        this.data=response.data;        
+      
+        this.initializeQuillEditor(response.data);
+        this.repoert=response;
+        
+        // console.log();
+        //this.data=response.data;        
       }else{
+        this.initializeQuillEditor("");
         this.service.toastService.error(response.message);
       }      
     });

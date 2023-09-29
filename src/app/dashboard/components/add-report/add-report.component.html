@@ -1,8 +1,9 @@
 <form [formGroup]="form" (ngSubmit)="submit()">
     <div class="mb-3">
         <div class="w-100">
-            <label class="mb-2" for="description">وصف المنشط</label>
-            <div id="editor" class="w-100" style="min-height: 50%;" [innerHTML]="data??''" #editor>
+            <label class="mb-2" for="description">تقرير المنشط</label>
+            <div id="editor" class="w-100"  #editor>
+                {{repoert?.data}}
             </div>
         </div>
     </div>
