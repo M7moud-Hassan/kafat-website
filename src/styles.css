@@ -769,6 +769,10 @@ height: 76px;
 td{
   vertical-align: middle;
 }
+.page-list-header input[type="text"]{
+  margin: 10px;
+  margin-right: 0px;
+}
 .customTooltip {
   position: absolute;
   /* bottom: 0px; */

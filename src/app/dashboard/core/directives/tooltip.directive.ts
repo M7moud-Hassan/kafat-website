@@ -24,8 +24,11 @@ export class TooltipDirective {
 
     this.renderer.appendChild(document.body, this.tooltipElement);
     const { top, left } = this.el.nativeElement.getBoundingClientRect();
+    const positionX = left + window.scrollX;
+    const positionY = top + window.scrollY;
     console.log(`top : ${top} , left : ${left}`)
-    this.renderer.setStyle(this.tooltipElement, 'top', `${top - 40}px`);
+
+    this.renderer.setStyle(this.tooltipElement, 'top', `${positionY - 40}px`);
     this.renderer.setStyle(this.tooltipElement, 'left', `${left - 20}px`);
   }
 
