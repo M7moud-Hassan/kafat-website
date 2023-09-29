@@ -1,6 +1,6 @@
 <app-navbar typeNav="dark" [active]=1></app-navbar>
 <app-page-header-labeled [Header]="program.title" [Label]="program.subTitle"></app-page-header-labeled>
-    <app-bread-crumb title="الرئيسية" subTitles="البرامج" [subSubTitle]="program.title"></app-bread-crumb>
+    <app-bread-crumb title="الرئيسية" subTitles="البرامج" subTitlesRouteLink="/kafaat/programs" [subSubTitleRouteLink]="'kafaat/program-details/'+id" [subSubTitle]="program.title"></app-bread-crumb>
 <div class="row container mx-auto">
     <div class="col-12 col-md-4">
         <div class="statistic-container-right">

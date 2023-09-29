@@ -25,6 +25,7 @@ import { PostService } from './post.service';
 import { AccountService } from './account.service';
 import { KafaatFounderService } from './kafaat-founder.service';
 import { DocumentedImageService } from 'src/app/kafaat/services/documented-image.service';
+import { StatisticsService } from './statistics.service';
 
 @Injectable({
   providedIn: 'root'
@@ -59,8 +60,12 @@ export class MainDashoardService {
     private _postService:PostService,
     private _kafaatFounderService:KafaatFounderService,
     private _documentedImageService:DocumentedImageService,
+    private _statistics:StatisticsService,
     ) { }
 
+    get statistics(){
+      return this._statistics;
+    }
     get postService():PostService{
       return this._postService;
     }

@@ -48,4 +48,9 @@ export class DashboardLayoutComponent implements OnInit, AfterViewInit {
     });
   }
 
+  isSidebarActive = false;
+  toggleSidebar() {
+    this.isSidebarActive = !this.isSidebarActive;
+  }
+
 }

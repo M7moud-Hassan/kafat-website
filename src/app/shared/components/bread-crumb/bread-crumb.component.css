@@ -25,6 +25,7 @@
     padding: 0px 10px;
 }
 .breadcrumb-inactive{
+    text-decoration: none;
     padding: 0px 10px;
     color: var(--Primary-focus-color);
 }

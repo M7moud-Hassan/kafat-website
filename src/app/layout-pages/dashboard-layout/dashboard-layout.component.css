@@ -184,6 +184,10 @@ a.article, a.article:hover {
 ----------------------------------------------------- */
 @media (max-width: 768px) {
     #sidebar {
+        background: var(--main-color) !important;
+        color: #fff !important;
+    }
+    #sidebar {
         margin-right: -250px;
         transform: rotateY(-90deg);
     }
