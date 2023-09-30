@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MainDashoardService } from 'src/app/dashboard/services/main-dashoard.service';
 import { ResponseVM } from '../../core/models/response-vm';
+import { DialogVideoImageComponent } from 'src/app/shared/components/dialog-video-image/dialog-video-image.component';
 
 @Component({
   selector: 'app-about-page',
@@ -14,6 +15,7 @@ export class AboutPageComponent implements OnInit {
   imageNumber4:string = '/assets/images/about5.png';
   imageNumber5:string = '/assets/images/about6.png';
   imageNumber6:string = '/assets/images/about7.png';
+  @ViewChild('dialog', { static: false }) dialogComponent: DialogVideoImageComponent | undefined;
   documentedImageItems:any[]=[];
   constructor(private service:MainDashoardService){}
   ngOnInit(): void {
@@ -49,5 +51,10 @@ export class AboutPageComponent implements OnInit {
   itemCardLeave(index:number):void{
     console.log(2222)
     document.getElementById('p'+index)!.style.color='white';
+  }
+
+  openModal(){
+      this.dialogComponent.openVideo('https://www.youtube.com/embed/v69praWH6cs?si=ennlWOhMnXzh2x5S');
+    
   }
 }

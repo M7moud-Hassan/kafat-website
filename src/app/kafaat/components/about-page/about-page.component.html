@@ -8,8 +8,8 @@
             <div class="p-5">
                 <div class="about-we mb-4">من نحن </div>
                 <p class="text-light fs-5 lh-base mb-5">كفاءات هي منصة تعليمية تهتم بافراد عائلة الماجد لايصال كل ماهو جديد</p>
-                <button class="btn bg-light p-2"> <img src="assets/images/play-circle.svg" class="me-2"
-                        alt="play-circle.svg">شاهد الفيديو التعريفي</button>
+                <button (click)="openModal()" class="btn bg-light p-2"> <img src="assets/images/play-circle.svg" class="me-2"
+                        alt="play-circle.svg" (click)="openModal()">شاهد الفيديو التعريفي</button>
             </div>
         </div>
         <div class="col-12 col-md-6 text-light">
@@ -134,3 +134,4 @@
     </div>
 </div>
 </div>
+<app-dialog-video-image #dialog></app-dialog-video-image>
