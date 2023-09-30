@@ -1,13 +1,6 @@
-import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, Inject, Input } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AfterViewInit, Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
-import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
-import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
-import { CvImagePopupComponent } from 'src/app/shared/components/cv-image-popup/cv-image-popup.component';
 @Component({
   selector: 'app-pdf-popup',
   templateUrl: './pdf-popup.component.html',
@@ -16,10 +9,12 @@ import { CvImagePopupComponent } from 'src/app/shared/components/cv-image-popup/
 imports:[PdfViewerModule]
 })
 export class PdfPopupComponent implements AfterViewInit {
-  title = 'PSPDFKit for Web Angular Example';
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any,private dialogRef: MatDialogRef<CvImagePopupComponent>) {
-    console.log(data);
-    
+  pdfUrl = '';
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any,private dialogRef: MatDialogRef<PdfPopupComponent>) {
+    this.pdfUrl= data.cvPdf.split('/')[data.cvPdf.split('/').length-1] 
+  }
+  closeDialog(): void {
+    this.dialogRef.close();
   }
 
   ngAfterViewInit() {

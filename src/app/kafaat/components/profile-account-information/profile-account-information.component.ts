@@ -9,6 +9,7 @@ import { CvImagePopupComponent } from 'src/app/shared/components/cv-image-popup/
 import { PdfPopupComponent } from '../pdf-popup/pdf-popup.component';
 import { NgxMatDateAdapter } from '@angular-material-components/datetime-picker';
 import { DateAdapter } from '@angular/material/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-profile-account-information',
@@ -41,7 +42,7 @@ export class ProfileAccountInformationComponent  implements OnInit, AfterViewIni
   isNewSelectedFile:boolean=true;
   birthDateObj:any = {hijry:'',milady:''};
 
-  constructor(private service:KafaatMainService,private adminService:MainDashoardService,private dateProvider:DateAdapter<Date>,private jak:NgxMatDateAdapter<Date>){
+  constructor(private service:KafaatMainService,private http: HttpClient,private adminService:MainDashoardService,private dateProvider:DateAdapter<Date>,private jak:NgxMatDateAdapter<Date>){
     dateProvider.setLocale('ar-eg')
     jak.setLocale('ar-sa')
 }
@@ -123,6 +124,7 @@ export class ProfileAccountInformationComponent  implements OnInit, AfterViewIni
         this.adminService.toastService.error(errorMessage);
       }
     });
+    window.location.reload();
   }
   validateUplodedFile(image:any,isCv:boolean = false):string{
     let imageError = "";
@@ -306,7 +308,7 @@ export class ProfileAccountInformationComponent  implements OnInit, AfterViewIni
   }
   loadProfile(){
     let _user = this.service.authService.currentUser();
-    let _email = _user.email;
+    let _email = _user.id;
     let model = {"email":_email};
     this.service.profileService.getUserProfile(model).subscribe({
       next:(res:ResponseVM)=>{
@@ -354,7 +356,7 @@ export class ProfileAccountInformationComponent  implements OnInit, AfterViewIni
     this.service.back;
   } 
   EditField(fieldName:string){
-    let _email = this.service.authService.currentUser().email;
+    let _email = this.service.authService.currentUser().id;
     let newValue:any ;
     if(fieldName==FieldNames.UserName){
       newValue = this.profile.displayName;
@@ -516,6 +518,17 @@ export class ProfileAccountInformationComponent  implements OnInit, AfterViewIni
     let newTransformedDate = transformedDate.split('-');
     return `${newTransformedDate[0]}/${newTransformedDate[1]}/${newTransformedDate[2]}`;
   }
+
+  loadPDF(): void {
+    const pdfUrl = 'http://localhost:59638/images/7289a1ab-1430-4709-8688-50ce3a0a6d56.pdf';
+    this.http.get(pdfUrl, { responseType: 'blob' }).subscribe((data) => {
+      // Handle the PDF file data here, e.g., display it in an iframe or download it.
+      const blob = new Blob([data], { type: 'application/pdf' });
+      const url = window.URL.createObjectURL(blob);
+      window.open(url); // Opens the PDF in a new tab
+    });
+  }
+
   onChangeDate(evnt:any){
     const futureDate = evnt.value;
     // .format('YYYY-MM-DD');
