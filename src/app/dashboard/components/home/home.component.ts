@@ -37,7 +37,7 @@ month=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
       series: [
           {
               type: 'line',
-              name: 'users',
+              name: 'المستخدمين',
               data:this.data.lastYearJoinedUsersCount.map((x:any)=>{
                 return {
                     x:this.month[x.month-1],
@@ -47,7 +47,7 @@ month=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
           },
           {
               type: 'line',
-              name: 'participants',
+              name: 'المشاركين',
               chart: {
                   dropShadow: {
                       enabled: true,
@@ -68,7 +68,7 @@ month=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
           },
           {
               type: 'area',
-              name: 'activities',
+              name: 'الانشطة',
               chart: {
                   dropShadow: {
                       enabled: true,
@@ -145,11 +145,11 @@ month=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
       },
       legend: {
           show: true,
-          customLegendItems: ['users', 'participants', 'activities'],
+          customLegendItems: ['المستخدمين', 'المشاركين', 'الانشطة'],
           inverseOrder: true
       },
       title: {
-          text: 'number users , participants and activities per every month ',
+          text: 'عدد المستخدمين والمشاركين والانشطه لكل شهر',
           align: 'left',
           style: {
               fontSize: '.8125rem',
