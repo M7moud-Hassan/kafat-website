@@ -16,9 +16,12 @@ import { CvImagePopupComponent } from 'src/app/shared/components/cv-image-popup/
 imports:[PdfViewerModule]
 })
 export class PdfPopupComponent implements AfterViewInit {
-  title = 'PSPDFKit for Web Angular Example';
+  title = '';
+  
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,private dialogRef: MatDialogRef<CvImagePopupComponent>) {
-    console.log(data);
+    
+    this.title= data.cvPdf.split('/')[data.cvPdf.split('/').length-1]
+   
     
   }
 

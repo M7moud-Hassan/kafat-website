@@ -9,6 +9,7 @@ import { CvImagePopupComponent } from 'src/app/shared/components/cv-image-popup/
 import { PdfPopupComponent } from '../pdf-popup/pdf-popup.component';
 import { NgxMatDateAdapter } from '@angular-material-components/datetime-picker';
 import { DateAdapter } from '@angular/material/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-profile-account-information',
@@ -40,7 +41,7 @@ export class ProfileAccountInformationComponent  implements OnInit, AfterViewIni
   isSpecializationChanged:boolean=false;
   isNewSelectedFile:boolean=true;
 
-  constructor(private service:KafaatMainService,private adminService:MainDashoardService,private dateProvider:DateAdapter<Date>,private jak:NgxMatDateAdapter<Date>){
+  constructor(private service:KafaatMainService,private http: HttpClient,private adminService:MainDashoardService,private dateProvider:DateAdapter<Date>,private jak:NgxMatDateAdapter<Date>){
     dateProvider.setLocale('ar-eg')
     jak.setLocale('ar-sa')
 }
@@ -502,6 +503,15 @@ export class ProfileAccountInformationComponent  implements OnInit, AfterViewIni
     })
   }
 
+  loadPDF(): void {
+    const pdfUrl = 'http://localhost:59638/images/7289a1ab-1430-4709-8688-50ce3a0a6d56.pdf';
+    this.http.get(pdfUrl, { responseType: 'blob' }).subscribe((data) => {
+      // Handle the PDF file data here, e.g., display it in an iframe or download it.
+      const blob = new Blob([data], { type: 'application/pdf' });
+      const url = window.URL.createObjectURL(blob);
+      window.open(url); // Opens the PDF in a new tab
+    });
+  }
 
   onChangeDate(evnt:any){
     const futureDate = evnt.value;
