@@ -28,9 +28,9 @@
     height: calc(70vh);
     width: 100%;
     clip-path: ellipse(55% 50% at 50% 50%);
-    background-image: url('/assets/images/people.jpg');
+    background-image: url('/assets/images/Hero-image.png');
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100% 120%;
 }
 
 .navbar-image-opacity {
@@ -41,7 +41,7 @@
     height: calc(70vh);
     width: 100%;
     clip-path: ellipse(55% 50% at 50% 50%);
-    background-color: lightblue;
+    background-color: #005183;
     z-index: 3;
     opacity: .3;
 }

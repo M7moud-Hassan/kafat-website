@@ -39,6 +39,7 @@ export class ProfileAccountInformationComponent  implements OnInit, AfterViewIni
   isQualificationChanged:boolean=false;
   isSpecializationChanged:boolean=false;
   isNewSelectedFile:boolean=true;
+  birthDateObj:any = {hijry:'',milady:''};
 
   constructor(private service:KafaatMainService,private adminService:MainDashoardService,private dateProvider:DateAdapter<Date>,private jak:NgxMatDateAdapter<Date>){
     dateProvider.setLocale('ar-eg')
@@ -307,8 +308,6 @@ export class ProfileAccountInformationComponent  implements OnInit, AfterViewIni
     let _user = this.service.authService.currentUser();
     let _email = _user.email;
     let model = {"email":_email};
-    // alert(User_Email);
-
     this.service.profileService.getUserProfile(model).subscribe({
       next:(res:ResponseVM)=>{
         if(res.statusCode==200){
@@ -324,6 +323,7 @@ export class ProfileAccountInformationComponent  implements OnInit, AfterViewIni
           this.loadQualifications();
           this.loadRelatedSpecializations(this.profile.qualificationId);
           this.loadRelatedDepartments(this.profile.specializationId);
+          this.displayHijriDateInItsFormat(this.profile.birthDateInHijri);
           this.getUserImage(this.profile.userImagePath);
           if(this.profile.cvPath == ""){
             this.fileSize = 0;
@@ -502,7 +502,20 @@ export class ProfileAccountInformationComponent  implements OnInit, AfterViewIni
     })
   }
 
-
+  displayHijriDateInItsFormat(bithDateinAd:any){
+    this.profile.birthDateInHijri = this.transformDateToArabic(bithDateinAd);
+    // alert(this.profile.birthDateInHijri);
+  }
+  transformDateToArabic(date: string): string {
+    date = date.slice(0,10);
+    const arabicDigits = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
+  
+    const transformedDate = date.replace(/\d/g, (digit) => {
+      return arabicDigits[parseInt(digit)];
+    });
+    let newTransformedDate = transformedDate.split('-');
+    return `${newTransformedDate[0]}/${newTransformedDate[1]}/${newTransformedDate[2]}`;
+  }
   onChangeDate(evnt:any){
     const futureDate = evnt.value;
     // .format('YYYY-MM-DD');
@@ -512,7 +525,14 @@ export class ProfileAccountInformationComponent  implements OnInit, AfterViewIni
     
     const julianDay = this.gregorianToJulian(y, m, d);
     const { year, month, day } = this.julianToHijri(julianDay);
-    this.profile.birthDateInHijri=`${year}-${month}-${day}`
+    this.profile.birthDateInHijri=`${year}-${month}-${day}`;
+    
+    let _m = month>9?`${month}`:`0${month}`;//1416-08-31 21:54:51.0000000
+    let _d = day>9?`${day}`:`0${day}`;
+    const updatedHijryDate = `${year}-${_m}-${_d} 00:00:00.0000000`;
+    this.birthDateObj = {hijry: new Date(updatedHijryDate) ,milady:this.profile.birthDateInAD};
+    this.displayHijriDateInItsFormat(this.profile.birthDateInHijri);
+     this.editBirthDate();
   }
    hijriToJulian = (year:any, month:any, day:any) => {
     return (
@@ -590,4 +610,35 @@ export class ProfileAccountInformationComponent  implements OnInit, AfterViewIni
   
     return { year: (year), month: (month), day: (day) };
   };
+
+
+  editBirthDate(){
+    let _userEmail = this.service.authService.currentUser().email;
+    // const date_ad =  new Date(this.profile.birthDateInAD);
+    // const date_hijri =  new Date(this.profile.birthDateInHijri);
+    //  alert(date_ad);
+    //  alert(date_hijri);
+    // let model = {email: _userEmail ,birthDateInHijri:this.profile.birthDateInHijri ,birthDateInAD:this.profile.birthDateInAD };
+    // this.birthDateObj = {hijry: this.profile.birthDateInHijri ,milady:this.profile.birthDateInAD};
+    alert(this.birthDateObj.hijry);
+    alert(this.birthDateObj.milady);
+    let model = {email: _userEmail ,birthDateInHijri: this.birthDateObj.hijry ,birthDateInAD : this.birthDateObj.milady};
+    this.service.profileService.editProfileBirthDate(model).subscribe({
+      next:(res:ResponseVM)=>{
+        if(res.statusCode==200){
+          this.adminService.toastService.success(res.message);
+        }else{
+          this.adminService.toastService.warning(res.message);
+        }
+      },error:(error)=>{
+        let errorMessage = 'حدث خطأ غير متوقع';
+        if (error.error && typeof error.error === 'string') {
+          errorMessage = error.error; // Use the error message from the 'error' property
+        } else if (error.message) {
+          errorMessage = error.message; // Use the 'message' property if available
+        }
+        this.adminService.toastService.error(errorMessage);
+      }
+    });
+  }
 }

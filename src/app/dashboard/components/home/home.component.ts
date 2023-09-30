@@ -179,7 +179,7 @@ month=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
       data: {
         datasets: [{
           label: 'My First Dataset',
-          data: [32, 27, 25, 16],
+          data: [this.data.distinguishedCount,this.data.participantsCount,this.data.activityCount,this.data.totalUsersCount],
           backgroundColor: [
             'rgb(132, 90, 223)',
             'rgb(35, 183, 229)',

@@ -17,6 +17,10 @@ export class ProfileService {
   editProfile(model:EditFieldRequest):Observable<ResponseVM>{
     return this.http.post<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/edit-user-profile`,model);
   }
+  editProfileBirthDate(model:any):Observable<ResponseVM>{
+    debugger;
+    return this.http.post<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/edit-user-profile-birth-date`,model);
+  }
   uploadFile(model:FormData):Observable<ResponseVM>{
     return this.http.post<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/upload-profile-file`,model);
   }
