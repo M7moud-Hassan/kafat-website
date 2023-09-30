@@ -17,9 +17,11 @@ export class AboutPageComponent implements OnInit {
   imageNumber6:string = '/assets/images/about7.png';
   @ViewChild('dialog', { static: false }) dialogComponent: DialogVideoImageComponent | undefined;
   documentedImageItems:any[]=[];
+  videoUrl:string = 'https://www.youtube.com/embed/v69praWH6cs?si=ennlWOhMnXzh2x5S';
   constructor(private service:MainDashoardService){}
   ngOnInit(): void {
     this.getDocumentedImage();
+    this.getIntroductoryVideoUrl();
   }
   getDocumentedImage(){
     this.service.documentedImageService.getAll().subscribe({
@@ -34,8 +36,31 @@ export class AboutPageComponent implements OnInit {
       }
     });
   }
+  getIntroductoryVideoUrl(){
+    this.service.contactInformationService.get().subscribe({
+      next:(res:ResponseVM)=>{
+        if(res.statusCode == 200){
+          let link:string = res.data.introductoryVideoLink;
+          this.videoUrl = link;
+          // if(link.includes("ennlWOhMnXzh2x5S")){
+          //   this.videoUrl = link;
+          // }else{
+          //   this.videoUrl = this.covertToRelatedFormat(link);
+          // }
+        }
+      }
+    })
+  }
 
-
+  covertToRelatedFormat(link:string){
+    debugger;
+    let _videoId = link.split("https://www.youtube.com/watch?v=")[1];
+    let updatedLink = 'https://www.youtube.com/embed/' + _videoId + '?si=ennlWOhMnXzh2x5S';
+    console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++"+updatedLink);
+    // https://www.youtube.com/embed/v69praWH6cs?si=ennlWOhMnXzh2x5S
+    // console.log(updatedLink);
+    return updatedLink;
+  }
 
 
   showOverlay = false;
@@ -54,7 +79,7 @@ export class AboutPageComponent implements OnInit {
   }
 
   openModal(){
-      this.dialogComponent.openVideo('https://www.youtube.com/embed/v69praWH6cs?si=ennlWOhMnXzh2x5S');
+      this.dialogComponent.openVideo(this.videoUrl);
     
   }
 }
