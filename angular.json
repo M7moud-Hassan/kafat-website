@@ -46,8 +46,8 @@
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/slick-carousel/slick/slick.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
-              "node_modules/apexcharts/apexcharts.min.js",
-              "node_modules/chart.js/chart.min.js"
+              "src/assets/js/apexcharts/apexcharts.min.js",
+              "src/assets/js/chart.js/chart.min.js"
             ]
           },
           "configurations": {
@@ -119,15 +119,13 @@
               "node_modules/slick-carousel/slick/slick.css",
               "node_modules/ngx-toastr/toastr.css",
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
-              
-            
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/slick-carousel/slick/slick.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
-              "node_modules/apexcharts/apexcharts.min.js",
-              "node_modules/chart.js/chart.min.js"
+              "assets/js/apexcharts/apexcharts.min.js",
+              "assets/js/chart.js/chart.min.js"
             ]
           }
         }

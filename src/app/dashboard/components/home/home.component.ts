@@ -10,6 +10,7 @@ declare const Chart: any;
 
 export class HomeComponent implements AfterViewInit,OnInit{
     data:any
+    chartInstance: any;
     constructor(private service:MainDashoardService) {
         
         
@@ -169,7 +170,57 @@ month=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
   }
 
   function2(){
+    const ctx = document.getElementById('leads-source') as HTMLCanvasElement;
+    Chart.defaults.elements.arc.borderWidth = 0;
+    Chart.defaults.datasets.doughnut.cutout = '85%';
 
+    this.chartInstance = new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        datasets: [{
+          label: 'My First Dataset',
+          data: [32, 27, 25, 16],
+          backgroundColor: [
+            'rgb(132, 90, 223)',
+            'rgb(35, 183, 229)',
+            'rgb(38, 191, 148)',
+            'rgb(245, 184, 73)',
+          ]
+        }]
+      },
+      plugins: [{
+        afterUpdate: (chart: any) => {
+          const arcs = chart.getDatasetMeta(0).data;
+
+          arcs.forEach((arc: any) => {
+            arc.round = {
+              x: (chart.chartArea.left + chart.chartArea.right) / 2,
+              y: (chart.chartArea.top + chart.chartArea.bottom) / 2,
+              radius: (arc.outerRadius + arc.innerRadius) / 2,
+              thickness: (arc.outerRadius - arc.innerRadius) / 2,
+              backgroundColor: arc.options.backgroundColor
+            };
+          });
+        },
+        afterDraw: (chart: any) => {
+          const { ctx, canvas } = chart;
+
+          chart.getDatasetMeta(0).data.forEach((arc: any) => {
+            const startAngle = Math.PI / 2 - arc.startAngle;
+            const endAngle = Math.PI / 2 - arc.endAngle;
+
+            ctx.save();
+            ctx.translate(arc.round.x, arc.round.y);
+            ctx.fillStyle = arc.options.backgroundColor;
+            ctx.beginPath();
+            ctx.arc(arc.round.radius * Math.sin(endAngle), arc.round.radius * Math.cos(endAngle), arc.round.thickness, 0, 2 * Math.PI);
+            ctx.closePath();
+            ctx.fill();
+            ctx.restore();
+          });
+        }
+      }]
+    });
 
   }
 
@@ -229,6 +280,8 @@ document.getElementById('courses-earnings').innerHTML = ''
 var chart1 = new ApexCharts(document.querySelector("#courses-earnings"), options);
 chart1.render();
 }
+
+
 
 }
 
