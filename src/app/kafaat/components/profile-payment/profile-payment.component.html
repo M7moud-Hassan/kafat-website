@@ -6,33 +6,15 @@
         <div class="payment-col-3 sub-title">عن طريق</div>
         <div class="payment-col-4 sub-title">التاريخ</div>
     </div>
-    <div *ngFor="let item of [1,2,3,4,5]">
-    <div class="payment-item d-flex align-items-center justify-content-center">
-        <div class="payment-col-1" style="text-align: right; ">
-            <div class="truncate-4-lines main-title" >كيف تختار كتاباً للقراءة</div>
-            <div class="program-main-primary">برنامج قارئ</div>
+    <div *ngFor="let item of paymentList">
+        <div class="payment-item d-flex align-items-center justify-content-center">
+            <div class="payment-col-1" style="text-align: right; ">
+                <div class="truncate-4-lines main-title">{{item.activityName}}</div>
+                <div class="program-main-primary">{{item.programName}}</div>
+            </div>
+            <div class="payment-col-2 sub-title-md">{{item.cost}}</div>
+            <div class="payment-col-3"> <img [src]="getImagePath(item.paymentMethod)" alt=""> </div>
+            <div class="payment-col-4 sub-title-md">{{transformDateToArabic(item.date)}}</div>
         </div>
-        <div class="payment-col-2 sub-title-md">٢٤٥ ريال</div>
-        <div class="payment-col-3"> <img src="/assets/images/payment-method-visa.svg" alt=""> </div>
-        <div class="payment-col-4 sub-title-md">١٢/٠٣/٢٠٢٣</div>
     </div>
-    <div class="payment-item d-flex align-items-center justify-content-center">
-        <div class="payment-col-1" style="text-align: right;">
-            <div class="truncate-4-lines main-title" >كيف تختار كتاباً للقراءة</div>
-            <div class="program-main-primary">برنامج قارئ</div>
-        </div>
-        <div class="payment-col-2 sub-title-md">٢٤٥ ريال</div>
-        <div class="payment-col-3"> <img src="/assets/images/payment-method-pay.svg" alt=""> </div>
-        <div class="payment-col-4 sub-title-md">١٢/٠٣/٢٠٢٣</div>
-    </div>
-    <div class="payment-item d-flex align-items-center justify-content-center">
-        <div class="payment-col-1" style="text-align: right;">
-            <div class="truncate-4-lines main-title" >كيف تختار كتاباً للقراءة</div>
-            <div class="program-main-primary">برنامج قارئ</div>
-        </div>
-        <div class="payment-col-2 sub-title-md">٢٤٥ ريال</div>
-        <div class="payment-col-3"> <img src="/assets/images/payment-method-stc-pay.svg" alt=""> </div>
-        <div class="payment-col-4 sub-title-md">١٢/٠٣/٢٠٢٣</div>
-    </div>
-</div>
 </div>

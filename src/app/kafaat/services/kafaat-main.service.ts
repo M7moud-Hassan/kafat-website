@@ -15,6 +15,7 @@ import { PostActivityService } from './post-activity.service';
 import { ProgramsService } from './programs.service';
 import { ContactUsService } from './contact-us.service';
 import { AboutUsService } from './about-us.service';
+import { PaymentService } from './payment.service';
 
 
 @Injectable({
@@ -39,6 +40,7 @@ export class KafaatMainService {
     private _programService:ProgramsService,
     private _contactUsService:ContactUsService,
     private _aboutUsService:AboutUsService,
+    private _paymentService:PaymentService,
 
     ) { }
 
@@ -87,7 +89,9 @@ export class KafaatMainService {
   get aboutUsService(): AboutUsService {
     return this._aboutUsService;
   }
-
+  get paymentService(): PaymentService {
+    return this._paymentService;
+  }
 
   get back(){
     return this._location.back();
