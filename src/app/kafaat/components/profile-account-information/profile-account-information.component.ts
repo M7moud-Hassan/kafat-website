@@ -7,6 +7,8 @@ import { FieldNames } from '../../core/static/field-names';
 import { EditFieldRequest } from '../../core/models/edit-field-request';
 import { CvImagePopupComponent } from 'src/app/shared/components/cv-image-popup/cv-image-popup.component';
 import { PdfPopupComponent } from '../pdf-popup/pdf-popup.component';
+import { NgxMatDateAdapter } from '@angular-material-components/datetime-picker';
+import { DateAdapter } from '@angular/material/core';
 
 @Component({
   selector: 'app-profile-account-information',
@@ -38,7 +40,10 @@ export class ProfileAccountInformationComponent  implements OnInit, AfterViewIni
   isSpecializationChanged:boolean=false;
   isNewSelectedFile:boolean=true;
 
-  constructor(private service:KafaatMainService,private adminService:MainDashoardService){}
+  constructor(private service:KafaatMainService,private adminService:MainDashoardService,private dateProvider:DateAdapter<Date>,private jak:NgxMatDateAdapter<Date>){
+    dateProvider.setLocale('ar-eg')
+    jak.setLocale('ar-sa')
+}
 
   ngAfterViewInit() {
     this.windowWidth = window.innerWidth;
@@ -496,4 +501,93 @@ export class ProfileAccountInformationComponent  implements OnInit, AfterViewIni
       }
     })
   }
+
+
+  onChangeDate(evnt:any){
+    const futureDate = evnt.value;
+    // .format('YYYY-MM-DD');
+    const y = futureDate.getFullYear();
+    const d = futureDate.getDate();
+    const m = futureDate.getMonth() + 1;
+    
+    const julianDay = this.gregorianToJulian(y, m, d);
+    const { year, month, day } = this.julianToHijri(julianDay);
+    this.profile.birthDateInHijri=`${year}-${month}-${day}`
+  }
+   hijriToJulian = (year:any, month:any, day:any) => {
+    return (
+      Math.floor((11 * year + 3) / 30) +
+      Math.floor(354 * year) +
+      Math.floor(30 * month) -
+      Math.floor((month - 1) / 2) +
+      day +
+      1948440 -
+      386
+    );
+  };
+  
+   gregorianToJulian = (year:any, month:any, day:any) => {
+    if (month < 3) {
+      year -= 1;
+      month += 12;
+    }
+  
+    const a = Math.floor(year / 100.0);
+    const b = year === 1582 && (month > 10 || (month === 10 && day > 4))
+        ? -10 :
+        year === 1582 && month === 10
+        ? 0 :
+        year < 1583
+        ? 0 :
+        2 - a + Math.floor(a / 4.0);
+  
+    return Math.floor(365.25 * (year + 4716)) + Math.floor(30.6001 * (month + 1)) + day + b - 1524;
+  };
+  
+   julianToHijri = (julianDay:number) => {
+    const y = 10631.0 / 30.0;
+    const epochAstro = 1948084;
+    const shift1 = 8.01 / 60.0;
+  
+     var z= julianDay - epochAstro;
+    const cyc = Math.floor(z / 10631.0);
+    z -= 10631 * cyc;
+    const j = Math.floor((z - shift1) / y);
+    z -= Math.floor(j * y + shift1);
+  
+    const year = 30 * cyc + j;
+    let month = Math.floor((z + 28.5001) / 29.5);
+    if (month === 13) {
+      month = 12;
+    }
+  
+    const day = z - Math.floor(29.5001 * month - 29);
+  
+    return { year: year, month: month, day: day };
+  };
+  
+   julianToGregorian = (julianDate:any) => {
+    let b = 0;
+    if (julianDate > 2299160) {
+      const a = Math.floor((julianDate - 1867216.25) / 36524.25);
+      b = 1 + a - Math.floor(a / 4.0);
+    }
+  
+    const bb = julianDate + b + 1524;
+    let cc = Math.floor((bb - 122.1) / 365.25);
+    const dd = Math.floor(365.25 * cc);
+    const ee = Math.floor((bb - dd) / 30.6001);
+  
+    const day = bb - dd - Math.floor(30.6001 * ee);
+    let month = ee - 1;
+  
+    if (ee > 13) {
+      cc += 1;
+      month = ee - 13;
+    }
+  
+    const year = cc - 4716;
+  
+    return { year: (year), month: (month), day: (day) };
+  };
 }

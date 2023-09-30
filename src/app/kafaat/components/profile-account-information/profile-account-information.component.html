@@ -138,22 +138,52 @@
             </div>
         </div>
         <!-- birth data milady and hijry -->
+
         <div class="row">
             <div class="col-12 col-md-6">
                 <div class="input-element-none-icon w-100 mt-4 ">
+                    <div class="input-group flex-nowrap" style="height: 60px;">
+                       <input  matInput  [matDatepicker]="picker"  [(ngModel)]="profile.birthDateInAD" (dateChange)="onChangeDate($event)"  placeholder="DD/MM/YYYY" type="text"
+                         class="none-icon form-control"
+                        aria-describedby="addon-wrapping">
+                        <mat-datepicker-toggle matSuffix class="border" [for]="picker"></mat-datepicker-toggle>
+                       <mat-datepicker #picker></mat-datepicker>
+                    <label for="birthDateInAD">تاريخ الميلاد (ميلادي)</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="input-element-none-icon w-100 mt-4 ">
+                    <div class="input-group flex-nowrap" style="height: 60px;">
+                        <input [value]="birthDateInHijriValue" readonly 
+                        placeholder="DD/MM/YYYY" 
+                        [value]="profile.birthDateInHijri"
+                        id="birthDateHijry" [(ngModel)]="profile.birthDateInHijri" (change)="EditField('BirthDateInHijri')" 
+                        class="form-control" [min]="minDate" [max]="maxDate" >
+                        <mat-datepicker-toggle matSuffix class="border" [for]="picker10"></mat-datepicker-toggle>
+                       
+                    <label for="birthDateInAD">تاريخ الميلاد (هجري)</label>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+
+        <!-- <div class="row">
+            <div class="col-12 col-md-6">
+                <div class="input-element-none-icon w-100 mt-4 ">
                     <input type="date" name="birthDate"
-                        id="birthDate" [(ngModel)]="profile.birthDateInAD" (change)="EditField('BirthDateInAD')" class="none-icon">
+                        id="birthDate"  (change)="EditField('BirthDateInAD')" class="none-icon">
                     <label for="birthDate">تاريخ الميلاد (ميلادي)</label>
                 </div>
             </div>
             <div class="col-12 col-md-6">
                 <div class="input-element-none-icon w-100 mt-4 ">
-                    <input type="date" name="birthDateHijry" [value]="profile.birthDateInHijri"
-                        id="birthDateHijry" [(ngModel)]="profile.birthDateInHijri" (change)="EditField('BirthDateInHijri')" class="none-icon">
+                    <input type="date" name="birthDateHijry" class="none-icon">
                     <label for="birthDateHijry">تاريخ الميلاد (هجري)</label>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- facebook and twitter -->
         <div class="row">
             <div class="col-12 col-md-6">
