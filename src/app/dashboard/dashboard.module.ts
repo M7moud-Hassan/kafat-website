@@ -86,6 +86,7 @@ import { EditKafaatFounderComponent } from './components/edit-kafaat-founder/edi
 import { KafaatFoundersComponent } from './components/kafaat-founders/kafaat-founders.component';
 import { DocumentedImagesComponent } from './components/documented-images/documented-images.component';
 import { ChangeUserCategoryPopUpComponent } from './components/change-user-category-pop-up/change-user-category-pop-up.component';
+import { TooltipDirective } from './core/directives/tooltip.directive';
 
 @NgModule({
   declarations: [
@@ -155,6 +156,7 @@ import { ChangeUserCategoryPopUpComponent } from './components/change-user-categ
       KafaatFoundersComponent,
       DocumentedImagesComponent,
       ChangeUserCategoryPopUpComponent,
+      TooltipDirective,
       // AddPostComponent,
   ],
   imports: [

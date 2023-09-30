@@ -1,12 +1,12 @@
 <div class="general-container">
-    <div class="mb-4 fw-bolder fs-5 pb-4"> نوثق اهم اللحظات </div>
+    <div class="mb-4 fw-bolder fs-5 pb-4  d-flex justify-content-start align-items-center"><div class="memories"></div><div class="d-inline-block ms-3" style="border-bottom: 4px solid #005183; padding-bottom: 15px;">نوثق اهم اللحظات </div>  </div>
     <div class="row">
         <div class="image-container" style="height: 600px;">
             <div class="image-bg-1" style="background-image: url('{{imageNumber1}}');"></div>
             <div class="icon-camera d-pointer">
                 <div class="row">
-                    <div class="col-12 col-md-5">
-                        <div (click)="eventImage1.click()" class="d-pointer"  class="d-flex align-items-center justify-content-center" style="min-height: 70px;">
+                    <div class="col-12 col-md-3">
+                        <div appTooltip="تعديل الصورة" (click)="eventImage1.click()" class="d-pointer"  class="d-flex align-items-center justify-content-center" style="min-height: 70px;">
                             <i class="fas fa-camera camera-icon" ></i>
                         </div>
                         <div class="ps-3">
@@ -16,9 +16,9 @@
                     <div *ngIf="imageInfo[0].isSaveButtonShown==true" class="col-12 col-md-2 d-flex align-items-center justify-content-center" style="min-height: 70px;">
                         <button (click)="saveImage()" class="bg-primary-opacity-btn">حــفظ</button>
                     </div>
-                    <div class="col-12 col-md-5">
+                    <div class="col-12 col-md-7">
                         <div class="image-size-description d-flex align-items-center justify-content-center" style="min-height: 70px;">
-                            أبعاد الصورة [ عرض : 447 , ارتفاع : 1225 ]
+                            أبعاد الصورة [ عرض : 1225 , ارتفاع : 447 ]
                         </div>
                     </div>
                 </div>
@@ -32,8 +32,8 @@
                 <div class="image-bg-2" style="background-image: url('{{imageNumber2}}');"></div>
                 <div class="icon-camera d-pointer">
                     <div class="row">
-                        <div class="col-12 col-md-3">
-                            <div (click)="eventImage2.click()" class="d-pointer"  class="d-flex align-items-center justify-content-center" style="min-height: 70px;">
+                        <div class="col-12 col-md-2">
+                            <div appTooltip="تعديل الصورة" (click)="eventImage2.click()" class="d-pointer"  class="d-flex align-items-center justify-content-center" style="min-height: 70px;">
                                 <i class="fas fa-camera camera-icon" ></i>
                             </div>
                             <div class="ps-3">
@@ -43,9 +43,9 @@
                         <div *ngIf="imageInfo[1].isSaveButtonShown==true" class="col-12 col-md-2 d-flex align-items-center justify-content-center" style="min-height: 70px;">
                             <button (click)="saveImage()" class="bg-primary-opacity-btn">حــفظ</button>
                         </div>
-                        <div class="col-12 col-md-7">
+                        <div class="col-12 col-md-8">
                             <div class="image-size-description d-flex align-items-center justify-content-center" style="min-height: 70px;">
-                                أبعاد الصورة [ عرض : 447 , ارتفاع : 1225 ]
+                                أبعاد الصورة [ عرض : 606 , ارتفاع : 300 ]
                             </div>
                         </div>
                     </div>
@@ -58,8 +58,8 @@
                 <div class="image-bg-3" style="background-image: url('{{imageNumber3}}');"></div>
                 <div class="icon-camera d-pointer">
                     <div class="row">
-                        <div class="col-12 col-md-3">
-                            <div (click)="eventImage3.click()" class="d-pointer"  class="d-flex align-items-center justify-content-center" style="min-height: 70px;">
+                        <div class="col-12 col-md-2">
+                            <div appTooltip="تعديل الصورة" (click)="eventImage3.click()" class="d-pointer"  class="d-flex align-items-center justify-content-center" style="min-height: 70px;">
                                 <i class="fas fa-camera camera-icon" ></i>
                             </div>
                             <div class="ps-3">
@@ -69,9 +69,9 @@
                         <div *ngIf="imageInfo[2].isSaveButtonShown==true" class="col-12 col-md-2 d-flex align-items-center justify-content-center" style="min-height: 70px;">
                             <button (click)="saveImage()" class="bg-primary-opacity-btn">حــفظ</button>
                         </div>
-                        <div class="col-12 col-md-7">
+                        <div class="col-12 col-md-8">
                             <div class="image-size-description d-flex align-items-center justify-content-center" style="min-height: 70px;">
-                                أبعاد الصورة [ عرض : 447 , ارتفاع : 1225 ]
+                                أبعاد الصورة [ عرض : 606 , ارتفاع : 300 ]
                             </div>
                         </div>
                     </div>
@@ -87,8 +87,8 @@
                     <div class="image-bg-4" style="background-image: url('{{imageNumber4}}');"></div>
                     <div class="icon-camera d-pointer">
                         <div class="row">
-                            <div class="col-12 col-md-5">
-                                <div (click)="eventImage4.click()" class="d-pointer"  class="d-flex align-items-center justify-content-center" style="min-height: 70px;">
+                            <div class="col-12 col-md-2">
+                                <div appTooltip="تعديل الصورة" (click)="eventImage4.click()" class="d-pointer"  class="d-flex align-items-center justify-content-center" style="min-height: 70px;">
                                     <i class="fas fa-camera camera-icon" ></i>
                                 </div>
                                 <div class="ps-3">
@@ -98,9 +98,9 @@
                             <div *ngIf="imageInfo[3].isSaveButtonShown==true" class="col-12 col-md-2 d-flex align-items-center justify-content-center" style="min-height: 70px;">
                                 <button (click)="saveImage()" class="bg-primary-opacity-btn">حــفظ</button>
                             </div>
-                            <div class="col-12 col-md-5">
+                            <div class="col-12 col-md-8">
                                 <div class="image-size-description d-flex align-items-center justify-content-center" style="min-height: 70px;">
-                                    أبعاد الصورة [ عرض : 447 , ارتفاع : 1225 ]
+                                    أبعاد الصورة [ عرض : 372 , ارتفاع : 342 ]
                                 </div>
                             </div>
                         </div>
@@ -113,8 +113,8 @@
                     <div class="image-bg-5" style="background-image: url('{{imageNumber5}}');"></div>
                     <div class="icon-camera d-pointer">
                         <div class="row">
-                            <div class="col-12 col-md-5">
-                                <div (click)="eventImage5.click()" class="d-pointer"  class="d-flex align-items-center justify-content-center" style="min-height: 70px;">
+                            <div class="col-12 col-md-2">
+                                <div appTooltip="تعديل الصورة" (click)="eventImage5.click()" class="d-pointer"  class="d-flex align-items-center justify-content-center" style="min-height: 70px;">
                                     <i class="fas fa-camera camera-icon" ></i>
                                 </div>
                                 <div class="ps-3">
@@ -124,9 +124,9 @@
                             <div *ngIf="imageInfo[4].isSaveButtonShown==true" class="col-12 col-md-2 d-flex align-items-center justify-content-center" style="min-height: 70px;">
                                 <button (click)="saveImage()" class="bg-primary-opacity-btn">حــفظ</button>
                             </div>
-                            <div class="col-12 col-md-5">
+                            <div class="col-12 col-md-8">
                                 <div class="image-size-description d-flex align-items-center justify-content-center" style="min-height: 70px;">
-                                    أبعاد الصورة [ عرض : 447 , ارتفاع : 1225 ]
+                                    أبعاد الصورة [ عرض : 372 , ارتفاع : 342 ]
                                 </div>
                             </div>
                         </div>
@@ -142,7 +142,7 @@
                     <div class="icon-camera d-pointer" >
                         <div class="row">
                             <div class="col-12 ">
-                                <div (click)="eventImage6.click()" class="d-pointer"  class="d-flex align-items-center justify-content-center" style="min-height: 70px;">
+                                <div appTooltip="تعديل الصورة" (click)="eventImage6.click()" class="d-pointer"  class="d-flex align-items-center justify-content-center" style="min-height: 70px;">
                                     <i class="fas fa-camera camera-icon" ></i>
                                 </div>
                                 <div class="ps-3">
@@ -154,7 +154,7 @@
                             </div>
                             <div class="col-12 ">
                                 <div class="image-size-description d-flex align-items-center justify-content-center" style="min-height: 70px;">
-                                    أبعاد الصورة [ عرض : 447 , ارتفاع : 1225 ]
+                                    أبعاد الصورة [ عرض : 502 , ارتفاع : 764 ]
                                 </div>
                             </div>
                         </div>

@@ -33,12 +33,12 @@
                   <td class="table-date" style="cursor: pointer;">{{item.role=='admin'?'مشرف':'عضو'}}</td>
                   <td class="table-date">
                     <div>
-                      <button class="btn action-button" data-toggle="tooltip" data-placement="top" title="Tooltip on top" (click)="restoreUserToJoinRequestState(item.id)"><i class="fa-solid fa-user-xmark" style="color: red;"></i></button>
-                      <button class="btn action-button" (click)="viewUserProfile(item.id)"><i class="fa-solid fa-eye" style="color: var(--main-color)"></i></button>
-                      <button class="btn action-button" (click)="changeUserRoleship(item.id)"><i class="fa-solid fa-arrows-rotate" style="color: var(--dark-default-color);"></i></button>
-                      <button class="btn action-button" (click)="sendEmailToUser(item.id)"><i class="fa-solid fa-paper-plane" style="color: var(--dark-default-color)"></i></button>
-                      <button class="btn action-button" (click)="changeUserCategory(item.id)"><i class="fa-solid fa-restroom" style="color: var(--dark-default-color);"></i></button>
-                      <button class="btn action-button" (click)="deleteAccount(item.email)"><i class="far fa-trash-alt" style="color: rgb(245, 29, 29);"></i></button>
+                      <button appTooltip="وضع المستخدم فى حالة طلب إنضمام" class="btn action-button" (click)="restoreUserToJoinRequestState(item.id)"><i class="fa-solid fa-user-xmark" style="color: red;"></i></button>
+                      <button appTooltip="عرض الملف الشخصى" class="btn action-button" (click)="viewUserProfile(item.id)"><i class="fa-solid fa-eye" style="color: var(--main-color)"></i></button>
+                      <button appTooltip="تغيير الدور الوظيفى" class="btn action-button" (click)="changeUserRoleship(item.id)"><i class="fa-solid fa-arrows-rotate" style="color: var(--dark-default-color);"></i></button>
+                      <button appTooltip="إرسال رسالة عبر البريد الإليكترونى" class="btn action-button" (click)="sendEmailToUser(item.id)"><i class="fa-solid fa-paper-plane" style="color: var(--dark-default-color)"></i></button>
+                      <button appTooltip="تغيير فئة المستخدم" class="btn action-button" (click)="changeUserCategory(item.id)"><i class="fa-solid fa-restroom" style="color: var(--dark-default-color);"></i></button>
+                      <button appTooltip="حذف الحساب" class="btn action-button" (click)="deleteAccount(item.email)"><i class="far fa-trash-alt" style="color: rgb(245, 29, 29);"></i></button>
                     </div>    
                   </td>
               </tr>

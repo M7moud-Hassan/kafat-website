@@ -30,9 +30,9 @@
                   <td class="table-date" style="cursor: pointer;">{{item.email}}</td>
                    <td class="table-date">
                     <div>
-                      <button *ngIf="!item.isDistinguished" class="btn action-button" data-toggle="tooltip" data-placement="top" title="Tooltip on top" (click)="addDis(item.id)"><i class="fa-solid fa-user" style="color: black;"></i></button>
-                      <button *ngIf="item.isDistinguished" class="btn action-button" data-toggle="tooltip" data-placement="top" title="Tooltip on top" (click)="removeDis(item.id)"><i class="fa-solid fa-user" style="color: goldenrod;"></i></button>
-                      <button class="btn action-button" (click)="viewUserProfile(item.id)"><i class="fa-solid fa-eye" style="color: var(--main-color)"></i></button>
+                      <button appTooltip="اضافة المستخدم إلى المتميزون"  *ngIf="!item.isDistinguished" class="btn action-button"  (click)="addDis(item.id)"><i class="fa-solid fa-user" style="color: black;"></i></button>
+                      <button appTooltip="حذف المستخدم من المتميزون"  *ngIf="item.isDistinguished" class="btn action-button"  (click)="removeDis(item.id)"><i class="fa-solid fa-user" style="color: goldenrod;"></i></button>
+                      <button appTooltip="عرض الملف الشخصى"  class="btn action-button" (click)="viewUserProfile(item.id)"><i class="fa-solid fa-eye" style="color: var(--main-color)"></i></button>
                      </div>    
                   </td>
               </tr>
