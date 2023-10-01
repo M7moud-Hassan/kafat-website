@@ -627,14 +627,6 @@ export class ProfileAccountInformationComponent  implements OnInit, AfterViewIni
 
   editBirthDate(){
     let _userEmail = this.service.authService.currentUser().email;
-    // const date_ad =  new Date(this.profile.birthDateInAD);
-    // const date_hijri =  new Date(this.profile.birthDateInHijri);
-    //  alert(date_ad);
-    //  alert(date_hijri);
-    // let model = {email: _userEmail ,birthDateInHijri:this.profile.birthDateInHijri ,birthDateInAD:this.profile.birthDateInAD };
-    // this.birthDateObj = {hijry: this.profile.birthDateInHijri ,milady:this.profile.birthDateInAD};
-    alert(this.birthDateObj.hijry);
-    alert(this.birthDateObj.milady);
     let model = {email: _userEmail ,birthDateInHijri: this.birthDateObj.hijry ,birthDateInAD : this.birthDateObj.milady};
     this.service.profileService.editProfileBirthDate(model).subscribe({
       next:(res:ResponseVM)=>{
