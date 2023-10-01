@@ -32,7 +32,7 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
   specializations:any[]=[];
   workTypes:any[]=[];
   userProfileImage:string = '/assets/images/male.png';
-
+  birthDateObj:any = {hijry:'',milady:''};
   birthDateInHijriValue=''
   constructor(private service:KafaatMainService,private adminService:MainDashoardService,
     private dateProvider:DateAdapter<Date>,private jak:NgxMatDateAdapter<Date>){
@@ -59,7 +59,37 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
     
     const julianDay = this.gregorianToJulian(y, m, d);
     const { year, month, day } = this.julianToHijri(julianDay);
-    this.birthDateInHijriValue=`${year}-${month}-${day}`
+    this.birthDateInHijriValue=`${year}-${month}-${day}`;
+
+    let _m = month>9?`${month}`:`0${month}`;//1416-08-31 21:54:51.0000000
+    let _d = day>9?`${day}`:`0${day}`;
+
+    let _m2 = m>9?`${m}`:`0${m}`;//1416-08-31 21:54:51.0000000
+    let _d2 = d>9?`${d}`:`0${d}`;
+    const updatedMiladyDate = `${y}-${_m2}-${_d2} 00:00:00.0000000`;
+    const updatedHijryDate = `${year}-${_m}-${_d} 00:00:00.0000000`;
+    let birthHijry = new Date(updatedHijryDate).toISOString();
+
+    this.birthDateInHijri.setValue(updatedHijryDate);
+    this.birthDateObj = {hijry: birthHijry ,milady:updatedMiladyDate};
+    this.displayHijriDateInItsFormat(this.birthDateObj.hijry);
+  }
+  
+  displayHijriDateInItsFormat(bithDateinAd:any){
+    this.birthDateInHijri.setValue(this.transformDateToArabic(bithDateinAd));
+    // alert(this.profile.birthDateInHijri);
+  }
+
+
+  transformDateToArabic(date: string): string {
+    date = date.slice(0,10);
+    const arabicDigits = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
+  
+    const transformedDate = date.replace(/\d/g, (digit) => {
+      return arabicDigits[parseInt(digit)];
+    });
+    let newTransformedDate = transformedDate.split('-');
+    return `${newTransformedDate[0]}/${newTransformedDate[1]}/${newTransformedDate[2]}`;
   }
    hijriToJulian = (year:any, month:any, day:any) => {
     return (
@@ -446,6 +476,8 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
     }
   }
   submit() {
+    this.birthDateInHijri.setValue(this.birthDateObj.hijry);
+    this.birthDateInAD.setValue(this.birthDateObj.milady);
     this.markFormAsTouched();
     if(this.isAvailableToWork.value == true && !this.formData.has('cvFile')){
       this.errorMessage = "من فضلك قم بارفاق السيرة الذاتية";
