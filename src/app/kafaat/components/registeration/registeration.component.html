@@ -311,7 +311,7 @@
                 <div *ngIf="fileSize > 0 && errorMessage == ''" class="p-3 d-flex justify-content-between align-items-center select-file-bg">
                     <div>{{fileSize|number:'1.2-2'}} MB</div>
                     <div>
-                        <a class="text-decoration-none d-pointer">عرض</a>
+                        <a class="text-decoration-none d-pointer" (click)="showCV()">عرض</a>
                         <span class="px-3">{{fileName}}</span>
                         <img src="/assets/images/file-small-image.svg" alt="">
                     </div>

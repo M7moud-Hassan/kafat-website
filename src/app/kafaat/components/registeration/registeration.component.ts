@@ -5,6 +5,9 @@ import { MainDashoardService } from 'src/app/dashboard/services/main-dashoard.se
 import { ResponseVM } from '../../core/models/response-vm';
 import { DateAdapter } from '@angular/material/core';
 import { NgxMatDateAdapter } from '@angular-material-components/datetime-picker';
+import { PdfPopupComponent } from '../pdf-popup/pdf-popup.component';
+import { CvImagePopupComponent } from 'src/app/shared/components/cv-image-popup/cv-image-popup.component';
+import { PdfViewrComponent } from '../pdf-viewr/pdf-viewr.component';
 @Component({
   selector: 'app-registeration',
   templateUrl: './registeration.component.html',
@@ -386,11 +389,12 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
     this.fileSize = image.size/(1024*1024);
     this.fileName = image.name;
      this.cv_file = URL.createObjectURL(image);
-    //  this.form.controls['cvFile'].setValue(image);  
+    //  alert(this.fileName);
+    //  this.form.controls['cvFile'].setValue(image);
+    console.log("+++++++++++++++++++++++++++++++++++++++++ "+image)  
      this.formData.append('cvFile',image);
      console.log(this.formData.get('cvFile'));
   }
-
   onUserImageSelected(event: any) {
     event.preventDefault();
     const image = event.target.files[0];
@@ -628,6 +632,36 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
   changeSpecialization(){
     let id = this.specializationId.value;
     this.loadDepartments(id);
+  }
+
+
+  showCV(){
+    const cvFileName = this.cv_file;
+    // const cvFileName = this.userProfileImage;
+    if(this.fileName.toLowerCase().includes('.pdf')){
+      this.showPDFCv(cvFileName);
+    }else{
+      this.showImageCv(cvFileName);
+    }
+  }
+  showPDFCv(cv:any){
+    this.service.dialog.open(PdfViewrComponent,{
+      width:'75%',
+      height:'90%',
+      data:{
+        cvPdf:cv,
+      }
+    })
+  }
+  showImageCv(cv:any){
+    const dialogRef = this.service.dialog.open(CvImagePopupComponent, {
+      // width:this.windowWidth<767?'99%':(this.windowWidth<1300?'60%':'50%'),
+      width:'75%',
+      height:'90%',
+      data:{
+        cvImage:cv,
+      }
+    })
   }
 }
 
