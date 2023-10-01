@@ -1,5 +1,9 @@
 import { Component,ElementRef,Renderer2,Type,AfterViewInit, ViewChild } from '@angular/core';
+import { ContactInformationModel } from 'src/app/dashboard/core/models/contact-information-model';
 import { DisplayContentComponent } from 'src/app/shared/components/display-content/display-content.component';
+import { KafaatMainService } from '../../services/kafaat-main.service';
+import { MainDashoardService } from 'src/app/dashboard/services/main-dashoard.service';
+import { ResponseVM } from '../../core/models/response-vm';
 
 @Component({
   selector: 'app-home-page',
@@ -8,10 +12,46 @@ import { DisplayContentComponent } from 'src/app/shared/components/display-conte
 })
 export class HomePageComponent implements AfterViewInit{
   showOverlay = false;
+  contactInformationItems:ContactInformationModel = {
+    id:0,
+    email:'',
+    facebookLink:'',
+    instagramLink:'',
+    location:'',
+    snapchatLink:'',
+    telegramLink:'',
+    title:'',
+    twitterLink:'',
+    whatsapp:'',
+    youtubeLink:'',
+    linkedInLink:'',
+    introductoryVideoLink:'',
+  };
   
-  constructor(private renderer: Renderer2, private el: ElementRef) {
+  constructor(private renderer: Renderer2, private el: ElementRef,private service:MainDashoardService) {
    
     
+  }
+
+  loadInformationContact(){
+    this.service.contactInformationService.get().subscribe({
+      next:(res:ResponseVM)=>{
+        if (res.statusCode == 200) {
+          this.contactInformationItems = res.data as ContactInformationModel;
+        } 
+        else {
+          this.service.toastService.error(res.message);
+        }
+      },error:(error)=>{
+        let errorMessage = 'حدث خطأ غير متوقع';
+        if (error.error && typeof error.error === 'string') {
+          errorMessage = error.error; // Use the error message from the 'error' property
+        } else if (error.message) {
+          errorMessage = error.message; // Use the 'message' property if available
+        }
+        this.service.toastService.error(errorMessage);
+      }
+    });
   }
   ngAfterViewInit(): void {
     this.playAnimation()
