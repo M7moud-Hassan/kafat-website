@@ -22,18 +22,23 @@
                 <div class="row">
                     <div class="col-6">
                         <div class="links-title">البرامج</div>
-                        <a routerLink="#" class="link-item">برنامج قارئ</a>
-                        <a routerLink="#" class="link-item">برنامج قائد</a>
+                        <a [routerLink]="['/kafaat/program-details/',programs[0].id]" class="link-item">{{programs[0].title}}</a>
+                        <a [routerLink]="['/kafaat/program-details/',programs[1].id]" class="link-item">{{programs[1].title}}</a>
+                        <a [routerLink]="['/kafaat/program-details/',programs[2].id]" class="link-item">{{programs[2].title}}</a>
+                        <a [routerLink]="['/kafaat/program-details/',programs[3].id]" class="link-item">{{programs[3].title}}</a>
+                        <a [routerLink]="['/kafaat/program-details/',programs[4].id]" class="link-item">{{programs[4].title}}</a>
+                        <a [routerLink]="['/kafaat/program-details/',programs[5].id]" class="link-item">{{programs[5].title}}</a>
+                        <!-- <a routerLink="#" class="link-item">برنامج قائد</a>
                         <a routerLink="#" class="link-item">برنامج كاتب</a>
                         <a routerLink="#" class="link-item">برنامج ماهر</a>
-                        <a routerLink="#" class="link-item">برنامج مثقف</a>
+                        <a routerLink="#" class="link-item">برنامج مثقف</a> -->
                     </div>
                     <div class="col-6">
                         <div class="links-title">روابط سريعة</div>
-                        <a routerLink="#" class="link-item">عن كفاءات</a>
-                        <a routerLink="#" class="link-item">متميزون الشهر</a>
-                        <a routerLink="#" class="link-item">مشاركات</a>
-                        <a routerLink="#" class="link-item">معرض الصور والفيديوهات</a>
+                        <a routerLink="/kafaat/about" class="link-item">عن كفاءات</a>
+                        <a routerLink="/kafaat/winners" class="link-item">متميزون الشهر</a>
+                        <a routerLink="/kafaat/famous-posts" class="link-item">مشاركات</a>
+                        <a routerLink="/kafaat/post-people" class="link-item">معرض الصور والفيديوهات</a>
                         <a routerLink="#" class="link-item">البث المباشر</a>
                     </div>
                 </div>

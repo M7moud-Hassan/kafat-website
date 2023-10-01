@@ -9,7 +9,9 @@ import { ResponseVM } from 'src/app/kafaat/core/models/response-vm';
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent implements OnInit {
+  
   year:any;
+  programs:any[]
   contactInformationItems:ContactInformationModel = {
     id:0,
     email:'',
@@ -35,6 +37,11 @@ export class FooterComponent implements OnInit {
   
 
   get(){
+    this.service.programsService.getAll().subscribe(res=>{
+      if(res.statusCode=='200'){
+        this.programs=res.data
+      }
+    })
     this.service.contactInformationService.get().subscribe({
       next:(res:ResponseVM)=>{
         if (res.statusCode == 200) {

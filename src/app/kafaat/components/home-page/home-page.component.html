@@ -56,7 +56,7 @@
     <!-- <app-form-contact></app-form-contact> -->
     <!-- <app-month-faamous></app-month-faamous> -->
     <div class="overlay" *ngIf="showOverlay"></div>
-    <a href="https://api.whatsapp.com/send?phone=201012139683" class="position-fixed bottom-0" style="z-index: 1000;"><img src="assets/images/Whatsapp.svg" alt=""></a>
+    <a [href]="'https://api.whatsapp.com/send?phone='+contactInformationItems.whatsapp" class="position-fixed bottom-0" style="z-index: 1000;"><img src="assets/images/Whatsapp.svg" alt=""></a>
     <!-- <app-tabs-container></app-tabs-container> -->
 </div>
 <div class="divider-section"></div>
