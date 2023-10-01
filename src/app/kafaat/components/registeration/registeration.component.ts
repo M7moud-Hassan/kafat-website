@@ -69,15 +69,14 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
     const updatedMiladyDate = `${y}-${_m2}-${_d2} 00:00:00.0000000`;
     const updatedHijryDate = `${year}-${_m}-${_d} 00:00:00.0000000`;
     let birthHijry = new Date(updatedHijryDate).toISOString();
-
-    this.birthDateInHijri.setValue(updatedHijryDate);
     this.birthDateObj = {hijry: birthHijry ,milady:updatedMiladyDate};
     this.displayHijriDateInItsFormat(this.birthDateObj.hijry);
+
   }
-  
-  displayHijriDateInItsFormat(bithDateinAd:any){
-    this.birthDateInHijri.setValue(this.transformDateToArabic(bithDateinAd));
-    // alert(this.profile.birthDateInHijri);
+ 
+  displayHijriDateInItsFormat(bithDateinAd:string){
+    let arabicDate = this.transformDateToArabic(bithDateinAd);
+    this.birthDateInHijriValue = arabicDate;
   }
 
 
