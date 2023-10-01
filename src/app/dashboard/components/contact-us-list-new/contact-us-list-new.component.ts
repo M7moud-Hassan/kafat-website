@@ -51,6 +51,7 @@ export class ContactUsListNewComponent implements OnInit ,AfterViewInit {
       width:this.windowWidth<767?'99%':(this.windowWidth<1300?'50%':'40%'),
       data:{
         id:id,
+        label:"إضافة رد",
         message:element.message,
         responseMessage:element.responseMessage,
         is_responseMessage_control_Disabled:false

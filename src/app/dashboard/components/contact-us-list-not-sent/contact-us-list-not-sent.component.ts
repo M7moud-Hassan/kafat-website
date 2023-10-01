@@ -52,6 +52,7 @@ export class ContactUsListNotSentComponent implements OnInit ,AfterViewInit {
       data:{
         id:id,
         message:element.message,
+        label:"تعديل الرد",
         responseMessage:element.responseMessage,
         is_responseMessage_control_Disabled:false
       }

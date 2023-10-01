@@ -37,6 +37,7 @@ export class SendEmailPopUpComponent implements OnInit {
   }
   submit() {
     this.id.setValue(`${this.data.id}`);
+
     if(this.form.valid){
       this.adminService.membersService.sendEmailToUser(this.form.value).subscribe({
         next:(response:ResponseVM)=>{

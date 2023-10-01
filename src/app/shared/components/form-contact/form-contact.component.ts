@@ -41,9 +41,9 @@ export class FormContactComponent implements OnInit {
       this.service.contactUsService.sendMessage(this.form.value).subscribe({
         next:(response:ResponseVM)=>{
           if(response.statusCode==200){
-            this.adminService.toastService.success(response.message);
+            this.service.toastService.success(response.message);
           }else{
-            this.adminService.toastService.error(response.message);
+            this.service.toastService.error(response.message);
           }
           this.form.reset();
         },

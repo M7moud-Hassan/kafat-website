@@ -14,9 +14,11 @@ export class ContactUsAddOrUpdateResponsePopUpComponent implements OnInit {
   form:FormGroup = new FormGroup({});
   userMessage:string='msg';
   isDisabled:boolean = false;
+  titleHeader:any;
   constructor(private service:KafaatMainService,private adminService:MainDashoardService,private dialogRef: MatDialogRef<ContactUsAddOrUpdateResponsePopUpComponent>,@Inject(MAT_DIALOG_DATA) public data: any){}
   ngOnInit(): void {
     this.createForm();
+    this.titleHeader=this.data.label;
     this.userMessage=this.data.message;
     this.responseMessage.setValue(this.data.responseMessage);
     this.isDisabled = this.data.is_responseMessage_control_Disabled;
