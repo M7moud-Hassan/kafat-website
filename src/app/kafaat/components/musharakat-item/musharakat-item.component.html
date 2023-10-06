@@ -1,5 +1,6 @@
 
     <div class="row">
+        <app-nav-activities [programId]="programId" (numberSelected)="selectActivity($event)"></app-nav-activities>
     <div *ngFor="let item of listItems" class="col-12 col-md-4">
         <div  class="manashet-card d-pointer">
         <div class="manashet-card-container">

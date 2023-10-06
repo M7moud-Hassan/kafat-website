@@ -36,10 +36,7 @@ export class ScrollNavComponent  implements OnInit,AfterViewInit{
    })
   }
 
-  getIterationCount(): number[] {
-    const count = 7 - this.itemsDisplay.length-2;
-    return count > 0 ? new Array(count) : [];
-  }
+
  
   index:number=0;
   onTap(index:number):void{

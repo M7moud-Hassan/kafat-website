@@ -32,6 +32,7 @@ import { SpinnersInterceptor } from './core/Interceptors/spinners.interceptor';
 import { CvImagePopupComponent } from './components/cv-image-popup/cv-image-popup.component';
 import { EmptyDataComponent } from './components/empty-data/empty-data.component';
 import { MaskedImageComponent } from './components/masked-image/masked-image.component';
+import { NavActivitiesComponent } from './components/nav-activities/nav-activities.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { MaskedImageComponent } from './components/masked-image/masked-image.com
     SpinnerComponent,
     CvImagePopupComponent,
     EmptyDataComponent,
-    MaskedImageComponent
+    MaskedImageComponent,
+    NavActivitiesComponent
   ],
   imports: [
     CommonModule,
@@ -107,7 +109,8 @@ import { MaskedImageComponent } from './components/masked-image/masked-image.com
     SpinnerComponent,
     CvImagePopupComponent,
     EmptyDataComponent,
-    MaskedImageComponent
+    MaskedImageComponent,
+    NavActivitiesComponent
   ],
   providers: [
     {

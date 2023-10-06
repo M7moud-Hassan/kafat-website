@@ -14,6 +14,9 @@ export class ProgramsService {
   geAll():Observable<ResponseVM>{
     return this.http.get<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/get-all`)
   }
+  getActivities(id:any):Observable<ResponseVM>{
+    return this.http.get<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/get-activities/${id}`)
+  }
   getById(id:any):Observable<ResponseVM>{
     return this.http.get<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/get-by-id/${id}`)
   }
