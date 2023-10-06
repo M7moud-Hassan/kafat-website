@@ -307,18 +307,14 @@
                 <small class="error-text"> حقل وجه التميز مطلوب</small>
             </div>
         </div>
-        <div class="divider"></div>
-        <div class="details-title">معلومات السيرة الذاتية</div>
-        <div>
-        <div class="row">
-            <div class="col-12 col-md-6">
-                <div class="d-flex justify-content-right align-items-center">
-                    <input type="checkbox" class="Square_Sign_checkboxButton" [checked]="profile.isAvailableToWork==true" (change)="EditField('IsAvailableToWork')" style="width: auto; border: none;"  [(ngModel)]="profile.isAvailableToWork" name="isAvailableToWork" id="isAvailableToWork">
-                    <span for="make d-inline-block">متاح لفرصة عمل</span>
-                </div>
+        <div class="w-100">
+            <div class="input-element-none-icon w-100 mt-4 ">
+                <input type="text" name="experience" id="experience" (blur)="EditField('Experience')" [(ngModel)]="profile.experience"
+                    class="none-icon">
+                <label for="experience">الخبرات</label>
             </div>
         </div>
-        </div>
+       
         <div class="row mt-3">
             <div class="col-12 col-md-4">
                 <!-- qualification -->
@@ -395,6 +391,20 @@
                 </div>
             </div>
         </div>
+
+        <div class="divider"></div>
+        <div class="details-title">معلومات السيرة الذاتية</div>
+        <div>
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <div class="d-flex justify-content-right align-items-center">
+                    <input type="checkbox" class="Square_Sign_checkboxButton" [checked]="profile.isAvailableToWork==true" (change)="EditField('IsAvailableToWork')" style="width: auto; border: none;"  [(ngModel)]="profile.isAvailableToWork" name="isAvailableToWork" id="isAvailableToWork">
+                    <span for="make d-inline-block">متاح لفرصة عمل</span>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div *ngIf="profile.isAvailableToWork==true">
         <div class="sub-title mb-2 mt-3">السيرة الذاتية</div>
         <div class="dashed-container d-flex justify-content-between align-items-center">
             <div class="d-flex justify-content-start align-items-center">
@@ -421,6 +431,7 @@
                 <span class="px-3">{{fileName}}</span>
                 <img src="/assets/images/file-small-image.svg" alt="">
             </div>
+        </div>
         </div>
 </div>
 <app-profile-change-password *ngIf="isPasswordPageVisible" (valueEmitted)="valueEmitted($event)"></app-profile-change-password>

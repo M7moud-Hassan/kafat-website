@@ -32,4 +32,5 @@ export interface IProfile {
     hoppies:string,
     cvPath:string,
     userImagePath:string,
+    experience:string,
 }

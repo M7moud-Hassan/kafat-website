@@ -461,6 +461,12 @@
     color: red;
     padding-top: 5px;
 }
+.success-text{
+  font-size: 10px;
+  padding-right: 30px;
+  color: green;
+  padding-top: 5px;
+}
 
 /* ==================================input text, radio , date and checkbox========================================================================================= */
     input[type=radio].defaultRadioButton {

@@ -26,4 +26,5 @@ export class FieldNames {
     public static Hoppies:string = "Hoppies";
     public static CVImage:string = "CVImage";
     public static UserImage:string = "UserImage";
+    public static Experience:string = "Experience";
 }

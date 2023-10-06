@@ -68,6 +68,29 @@ export class ProfileChangePasswordComponent  implements OnInit {
     }
   }
   
+  passwordValidityResult:string='';
+  isPasswodValid:boolean=false;
+  checkPasswordValidity(){
+    let userId = this.service.authService.currentUser().id;
+    let model = {UserId:userId,Password:this.oldPassword.value};
+    if(this.oldPassword.value.length>0)
+    this.service.profileService.IsPasswordValid(model).subscribe({
+      next:(res:ResponseVM)=>{
+        if (res.statusCode == 200) {
+          this.isPasswodValid = res.data;
+          this.passwordValidityResult = res.message;
+        } 
+      },error:(error)=>{
+        let errorMessage = 'حدث خطأ غير متوقع';
+        if (error.error && typeof error.error === 'string') {
+          errorMessage = error.error; // Use the error message from the 'error' property
+        } else if (error.message) {
+          errorMessage = error.message; // Use the 'message' property if available
+        }
+      }
+    });
+  }
+  
   get oldPassword(){
     return this.form.controls['oldPassword'];
   }

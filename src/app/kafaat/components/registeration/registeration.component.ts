@@ -34,6 +34,7 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
   qualifications:any[]=[];
   specializations:any[]=[];
   workTypes:any[]=[];
+  distinguishedTypes:any[]=[];
   userProfileImage:string = '/assets/images/male.png';
   birthDateObj:any = {hijry:'',milady:''};
   birthDateInHijriValue=''
@@ -51,6 +52,7 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
     this.loadFamilyBranches();
     this.loadWorkTypes();
     this.loadQualifications();
+    this.loadDistinguishedTypes();
     // this.onChangeDate();
   }
   onChangeDate(evnt:any){
@@ -179,30 +181,25 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
       this.userProfileImage = '/assets/images/female.png';
     }
   }
-  changeAvailableToWorkValue(){
-    this.isAvailableToWorkChecked=!this.isAvailableToWorkChecked
-    if(this.isAvailableToWork.value){
-        this.qualificationId.setValidators([Validators.required]);
-        this.specializationId.setValidators([Validators.required]);
-        this.departmentId.setValidators([Validators.required]);
-        this.workTypeId.setValidators([Validators.required]);
-        this.hoppies.setValidators([Validators.required]);
-        this.cvFile.setValidators([Validators.required]);
-
-    }else{
-      this.qualificationId.clearValidators();
-      this.specializationId.clearValidators();
-      this.departmentId.clearValidators();
-      this.workTypeId.clearValidators();
-      this.hoppies.clearValidators();
+  changeAvailableToWorkValue() {
+    this.isAvailableToWorkChecked = !this.isAvailableToWorkChecked;
+    if (this.isAvailableToWork.value) {
+      this.cvFile.setValidators([Validators.required]);
+    } else {
       this.cvFile.clearValidators();
     }
-        this.qualificationId.updateValueAndValidity();
-        this.specializationId.updateValueAndValidity();
-        this.departmentId.updateValueAndValidity();
-        this.workTypeId.updateValueAndValidity();
-        this.hoppies.updateValueAndValidity();
-        this.cvFile.updateValueAndValidity();
+    this.cvFile.updateValueAndValidity();
+  }
+  loadDistinguishedTypes(){
+    this.adminService.distinguishedTypeService.getAll().subscribe({
+      next:(res:ResponseVM)=>{
+        if(res.statusCode==200){
+          this.distinguishedTypes = res.data
+        }else{
+          this.adminService.toastService.error(res.message);
+        }
+      }
+    });
   }
   loadCountries(){
     this.adminService.countryService.getAll().subscribe({
@@ -306,21 +303,26 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
       firstName:['',[Validators.required]],
       middleName:['',[Validators.required]],
       lastName:['',[Validators.required]],
-      gender:['',[Validators.required]],
+      gender:[null,[Validators.required]],
       identityNumber:['',[Validators.required]],
       birthDateInHijri:['',[Validators.required]],
       birthDateInAD:['',[Validators.required]],
-      countryId:[0,[Validators.required]],
-      cityId:[0,[Validators.required]],
-      districtId:[0,[Validators.required]],
-      familyBranchId:[0,[Validators.required]],
-      maritalStatus:['',[Validators.required]],
+      countryId:[null,[Validators.required]],
+      cityId:[null,[Validators.required]],
+      districtId:[null,[Validators.required]],
+      familyBranchId:[null,[Validators.required]],
+      maritalStatus:[null,[Validators.required]],
       isAvailableToWork:[true,[Validators.required]],
-      qualificationId:[0,[Validators.required]],
-      specializationId:[0,[Validators.required]],
-      departmentId:[0,[Validators.required]],
-      workTypeId:[0,[Validators.required]],
+      qualificationId:[null,[Validators.required]],
+      specializationId:[null,[Validators.required]],
+      departmentId:[null,[Validators.required]],
+      workTypeId:[null,[Validators.required]],
       hoppies:['',[Validators.required]],
+      distinguishedTypeId:[0,[Validators.required]],
+      twitterLink :['',[Validators.required]],
+      facebookLink :['',[Validators.required]],
+      nickName :['',[Validators.required]],
+      experience :['',[Validators.required]],
       cvFile:['',[]],
       userImage:['',[]],
     });
@@ -350,32 +352,11 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
     this.form.controls['departmentId'].markAsTouched();
     this.form.controls['workTypeId'].markAsTouched();
     this.form.controls['hoppies'].markAsTouched();
-  }
- ____loadData(){
-        this.form.controls['email'].setValue('email002@gmail.com');
-        this.form.controls['phoneNumber'].setValue('01282431370');
-        this.form.controls['password'].setValue('asd123ASD!@#');
-        this.form.controls['confirmPassword'].setValue('asd123ASD!@#');
-        this.form.controls['isApproved'].setValue(false);
-        this.form.controls['displayName'].setValue('mahmoud Elsayed');
-        this.form.controls['firstName'].setValue('mahmoud');
-        this.form.controls['middleName'].setValue('elsayed');
-        this.form.controls['lastName'].setValue('abdelmoughiss');
-        this.form.controls['gender'].setValue('m');
-        this.form.controls['identityNumber'].setValue('3893763783673');
-        this.form.controls['birthDateInHijri'].setValue('2000-01-01');
-        this.form.controls['birthDateInAD'].setValue('2000-01-01');
-        this.form.controls['countryId'].setValue(1);
-        this.form.controls['cityId'].setValue(1);
-        this.form.controls['districtId'].setValue(1);
-        this.form.controls['familyBranchId'].setValue(1);
-        this.form.controls['maritalStatus'].setValue('s');
-        this.form.controls['isAvailableToWork'].setValue(true);
-        this.form.controls['qualificationId'].setValue(1);
-        this.form.controls['specializationId'].setValue(1);
-        this.form.controls['departmentId'].setValue(1);
-        this.form.controls['workTypeId'].setValue(1);
-        this.form.controls['hoppies'].setValue('swimming');
+    this.form.controls['distinguishedTypeId'].markAsTouched();
+    this.form.controls['twitterLink'].markAsTouched();
+    this.form.controls['facebookLink'].markAsTouched();
+    this.form.controls['nickName'].markAsTouched();
+    this.form.controls['experience'].markAsTouched();
   }
   onCvSelected(event: any) {
     event.preventDefault();
@@ -389,8 +370,6 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
     this.fileSize = image.size/(1024*1024);
     this.fileName = image.name;
      this.cv_file = URL.createObjectURL(image);
-    //  alert(this.fileName);
-    //  this.form.controls['cvFile'].setValue(image);
     console.log("+++++++++++++++++++++++++++++++++++++++++ "+image)  
      this.formData.append('cvFile',image);
      console.log(this.formData.get('cvFile'));
@@ -453,23 +432,24 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
     this.formData.append('familyBranchId',this.familyBranchId.value);
     this.formData.append('maritalStatus',this.maritalStatus.value);
     this.formData.append('isAvailableToWork',this.isAvailableToWork.value);
-    if(this.isAvailableToWork.value){
-      this.formData.append('qualificationId',this.qualificationId.value);
-      this.formData.append('specializationId',this.specializationId.value);
-      this.formData.append('departmentId',this.departmentId.value);
-      this.formData.append('workTypeId',this.workTypeId.value);
-      this.formData.append('hoppies',this.hoppies.value);
-    }
+    this.formData.append('qualificationId',this.qualificationId.value);
+    this.formData.append('specializationId',this.specializationId.value);
+    this.formData.append('departmentId',this.departmentId.value);
+    this.formData.append('workTypeId',this.workTypeId.value);
+    this.formData.append('hoppies',this.hoppies.value);
+    this.formData.append('distinguishedTypeId',this.distinguishedTypeId.value);
+    this.formData.append('twitterLink',this.twitterLink.value);
+    this.formData.append('facebookLink',this.facebookLink.value);
+    this.formData.append('nickName',this.nickName.value);
+    this.formData.append('experience',this.experience.value);
     if(!this.formData.has('userImage')){
-      // alert("empty image");
       this.formData.append('userImage','DEFAULT_IMAGE');
     }
     if(!this.formData.has('cvFile')){
-      // alert("empty cv file");
       this.formData.append('cvFile','NO_CV_PROVIDED');
     }
   }
-  setValuesToNullIfMemberNotAvailableToWork(){
+  _______setValuesToNullIfMemberNotAvailableToWork(){
     if(!this.isAvailableToWork.value){
       this.form.controls['qualificationId'].setValue(null);
       this.form.controls['specializationId'].setValue(null);
@@ -488,7 +468,7 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
       return;
     }
     this.AppendFormToFormData();
-    this.setValuesToNullIfMemberNotAvailableToWork();
+    // this.setValuesToNullIfMemberNotAvailableToWork();
     // return;
     // this.service.printFormValues(this.form);
     
@@ -611,6 +591,21 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
   }
   get userImage(){
     return this.form.controls['userImage'];
+  }
+  get distinguishedTypeId(){
+    return this.form.controls['distinguishedTypeId'];
+  }
+  get twitterLink(){
+    return this.form.controls['twitterLink'];
+  }
+  get facebookLink(){
+    return this.form.controls['facebookLink'];
+  }
+  get nickName(){
+    return this.form.controls['nickName'];
+  }
+  get experience(){
+    return this.form.controls['experience'];
   }
   get isPasswordFieldsIdentical():boolean{
     return this.password.value == this.confirmPassword.value;

@@ -388,6 +388,9 @@ export class ProfileAccountInformationComponent  implements OnInit, AfterViewIni
     else if(fieldName==FieldNames.NickName){
       newValue = this.profile.nickName;
     }
+    else if(fieldName==FieldNames.Experience){
+      newValue = this.profile.experience;
+    }
     else if(fieldName==FieldNames.Hoppies){
       newValue = this.profile.hoppies;
     }else if(fieldName==FieldNames.IsAvailableToWork){
