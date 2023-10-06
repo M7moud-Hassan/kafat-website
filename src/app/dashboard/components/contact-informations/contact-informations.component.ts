@@ -31,6 +31,7 @@ export class ContactInformationsComponent implements OnInit {
       youtubeLink:['',[Validators.required]],
       linkedInLink:['',[Validators.required]],
       introductoryVideoLink:['',[Validators.required]],
+      liveFeedLink:['',[Validators.required]],
     });
   }
   get(){
@@ -50,6 +51,7 @@ export class ContactInformationsComponent implements OnInit {
           this.form.controls['youtubeLink'].setValue(res.data.youtubeLink);
           this.form.controls['linkedInLink'].setValue(res.data.linkedInLink);
           this.form.controls['introductoryVideoLink'].setValue(res.data.introductoryVideoLink);
+          this.form.controls['liveFeedLink'].setValue(res.data.liveFeedLink);
         } 
         else {
           this.service.toastService.error(res.message);

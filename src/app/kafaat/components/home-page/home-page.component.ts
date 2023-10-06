@@ -26,6 +26,7 @@ export class HomePageComponent implements AfterViewInit{
     youtubeLink:'',
     linkedInLink:'',
     introductoryVideoLink:'',
+    liveFeedLink:''
   };
   
   constructor(private renderer: Renderer2, private el: ElementRef,private service:MainDashoardService) {

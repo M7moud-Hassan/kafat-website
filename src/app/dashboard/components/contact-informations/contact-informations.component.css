@@ -47,6 +47,10 @@
   .image-6{
     background-image: url('/assets/images/introductortVideo.png');
   }
+  .image-7{
+    background-image: url('/assets/images/live.png');
+    background-size: 95% 95%;
+  }
   .info-image{
     background-image: url('/assets/images/information.png');
   }

@@ -11,7 +11,8 @@ export interface ContactInformationModel {
     telegramLink:string,
     snapchatLink:string,
     linkedInLink:string,
-    introductoryVideoLink:string
+    introductoryVideoLink:string,
+    liveFeedLink:string
 }
 
 
