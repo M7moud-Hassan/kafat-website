@@ -101,6 +101,9 @@ export class ImagesActivityComponent implements OnInit ,AfterViewInit {
       },
     });
   }
+  back(){
+    this.service.back;
+  }
 }
 
 

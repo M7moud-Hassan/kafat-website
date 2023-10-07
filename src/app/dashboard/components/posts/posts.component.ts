@@ -105,7 +105,9 @@ export class PostsComponent implements OnInit ,AfterViewInit {
     });
   }
 
-  
+  back(){
+    this.service.back;
+  }
 }
 
 

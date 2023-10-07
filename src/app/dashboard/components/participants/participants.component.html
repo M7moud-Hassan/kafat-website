@@ -1,7 +1,9 @@
 <div class="row page-list-header d-flex justify-content-between align-items-center">
     <div class="col-12 col-md-7">
       <div class="mainPageTitle mb-3">المشاركون</div>
-      <!-- <button class="bg-primary-outline-btn p-2 d-block" (click)="addItem()">اضافة دولة</button> -->
+      <div>
+        <button class="bg-primary-btn p-2  d-inline-block" (click)="back()">رجوع للمنشط</button>
+      </div>
     </div>
     <div class="col-12 col-md-5">
       <input type="text" style="outline: none; border: 1px solid var(--main-color);box-shadow: none;" (keyup.enter)="getPageByName()" [(ngModel)]="pagedRequest.name" placeholder="ابحث عن مستخدم" class="form-control">

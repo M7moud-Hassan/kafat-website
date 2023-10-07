@@ -104,6 +104,9 @@ export class AttachmentsActivityComponent implements OnInit ,AfterViewInit {
       },
     });
   }
+  back(){
+    this.service.back;
+  }
 }
 
 

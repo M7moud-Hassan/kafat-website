@@ -128,5 +128,8 @@ export class ParticipantsComponent implements OnInit ,AfterViewInit {
       }
     })
   }
+  back(){
+    this.service.back;
+  }
 }
 

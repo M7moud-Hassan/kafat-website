@@ -104,6 +104,9 @@ export class VideosActivityComponent implements OnInit ,AfterViewInit {
       },
     });
   }
+  back(){
+    this.service.back;
+  }
 }
 
 

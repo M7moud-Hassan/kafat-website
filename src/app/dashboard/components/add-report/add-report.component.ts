@@ -85,4 +85,8 @@ export class AddReportComponent implements OnInit , AfterViewInit{
           this.service.toastService.error(response.message);
         }
       });
-  }}
+  }
+  back(){
+    this.service.back;
+  }
+}
