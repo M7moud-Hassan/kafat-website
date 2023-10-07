@@ -121,7 +121,7 @@
             <div class="row mb-3">
                 <div class="col-10">
                     <div class="input-box">
-                        <input type="text" spellcheck="false" name="introductoryVideoLink" id="introductoryVideoLink" formControlName="introductoryVideoLink" placeholder="رابط  الفيديو التعريفى">
+                        <input type="text" spellcheck="false" (blur)="handleIntroductoryVideoLink()" name="introductoryVideoLink" id="introductoryVideoLink" formControlName="introductoryVideoLink" placeholder="رابط  الفيديو التعريفى">
                     </div>
                 </div>
                 <div class="col-2">
@@ -131,7 +131,7 @@
             <div class="row mb-3">
                 <div class="col-10">
                     <div class="input-box">
-                        <input type="text" spellcheck="false" name="liveFeedLink" id="liveFeedLink" formControlName="liveFeedLink" placeholder="رابط البث المباشر">
+                        <input type="text" (blur)="handleLiveFeedLink()" spellcheck="false"  name="liveFeedLink" id="liveFeedLink" formControlName="liveFeedLink" placeholder="رابط البث المباشر">
                     </div>
                 </div>
                 <div class="col-2">

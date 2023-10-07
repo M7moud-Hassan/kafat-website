@@ -1,6 +1,8 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { KafaatMainService } from '../../services/kafaat-main.service';
 import { ResponseVM } from '../../core/models/response-vm';
+import { MainDashoardService } from 'src/app/dashboard/services/main-dashoard.service';
+import { DialogVideoImageComponent } from 'src/app/shared/components/dialog-video-image/dialog-video-image.component';
 
 @Component({
   selector: 'app-goals-kafaat',
@@ -10,12 +12,15 @@ import { ResponseVM } from '../../core/models/response-vm';
 export class GoalsKafaatComponent implements OnInit,AfterViewInit {
   items:any[] = [];
   test:string="ali";
-  constructor(private service:KafaatMainService){}
+  videoUrl:string = 'https://www.youtube.com/embed/v69praWH6cs?si=ennlWOhMnXzh2x5S';
+  @ViewChild('dialog', { static: false }) dialogComponent: DialogVideoImageComponent | undefined;
+  constructor(private service:KafaatMainService,private adminService:MainDashoardService){}
   ngAfterViewInit(): void {
     this.getItems();
   }
   ngOnInit(): void {
     this.getItems();
+    this.getIntroductoryVideoUrl();
   }
   getItems(){
     this.service.aboutUsService.getAll().subscribe({
@@ -28,7 +33,25 @@ export class GoalsKafaatComponent implements OnInit,AfterViewInit {
       }
     })
   }
+  getIntroductoryVideoUrl(){
+    this.adminService.contactInformationService.get().subscribe({
+      next:(res:ResponseVM)=>{
+        if(res.statusCode == 200){
+          let link:string = res.data.introductoryVideoLink;
+          this.videoUrl = link;
+          // if(link.includes("ennlWOhMnXzh2x5S")){
+          //   this.videoUrl = link;
+          // }else{
+          //   this.videoUrl = this.covertToRelatedFormat(link);
+          // }
+        }
+      }
+    })
+  }
   trackByFn(index: number, item: any): any {
     return item.id; // Replace 'id' with the actual identifier property of your item
+  }
+  openModal(){
+    this.dialogComponent.openVideo(this.videoUrl);
   }
 }

@@ -96,4 +96,38 @@ export class ContactInformationsComponent implements OnInit {
     });
   }
 
+  handleIntroductoryVideoLink() {
+    let introductoryVideoLinkValue = this.form.controls['introductoryVideoLink'].value;
+    let newValue ='';
+    let splitText = introductoryVideoLinkValue.split('src="');
+    if (splitText.length > 0) {
+      let includes = splitText[1];
+      let secondSplit = includes.split('"');
+      if(secondSplit.length>0){
+        newValue = secondSplit[0];
+      }else{
+        newValue = introductoryVideoLinkValue;
+      }
+    } else {
+     newValue = introductoryVideoLinkValue;
+    }
+    this.form.controls['introductoryVideoLink'].setValue(newValue);
+  }
+  handleLiveFeedLink() {
+    let liveFeedLinkValue = this.form.controls['liveFeedLink'].value;
+    let newValue ='';
+    let splitText = liveFeedLinkValue.split('src="');
+    if (splitText.length > 0) {
+      let includes = splitText[1];
+      let secondSplit = includes.split('"');
+      if(secondSplit.length>0){
+        newValue = secondSplit[0];
+      }else{
+        newValue = liveFeedLinkValue;
+      }
+    } else {
+     newValue = liveFeedLinkValue;
+    }
+    this.form.controls['liveFeedLink'].setValue(newValue);
+  }
 }

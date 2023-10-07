@@ -42,24 +42,9 @@ export class AboutPageComponent implements OnInit {
         if(res.statusCode == 200){
           let link:string = res.data.introductoryVideoLink;
           this.videoUrl = link;
-          // if(link.includes("ennlWOhMnXzh2x5S")){
-          //   this.videoUrl = link;
-          // }else{
-          //   this.videoUrl = this.covertToRelatedFormat(link);
-          // }
         }
       }
     })
-  }
-
-  covertToRelatedFormat(link:string){
-    debugger;
-    let _videoId = link.split("https://www.youtube.com/watch?v=")[1];
-    let updatedLink = 'https://www.youtube.com/embed/' + _videoId + '?si=ennlWOhMnXzh2x5S';
-    console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++"+updatedLink);
-    // https://www.youtube.com/embed/v69praWH6cs?si=ennlWOhMnXzh2x5S
-    // console.log(updatedLink);
-    return updatedLink;
   }
 
 
@@ -80,6 +65,5 @@ export class AboutPageComponent implements OnInit {
 
   openModal(){
       this.dialogComponent.openVideo(this.videoUrl);
-    
   }
 }
