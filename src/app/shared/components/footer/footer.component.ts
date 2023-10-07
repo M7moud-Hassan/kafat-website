@@ -14,7 +14,7 @@ export class FooterComponent implements OnInit {
   
   year:any;
   programs:any[];
-  @ViewChild('dialog_footer', { static: false }) dialogComponent: DialogVideoImageComponent | undefined;
+  @ViewChild('dialog', { static: false }) dialogComponent: DialogVideoImageComponent | undefined;
   videoUrl:string = 'https://www.youtube.com/embed/v69praWH6cs?si=ennlWOhMnXzh2x5S';
   contactInformationItems:ContactInformationModel = {
     id:0,
@@ -69,6 +69,6 @@ export class FooterComponent implements OnInit {
   }
  
   openModal(){
-    this.dialogComponent.openImage(this.videoUrl);
+    this.dialogComponent.openVideo("");
    }
 }

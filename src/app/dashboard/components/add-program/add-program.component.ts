@@ -181,20 +181,20 @@ export class AddProgramComponent implements OnInit ,AfterViewInit{
 
   private initializeQuillEditor() {
     const toolbarOptions = [
-      [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-      [{ "font": [12,15,20,25,30] }],
-      ['bold', 'italic', 'underline', 'strike'],
-      ['blockquote', 'code-block'],
-      [{ 'header': 1 }, { 'header': 2 }],
-      [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-      [{ 'script': 'sub' }, { 'script': 'super' }],
-      [{ 'indent': '-1' }, { 'indent': '+1' }],
-      [{ 'direction': 'rtl' }],
-      [{ 'size': ['small', false, 'large', 'huge'] }],
-      [{ 'color': ['red','white','black','yellow','blue','green'] }, { 'background': ['red','white','black','yellow','blue','green'] }],
+      // [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+      // [{ "font": [12,15,20,25,30] }],
+      ['bold', 'underline'],
+      // ['blockquote', 'code-block'],
+      // [{ 'header': 1 }, { 'header': 2 }],
+      // [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+      // [{ 'script': 'sub' }, { 'script': 'super' }],
+      // [{ 'indent': '-1' }, { 'indent': '+1' }],
+      // [{ 'direction': 'rtl' }],
+      // [{ 'size': ['small', false, 'large', 'huge'] }],
+      // [{ 'color': ['red','white','black','yellow','blue','green'] }, { 'background': ['red','white','black','yellow','blue','green'] }],
       // [{ 'align': ['rtl','ltr'] }],
       // ['image', 'video'],
-      ['clean']
+      // ['clean']
     ];
 
     const quill = new Quill(this.editorElement.nativeElement, {
