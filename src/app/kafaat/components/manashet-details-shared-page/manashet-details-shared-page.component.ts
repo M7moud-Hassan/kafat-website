@@ -60,7 +60,7 @@ constructor(private toaster:ToastrService,private route:ActivatedRoute,private s
     const toolbarOptions = [
       // [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
       // [{ 'font': [] }],
-      ['bold', 'italic', 'underline', 'strike'],
+      ['bold', 'underline'],
       // ['blockquote', 'code-block'],
       // [{ 'header': 1 }, { 'header': 2 }],
       // [{ 'list': 'ordered' }, { 'list': 'bullet' }],
