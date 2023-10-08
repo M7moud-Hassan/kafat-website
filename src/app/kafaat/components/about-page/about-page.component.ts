@@ -59,7 +59,7 @@ export class AboutPageComponent implements OnInit {
     
   }
   itemCardLeave(index:number):void{
-    console.log(2222)
+    // console.log(2222)
     document.getElementById('p'+index)!.style.color='white';
   }
 
