@@ -26,6 +26,7 @@ import { AccountService } from './account.service';
 import { KafaatFounderService } from './kafaat-founder.service';
 import { DocumentedImageService } from 'src/app/kafaat/services/documented-image.service';
 import { StatisticsService } from './statistics.service';
+import { MixService } from './mix.service';
 
 @Injectable({
   providedIn: 'root'
@@ -61,6 +62,7 @@ export class MainDashoardService {
     private _kafaatFounderService:KafaatFounderService,
     private _documentedImageService:DocumentedImageService,
     private _statistics:StatisticsService,
+    private _mixService:MixService,
     ) { }
 
     get statistics(){
@@ -147,6 +149,9 @@ get attachmentsActivity():AttachmentsActivityService{
   }
   get documentedImageService(): DocumentedImageService {
     return this._documentedImageService;
+  }
+  get mixService(): MixService {
+    return this._mixService;
   }
 
 
