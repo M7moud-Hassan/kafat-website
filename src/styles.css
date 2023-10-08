@@ -5,6 +5,7 @@
     box-sizing: border-box;
     font-family: 'alex-400';
 }
+
 @font-face {
     font-family: 'alex-400';
     src: url('/assets/fonts/alexandria/Alexandria-Regular.ttf') format('truetype');

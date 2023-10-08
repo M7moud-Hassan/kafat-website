@@ -2,8 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ContactInformationModel } from 'src/app/dashboard/core/models/contact-information-model';
 import { MainDashoardService } from 'src/app/dashboard/services/main-dashoard.service';
 import { ResponseVM } from 'src/app/kafaat/core/models/response-vm';
-import { DialogVideoImageComponent } from 'src/app/shared/components/dialog-video-image/dialog-video-image.component';
-
+import { DialogVideoImageComponent } from '../dialog-video-image/dialog-video-image.component';
 
 @Component({
   selector: 'app-footer',
@@ -14,8 +13,7 @@ export class FooterComponent implements OnInit {
   
   year:any;
   programs:any[];
-  @ViewChild('dialog', { static: false }) dialogComponent: DialogVideoImageComponent | undefined;
-  videoUrl:string = 'https://www.youtube.com/embed/v69praWH6cs?si=ennlWOhMnXzh2x5S';
+   videoUrl:string = 'https://www.youtube.com/embed/v69praWH6cs?si=ennlWOhMnXzh2x5S';
   contactInformationItems:ContactInformationModel = {
     id:0,
     email:'',
@@ -67,8 +65,8 @@ export class FooterComponent implements OnInit {
       }
     });
   }
- 
-  openModal(){
-    this.dialogComponent.openVideo("");
+  @ViewChild('dialog', { static: true }) dialogComponent: DialogVideoImageComponent | undefined;
+  openModal(){    
+    this.dialogComponent.openVideo(this.contactInformationItems.liveFeedLink);
    }
 }

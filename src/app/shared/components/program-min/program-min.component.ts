@@ -13,7 +13,7 @@ export class ProgramMinComponent {
   @Input() description:string=''
   @Input() numpaticipants:number=0
   @Input() numActivites:number=0
- 
+  @Input() idProgram:number=0
 
 
 }

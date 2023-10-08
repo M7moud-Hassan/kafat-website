@@ -13,10 +13,10 @@
                <div class="p-4 m-4">
                 <img [src]="image" alt="" width="150px" height="135px">
                 <div class="title-program">{{title}}</div>
-                <p class="truncate-3-lines" [innerHTML]="description"></p>
-                <div class="row mt-2">
-                    <div class="col-6 col-md-4 border-right d-flex">
-                        <div><img src="assets/images/light.svg" alt=""></div>
+                <p class="truncate-3-lines body-program text-justify" [innerHTML]="description"></p>
+                <div class="row p-0 m-0" style="padding-top: 24px;">
+                    <div class="col-6 col-md-5 border-right d-flex">
+                        <div><img src="assets/images/light.svg" width="32px" height="32px" alt=""></div>
                         <div class="ps-2">
                             <p class="small lh-sm " style="font-size: 11px;">عدد المناشط</p>
                             <p class="text-main fs-6 fw-bold lh-sm">{{numActivites}}</p>
@@ -31,9 +31,9 @@
                     </div>
                 </div>
                <div class="mt-4 pt-4">
-                <div class="bg-primary-btn mt-4" >
+                <a class="bg-primary-btn mt-4" [routerLink]="['/kafaat/program-details/',idProgram]">
                     عرض المناشط
-                </div>
+                </a>
                </div>
                </div>
             </div>
