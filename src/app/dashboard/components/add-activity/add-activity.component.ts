@@ -203,7 +203,6 @@ onChangeFilter(event:any){
         place:[this.activity.place,[Validators.required]],
         date:[this.activity.date,[Validators.required]],
         nameActivity:[this.activity.name,[Validators.required]],
-        from:[this.activity.from,[Validators.required]],
         to:[this.activity.to,[Validators.required]],
       });
 
@@ -223,7 +222,6 @@ onChangeFilter(event:any){
         // description:['',[Validators.required]],
         place:['',[Validators.required]],
         date:['',[Validators.required]],
-        from:['',[Validators.required]],
         to:['',[Validators.required]],
       });
       this.group2=this.service.formBuilder.group({
@@ -276,9 +274,7 @@ onChangeFilter(event:any){
   // {
   //   return this.group1.controls['description'];
   // }
-  get from(){
-    return this.group1.controls['from'];
-  }
+
   get to()
   {
     return this.group1.controls['to'];
@@ -387,7 +383,7 @@ var date = localDate.toISOString().slice(0, 19).replace("T", " ") + ".0000000";
 var dateString = this.group1.value.from;
 var dateObject = new Date(dateString);
 
-var From = dateObject.toISOString().slice(0, 19).replace("T", " ") + ".0000000";
+// var From = dateObject.toISOString().slice(0, 19).replace("T", " ") + ".0000000";
 var dateString = this.group1.value.to;
 var dateObject = new Date(dateString);
 const userCategoriesData:number[] = this.group2.value.userCategoryId;
@@ -398,7 +394,7 @@ var To = dateObject.toISOString().slice(0, 19).replace("T", " ") + ".0000000";
       formData.append('description', post);
       formData.append('place', this.group1.value.place);
       formData.append('date', date);
-      formData.append('from', From);
+      // formData.append('from', From);
       formData.append('to', To);
       formData.append('maximumParticipants', this.group2.value.maximumParticipants);
       formData.append('ticketPrice', this.group2.value.ticketPrice);
@@ -447,9 +443,9 @@ var To = dateObject.toISOString().slice(0, 19).replace("T", " ") + ".0000000";
          if(error.error.errors.To){
           this.service.toastService.error(error.error.errors.To)
          }
-         if(error.error.errors.From){
-          this.service.toastService.error(error.error.errors.From)
-         }
+        //  if(error.error.errors.From){
+        //   this.service.toastService.error(error.error.errors.From)
+        //  }
          if(error.error.errors.Date){
           this.service.toastService.error(error.error.errors.Date)
          }

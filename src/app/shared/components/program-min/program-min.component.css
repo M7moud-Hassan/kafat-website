@@ -18,6 +18,12 @@
     transform: scaleY(1.3);
     
 }
+.title-program{
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 48px;
+    margin-bottom: 30px;
+}
 
 
 @media (0px <= width <=750px){

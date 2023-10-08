@@ -62,45 +62,25 @@
                         <mat-datepicker #picker></mat-datepicker>
                     </div>
                 </div>
-                <div class="col-12 col-md-6">
-                    <div class="w-100" >
-                        <label class="input-label mb-3" for="from"> من تاريخ</label>
+                
+                <div class="col-12 col-md-6" >
+                    <div class="w-100 form-group">
+                        <label class="mb-3" for="date"> الي تاريخ</label>
                         <div class="input-group">
-                            <input  [hidden]="isDateReadOnly()" matInput [ngxMatDatetimePicker]="picker1" formControlName="from" name="from"
-                            placeholder="DD/MM/YYYY :HH:MM:SS" id="from"
-                            [class.is-invalid]="from?.invalid && from?.touched" [class.is-valid]="from?.valid"
-                            class="form-control" [min]="minDate" [max]="maxDate" [disabled]="isDateReadOnly()">
-                            <mat-datepicker-toggle *ngIf="!isDateReadOnly()" matSuffix class="border" [for]="picker1"></mat-datepicker-toggle>
-                            <input *ngIf="isDateReadOnly()" type="text" [value]="activity.from" class="form-control" readonly>
+                            
+                            <input [hidden]="isDateReadOnly()" matInput [matDatepicker]="pickerTo"  formControlName="to" name="to" [disabled]="isDateReadOnly()"
+                            placeholder="DD/MM/YYYY" id="to" [class.is-invalid]="to?.invalid && to?.touched"
+                            [class.is-valid]="to?.valid" class="form-control">
+                            <mat-datepicker-toggle *ngIf="!isDateReadOnly()"  matIconSuffix class="border" [for]="pickerTo"></mat-datepicker-toggle>
+                            </div>
+
+                            <input *ngIf="isDateReadOnly()" type="text" [value]="activity.to" class="form-control" readonly>
                     
-                          </div>
-                        <ngx-mat-datetime-picker #picker1 [showSpinners]="showSpinners" [showSeconds]="showSeconds"
-                            [stepHour]="stepHour" [stepMinute]="stepMinute"
-                             [stepSecond]="stepSecond"
-                            [touchUi]="touchUi" [color]="color" [enableMeridian]="enableMeridian" lang="ar-eg">
-                        </ngx-mat-datetime-picker>
+                       
+                        <mat-datepicker #pickerTo></mat-datepicker>
                     </div>
                 </div>
 
-                <div class="col-12 col-md-6">
-                    <div class="w-100 form-group">
-                        <label class="mb-3" for="to"> الي تاريخ</label>
-                        <div class="input-group">
-                            <input matInput [hidden]="isDateReadOnly()" [ngxMatDatetimePicker]="picker2" formControlName="to" name="to"
-                            placeholder="DD/MM/YYYY :HH:MM:SS" id="to" [class.is-invalid]="to?.invalid && to?.touched"
-                            [class.is-valid]="to?.valid" class="form-control" [min]="minDate" [max]="maxDate"
-                            [disabled]="isDateReadOnly()">
-                            <input *ngIf="isDateReadOnly()" type="text" [value]="activity.to" class="form-control" readonly>
-                    
-                            <mat-datepicker-toggle *ngIf="!isDateReadOnly()" matSuffix class="border" [for]="picker2"></mat-datepicker-toggle>
-                            </div>
-                       
-                        <ngx-mat-datetime-picker #picker2 [showSpinners]="showSpinners" [showSeconds]="showSeconds"
-                            [stepHour]="stepHour" [stepMinute]="stepMinute" [stepSecond]="stepSecond"
-                            [touchUi]="touchUi" [color]="color" [enableMeridian]="enableMeridian">
-                        </ngx-mat-datetime-picker>
-                    </div>
-                </div>
             </div>
 
             <div>
