@@ -18,14 +18,14 @@
                         <span [class]="active==1?'active':''"></span>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li *ngFor="let item of programs; let isLast = last">
+                        <li *ngFor="let item of programs;">
                             <a class="dropdown-item py-2" routerLinkActive="active" [routerLink]="['/kafaat/program-details', item.id]" *ngIf="!isLast">{{ item.title }}</a>
                           </li>
                           
-                        <li>
+                        <!-- <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a *ngIf="programs" class="dropdown-item" outerLinkActive="active"   [routerLink]="['/kafaat/program-details',programs[programs.length-1].id]">{{programs[programs.length-1].title}}</a></li>
+                        <li><a *ngIf="programs" class="dropdown-item" outerLinkActive="active"   [routerLink]="['/kafaat/program-details',programs[programs.length-1].id]">{{programs[programs.length-1].title}}</a></li> -->
                 
                     </ul>
                 </li>
@@ -81,14 +81,10 @@
                         
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li *ngFor="let item of programs; let isLast = last">
-                            <a class="dropdown-item py-2" routerLinkActive="active" [routerLink]="['/kafaat/program-details', item.id]" *ngIf="!isLast">{{ item.title }}</a>
-                          </li>
+                        <li *ngFor="let item of programs;">
+                            <a class="dropdown-item py-2" routerLinkActive="active" [routerLink]="['/kafaat/program-details', item.id]" >{{ item.title }}</a>
                           
-                              <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" outerLinkActive="active"   [routerLink]="['/kafaat/program-details',programs[programs.length-1].id]">{{programs[programs.length-1].title}}</a></li>
+                        <!-- <li><a class="dropdown-item" outerLinkActive="active"   [routerLink]="['/kafaat/program-details',programs[programs.length-1].id]">{{programs[programs.length-1].title}}</a></li> -->
    
                     </ul>
                 </li>

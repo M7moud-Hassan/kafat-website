@@ -67,11 +67,11 @@
                         <img src="assets/images/users-blue.svg" width="24" height="24">
                         <span>قائمة الحضور: <a routerLink="#" (click)="exportToExcel()">ملف قائمة الحضور</a></span>
                     </div>
-                    <div class="manshat-info-item" *ngIf="activity.isOpen==1 && activity.isParticipant">
+                    <div class="manshat-info-item" *ngIf=" activity.isParticipant">
                         <img src="assets/images/done.svg" width="24" height="24">
                         <span style="color: #008243;"> تم الانضمام</span>
                     </div>
-                    <div *ngIf="activity.isOpen == 1 && !activity.isParticipant && checkLogin() &&checkUserCategory()">
+                    <div *ngIf="!activity.isParticipant && checkLogin() &&checkUserCategory()">
                         <p *ngIf="activity.ticketPrice>0"><span class="fs-5 fw-bold">{{activity.ticketPrice}}</span> ريال سعودي</p>
                     <div class="manshat-info-item" >
                        <div class="bg-primary-btn w-100 text-center" (click)="JoinActivity()">
@@ -89,7 +89,7 @@
     <button *ngFor="let link of navigationItemsList" [ngClass]="{'bg-primary-btn':link.isSelected,'bg-primary-opacity-btn':!link.isSelected}" (click)="chageNavigationLink(link.id)" class="m-3"> {{link.label}} </button> 
 </div> -->
 <!--  -->
-<div *ngIf="activity.isOpen==2 && checkLogin()">
+<div *ngIf="activity.isOpen==0 && checkLogin()">
     <div class="page-padding">
         <app-tabs-container (tabSelected)="onTabSelected($event)"></app-tabs-container>
     </div>
