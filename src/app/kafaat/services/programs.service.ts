@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ResponseVM } from '../core/models/response-vm';
 import { Observable } from 'rxjs/internal/Observable';
-import { environment } from 'src/environments/environment';
 import { PagedResponse } from '../core/models/paged-response';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
