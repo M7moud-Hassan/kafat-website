@@ -15,12 +15,21 @@ import { Router } from '@angular/router';
 })
 export class ActivitiesComponent implements OnInit ,AfterViewInit {
   windowWidth: number = 0;
+  activityTypes:any[]
   pageResponse:PagedResponse={page:1,pageSize:10,totalCount:0,hasNextPage:false,hasPreviousPage:false,items:[]};
   pagedRequest:PagedRequest = {pageNumber:1,pageSize:5,name:''};
   constructor(public service:MainDashoardService,private router: Router) {
   }
   ngOnInit(): void {
+  this.pagedRequest.id=0;
     this.getPage();
+    this.loadPrograms();
+  }
+
+  loadPrograms(){
+    this.service.programsService.getAll().subscribe(response=>{
+      this.activityTypes=response.data;
+    })
   }
   ngAfterViewInit() {
     this.windowWidth = window.innerWidth;
@@ -99,6 +108,11 @@ export class ActivitiesComponent implements OnInit ,AfterViewInit {
   openActivity(id:number){
     console.log(id)
     this.router.navigate(['/admin/details-activity', id]);
+  }
+  changeSelect(event:any){
+    this.pagedRequest.id=event.value;
+    this.pagedRequest.pageNumber=1;
+    this.getPage();
   }
 }
 
