@@ -40,6 +40,7 @@ import { ContactUsListSentComponent } from './components/contact-us-list-sent/co
 import { ContactUsListNotSentComponent } from './components/contact-us-list-not-sent/contact-us-list-not-sent.component';
 import { KafaatFoundersComponent } from './components/kafaat-founders/kafaat-founders.component';
 import { DocumentedImagesComponent } from './components/documented-images/documented-images.component';
+import { MixPageComponent } from './components/mix-page/mix-page.component';
 
 export const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -90,6 +91,8 @@ export const routes: Routes = [
   
   {path:'kafaat-founders',component:KafaatFoundersComponent},
   {path:'documented-images',component:DocumentedImagesComponent},
+
+  {path:'mix-page',component:MixPageComponent},
 
 ];
 

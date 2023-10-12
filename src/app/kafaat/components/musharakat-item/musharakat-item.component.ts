@@ -7,15 +7,21 @@ import { KafaatMainService } from '../../services/kafaat-main.service';
   styleUrls: ['./musharakat-item.component.css']
 })
 export class MusharakatItemComponent implements OnInit {
-  isMoreReadEnabled:boolean=true;
+  isMoreReadEnabled:boolean[]=[];
   @Input() programId:any=0
-  listItems:any[]=[]
+  listItems:any[]=[];
   constructor(private service:KafaatMainService){}
    @Input() Items: any[] = [];
   ngOnInit(): void {
     //  this.listItems = this.Items;
+    this.initializeIsMoreReadEnabled();
   }
-
+  initializeIsMoreReadEnabled(): void {
+    this.isMoreReadEnabled = new Array(this.listItems.length).fill(false);
+  }
+  toggleMoreRead(index: number): void {
+    this.isMoreReadEnabled[index] = !this.isMoreReadEnabled[index];
+  }
   selectActivity(num:any){
     if(num==0){
       this.listItems=this.Items;

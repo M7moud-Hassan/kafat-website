@@ -23,7 +23,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: rgba(128, 128, 128, 0.349);
-    background-image: url('/assets/images/person.png');
+    /* background-image: url('/assets/images/person.png'); */
     background-repeat: no-repeat;
     background-size: cover; 
     padding: 80px;

@@ -1,4 +1,4 @@
-import { Component,ElementRef,Renderer2,Type,AfterViewInit, ViewChild } from '@angular/core';
+import { Component,ElementRef,Renderer2,Type,AfterViewInit, ViewChild, OnInit } from '@angular/core';
 import { ContactInformationModel } from 'src/app/dashboard/core/models/contact-information-model';
 import { DisplayContentComponent } from 'src/app/shared/components/display-content/display-content.component';
 import { KafaatMainService } from '../../services/kafaat-main.service';
@@ -10,8 +10,9 @@ import { ResponseVM } from '../../core/models/response-vm';
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.css']
 })
-export class HomePageComponent implements AfterViewInit{
+export class HomePageComponent implements AfterViewInit, OnInit{
   showOverlay = false;
+  homeImagePath:string = '/assets/images/Hero-image.png';
   contactInformationItems:ContactInformationModel = {
     id:0,
     email:'',
@@ -29,9 +30,12 @@ export class HomePageComponent implements AfterViewInit{
     liveFeedLink:''
   };
   
-  constructor(private renderer: Renderer2, private el: ElementRef,private service:MainDashoardService) {
+  constructor(private adminService:MainDashoardService,private renderer: Renderer2, private el: ElementRef,private service:MainDashoardService) {
    
     
+  }
+  ngOnInit(): void {
+    this.getMixData();
   }
 
   loadInformationContact(){
@@ -82,7 +86,18 @@ export class HomePageComponent implements AfterViewInit{
      }
     });
   }
-
+  getMixData(){
+    this.adminService.mixService.get().subscribe({
+      next:(res:ResponseVM)=>{
+       if(res.statusCode == 200){
+        if(res.data.homeImagePath.length > 0){
+          this.homeImagePath = res.data.homeImagePath;
+        }
+        // this.introductoryFilePath = res.data.introductoryFilePath;
+       }
+      }
+    });
+  }
 
   
 }

@@ -3,6 +3,7 @@ import { KafaatMainService } from '../../services/kafaat-main.service';
 import { ResponseVM } from '../../core/models/response-vm';
 import { MainDashoardService } from 'src/app/dashboard/services/main-dashoard.service';
 import { DialogVideoImageComponent } from 'src/app/shared/components/dialog-video-image/dialog-video-image.component';
+import { PdfPopupComponent } from '../pdf-popup/pdf-popup.component';
 
 @Component({
   selector: 'app-goals-kafaat',
@@ -12,6 +13,7 @@ import { DialogVideoImageComponent } from 'src/app/shared/components/dialog-vide
 export class GoalsKafaatComponent implements OnInit,AfterViewInit {
   items:any[] = [];
   test:string="ali";
+  introductoryFilePath:string = '';
   videoUrl:string = 'https://www.youtube.com/embed/v69praWH6cs?si=ennlWOhMnXzh2x5S';
   @ViewChild('dialog', { static: false }) dialogComponent: DialogVideoImageComponent | undefined;
   constructor(private service:KafaatMainService,private adminService:MainDashoardService){}
@@ -21,7 +23,18 @@ export class GoalsKafaatComponent implements OnInit,AfterViewInit {
   ngOnInit(): void {
     this.getItems();
     this.getIntroductoryVideoUrl();
+    this.getMixData();
   }
+  getMixData(){
+    this.adminService.mixService.get().subscribe({
+      next:(res:ResponseVM)=>{
+       if(res.statusCode == 200){
+        this.introductoryFilePath = res.data.introductoryFilePath;
+       }
+      }
+    });
+  }
+  
   getItems(){
     this.service.aboutUsService.getAll().subscribe({
       next:(res:ResponseVM)=>{
@@ -53,5 +66,14 @@ export class GoalsKafaatComponent implements OnInit,AfterViewInit {
   }
   openModal(){
     this.dialogComponent.openVideo(this.videoUrl);
+  }
+  showIntroductoryFilePath(){
+    this.service.dialog.open(PdfPopupComponent,{
+      width:'99%',
+      height:'90%',
+      data:{
+        cvPdf:this.introductoryFilePath,
+      }
+    })
   }
 }
