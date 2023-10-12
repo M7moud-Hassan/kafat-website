@@ -12,8 +12,7 @@ export class ContactInformationService {
 controllerName:string = 'contactInformation';
 constructor(private http:HttpClient) { }
 get():Observable<ResponseVM>{
-  // return this.http.get<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/get`);
-  return this.http.get<ResponseVM>(`http://localhost:59638/api/ContactInformation/get`);
+  return this.http.get<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/get`);
 }
 createOrUpdate(model:any):Observable<ResponseVM>{
   return this.http.post<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/add-or-update`,model);
