@@ -15,7 +15,9 @@ import { Router } from '@angular/router';
 })
 export class ActivitiesComponent implements OnInit ,AfterViewInit {
   windowWidth: number = 0;
-  activityTypes:any[]
+  activityTypes:any[];
+  activityTypesCopy:any[];
+  activityTypeValue:string='';
   pageResponse:PagedResponse={page:1,pageSize:10,totalCount:0,hasNextPage:false,hasPreviousPage:false,items:[]};
   pagedRequest:PagedRequest = {pageNumber:1,pageSize:5,name:''};
   constructor(public service:MainDashoardService,private router: Router) {
@@ -29,6 +31,7 @@ export class ActivitiesComponent implements OnInit ,AfterViewInit {
   loadPrograms(){
     this.service.programsService.getAll().subscribe(response=>{
       this.activityTypes=response.data;
+      this.activityTypesCopy = this.activityTypes;
     })
   }
   ngAfterViewInit() {
@@ -113,6 +116,10 @@ export class ActivitiesComponent implements OnInit ,AfterViewInit {
     this.pagedRequest.id=event.value;
     this.pagedRequest.pageNumber=1;
     this.getPage();
+  } 
+  filterActivityTypes(){
+    this.activityTypes = this.activityTypesCopy;
+    this.activityTypes = this.activityTypes.filter(value => value.title.includes(this.activityTypeValue));
   }
 }
 
