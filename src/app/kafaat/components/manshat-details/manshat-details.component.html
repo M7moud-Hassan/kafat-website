@@ -89,7 +89,7 @@
     <button *ngFor="let link of navigationItemsList" [ngClass]="{'bg-primary-btn':link.isSelected,'bg-primary-opacity-btn':!link.isSelected}" (click)="chageNavigationLink(link.id)" class="m-3"> {{link.label}} </button> 
 </div> -->
 <!--  -->
-<div *ngIf="activity.isOpen==0 && checkLogin()">
+<div *ngIf="activity.isOpen==1 && checkLogin()">
     <div class="page-padding">
         <app-tabs-container (tabSelected)="onTabSelected($event)"></app-tabs-container>
     </div>
