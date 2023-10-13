@@ -20,6 +20,7 @@ export class ChangeUserCategoryPopUpComponent  implements OnInit {
     this.getSubItems();
     this.userId.setValue(this.data.email);
     this.getUserCategory();
+    this.userCategoryId.setValue(this.data.userCategoryId);
   }
   getSubItems(){
     this.service.userCategoryService.getAll().subscribe({

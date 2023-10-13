@@ -68,6 +68,7 @@ export class AuthService {
     _userData.role = decodedToken.Role;
     _userData.userName = decodedToken.UserName;
     _userData.userImage = decodedToken.UserImage;
+    _userData.userCategoryName = decodedToken.userCategoryName;
     return _userData;
   }
   public GetToken() {

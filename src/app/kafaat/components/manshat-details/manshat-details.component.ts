@@ -121,8 +121,8 @@ export class ManshatDetailsComponent implements OnInit {
   }
 
   checkUserCategory():boolean{
-
-   return this.activity.userCategories.includes('فــئة ب');
+   var userCategoryName = this.service.authService.currentUser().userCategoryName;
+   return this.activity.userCategories.includes(userCategoryName);
   }
 }
 

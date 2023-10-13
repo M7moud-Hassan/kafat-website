@@ -4,4 +4,5 @@ export interface UserData {
     userName:string,
     role:string,
     userImage:string,
+    userCategoryName:string
 }

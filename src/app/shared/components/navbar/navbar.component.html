@@ -1,10 +1,10 @@
 <nav [class]="typeNav=='dark'?'navbar navbar-light navbar-expand-lg bg-transparent border-bottom border-main':'navbar navbar-dark navbar-expand-lg bg-transparent border-bottom border-light'">
     <div class="container">
         <a class="navbar-brand mb-1" routerLink="/"><img [src]="typeNav=='dark'?'assets/images/logo-blue.svg':'assets/images/logo.svg'" alt="logo.svg"></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
             aria-expanded="false" aria-label="Toggle navigation" (click)="openNav()">
-            <span class="navbar-toggler-icon"></span>
+            <i class="fa-solid fa-bars" style="color: white;border: none;"></i>
         </button>
         <div class="container collapse navbar-collapse mx-4">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 w-100 d-flex justify-content-around align-items-center">
@@ -21,12 +21,6 @@
                         <li *ngFor="let item of programs;">
                             <a class="dropdown-item py-2" routerLinkActive="active" [routerLink]="['/kafaat/program-details', item.id]" *ngIf="!isLast">{{ item.title }}</a>
                           </li>
-                          
-                        <!-- <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a *ngIf="programs" class="dropdown-item" outerLinkActive="active"   [routerLink]="['/kafaat/program-details',programs[programs.length-1].id]">{{programs[programs.length-1].title}}</a></li> -->
-                
                     </ul>
                 </li>
                 <li class="nav-item">
@@ -64,10 +58,10 @@
 <nav id="navbar"  class="navbar navbar-light navbar-expand-lg bg-transparent border-bottom border-main  w-100 top-0 position-fixed bg-light">
     <div class="container ">
         <a class="navbar-brand mb-1" href="#"><img src="assets/images/logo-blue.svg"></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
             aria-expanded="false" aria-label="Toggle navigation" (click)="openNav()">
-            <span class="navbar-toggler-icon"></span>
+            <i class="fa-solid fa-bars" style="color: var(--neutral90-color);border: none;"></i>
         </button>
         <div class="container collapse navbar-collapse mx-4">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 w-100 d-flex justify-content-around align-items-center">

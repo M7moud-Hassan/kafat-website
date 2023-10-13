@@ -142,6 +142,7 @@ export class AdminsComponent implements OnInit ,AfterViewInit {
       data:{
         id:element.id,
         email:element.email,
+        userCategoryId:element.userCategoryId,
       }
     })
   }
