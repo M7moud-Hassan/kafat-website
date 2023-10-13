@@ -2,10 +2,8 @@
     position: relative;
     background:linear-gradient(to left,#387093,#eea40f);
     opacity: 95%;
-    z-index: 6;
 }
 .bg-image{
-    z-index: 3;
     position: absolute;
     top: 0px;
     left: 0px;
@@ -17,6 +15,11 @@
     background-attachment: fixed;
     background-blend-mode: darken;
     opacity: 15%;
+    z-index: 0;
+}
+.content{
+    position: relative;
+    z-index: 3;
 }
 .discover-title{
     font-family: 'alex-700';
@@ -24,4 +27,5 @@
     line-height: 37.5px;
     text-align: center;
     margin-top: 20px;
+    z-index: 2;
 }

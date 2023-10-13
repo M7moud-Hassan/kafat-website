@@ -129,7 +129,7 @@ export class ParticipantsComponent implements OnInit ,AfterViewInit {
     })
   }
   back(){
-    this.service.back;
+    this.service.router.navigateByUrl("/admin/details-activity/"+this.id);
   }
 }
 
