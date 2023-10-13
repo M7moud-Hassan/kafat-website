@@ -71,7 +71,7 @@
                         <img src="assets/images/done.svg" width="24" height="24">
                         <span style="color: #008243;"> تم الانضمام</span>
                     </div>
-                    <div *ngIf="!activity.isParticipant && checkLogin() &&checkUserCategory()">
+                    <div *ngIf="!activity.isParticipant && checkLogin() && checkUserCategory() &&activity.countParticipants < activity.maximumParticipants ">
                         <p *ngIf="activity.ticketPrice>0"><span class="fs-5 fw-bold">{{activity.ticketPrice}}</span> ريال سعودي</p>
                     <div class="manshat-info-item" >
                        <div class="bg-primary-btn w-100 text-center" (click)="JoinActivity()">
