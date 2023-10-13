@@ -46,6 +46,7 @@
   border-radius: 8px;
   box-shadow: 0px 0px 7px lightgray;
   height: 100%;
+  background-color: var(--Primary-Surface-color);
   overflow: hidden;
 }
 
@@ -55,6 +56,7 @@
   height: 360px;
   overflow: hidden;
   margin: 0px auto;
+  background-color: white;
 }
 
 .card-image-outline {
@@ -91,7 +93,7 @@
 .manshat-info-container {
   background-color: var(--Primary-Surface-color);
   border-radius: 0px 0px 8px 8px;
-  height: 270px;
+  height: auto;
   width: 100%;
 }
 
@@ -156,13 +158,6 @@
     padding: 0px 0px;
 }
 }
-
-/* @media(400px <= width <= 1200px){
-  .manshat-info-container{
-    font-size: 10px !important;
-    color: red;
-  }
-} */
 
 
 .alert-items-container{

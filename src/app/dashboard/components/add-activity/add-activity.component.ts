@@ -36,6 +36,8 @@ export class AddActivityComponent  implements AfterViewInit{
   public stepHour = 1;
   public stepMinute = 1;
   public stepSecond = 1;
+  supervisorValue:string = ""; 
+  supervisorsCopy:any[]=[];
   public color: ThemePalette = 'primary';
   public dateControl = new FormControl(new Date(2021,9,4,5,6,7));
   public dateControlMinMax = new FormControl(new Date());
@@ -176,7 +178,7 @@ loadSupervisors(){
     if(response.statusCode=="200"){
       this.supervisorsFilter=response.data;
       this.supervisors=response.data;
-      
+      this.supervisorsCopy = this.supervisors;
     }
   }
 
@@ -471,6 +473,9 @@ var To = dateObject.toISOString().slice(0, 19).replace("T", " ") + ".0000000";
       return false;
     }
   }
- 
-  
+
+  filterSupervisors(){
+    this.supervisors = this.supervisorsCopy;
+    this.supervisors = this.activityTypes.filter(value => value.displayName.includes(this.supervisorValue));
+  }
 }

@@ -1,18 +1,7 @@
 <div class="row page-list-header d-flex justify-content-between align-items-center">
   <div class="row mx-auto">
     <div class="col-12 col-md-6">
-      <div class="w-100 form-group">
-          <label for="ActivityTypeId" class="mb-3">اختر البرنامج</label>
-          <mat-select class="border rounded p-2" (selectionChange)="changeSelect($event)" placeholder="اختر البرنامج" #singleSelect name="ActivityTypeId">
-              <mat-option>
-                  <ngx-mat-select-search 
-                      placeholderLabel="البحث عن  برنامج"></ngx-mat-select-search>
-              </mat-option>
-              <mat-option *ngFor="let element of activityTypes" [value]="element.id">
-                  {{element.title}}
-              </mat-option>
-          </mat-select>
-      </div>
+     
   </div>
   </div>
     <div class="col-12 col-md-7 mt-4">
@@ -23,6 +12,18 @@
     
     <div class="col-12 col-md-5">
       <input type="text" style="outline: none; border: 1px solid var(--main-color);box-shadow: none;" (keyup.enter)="getPageByName()" [(ngModel)]="pagedRequest.name" placeholder="ابحث عن منشط" class="form-control">
+      <div class="w-100 form-group">
+        <label for="ActivityTypeId" class="mb-1 mt-3">اختر البرنامج</label>
+        <mat-select class="border rounded p-2"  (selectionChange)="changeSelect($event)" placeholder="اختر البرنامج" #singleSelect name="ActivityTypeId">
+            <mat-option>
+                <ngx-mat-select-search   [(ngModel)]="activityTypeValue" (input)="filterActivityTypes()" noEntriesFoundLabel="لا يوجد برامج مماثلة لكلمة البحث"
+                    placeholderLabel="البحث عن  برنامج"></ngx-mat-select-search>
+            </mat-option>
+            <mat-option *ngFor="let element of activityTypes" [value]="element.id">
+                {{element.title}}
+            </mat-option>
+        </mat-select>
+    </div>
     </div>
     
   </div>

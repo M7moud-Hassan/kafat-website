@@ -523,7 +523,7 @@ export class ProfileAccountInformationComponent  implements OnInit, AfterViewIni
   }
 
   loadPDF(): void {
-    const pdfUrl = 'http://localhost:59638/images/7289a1ab-1430-4709-8688-50ce3a0a6d56.pdf';
+    const pdfUrl = '';
     this.http.get(pdfUrl, { responseType: 'blob' }).subscribe((data) => {
       // Handle the PDF file data here, e.g., display it in an iframe or download it.
       const blob = new Blob([data], { type: 'application/pdf' });

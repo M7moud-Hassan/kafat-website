@@ -143,7 +143,7 @@
                         [class.is-invalid]="ActivityTypeId?.invalid && ActivityTypeId?.touched"
                         [class.is-valid]="ActivityTypeId?.valid">
                             <mat-option>
-                                <ngx-mat-select-search [formControl]="filterInput0"
+                                <ngx-mat-select-search [formControl]="filterInput0"  noEntriesFoundLabel="لا يوجد نوع نشاط مماثل لكلمة البحث"
                                     placeholderLabel="البحث عن نوع نشاط"></ngx-mat-select-search>
                             </mat-option>
                             <mat-option *ngFor="let element of activityTypes" [value]="element.id">
@@ -163,7 +163,7 @@
                         [class.is-invalid]="programId?.invalid && programId?.touched"
                         [class.is-valid]="programId?.valid">
                             <mat-option>
-                                <ngx-mat-select-search [formControl]="filterInput"
+                                <ngx-mat-select-search [formControl]="filterInput" noEntriesFoundLabel="لا يوجد برنامج  مماثل لكلمة البحث"
                                     placeholderLabel="البحث عن برنامج"></ngx-mat-select-search>
                             </mat-option>
                             <mat-option *ngFor="let element of projects" [value]="element.id">
@@ -183,7 +183,7 @@
                         [class.is-invalid]="supervisorId?.invalid && supervisorId?.touched"
                         [class.is-valid]="supervisorId?.valid">
                             <mat-option>
-                                <ngx-mat-select-search [formControl]="filterInput2"
+                                <ngx-mat-select-search [(ngModel)]="supervisorValue" (input)="filterSupervisors()"  noEntriesFoundLabel="لا يوجد  اسم مشرف مماثل لكلمة البحث"
                                     placeholderLabel="البحث عن مشرف"></ngx-mat-select-search>
                             </mat-option>
                             <mat-option *ngFor="let element of supervisors" [value]="element.id">
@@ -203,7 +203,7 @@
                         <label for="supervisorId" class="mb-3">اختر  فئات المستخدم</label>
                         <mat-select class="border rounded p-2" [formControl]="userCategoryId" multiple>
                             <mat-option style="z-index:1000;background-color: white;">
-                                <ngx-mat-select-search [formControl]="filterInput3"
+                                <ngx-mat-select-search [formControl]="filterInput3" noEntriesFoundLabel="لا يوجد  فئة مماثلة لكلمة البحث"
                                     placeholderLabel="البحث عن فئة"></ngx-mat-select-search>
                             </mat-option>
                           <mat-option *ngFor="let topping of userCategories" [value]="topping.id">{{topping.name}}</mat-option>
