@@ -36,6 +36,7 @@ export class HomePageComponent implements AfterViewInit, OnInit{
   }
   ngOnInit(): void {
     this.getMixData();
+    this.loadInformationContact();
   }
 
   loadInformationContact(){
