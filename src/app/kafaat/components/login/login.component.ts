@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
     }
   }
   back(){
-    this.service.back;
+    this.service.router.navigate(['/'], { replaceUrl: true });
   }
 
 }

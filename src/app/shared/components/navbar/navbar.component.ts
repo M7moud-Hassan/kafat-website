@@ -88,6 +88,6 @@ export class NavbarComponent implements OnInit{
     }
   }
   logout(){
-    this.service.authService.logoutWithoutRedirect();
+    this.service.authService.logoutAndRedirectToHome();
   }
 }

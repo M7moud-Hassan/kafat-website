@@ -93,6 +93,13 @@ export class AuthService {
     this.isUserAuthSubject.next(false);
     // this.service.router.navigate([userRole==UserRoles.Admin?'/admin-login':'/login'], { replaceUrl: true });
   }
+  logoutAndRedirectToHome() {
+    let userRole = this.currentUser().role;
+    this.isLoggedIn = false;
+    localStorage.removeItem('token');
+    this.isUserAuthSubject.next(false);
+    this.service.router.navigate(['/'], { replaceUrl: true });
+  }
   IsUserLoggenIn(): boolean {
     let token = this.GetToken();
     if (token) return !this.IsAccessTokenExpired();
