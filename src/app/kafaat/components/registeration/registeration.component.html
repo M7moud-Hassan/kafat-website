@@ -112,6 +112,9 @@
                                <mat-datepicker #picker></mat-datepicker>
                             <label for="birthDateInAD">تاريخ الميلاد (ميلادي)</label>
                             </div>
+                            <div *ngIf="birthDateInAD?.errors && birthDateInAD.touched">
+                                <small *ngIf="birthDateInAD?.hasError('required')" class="error-text"> حقل تاريخ الميلاد (ميلادى) مطلوب</small>
+                            </div>
                         </div>
                     </div>
                     <div class="col-12 col-md-6">
@@ -123,7 +126,10 @@
                                 class="form-control" [min]="minDate" [max]="maxDate" >
                                 <mat-datepicker-toggle matSuffix class="border" [for]="picker10"></mat-datepicker-toggle>
                                
-                            <label for="birthDateInAD">تاريخ الميلاد (هجري)</label>
+                            <label for="birthDateInHijri" style="top: -10px; font-size: 10px">تاريخ الميلاد (هجري)</label>
+                            </div>
+                            <div *ngIf="birthDateInHijri?.errors && birthDateInHijri.touched">
+                                <small *ngIf="birthDateInHijri?.hasError('required')" class="error-text"> حقل تاريخ الميلاد (هجري) مطلوب</small>
                             </div>
                         </div>
                        
@@ -253,33 +259,6 @@
                             <small *ngIf="experience?.hasError('required')" class="error-text"> حقل الخبرات مطلوب</small>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-12 col-md-6">
-                            <div class="input-surrounding mt-4">
-                                <div class="input-element-none-icon w-100">
-                                    <input type="text" name="twitterLink" id="twitterLink" formControlName="twitterLink"
-                                        class="none-icon" required="">
-                                    <label for="twitterLink">رابط تويتر</label>
-                                </div>
-                                <div *ngIf="twitterLink?.errors && twitterLink?.touched">
-                                    <small *ngIf="twitterLink?.hasError('required')" class="error-text"> حقل رابط تويتر مطلوب</small>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <div class="input-surrounding mt-4">
-                                <div class="input-element-none-icon w-100">
-                                    <input type="text" name="facebookLink" id="facebookLink" formControlName="facebookLink"
-                                        class="none-icon" required="">
-                                    <label for="facebookLink">رابط فيسبوك</label>
-                                </div>
-                                <div *ngIf="facebookLink?.errors && facebookLink?.touched">
-                                    <small *ngIf="facebookLink?.hasError('required')" class="error-text"> حقل رابط فيسبوك مطلوب</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                
             </div>
             <div>
                 <div class="row mt-3">
@@ -353,11 +332,37 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <div class="input-surrounding mt-4">
+                            <div class="input-element-none-icon w-100">
+                                <input type="text" name="twitterLink" id="twitterLink" formControlName="twitterLink"
+                                    class="none-icon" required="">
+                                <label for="twitterLink">رابط تويتر</label>
+                            </div>
+                            <div *ngIf="twitterLink?.errors && twitterLink?.touched">
+                                <small *ngIf="twitterLink?.hasError('required')" class="error-text"> حقل رابط تويتر مطلوب</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="input-surrounding mt-4">
+                            <div class="input-element-none-icon w-100">
+                                <input type="text" name="facebookLink" id="facebookLink" formControlName="facebookLink"
+                                    class="none-icon" required="">
+                                <label for="facebookLink">رابط فيسبوك</label>
+                            </div>
+                            <div *ngIf="facebookLink?.errors && facebookLink?.touched">
+                                <small *ngIf="facebookLink?.hasError('required')" class="error-text"> حقل رابط فيسبوك مطلوب</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="row mt-3">
                     <div class="col-12 col-md-6">
                         <div class="d-flex justify-content-right align-items-center">
                             <input type="checkbox" class="Square_Sign_checkboxButton"  (change)="changeAvailableToWorkValue()" style="width: auto;border: none;" value="isAvailableToWork" formControlName="isAvailableToWork" name="isAvailableToWork" id="isAvailableToWork">
-                            <span for="make d-inline-block">متاح لفرصة عمل</span>
+                            <span for="make d-inline-block">هل تبحث عن عمل ؟</span>
                         </div>
                     </div>
                 </div>
@@ -379,10 +384,12 @@
                     </div>
                 </div>
             </div>
-                <div *ngIf="errorMessage.length>1">
+                <!-- <div *ngIf="errorMessage.length>1"> -->
+                <div *ngIf="cv_file.length == 0">
                     <small class="error-text">{{errorMessage}}</small>
                 </div>
-                <div *ngIf="fileSize > 0 && errorMessage == ''" class="p-3 d-flex justify-content-between align-items-center select-file-bg">
+                <!-- <div *ngIf="fileSize > 0 && errorMessage == ''" class="p-3 d-flex justify-content-between align-items-center select-file-bg"> -->
+                <div *ngIf="cv_file.length>0" class="p-3 d-flex justify-content-between align-items-center select-file-bg">
                     <div>{{fileSize|number:'1.2-2'}} MB</div>
                     <div>
                         <a class="text-decoration-none d-pointer" (click)="showCV()">عرض</a>
@@ -457,10 +464,10 @@
                             </div>
                             <div *ngIf="confirmPassword?.errors && confirmPassword?.touched">
                                 <small *ngIf="confirmPassword?.hasError('required')" class="error-text"> حقل تأكيد كلمة المرور مطلوب</small>
-                                <small  *ngIf="!isPasswordFieldsIdentical && confirmPassword.value.length>0" class="error-text">كلمتى المرور غير متطابقتين </small>
                             </div>
+                            <small  *ngIf="!isPasswordFieldsIdentical && confirmPassword?.touched && !confirmPassword?.hasError('required')" class="error-text">كلمتى المرور غير متطابقتين </small>
                         </div>
-                        <button type="submit" class="bg-primary-btn-block my-3 mb-4">طلب انضمام</button>
+                        <button type="submit"  class="bg-primary-btn-block my-3 mb-4">طلب انضمام</button>
                         
         </div>
         <div class="text-center">
@@ -468,7 +475,7 @@
         </div>
     </div>
     <div class="back-arrow pt-3">
-        <a (click)="isNextPageVisible=!isNextPageVisible"  class="text-white text-decoration-none d-pointer">
+        <a (click)="back()"  class="text-white text-decoration-none d-pointer">
             <img   src="/assets/images/arrow-forward.svg" alt="">
             <div class="d-inline-block back-btn">رجوع</div> 
         </a>

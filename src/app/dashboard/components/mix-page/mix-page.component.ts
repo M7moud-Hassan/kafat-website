@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { MainDashoardService } from '../../services/main-dashoard.service';
 import { ResponseVM } from 'src/app/kafaat/core/models/response-vm';
 import { PdfPopupComponent } from 'src/app/kafaat/components/pdf-popup/pdf-popup.component';
@@ -8,19 +8,26 @@ import { PdfPopupComponent } from 'src/app/kafaat/components/pdf-popup/pdf-popup
   templateUrl: './mix-page.component.html',
   styleUrls: ['./mix-page.component.css']
 })
-export class MixPageComponent implements OnInit {
+export class MixPageComponent implements OnInit, AfterViewInit {
   homeImagePath:string = '/assets/images/about2.png';
   introductoryFilePath:string = '/assets/images/about3.png';
+  // homeVideoPath:string = 'http://localhost:59638/images/32394eac-2959-4ea4-804e-d816fcb561f1.mp4';
+  // homeVideoPath:string = '/assets/videos/video.mp4';
+  homeVideoPath:string = '';
   // documentedImageItems:any[]=[];
 
   itemInfo:any[] = [
     {item_No:'homeImagePath',isSaveButtonShown:false},
     {item_No:'introductoryFilePath',isSaveButtonShown:false},
+    {item_No:'homeVideoPath',isSaveButtonShown:false},
   ];
 
-  imageObject = {homeImagePath:'',introductoryFilePath:''};
+  imageObject = {homeImagePath:'',introductoryFilePath:'',homeVideoPath:''};
   
   constructor(private service:MainDashoardService){}
+  ngAfterViewInit(): void {
+    this.getMixData();
+    }
   ngOnInit(): void {
     this.getMixData();
   }
@@ -28,17 +35,19 @@ export class MixPageComponent implements OnInit {
     this.service.mixService.get().subscribe({
       next:(res:ResponseVM)=>{
        if(res.statusCode == 200){
+        debugger;
         this.homeImagePath = res.data.homeImagePath;
         this.introductoryFilePath = res.data.introductoryFilePath;
+        this.homeVideoPath = res.data.homeVideoPath;
        }
       }
     });
   }
   
-  onChangeFile(event: any,fieldName:string) {
+  onChangeFile(event: any,fieldName:string,type:string) {
     event.preventDefault();
     const uploadedFile = event.target.files[0];
-     let checkResult = fieldName=='homeImagePath' ? this.validateUplodedImage(uploadedFile) : this.validateUplodedFile(uploadedFile);
+     let checkResult = type == FileType.Image ? this.validateUplodedImage(uploadedFile) :(type == FileType.PDF?this.validateUplodedFile(uploadedFile):this.validateUplodedVideo(uploadedFile));
      if(checkResult!=''){
       this.service.toastService.warning(checkResult);
       return;
@@ -53,6 +62,11 @@ export class MixPageComponent implements OnInit {
       case 'introductoryFilePath' : {
         this.introductoryFilePath = URL.createObjectURL(uploadedFile);
         this.imageObject.introductoryFilePath = uploadedFile;
+        break;
+      }
+      case 'homeVideoPath' : {
+        this.homeVideoPath = URL.createObjectURL(uploadedFile);
+        this.imageObject.homeVideoPath = uploadedFile;
         break;
       }
       default : {
@@ -86,10 +100,10 @@ export class MixPageComponent implements OnInit {
   }
   validateUplodedFile(image:any):string{
     let fileError = "";
-    let maxLimitedSize = 1024 * 1024 * 100;
+    let maxLimitedSize = 1024 * 1024 * 10;
     let _fileSize = image.size;  //in MB
     if (_fileSize > maxLimitedSize) {
-      fileError = " حجم الملف يتجاوز الحد المسموح به و هو مائة ميجا بايت";
+      fileError = " حجم الملف يتجاوز الحد المسموح به و هو 10 ميجا بايت";
       return fileError;
     }
     let fileName = image.name;
@@ -103,13 +117,35 @@ export class MixPageComponent implements OnInit {
 
     return fileError;
   }
+  validateUplodedVideo(video:any):string{
+    let fileError = "";
+    let maxLimitedSize = 1024 * 1024 * 30;
+    let _fileSize = video.size;  //in MB
+    if (_fileSize > maxLimitedSize) {
+      fileError = " حجم الملف يتجاوز الحد المسموح به و هو 30 ميجا بايت";
+      return fileError;
+    }
+    let fileName = video.name;
+    let fileArray: String = fileName.replace(' ', '').split(".");
+    let fileExtension = fileArray[fileArray.length - 1].toLowerCase().toString();
+    var videoTypesExtensions = ["mp4", "avi", "mov", "wmv", "flv", "mpg", "webm", "3gp", "ogv"];
+
+    if (!videoTypesExtensions.includes(fileExtension)) {
+      fileError = "نوع الفيديو غير مسموح به";
+      return fileError;
+    }
+
+    return fileError;
+  }
   submit() {
     let formData = new FormData();
     this.imageObject.homeImagePath = this.imageObject.homeImagePath==''?null:this.imageObject.homeImagePath;
     this.imageObject.introductoryFilePath = this.imageObject.introductoryFilePath==''?null:this.imageObject.introductoryFilePath;
+    this.imageObject.homeVideoPath = this.imageObject.homeVideoPath==''?null:this.imageObject.homeVideoPath;
     formData.append('homeImagePath', this.imageObject.homeImagePath);
     formData.append('introductoryFilePath', this.imageObject.introductoryFilePath);
-    if (this.imageObject.introductoryFilePath != null || this.imageObject.homeImagePath != null)
+    formData.append('homeVideoPath', this.imageObject.homeVideoPath);
+    if (this.imageObject.introductoryFilePath != null || this.imageObject.homeImagePath != null || this.imageObject.homeVideoPath != null)
       this.service.mixService.createOrUpdate(formData).subscribe({
         next: (response: ResponseVM) => {
           if (response.statusCode == 200) {
@@ -120,6 +156,7 @@ export class MixPageComponent implements OnInit {
           this.itemInfo.map(item=>{
             item.isSaveButtonShown=false;
           });
+          this.getMixData();
         },
         error: (error) => {
           let errorMessage = 'حدث خطأ غير متوقع';
@@ -141,4 +178,10 @@ export class MixPageComponent implements OnInit {
       }
     })
   }
+}
+
+export class FileType{
+  public static Image:string = "Image";
+  public static PDF:string = "PDF";
+  public static Video:string = "Video";
 }

@@ -158,10 +158,10 @@
                         placeholder="DD/MM/YYYY" 
                         [value]="profile.birthDateInHijri"
                         id="birthDateHijry" [(ngModel)]="profile.birthDateInHijri" (change)="EditField('BirthDateInHijri')" 
-                        class="form-control" [min]="minDate" [max]="maxDate" >
+                        class="form-control" [min]="minDate" [max]="maxDate" [readOnly]="true">
                         <mat-datepicker-toggle matSuffix class="border" [for]="picker10"></mat-datepicker-toggle>
                        
-                    <label for="birthDateInAD">تاريخ الميلاد (هجري)</label>
+                    <label for="birthDateInAD" style="top: -10px; font-size: 10px;">تاريخ الميلاد (هجري)</label>
                     </div>
                 </div>
                
@@ -398,7 +398,7 @@
             <div class="col-12 col-md-6">
                 <div class="d-flex justify-content-right align-items-center">
                     <input type="checkbox" class="Square_Sign_checkboxButton" [checked]="profile.isAvailableToWork==true" (change)="EditField('IsAvailableToWork')" style="width: auto; border: none;"  [(ngModel)]="profile.isAvailableToWork" name="isAvailableToWork" id="isAvailableToWork">
-                    <span for="make d-inline-block">متاح لفرصة عمل</span>
+                    <span for="make d-inline-block">هل تبحث عن عمل ؟</span>
                 </div>
             </div>
         </div>

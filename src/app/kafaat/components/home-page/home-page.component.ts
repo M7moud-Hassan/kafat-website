@@ -12,6 +12,7 @@ import { ResponseVM } from '../../core/models/response-vm';
 })
 export class HomePageComponent implements AfterViewInit, OnInit{
   showOverlay = false;
+  homeVideoPath:string = "/assets/videos/video.mp4";
   homeImagePath:string = '/assets/images/Hero-image.png';
   contactInformationItems:ContactInformationModel = {
     id:0,
@@ -93,6 +94,7 @@ export class HomePageComponent implements AfterViewInit, OnInit{
        if(res.statusCode == 200){
         if(res.data.homeImagePath.length > 0){
           this.homeImagePath = res.data.homeImagePath;
+          this.homeVideoPath = res.data.homeVideoPath;
         }
         // this.introductoryFilePath = res.data.introductoryFilePath;
        }

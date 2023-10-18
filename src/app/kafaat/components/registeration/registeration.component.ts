@@ -17,6 +17,7 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
   isNextPageVisible:boolean = true;
   isPasswordVisible:boolean = false;
   isPasswordVisible2:boolean = false;
+  isDateChanged:boolean = false;
   isAvailableToWorkChecked:boolean = false;
   form:FormGroup = new FormGroup({});
   formData:FormData = new FormData();
@@ -53,9 +54,11 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
     this.loadWorkTypes();
     this.loadQualifications();
     this.loadDistinguishedTypes();
-    // this.onChangeDate();
+
   }
+
   onChangeDate(evnt:any){
+    this.isDateChanged = true;
     const futureDate = evnt.value;
     // .format('YYYY-MM-DD');
     const y = futureDate.getFullYear();
@@ -76,7 +79,8 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
     let birthHijry = new Date(updatedHijryDate).toISOString();
     this.birthDateObj = {hijry: birthHijry ,milady:updatedMiladyDate};
     this.displayHijriDateInItsFormat(this.birthDateObj.hijry);
-
+    let arDate = this.transformDateToArabic(birthHijry);
+    this.birthDateInHijri.setValue(arDate);
   }
  
   displayHijriDateInItsFormat(bithDateinAd:string){
@@ -292,6 +296,7 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
   handleOriginalValue(originalText: string) {
     this.originalPassword = originalText;
   }
+
   createForm(){
     this.form = this.service.formBuilder.group({
       email:['',[Validators.required]],
@@ -370,7 +375,7 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
     this.fileSize = image.size/(1024*1024);
     this.fileName = image.name;
      this.cv_file = URL.createObjectURL(image);
-    console.log("+++++++++++++++++++++++++++++++++++++++++ "+image)  
+    console.log("+++++++++++++++++++++++++++++++++++++++++ "+image) 
      this.formData.append('cvFile',image);
      console.log(this.formData.get('cvFile'));
   }
@@ -459,14 +464,17 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
     }
   }
   submit() {
-    this.birthDateInHijri.setValue(this.birthDateObj.hijry);
-    this.birthDateInAD.setValue(this.birthDateObj.milady);
     this.markFormAsTouched();
     if(this.isAvailableToWork.value == true && !this.formData.has('cvFile')){
       this.errorMessage = "من فضلك قم بارفاق السيرة الذاتية";
       this.isNextPageVisible = true;
       return;
     }
+    if(this.isPasswordFieldsIdentical == false){
+      return;
+    }
+    this.birthDateInHijri.setValue(this.birthDateObj.hijry);
+    this.birthDateInAD.setValue(this.birthDateObj.milady);
     this.AppendFormToFormData();
     // this.setValuesToNullIfMemberNotAvailableToWork();
     // return;
@@ -499,7 +507,11 @@ export class RegisterationComponent   implements OnInit , AfterViewInit {
     }
   }
   back(){
-    this.service.back;
+    if(!this.isNextPageVisible){
+      this.isNextPageVisible=!this.isNextPageVisible;
+    }else{
+      this.service.back;
+    }
   } 
   value1:any;
   isDate:boolean = true;
