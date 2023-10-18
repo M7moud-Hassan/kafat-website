@@ -1,12 +1,12 @@
 <nav [class]="typeNav=='dark'?'navbar navbar-light navbar-expand-lg bg-transparent border-bottom border-main':'navbar navbar-dark navbar-expand-lg bg-transparent border-bottom border-light'">
-    <div class="container">
+    <div class="container-fluid">
         <a class="navbar-brand mb-1" routerLink="/"><img [src]="typeNav=='dark'?'assets/images/logo-blue.svg':'assets/images/logo.svg'" alt="logo.svg"></a>
         <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
             aria-expanded="false" aria-label="Toggle navigation" (click)="openNav()">
             <i class="fa-solid fa-bars" style="color: white;border: none;"></i>
         </button>
-        <div class="container collapse navbar-collapse mx-4">
+        <div class="container-fluid collapse navbar-collapse mx-4">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 w-100 d-flex justify-content-around align-items-center">
                 <li class="nav-item">
                     <a routerLinkActive="active" [class]="typeNav=='dark'?'nav-link text-dark':'nav-link text-light'" aria-current="page" routerLink="/"><span [class]="active==0?'active':''">الرئيسية</span></a>
@@ -46,16 +46,13 @@
                     <div [class]="typeNav=='dark'?'divider-line bg-dark mx-3 my-0':'divider-line bg-light mx-3 my-0'" >&nbsp;</div>
                 </li>
                 <li class="d-flex align-items-center">
-                    <a href="{{contactInformationLinks.snapchatLink}}" target="_blank"><img src='/assets/images/Snapchat-white.svg' class="social-icon ms-1"></a>
-                    <a href="{{contactInformationLinks.telegramLink}}" target="_blank"><img src='/assets/images/telegram.svg' class="social-icon ms-1"></a>
-                    <a href="{{contactInformationLinks.twitterLink}}" target="_blank"><img src='/assets/images/Twitter-light.svg' class="social-icon ms-1"></a>
-                    <a href="{{contactInformationLinks.instagramLink}}" target="_blank"><img src='/assets/images/Instagram-light.svg' class="social-icon ms-1"></a>
-                    <a href="{{contactInformationLinks.youtubeLink}}" target="_blank"><img src='/assets/images/Youtube-light.svg' class="social-icon ms-1"></a>
-                    <a href="{{contactInformationLinks.facebookLink}}" target="_blank"><img src='/assets/images/Facebook-light.svg' class="social-icon ms-1"></a>
- 
-                    <!-- <a href="{{contactInformationLinks.facebookLink}}" target="_blank"  class="mx-2"><img [src]="typeNav=='light'?'assets/images/facebook.svg':'assets/images/facebook-dark.svg'" alt="facebook.svg"></a>
-                    <a href="{{contactInformationLinks.twitterLink}}"  target="_blank" class="mx-2"><img [src]="typeNav=='light'?'assets/images/twitter.svg':'assets/images/twitter-dark.svg'" alt="twitter.svg"></a>
-                    <a href="{{contactInformationLinks.linkedInLink}}" target="_blank" class="mx-2"><img [src]="typeNav=='light'?'assets/images/linkedin.svg':'assets/images/linkedin-dark.svg'" alt="linkedin.svg"></a> -->
+                    <a href="{{contactInformationLinks.facebookLink}}" target="_blank" class="me-2" style="font-size: 19px;color: white;"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="{{contactInformationLinks.twitterLink}}" target="_blank" class="me-2" style="font-size: 19px;color: white;"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="{{contactInformationLinks.snapchatLink}}" target="_blank" class="me-2" style="font-size: 19px;color: white;"><i class="fa-brands fa-square-snapchat"></i></a>
+                    <a href="{{contactInformationLinks.instagramLink}}" target="_blank" class="me-2" style="font-size: 19px;color: white;"><i class="fa-brands fa-square-instagram"></i></a>
+                    <a href="{{contactInformationLinks.telegramLink}}" target="_blank" class="me-2" style="font-size: 19px;color: white;"><i class="fa-brands fa-telegram"></i></a>
+                    <a href="{{contactInformationLinks.linkedInLink}}" target="_blank" class="me-2" style="font-size: 19px;color: white;"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="{{contactInformationLinks.youtubeLink}}" target="_blank" class="me-2" style="font-size: 19px;color: white;"><i class="fa-brands fa-youtube"></i></a>
                 </li>
             </ul>
         </div>
@@ -63,14 +60,14 @@
 </nav>
 
 <nav id="navbar"  class="navbar navbar-light navbar-expand-lg bg-transparent border-bottom border-main  w-100 top-0 position-fixed bg-light">
-    <div class="container ">
+    <div class="container-fluid ">
         <a class="navbar-brand mb-1" href="#"><img src="assets/images/logo-blue.svg"></a>
         <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
             aria-expanded="false" aria-label="Toggle navigation" (click)="openNav()">
             <i class="fa-solid fa-bars" style="color: var(--neutral90-color);border: none;"></i>
         </button>
-        <div class="container collapse navbar-collapse mx-4">
+        <div class="container-fluid collapse navbar-collapse mx-4">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 w-100 d-flex justify-content-around align-items-center">
                 <li class="nav-item">
                     <a class="nav-link text-dark" aria-current="page" href="#"><span [class]="active==0?'active':''">الرئيسية</span></a>
@@ -113,15 +110,23 @@
                     <div class="divider-line bg-dark mx-3 my-0">&nbsp;</div>
                 </li>
                 <li class="d-flex align-items-center">
-                    <a href="{{contactInformationLinks.snapchatLink}}" target="_blank"><img src='/assets/images/Snapchat-white-d.svg' class="social-icon ms-1"></a>
+                    <!-- <a href="{{contactInformationLinks.snapchatLink}}" target="_blank"><img src='/assets/images/Snapchat-white-d.svg' class="social-icon ms-1"></a>
                     <a href="{{contactInformationLinks.telegramLink}}" target="_blank"><img src='/assets/images/telegram-d.svg' class="social-icon ms-1"></a>
                     <a href="{{contactInformationLinks.twitterLink}}" target="_blank"><img src='/assets/images/Twitter-light-d.svg' class="social-icon ms-1"></a>
                     <a href="{{contactInformationLinks.instagramLink}}" target="_blank"><img src='/assets/images/Instagram-light-d.svg' class="social-icon ms-1"></a>
                     <a href="{{contactInformationLinks.youtubeLink}}" target="_blank"><img src='/assets/images/Youtube-light-d.svg' class="social-icon ms-1"></a>
                     <a href="{{contactInformationLinks.facebookLink}}" target="_blank"><img src='/assets/images/Facebook-light-d.svg' class="social-icon ms-1"></a>
-                    <!-- <a href="{{contactInformationLinks.facebookLink}}" target="_blank"  class="mx-2"><img src="assets/images/facebook-dark.svg" alt="facebook.svg"></a>
+                    <a href="{{contactInformationLinks.facebookLink}}" target="_blank"  class="mx-2"><img src="assets/images/facebook-dark.svg" alt="facebook.svg"></a>
                     <a href="{{contactInformationLinks.twitterLink}}"  target="_blank" class="mx-2"><img src="assets/images/twitter-dark.svg" alt="twitter.svg"></a>
                     <a href="{{contactInformationLinks.linkedInLink}}" target="_blank"  class="mx-2"><img src="assets/images/linkedin-dark.svg" alt="linkedin.svg"></a> -->
+                    <a href="{{contactInformationLinks.facebookLink}}" target="_blank" class="me-2" style="font-size: 19px;color: var(--main-color);"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="{{contactInformationLinks.twitterLink}}" target="_blank" class="me-2" style="font-size: 19px;color: var(--main-color);"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="{{contactInformationLinks.snapchatLink}}" target="_blank" class="me-2" style="font-size: 19px;color: var(--main-color);"><i class="fa-brands fa-square-snapchat"></i></a>
+                    <a href="{{contactInformationLinks.instagramLink}}" target="_blank" class="me-2" style="font-size: 19px;color: var(--main-color);"><i class="fa-brands fa-square-instagram"></i></a>
+                    <a href="{{contactInformationLinks.telegramLink}}" target="_blank" class="me-2" style="font-size: 19px;color: var(--main-color);"><i class="fa-brands fa-telegram"></i></a>
+                    <a href="{{contactInformationLinks.linkedInLink}}" target="_blank" class="me-2" style="font-size: 19px;color: var(--main-color);"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="{{contactInformationLinks.youtubeLink}}" target="_blank" class="me-2" style="font-size: 19px;color: var(--main-color);"><i class="fa-brands fa-youtube"></i></a>
+
                 </li>
             </ul>
         </div>
@@ -179,8 +184,16 @@
     </div>
     <hr>
     <div class="d-flex align-items-center justify-content-around w-50 mx-auto">
-        <a href="{{contactInformationLinks.facebookLink}}" target="_blank"  class="mx-2"><img src='assets/images/facebook-dark.svg' alt="facebook.svg"></a>
+        <!-- <a href="{{contactInformationLinks.facebookLink}}" target="_blank"  class="mx-2"><img src='assets/images/facebook-dark.svg' alt="facebook.svg"></a>
         <a href="{{contactInformationLinks.twitterLink}}"  target="_blank"  class="mx-2"><img src='assets/images/twitter-dark.svg' alt="twitter.svg"></a>
-        <a href="{{contactInformationLinks.linkedInLink}}" target="_blank"  class="mx-2"><img src='assets/images/linkedin-dark.svg' alt="linkedin.svg"></a>
+        <a href="{{contactInformationLinks.linkedInLink}}" target="_blank"  class="mx-2"><img src='assets/images/linkedin-dark.svg' alt="linkedin.svg"></a> -->
+        <a href="{{contactInformationLinks.facebookLink}}" target="_blank" class="me-2" style="font-size: 19px;color: var(--main-color);"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="{{contactInformationLinks.twitterLink}}" target="_blank" class="me-2" style="font-size: 19px;color: var(--main-color);"><i class="fa-brands fa-twitter"></i></a>
+        <a href="{{contactInformationLinks.snapchatLink}}" target="_blank" class="me-2" style="font-size: 19px;color: var(--main-color);"><i class="fa-brands fa-square-snapchat"></i></a>
+        <a href="{{contactInformationLinks.instagramLink}}" target="_blank" class="me-2" style="font-size: 19px;color: var(--main-color);"><i class="fa-brands fa-square-instagram"></i></a>
+        <a href="{{contactInformationLinks.telegramLink}}" target="_blank" class="me-2" style="font-size: 19px;color: var(--main-color);"><i class="fa-brands fa-telegram"></i></a>
+        <a href="{{contactInformationLinks.linkedInLink}}" target="_blank" class="me-2" style="font-size: 19px;color: var(--main-color);"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="{{contactInformationLinks.youtubeLink}}" target="_blank" class="me-2" style="font-size: 19px;color: var(--main-color);"><i class="fa-brands fa-youtube"></i></a>
+
     </div>
 </div>
