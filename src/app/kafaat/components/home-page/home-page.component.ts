@@ -12,7 +12,8 @@ import { ResponseVM } from '../../core/models/response-vm';
 })
 export class HomePageComponent implements AfterViewInit, OnInit{
   showOverlay = false;
-  homeVideoPath:string = "/assets/videos/video.mp4";
+  // homeVideoPath:string = "/assets/videos/video.mp4";
+  homeVideoPath:string = "";
   homeImagePath:string = '/assets/images/Hero-image.png';
   contactInformationItems:ContactInformationModel = {
     id:0,

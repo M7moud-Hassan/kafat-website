@@ -2,6 +2,7 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { MainDashoardService } from '../../services/main-dashoard.service';
 import { ResponseVM } from 'src/app/kafaat/core/models/response-vm';
 import { PdfPopupComponent } from 'src/app/kafaat/components/pdf-popup/pdf-popup.component';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-mix-page',
@@ -11,10 +12,7 @@ import { PdfPopupComponent } from 'src/app/kafaat/components/pdf-popup/pdf-popup
 export class MixPageComponent implements OnInit, AfterViewInit {
   homeImagePath:string = '/assets/images/about2.png';
   introductoryFilePath:string = '/assets/images/about3.png';
-  // homeVideoPath:string = 'http://localhost:59638/images/32394eac-2959-4ea4-804e-d816fcb561f1.mp4';
-  // homeVideoPath:string = '/assets/videos/video.mp4';
   homeVideoPath:string = '';
-  // documentedImageItems:any[]=[];
 
   itemInfo:any[] = [
     {item_No:'homeImagePath',isSaveButtonShown:false},
@@ -24,7 +22,8 @@ export class MixPageComponent implements OnInit, AfterViewInit {
 
   imageObject = {homeImagePath:'',introductoryFilePath:'',homeVideoPath:''};
   
-  constructor(private service:MainDashoardService){}
+  constructor(private service:MainDashoardService,private location:Location){ 
+  }
   ngAfterViewInit(): void {
     this.getMixData();
     }
@@ -32,14 +31,12 @@ export class MixPageComponent implements OnInit, AfterViewInit {
     this.getMixData();
   }
   getMixData(){
-    this.service.mixService.get().subscribe({
-      next:(res:ResponseVM)=>{
-       if(res.statusCode == 200){
-        debugger;
+  
+    this.service.mixService.get().subscribe(res=>{
+      if(res.statusCode==200){
         this.homeImagePath = res.data.homeImagePath;
         this.introductoryFilePath = res.data.introductoryFilePath;
         this.homeVideoPath = res.data.homeVideoPath;
-       }
       }
     });
   }
@@ -156,7 +153,6 @@ export class MixPageComponent implements OnInit, AfterViewInit {
           this.itemInfo.map(item=>{
             item.isSaveButtonShown=false;
           });
-          this.getMixData();
         },
         error: (error) => {
           let errorMessage = 'حدث خطأ غير متوقع';
