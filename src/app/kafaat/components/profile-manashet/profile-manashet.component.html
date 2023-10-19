@@ -26,14 +26,12 @@
         <div class="element-details">
             <div class="program-name">{{item.programs}}</div>
             <div class="main-title">{{item.name}}</div>
-            <div class="success-padge" *ngIf="item.statusActivity==2">جاري</div>
+            <div class="success-padge" *ngIf="item.statusActivity==0">جاري</div>
             <div class="warning-padge" *ngIf="item.statusActivity==1">قادم</div>
-            <div class="primary-padge" *ngIf="item.statusActivity==0">سابق</div>
+            <div class="primary-padge" *ngIf="item.statusActivity==2">سابق</div>
             <br/>
             <div class="sub-title mt-2 ">
-                <div [innerHTML]="item.description">
-                
-                </div>
+                <div [innerHTML]="item.description" class="truncate-3-lines text-justify"></div>
             </div>
         </div>
     </div>
@@ -53,9 +51,7 @@
             <div class="main-title">{{item.name}}</div>
             <span class="success-padge">قادم</span>
             <div class="sub-title mt-2 ">
-                <div>
-                   {{item.description}}
-                </div>
+                <div [innerHTML]="item.description" class="truncate-3-lines text-justify"></div>
             </div>
         </div>
     </div>
@@ -76,9 +72,7 @@
             <div class="main-title">{{item.name}}</div>
             <span class="primary-padge">جارى</span>
             <div class="sub-title mt-2 ">
-                <div>
-                    {{item.description}}
-                </div>
+                <div [innerHTML]="item.description" class="truncate-3-lines text-justify"></div>
             </div>
         </div>
     </div>
@@ -99,9 +93,7 @@
             <div class="main-title">{{item.name}}</div>
             <span class="warning-padge">سابق</span>
             <div class="sub-title mt-2 ">
-                <div>
-                    {{item.description}}
-                </div>
+                <div [innerHTML]="item.description" class="truncate-3-lines text-justify"></div>
             </div>
         </div>
     </div>

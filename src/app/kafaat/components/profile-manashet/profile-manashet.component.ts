@@ -19,13 +19,12 @@ export class ProfileManashetComponent implements OnInit {
 
   loadData(){
     this.service.activityService.getActivitiesParticipants(this.service.authService.currentUser().id).subscribe(res=>{
-      this.allActivities=res.data;
-      console.log(res.data);
+      this.allActivities=res.data;  
       
-      this.pastActivities=this.allActivities.filter(x=>x.StatusActivity==2);
+      this.pastActivities=this.allActivities.filter(x=>x.statusActivity==2);
       this.hideTest=this.allActivities.length==0;
-      this.willActivities=this.allActivities.filter(x=>x.StatusActivity==1);
-      this.currentActivities=this.allActivities.filter(x=>x.StatusActivity==0);
+      this.willActivities=this.allActivities.filter(x=>x.statusActivity==1);
+      this.currentActivities=this.allActivities.filter(x=>x.statusActivity==0);
      
     })
   }
@@ -39,6 +38,7 @@ export class ProfileManashetComponent implements OnInit {
   }
 
   selectItem(id:any){
+   
     this.navList.map(x=>x.id==id?x.isSelected=true:x.isSelected=false);
   }
   fillNavList(){
