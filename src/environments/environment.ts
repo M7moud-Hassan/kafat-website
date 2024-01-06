@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  baseApiUrl:'http://localhost:59638/api',
-  // baseApiUrl:'https://future-sword.com:8092/api',
+  // baseApiUrl:'http://localhost:59638/api',
+  baseApiUrl:'https://back.kftalmajed.com/api',
 };
 
 /*
