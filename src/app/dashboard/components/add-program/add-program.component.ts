@@ -6,6 +6,7 @@ import { MainDashoardService } from '../../services/main-dashoard.service';
 import { AddCountryComponent } from '../add-country/add-country.component';
 import { AuthService } from 'src/app/kafaat/services/auth.service';
 declare const Quill: any;
+declare const Choices: any;
 @Component({
   selector: 'app-add-program',
   templateUrl: './add-program.component.html',
@@ -17,11 +18,14 @@ export class AddProgramComponent implements OnInit ,AfterViewInit{
   minHeightProgram: number = 60;
   minWidthDes: number = 600;
   minHeightDes: number = 650;
+  textPresetVal: any
   @ViewChild('editor', { static: true }) editorElement: ElementRef;
   constructor(private service:MainDashoardService,private dialogRef: MatDialogRef<AddCountryComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,private authService:AuthService){}
   ngAfterViewInit(): void {
     this.initializeQuillEditor()
+     this.textPresetVal = new Choices('#choices-text-preset-values',{
+     items:this.data!=null?this.data.objectives.map((e:any)=>e.name):[]});
   }
     
   ngOnInit(): void {
@@ -117,6 +121,9 @@ export class AddProgramComponent implements OnInit ,AfterViewInit{
   }
   
   submit() {
+    const values = this.textPresetVal.getValue();
+   
+    
     // this.service.printFormValues(this.form);
     var post=document.getElementsByClassName('ql-editor')[0].innerHTML;
     if(post=='<p><br></p>'){
@@ -125,9 +132,17 @@ export class AddProgramComponent implements OnInit ,AfterViewInit{
     }
     if(this.form.valid){
         const formData = new FormData();
+        for (let i = 0; i < values.length; i++) {
+          const json = JSON.stringify({
+            'id':0,
+            'name':values[i].value
+          });
+          formData.append(`objectives[${i}]`, json);
+        }
         formData.append('Title', this.form.value.Title);
         formData.append('Description',post);
         formData.append('ImageFile', this.fileIn);
+        //
         formData.append('CreatedBy',this.authService.currentUser().id);
         formData.append('SubTitle',this.form.value.subTitle);
         formData.append('ImageDesFile',this.fileInR);

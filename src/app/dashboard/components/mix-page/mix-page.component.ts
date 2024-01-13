@@ -32,6 +32,7 @@ export class MixPageComponent implements OnInit, AfterViewInit {
     this.getMixData();
   }
   getMixData(){
+    
     this.service.mixService.get().subscribe({
       next:(res:ResponseVM)=>{
        if(res.statusCode == 200){

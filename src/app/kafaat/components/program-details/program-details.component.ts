@@ -11,6 +11,7 @@ export class ProgramDetailsComponent implements OnInit {
   tabNumberIsActive:number = 0;
   navList:any[]=[];
   id:any
+  objectives=false;
   program:any
   allActivities:any[]=[]
   pastActivity:any[]=[]
@@ -59,5 +60,9 @@ export class ProgramDetailsComponent implements OnInit {
 
   onClickItem(id:number){
     this.router.navigate(['/kafaat/activity-details/',id])
+  }
+
+  changeObjective(){
+    this.objectives=!this.objectives;
   }
 }
