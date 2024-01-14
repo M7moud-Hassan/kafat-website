@@ -1,7 +1,7 @@
 .navbar-container {
     background: linear-gradient(to right, #A18131, #005183);
     position: relative;
-    height: 450px;
+    height: 480px;
     width: 100%;
 }
 
@@ -153,7 +153,7 @@
         clip-path: ellipse(92% 42% at 46% 54%);
     }
     .navbar-container{
-        height: 300px;
+        height: 360px;
     }
 }
 
