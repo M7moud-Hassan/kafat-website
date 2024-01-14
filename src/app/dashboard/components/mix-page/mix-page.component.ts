@@ -31,12 +31,14 @@ export class MixPageComponent implements OnInit, AfterViewInit {
     this.getMixData();
   }
   getMixData(){
-  
-    this.service.mixService.get().subscribe(res=>{
-      if(res.statusCode==200){
-        this.homeImagePath = res.data.homeImagePath;
-        this.introductoryFilePath = res.data.introductoryFilePath;
-        this.homeVideoPath = res.data.homeVideoPath;
+    this.service.mixService.get().subscribe({
+      next: (res: ResponseVM) => {
+        if (res.statusCode == 200) {
+          debugger;
+          this.homeImagePath = res.data.homeImagePath;
+          this.introductoryFilePath = res.data.introductoryFilePath;
+          this.homeVideoPath = res.data.homeVideoPath;
+        }
       }
     });
   }

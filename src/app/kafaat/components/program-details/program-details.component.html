@@ -40,9 +40,26 @@
             </div>
         </div>
         <div class="col-12 col-md-9">
+            <div class="d-flex justify-content-center">
+                <div [class]="objectives?'inactive-navigation-button':'active-navigation-button'" (click)="changeObjective()">
+                    وصف البرنامج
+                </div>
+                <div style="width: 2vw;">
+
+                </div>
+                <div [class]="objectives?'active-navigation-button':'inactive-navigation-button'" (click)="changeObjective()">
+                    اهداف المنشط
+                </div>
+            </div>
             <div class="program-descriprion-words">
-                <div class="text-container">
+                
+                <div class="text-container" *ngIf="!objectives">
                     <p class="text-content" [innerHTML]="program.description"></p>
+                  </div>
+                <div class="text-container" *ngIf="objectives" >
+                   <ul class="text-content">
+                    <li  *ngFor="let item of program.objectives">{{ item.name }}</li>
+                   </ul>
                   </div>
             </div>
         </div>

@@ -32,6 +32,7 @@
             ],
             "styles": [
               "src/assets/css/styles.min.css",
+              "src/assets/libs/choices.js/public/assets/styles/choices.min.css",
               "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css",
               "node_modules/slick-carousel/slick/slick.scss",
@@ -47,6 +48,7 @@
               "node_modules/slick-carousel/slick/slick.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
               "src/assets/js/apexcharts/apexcharts.min.js",
+              "src/assets/libs/choices.js/public/assets/scripts/choices.min.js",
               "src/assets/js/chart.js/chart.min.js"
             ]
           },

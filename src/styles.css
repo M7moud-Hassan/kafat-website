@@ -799,3 +799,9 @@ td{
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
 }
+.choices__input{
+  border: none !important;
+}
+.choices__item{
+  color: black !important;
+}

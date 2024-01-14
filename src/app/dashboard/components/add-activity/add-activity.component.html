@@ -206,6 +206,7 @@
                                 <ngx-mat-select-search [formControl]="filterInput3" noEntriesFoundLabel="لا يوجد  فئة مماثلة لكلمة البحث"
                                     placeholderLabel="البحث عن فئة"></ngx-mat-select-search>
                             </mat-option>
+                            <mat-option  (onSelectionChange)="select_all()" [value]="0" >الكل</mat-option>
                           <mat-option *ngFor="let topping of userCategories" [value]="topping.id">{{topping.name}}</mat-option>
                         </mat-select>
 

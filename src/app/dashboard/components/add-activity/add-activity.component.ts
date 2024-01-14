@@ -64,6 +64,7 @@ export class AddActivityComponent  implements AfterViewInit{
   }
   ngAfterViewInit(): void {
     this.initializeQuillEditor()
+    
   }
 
 
@@ -89,6 +90,23 @@ export class AddActivityComponent  implements AfterViewInit{
     });
     this.filterUserActivity.valueChanges.subscribe(newValue => {      
       this.userCategories = this.userCategoriesFilter.filter(value => value.name.includes(newValue.filterInput3));
+    });
+
+    this.userCategoryId.valueChanges.subscribe(newValue => {
+      const difference = newValue.length - this.userCategories.length;
+    
+      if (difference !== 1) {
+        // Check if 0 is present in the new value array
+        const indexOfZero = newValue.indexOf(0);
+    
+        if (indexOfZero !== -1) {
+          // Remove 0 from the new value array
+          newValue.splice(indexOfZero, 1);
+    
+          // Update the FormControl value without emitting another change event
+          this.userCategoryId.setValue(newValue, { emitEvent: false });
+        }
+      }
     });
 
   }
@@ -404,7 +422,9 @@ var To = dateObject.toISOString().slice(0, 19).replace("T", " ") + ".0000000";
       formData.append('programId', this.group2.value.programId);
       formData.append('supervisorId',this.group2.value.supervisorId );
       userCategoriesData.forEach((category, index) => {
+        if(category!=0){
         formData.append(`UserCategories[${index}]`, category.toString());
+        }
       });
       formData.append('ActivityTypeId', this.group2.value.ActivityTypeId);
       if(this.activity){
@@ -477,5 +497,17 @@ var To = dateObject.toISOString().slice(0, 19).replace("T", " ") + ".0000000";
   filterSupervisors(){
     this.supervisors = this.supervisorsCopy;
     this.supervisors = this.activityTypes.filter(value => value.displayName.includes(this.supervisorValue));
+  }
+
+  selectAllChecked = false;
+
+  select_all() {
+      this.selectAllChecked = !this.selectAllChecked;
+
+      if (this.selectAllChecked) {
+          this.userCategoryId.patchValue(this.userCategories.map(category => category.id));
+      } else {
+          this.userCategoryId.patchValue([]);
+      }
   }
 }
