@@ -1,7 +1,7 @@
 .navbar-container {
     background: linear-gradient(to right, #A18131, #005183);
     position: relative;
-    min-height: calc(80vh);
+    height: 450px;
     width: 100%;
 }
 
@@ -151,6 +151,9 @@
     }
     .navbar-image{
         clip-path: ellipse(92% 42% at 46% 54%);
+    }
+    .navbar-container{
+        height: 300px;
     }
 }
 
