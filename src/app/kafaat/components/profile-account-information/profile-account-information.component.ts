@@ -437,7 +437,7 @@ export class ProfileAccountInformationComponent  implements OnInit, AfterViewIni
     }
     let model:EditFieldRequest = {Email:_email,FieldName:fieldName,NewValue:newValue};
     if(fieldName==FieldNames.UserName || fieldName==FieldNames.Phone || fieldName==FieldNames.Email || fieldName==FieldNames.FirstName || 
-      fieldName==FieldNames.MiddleName || fieldName==FieldNames.LastName || fieldName==FieldNames.TwitterLink || fieldName==FieldNames.FacebookLink
+      fieldName==FieldNames.MiddleName || fieldName==FieldNames.LastName
       || fieldName==FieldNames.IdentityNumber || fieldName==FieldNames.NickName || fieldName==FieldNames.Hoppies){
         if(model.NewValue==null || model.NewValue.length < 3){
           this.adminService.toastService.warning('القيمة المدخلة قصيرة جدا');

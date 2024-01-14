@@ -27,8 +27,8 @@ export class ProfileChangePasswordComponent  implements OnInit {
     this.form = this.service.formBuilder.group({
       email:['',[Validators.required]],
       oldPassword:['',[Validators.required]],
-      newPassword:['',[Validators.required,Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$")]],
-      confirmPassword:['',[Validators.required,Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$")]],
+      newPassword:['',[Validators.required,Validators.minLength(4)]],
+      confirmPassword:['',[Validators.required,Validators.minLength(4)]],
     });
   }
   get isPasswordFieldsIdentical():boolean{
