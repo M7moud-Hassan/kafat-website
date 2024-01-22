@@ -21,17 +21,15 @@
 }
 .navbar-image {
     position: absolute;
-    /* bottom: calc(-30vh); */
     bottom: -200px;
     left: 0px;
     background-color: transparent;
-    /* height: calc(70vh); */
     height: 400px;
     width: 100%;
     clip-path: ellipse(55% 50% at 50% 50%);
-    /* background-image: url('/assets/images/Hero-image.png'); */
     background-repeat: no-repeat;
-    background-size: 100% 120%;
+    /* background-size: 100% 120%; */
+    background-size: 100% 100%;
 }
 
 .navbar-image-opacity {
