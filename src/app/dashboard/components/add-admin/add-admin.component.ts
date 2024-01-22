@@ -20,7 +20,7 @@ export class AddAdminComponent implements OnInit {
       email: ['',[Validators.required]],
       displayName: ['',[Validators.required]],
       phoneNumber: ['',[Validators.required]],
-      password: ['',[Validators.required,Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$")]]
+      password: ['',[Validators.required,Validators.minLength(4)]]
     });
   }
 

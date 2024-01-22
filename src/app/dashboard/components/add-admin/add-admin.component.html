@@ -30,7 +30,7 @@
         <input formControlName="password" type="password" name="password" id="password" [class.is-invalid]="password?.invalid && password?.touched" [class.is-valid]="password?.valid" class="form-control my-1">
         <div *ngIf="password?.errors && password?.touched">
             <small *ngIf="password?.hasError('required')"  class="text-danger">يجب ادخال كلمة المرور </small>
-            <small  *ngIf="password?.hasError('pattern')" class="error-text">كلمة المرور يجب ان تحتوى على حروف كبيرة و صغيره و ارقام و رموز و طولها لا يقل عن 6 احرف</small>
+            <small  *ngIf="password?.hasError('minlength')" class="error-text">كلمة المرور يجب ان طولها لا يقل عن 4 احرف</small>
         </div>
     </div>
     <button type="submit" routerLink="#" class="bg-primary-btn-block my-3 mb-4 p-2">إنشاء الحساب</button>
