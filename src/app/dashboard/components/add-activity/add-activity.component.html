@@ -50,13 +50,13 @@
                         <label class="mb-3" for="date">تاريخ المنشط</label>
                         <div class="input-group">
                             
-                            <input [hidden]="isDateReadOnly()" matInput [matDatepicker]="picker"  formControlName="date" name="date" [disabled]="isDateReadOnly()"
+                            <input matInput [matDatepicker]="picker"  formControlName="date" name="date" 
                             placeholder="DD/MM/YYYY" id="date" [class.is-invalid]="date?.invalid && date?.touched"
                             [class.is-valid]="date?.valid" class="form-control">
-                            <mat-datepicker-toggle *ngIf="!isDateReadOnly()"  matIconSuffix class="border" [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker-toggle matIconSuffix class="border" [for]="picker"></mat-datepicker-toggle>
                             </div>
 
-                            <input *ngIf="isDateReadOnly()" type="text" [value]="activity.date" class="form-control" readonly>
+                            <!-- <input *ngIf="isDateReadOnly()" type="text" [value]="activity.date" class="form-control" readonly> -->
                     
                        
                         <mat-datepicker #picker></mat-datepicker>
@@ -68,13 +68,13 @@
                         <label class="mb-3" for="date"> الي تاريخ</label>
                         <div class="input-group">
                             
-                            <input [hidden]="isDateReadOnly()" matInput [matDatepicker]="pickerTo"  formControlName="to" name="to" [disabled]="isDateReadOnly()"
+                            <input  matInput [matDatepicker]="pickerTo"  formControlName="to" name="to" 
                             placeholder="DD/MM/YYYY" id="to" [class.is-invalid]="to?.invalid && to?.touched"
                             [class.is-valid]="to?.valid" class="form-control">
-                            <mat-datepicker-toggle *ngIf="!isDateReadOnly()"  matIconSuffix class="border" [for]="pickerTo"></mat-datepicker-toggle>
+                            <mat-datepicker-toggle   matIconSuffix class="border" [for]="pickerTo"></mat-datepicker-toggle>
                             </div>
 
-                            <input *ngIf="isDateReadOnly()" type="text" [value]="activity.to" class="form-control" readonly>
+                            <!-- <input *ngIf="isDateReadOnly()" type="text" [value]="activity.to" class="form-control" readonly> -->
                     
                        
                         <mat-datepicker #pickerTo></mat-datepicker>

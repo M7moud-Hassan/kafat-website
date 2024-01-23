@@ -24,7 +24,7 @@
           <tbody class="tableData" *ngFor="let item of pageResponse.items | paginate: 
               { id: 'foo', itemsPerPage: pagedRequest.pageSize, currentPage: pagedRequest.pageNumber, totalItems: pageResponse.totalCount };let i = index">
               <tr id="first_{{i}}" >
-                  <td style="cursor: pointer;">{{item.id}}</td>
+                  <td style="cursor: pointer;">{{i+1}}</td>
                   <td style="cursor: pointer;">
                   <img [src]="item.path" width="100px" height="100px">
                   </td>
