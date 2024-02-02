@@ -29,7 +29,7 @@ constructor(private service:ProgramsService,private router:Router) {
     "slidesToShow": 5,
     "slidesToScroll": 1,
     "infinite": false,
-
+    'rtl':true,
     "responsive": [
 
       {

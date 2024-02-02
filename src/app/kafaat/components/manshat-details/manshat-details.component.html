@@ -36,9 +36,11 @@
             <div class="manshat-card-container-descrition-container">
                 <div class="manshat-card-container-descrition-title">وصف المنشط</div>
                 <span class="under-line"></span>
-                <div class="manshat-card-container-descrition-wording" [innerHTML]="activity.description">
+                <div class="manshat-card-container-descrition-wording {{numberOfLines>13 && more?'truncate-13-lines':''}} " #description [innerHTML]="activity.description">
                   
                 </div>
+                <a  (click)="toggleMoreRead()" *ngIf="more && numberOfLines>13" class="manashet-card-details-more-link">عرض المزيد</a>
+                <a  (click)="toggleMoreRead()" *ngIf="!more" class="manashet-card-details-more-link">عرض اقل</a>
             </div>
         </div>
         <div class="col-12 col-md-5  ">
