@@ -64,6 +64,7 @@ import { NgxMatDatetimePickerModule, NgxMatTimepickerModule, NgxMatNativeDateMod
 import { DateOfHegiraComponent } from './components/date-of-hegira/date-of-hegira.component';
 import { DateOfBirthComponent } from './components/date-of-birth/date-of-birth.component';
 import { PdfViewrComponent } from './components/pdf-viewr/pdf-viewr.component';
+import { HeaderComponent } from './components/header/header.component';
 export function tokenGetter() {
   return localStorage.getItem("token");
 }
@@ -117,7 +118,8 @@ export function tokenGetter() {
     PostsPeopleComponent,
     DateOfHegiraComponent,
     DateOfBirthComponent,
-    PdfViewrComponent
+    PdfViewrComponent,
+    HeaderComponent
   ],
   imports: [
     CommonModule,

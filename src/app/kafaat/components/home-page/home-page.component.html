@@ -1,13 +1,23 @@
 <div class="home">
-    <div class="navbar-container">
-        <div class="navbar-element-container">
-            <app-navbar typeNav="light" [active]=0 (handleOpenNav)="openOrClosNav($event)"></app-navbar>
-         
-            <div class="row">
+    <div class="">
+        <div class="">
+            <!--  -->
+            <app-navbar  style="position: relative; z-index: 29000;" typeNav="light" [active]=0 (handleOpenNav)="openOrClosNav($event)"></app-navbar>
+           <div class="text-center"  style="position: relative; top: 150px; z-index: 30000000; mix-blend-mode: screen;">
+            <video width="30%" height="100%" style="display: block;" oncanplay="this.play()" onloadedmetadata="this.muted = true"
+            style="mix-blend-mode: screen;">
+         <source src="{{homeVideoPath}}" type="video/mp4">
+     </video>
+        <button class="bg-primary-opacity-btn mx-auto mt-4"  style="display: block;" routerLink="/kafaat/programs" >اكتشف البرامج</button>
+           </div>
+                
+            <div  style="position: absolute; top: 0; left: 0; right: 0;">
+                <app-header  [imgPath]="homeImagePath">
+                </app-header>
+            </div>
+            <!-- <div class="row">
                 <div class="col-12 col-md-4 icons-rigt text-center d-none d-md-block">
-                        <!-- <img src="assets/images/slide6.svg" alt="" class="top-anim">
-                        <img src="assets/images/slide5.svg" alt="" class="top-30">
-                        <img src="assets/images/slide4.svg" alt="" class="top-anim"> -->
+                    
                 </div>
                 <div class="col-12 col-md-4 d-flex align-items-center justify-content-center mb-4 py-4">
                     
@@ -15,32 +25,27 @@
        style="mix-blend-mode: screen;">
     <source src="{{homeVideoPath}}" type="video/mp4">
 </video>
-
-               
                 </div>
                 <div class="col-8 mx-auto col-md-4 icons-left">
-                    <!-- <img src="assets/images/slide1.svg" alt="" class="top-anim">
-                    <img src="assets/images/slide2.svg" alt="" class="top-30">
-                    <img src="assets/images/slide3.svg" alt="" class="top-anim"> -->
                 </div>
-            </div>
+            </div> -->
          
         </div>
 
         
-           <div class="navbar-image" style="background-image: url('{{homeImagePath}}');"></div>
+           <!-- <div class="navbar-image" style="background-image: url('{{homeImagePath}}');"></div> -->
 
         <div class="navbar-image-opacity"></div>
         <div class="discover-image">
             
            
-            <button class="bg-primary-opacity-btn mt-4" routerLink="/kafaat/programs" style="top: 60%;">اكتشف البرامج</button>
+            
            
         </div> 
         
     </div>
     <!-- because mahmoud abd magisss -->
-    <div style="margin-top: 150px;"></div>
+    <div style="margin-top: 30%;"></div>
     <div style="padding-top: 60px;">
         <app-carousal-home></app-carousal-home>
     </div>
