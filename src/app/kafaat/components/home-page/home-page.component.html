@@ -1,9 +1,7 @@
 <div class="home">
     <div class="">
-        <div class="">
-            <!--  -->
-            <app-navbar  style="position: relative; z-index: 29000;" typeNav="light" [active]=0 (handleOpenNav)="openOrClosNav($event)"></app-navbar>
-           <div class="text-center"  style="position: relative; top: 150px; z-index: 30000000; mix-blend-mode: screen;">
+        <app-navbar  style="position: relative; z-index: 29000;" typeNav="light" [active]=0 (handleOpenNav)="openOrClosNav($event)"></app-navbar>
+           <div class="text-center"  style="position: relative; top: 150px; z-index: 1; mix-blend-mode: screen;">
             <video width="30%" height="100%" style="display: block;" oncanplay="this.play()" onloadedmetadata="this.muted = true"
             style="mix-blend-mode: screen;">
          <source src="{{homeVideoPath}}" type="video/mp4">
@@ -15,34 +13,6 @@
                 <app-header  [imgPath]="homeImagePath">
                 </app-header>
             </div>
-            <!-- <div class="row">
-                <div class="col-12 col-md-4 icons-rigt text-center d-none d-md-block">
-                    
-                </div>
-                <div class="col-12 col-md-4 d-flex align-items-center justify-content-center mb-4 py-4">
-                    
-                    <video width="70%" height="100%" oncanplay="this.play()" onloadedmetadata="this.muted = true"
-       style="mix-blend-mode: screen;">
-    <source src="{{homeVideoPath}}" type="video/mp4">
-</video>
-                </div>
-                <div class="col-8 mx-auto col-md-4 icons-left">
-                </div>
-            </div> -->
-         
-        </div>
-
-        
-           <!-- <div class="navbar-image" style="background-image: url('{{homeImagePath}}');"></div> -->
-
-        <div class="navbar-image-opacity"></div>
-        <div class="discover-image">
-            
-           
-            
-           
-        </div> 
-        
     </div>
     <!-- because mahmoud abd magisss -->
     <div style="margin-top: 30%;"></div>
