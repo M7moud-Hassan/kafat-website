@@ -21,8 +21,8 @@ export class NewPasswordComponent implements OnInit {
   }
   createForm(){
     this.form = this.service.formBuilder.group({
-      newPassword:['',[Validators.required,Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$")]],
-      confirmPassword:['',[Validators.required,Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$")]],
+      newPassword:['',[Validators.required,Validators.minLength(4)]],
+      confirmPassword:['',[Validators.required,Validators.minLength(4)]],
       email:['',[]],
     });
   }

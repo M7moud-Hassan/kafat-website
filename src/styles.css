@@ -110,6 +110,12 @@
     -webkit-line-clamp: 10;
     overflow: hidden;
   }
+  .truncate-15-lines {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 13;
+    overflow: hidden;
+  }
 ::-webkit-scrollbar{
     width: 8px;
 }

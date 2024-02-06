@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
+  // baseApiUrl:'http://localhost:59638/api',
   baseApiUrl:'https://back.kftalmajed.com/api',
-  // baseApiUrl:'http://86.48.3.151:8090/api',
 };
 
 /*

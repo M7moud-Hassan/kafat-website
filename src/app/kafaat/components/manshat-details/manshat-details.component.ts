@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { KafaatMainService } from '../../services/kafaat-main.service';
 import * as XLSX from 'xlsx';
@@ -9,7 +9,9 @@ const EXCEL_EXTENSION = '.xlsx';
   templateUrl: './manshat-details.component.html',
   styleUrls: ['./manshat-details.component.css']
 })
-export class ManshatDetailsComponent implements OnInit {
+export class ManshatDetailsComponent implements OnInit, AfterViewInit {
+  more:boolean = true;
+  numberOfLines:number = 0;
   tabNumberIsActive:number = 0;
   navigationItemsList:any[]=[];
   id:number
@@ -19,17 +21,32 @@ export class ManshatDetailsComponent implements OnInit {
   videos:any
   isUserCaterory=false;
   @ViewChild('alert', { static: false }) myElement: ElementRef;
+  @ViewChild('description') description: ElementRef;
 
   constructor(private service:KafaatMainService,private route:ActivatedRoute,private router:Router) {
     this.route.params.subscribe(param=>{
       this.id=param['id']
     })
   }
-
-  ngOnInit(): void {
-    this.loadData()
+  ngAfterViewInit(): void {
+    this.getNumberOfLines();
   }
 
+  ngOnInit(): void {
+    this.loadData();
+    
+  }
+  toggleMoreRead(){
+    this.more = !this.more;
+  }
+  getNumberOfLines() {
+    const divElement = this.description.nativeElement;
+    const lineHeight = parseInt(window.getComputedStyle(divElement).lineHeight, 10);
+    const height = divElement.clientHeight;
+    const numberOfLines = Math.round(height / lineHeight);
+    console.log('Number of lines:', numberOfLines);
+    this.numberOfLines = numberOfLines;
+  }
   loadData(){
     
     var idPart='';

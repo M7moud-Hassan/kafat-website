@@ -2,7 +2,7 @@
 .navbar-container {
     background: linear-gradient(to right, #A18131, #005183);
     position: relative;
-    min-height: calc(100vh);
+    height: 480px;
     width: 100%;
 }
 
@@ -11,42 +11,56 @@
     top: 0px;
     left: 0px;
     width: 100%;
-    height: calc(40vh);
+    /* height: calc(40vh); */
+    height: 300px;
 }
-
 .navbar-element {
     background-color: transparent;
     border: 1px solid blueviolet;
     height: 60px;
     width: 100%;
 }
-
 .navbar-image {
     position: absolute;
-    bottom: calc(-30vh);
+    bottom: -200px;
     left: 0px;
     background-color: transparent;
-    height: calc(70vh);
+    height: 400px;
     width: 100%;
     clip-path: ellipse(55% 50% at 50% 50%);
-    /* background-image: url('/assets/images/Hero-image.png'); */
     background-repeat: no-repeat;
-    background-size: 100% 120%;
+    /* background-size: 100% 120%; */
+    background-size: 100% 100%;
 }
 
 .navbar-image-opacity {
     position: absolute;
-    bottom: calc(-30vh);
+    /* bottom: calc(-30vh); */
+    bottom: -200px;
     left: 0px;
     background-color: transparent;
-    height: calc(70vh);
+    /* height: calc(70vh); */
+    height: 400px;
     width: 100%;
     clip-path: ellipse(55% 50% at 50% 50%);
     background-color: #005183;
     z-index: 3;
     opacity: .3;
 }
+.discover-image {
+    position: absolute;
+    /* bottom: calc(-20vh); */
+    bottom: -200px;
+    left: 0px;
+    background-color: transparent;
+    /* height: calc(70vh); */
+    height: 500px;
+    width: 100%;
+    z-index: 5;
+    font-size: 30px;
+    color: red;
 
+}
 .icons-rigt,
 .icons-left {
     position: relative;
@@ -93,18 +107,7 @@
     left: 0;
 }
 
-.discover-image {
-    position: absolute;
-    bottom: calc(-20vh);
-    left: 0px;
-    background-color: transparent;
-    height: calc(70vh);
-    width: 100%;
-    z-index: 5;
-    font-size: 30px;
-    color: red;
 
-}
 
 
 @media (0px <=width <=1200px) {
@@ -147,6 +150,9 @@
     }
     .navbar-image{
         clip-path: ellipse(92% 42% at 46% 54%);
+    }
+    .navbar-container{
+        height: 360px;
     }
 }
 

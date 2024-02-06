@@ -10,6 +10,7 @@ import { UserProfilePopUpComponent } from '../user-profile-pop-up/user-profile-p
 import { SendEmailPopUpComponent } from '../send-email-pop-up/send-email-pop-up.component';
 import { DialogDeleteComponent } from '../dialog-delete/dialog-delete.component';
 import { ChangeUserCategoryPopUpComponent } from '../change-user-category-pop-up/change-user-category-pop-up.component';
+import { AddAdminComponent } from '../add-admin/add-admin.component';
 
 @Component({
   selector: 'app-admins',
@@ -175,6 +176,14 @@ export class AdminsComponent implements OnInit ,AfterViewInit {
            this.getPage();
         }
       },
+    });
+  }
+  addAdmin(): void {
+    const dialogRef = this.service.dialog.open(AddAdminComponent, {
+      width:this.windowWidth<767?'99%':(this.windowWidth<1300?'50%':'40%')
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.getPage();
     });
   }
 }

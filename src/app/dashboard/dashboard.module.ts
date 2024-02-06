@@ -88,6 +88,7 @@ import { DocumentedImagesComponent } from './components/documented-images/docume
 import { ChangeUserCategoryPopUpComponent } from './components/change-user-category-pop-up/change-user-category-pop-up.component';
 import { TooltipDirective } from './core/directives/tooltip.directive';
 import { MixPageComponent } from './components/mix-page/mix-page.component';
+import { AddAdminComponent } from './components/add-admin/add-admin.component';
 
 @NgModule({
   declarations: [
@@ -159,6 +160,7 @@ import { MixPageComponent } from './components/mix-page/mix-page.component';
       ChangeUserCategoryPopUpComponent,
       TooltipDirective,
       MixPageComponent,
+      AddAdminComponent,
       // AddPostComponent,
   ],
   imports: [

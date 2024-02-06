@@ -15,4 +15,7 @@ export class AccountService {
   getAll():Observable<ResponseVM>{
     return this.http.get<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/get-all`);
   }
+  addAdmin(model:any):Observable<ResponseVM>{
+    return this.http.post<ResponseVM>(`${environment.baseApiUrl}/${this.controllerName}/create-admin`,model);
+  }
 }
