@@ -96,6 +96,8 @@ export class HomePageComponent implements AfterViewInit, OnInit{
         if(res.data.homeImagePath.length > 0){
           this.homeImagePath = res.data.homeImagePath;
           this.homeVideoPath = res.data.homeVideoPath;
+          console.log(this.homeVideoPath);
+          
         }
         // this.introductoryFilePath = res.data.introductoryFilePath;
        }

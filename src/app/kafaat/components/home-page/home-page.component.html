@@ -1,17 +1,18 @@
-
 <div class="home">
+
     <div class="">
         <app-navbar  style="position: relative; z-index: 29000;" typeNav="light" [active]=0 (handleOpenNav)="openOrClosNav($event)"></app-navbar>
            <div class="text-center"  style="position: relative; top: 150px; z-index: 1; mix-blend-mode: screen;">
             <video width="30%" height="100%" style="display: block;" oncanplay="this.play()" onloadedmetadata="this.muted = true"
             style="mix-blend-mode: screen;">
-         <source src="{{homeVideoPath}}" type="video/mp4">
+
+         <source *ngIf="homeVideoPath.length>0" src="{{homeVideoPath}}" type="video/mp4">
      </video>
         <button class="bg-primary-opacity-btn mx-auto mt-4"  style="display: block;" routerLink="/kafaat/programs" >اكتشف البرامج</button>
            </div>
                 
             <div  style="position: absolute; top: 0; left: 0; right: 0;">
-                <app-header  [imgPath]="homeImagePath">
+                <app-header [imgPath]="homeImagePath" >
                 </app-header>
             </div>
     </div>
