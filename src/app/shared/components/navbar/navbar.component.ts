@@ -16,7 +16,22 @@ export class NavbarComponent implements OnInit{
   userName:string='';
   userImage:string = '/assets/images/male.png'
   programs:any[]=[];
-  contactInformationLinks:any;
+  contactInformationLinks:any = {
+      id:0,
+      title:"",
+      whatsapp:"",
+      email:"",
+      location:"",
+      facebookLink:"",
+      youtubeLink:"",
+      instagramLink:"",
+      twitterLink:"",
+      telegramLink:"",
+      snapchatLink:"",
+      linkedInLink:"",
+      introductoryVideoLink:"",
+      liveFeedLink:"",
+  };
   @Input() typeNav: string="light";
   @Input() active:number=-1;
   @Output() handleOpenNav = new EventEmitter<boolean>();

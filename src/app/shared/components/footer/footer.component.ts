@@ -12,7 +12,7 @@ import { DialogVideoImageComponent } from '../dialog-video-image/dialog-video-im
 export class FooterComponent implements OnInit {
   
   year:any;
-  programs:any[];
+  programs:any[]=[];
    videoUrl:string = 'https://www.youtube.com/embed/v69praWH6cs?si=ennlWOhMnXzh2x5S';
   contactInformationItems:ContactInformationModel = {
     id:0,
