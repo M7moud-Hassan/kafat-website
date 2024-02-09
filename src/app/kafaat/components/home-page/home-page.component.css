@@ -1,0 +1,169 @@
+
+.navbar-container {
+    background: linear-gradient(to right, #A18131, #005183);
+    position: relative;
+    height: 480px;
+    width: 100%;
+}
+
+.navbar-element-container {
+    position: relative;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    /* height: calc(40vh); */
+    height: 300px;
+}
+.navbar-element {
+    background-color: transparent;
+    border: 1px solid blueviolet;
+    height: 60px;
+    width: 100%;
+}
+.navbar-image {
+    position: absolute;
+    bottom: -200px;
+    left: 0px;
+    background-color: transparent;
+    height: 400px;
+    width: 100%;
+    clip-path: ellipse(55% 50% at 50% 50%);
+    background-repeat: no-repeat;
+    /* background-size: 100% 120%; */
+    background-size: 100% 100%;
+}
+
+.navbar-image-opacity {
+    position: absolute;
+    /* bottom: calc(-30vh); */
+    bottom: -200px;
+    left: 0px;
+    background-color: transparent;
+    /* height: calc(70vh); */
+    height: 400px;
+    width: 100%;
+    clip-path: ellipse(55% 50% at 50% 50%);
+    background-color: #005183;
+    z-index: 3;
+    opacity: .3;
+}
+.discover-image {
+    position: absolute;
+    /* bottom: calc(-20vh); */
+    bottom: -200px;
+    left: 0px;
+    background-color: transparent;
+    /* height: calc(70vh); */
+    height: 500px;
+    width: 100%;
+    z-index: 5;
+    font-size: 30px;
+    color: red;
+
+}
+.icons-rigt,
+.icons-left {
+    position: relative;
+    height: 300px;
+}
+
+.icons-rigt img,
+.icons-left img {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    transition: top 1s;
+}
+
+.icons-rigt img:nth-child(1) {
+    top: 200%;
+    right: 0;
+
+}
+
+.icons-rigt img:nth-child(2) {
+    top: 200%;
+    left: 15%;
+}
+
+.icons-rigt img:nth-child(3) {
+    top: 200%;
+    left: -20%;
+
+}
+
+.icons-left img:nth-child(1) {
+    top: 200%;
+    right: -15%;
+}
+
+.icons-left img:nth-child(2) {
+    top: 200%;
+    left: 26%;
+}
+
+.icons-left img:nth-child(3) {
+    top: 200%;
+    left: 0;
+}
+
+
+
+
+@media (0px <=width <=1200px) {
+
+    .icons-rigt img,
+    .icons-left img {
+        display: none;
+    }
+}
+
+@media (0px <=width <=767px) {
+
+    /* .navbar-image,
+    .navbar-image-opacity {
+        /* transform: scaleX(2); */
+    
+
+    .icons-rigt img,
+    .icons-left img {
+        display: block;
+        width: 150px;
+        height: 150px;
+    }
+
+    .icons-left img:nth-child(1),
+    .icons-left img:nth-child(3) {
+        top: -70px !important;
+    }
+
+    .icons-left img:nth-child(2) {
+        top: -40px;
+        left: 25%;
+    }
+
+    .icons-left img:nth-child(3) {
+        left: -7%;
+    }
+    .navbar-image-opacity{
+        clip-path: ellipse(92% 42% at 46% 54%);
+    }
+    .navbar-image{
+        clip-path: ellipse(92% 42% at 46% 54%);
+    }
+    .navbar-container{
+        height: 360px;
+    }
+}
+
+.discover-image button {
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.home {
+    background-image: url('../../../../assets/images/BGpattern.png');
+    background-repeat: repeat-y;
+}

@@ -1,0 +1,9 @@
+<div class="row g-3">
+    <div class="col-12 col-md-4" *ngFor="let item of items">
+        <div class="distinguished-item">
+            <app-item-carousal-angle [imgPath]="item.images"></app-item-carousal-angle>
+            <div class="distinguished-title">{{item.name}}</div>
+        </div>
+    </div>
+</div>
+

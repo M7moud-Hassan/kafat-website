@@ -1,0 +1,44 @@
+.border-main {
+    border-color: var(--main-color) !important;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 105;
+    top: 0;
+    right: 0;
+    background-color: white;
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+.sidenav .dropdown-toggle::after{
+    float: left !important;
+}
+.divider-line{
+    width: 1px; height: 46px;
+    background-color: wheat;
+}
+#navbar{
+    background-color: white !important;
+    z-index: 100; display: none;
+}
+.active{
+    color: #002034
+    !important;
+}
+
+.dropdown-menu{
+    border-top: 3px solid var(--main-color);
+}
+.user-profile-image{
+    display: inline-block;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-right: 10px;
+}

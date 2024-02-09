@@ -1,0 +1,73 @@
+<div class="home">
+
+    <div class="">
+        <div class="">
+            <!--  -->
+            <app-navbar  style="position: relative; z-index: 29000;" typeNav="light" [active]=0 (handleOpenNav)="openOrClosNav($event)"></app-navbar>
+           <div class="text-center"  style="position: relative; top: 150px; z-index: 30000000; mix-blend-mode: screen;">
+            <video width="30%" height="100%" style="display: block;" oncanplay="this.play()" onloadedmetadata="this.muted = true"
+            style="mix-blend-mode: screen;">
+
+         <source *ngIf="homeVideoPath.length>0" src="{{homeVideoPath}}" type="video/mp4">
+     </video>
+        <button class="bg-primary-opacity-btn mx-auto mt-4"  style="display: block;" routerLink="/kafaat/programs" >اكتشف البرامج</button>
+           </div>
+                
+            <div  style="position: absolute; top: 0; left: 0; right: 0;">
+                <app-header  [imgPath]="homeImagePath" *ngIf="!isDevice()">
+                </app-header>
+                <app-header-device [imgPath]="homeImagePath" *ngIf="isDevice()"></app-header-device>
+            </div>
+            <!-- <div class="row">
+                <div class="col-12 col-md-4 icons-rigt text-center d-none d-md-block">
+                    
+                </div>
+                <div class="col-12 col-md-4 d-flex align-items-center justify-content-center mb-4 py-4">
+                    
+                    <video width="70%" height="100%" oncanplay="this.play()" onloadedmetadata="this.muted = true"
+       style="mix-blend-mode: screen;">
+    <source src="{{homeVideoPath}}" type="video/mp4">
+</video>
+                </div>
+                <div class="col-8 mx-auto col-md-4 icons-left">
+                </div>
+            </div> -->
+         
+        </div>
+
+        
+           <!-- <div class="navbar-image" style="background-image: url('{{homeImagePath}}');"></div> -->
+
+        <div class="navbar-image-opacity"></div>
+        <div class="discover-image">
+            
+           
+            
+           
+        </div> 
+        
+    </div>
+    <!-- because mahmoud abd magisss -->
+    <div style="margin-top: 100%;"*ngIf="isDevice()" ></div>
+    <div style="margin-top: 30%;" *ngIf="!isDevice()"></div>
+    <div style="padding-top: 60px;">
+        <app-carousal-home></app-carousal-home>
+    </div>
+    <app-layout-section [componentToDisplay]="1" title="ماهي كفاءات ؟"></app-layout-section>
+    <app-layout-section [componentToDisplay]="2" title="أبرز المناشط"></app-layout-section>
+    <app-layout-section [componentToDisplay]="3" title="أبرز المشاركات"></app-layout-section>
+    <!-- < imgPath="assets/images/what-kafaat.png"></app-item-carousal-angle> -->
+    <!-- <app-posts-carousal-home></app-posts-carousal-home> -->
+    <!-- <app-tabs-container ></app-tabs-container> -->
+    <app-discover-programs></app-discover-programs>
+    <app-layout-section [componentToDisplay]="4" title="متميزوا الشهر" header='b'></app-layout-section>
+    <app-layout-section [componentToDisplay]="5" title="تواصل معنا"></app-layout-section>
+    <!-- <app-form-contact></app-form-contact> -->
+    <!-- <app-month-faamous></app-month-faamous> -->
+    <div class="overlay" *ngIf="showOverlay"></div>
+    <a [href]="'https://api.whatsapp.com/send?phone='+contactInformationItems.whatsapp" class="position-fixed bottom-0" style="z-index: 1000;"><img src="assets/images/Whatsapp.svg" alt=""></a>
+    <!-- <app-tabs-container></app-tabs-container> -->
+</div>
+<div class="divider-section"></div>
+
+<!-- <app-scroll-nav></app-scroll-nav> -->

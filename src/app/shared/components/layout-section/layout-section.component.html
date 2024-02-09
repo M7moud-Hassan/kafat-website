@@ -1,0 +1,15 @@
+<div class="divider-section"></div>
+<div class="page-padding">
+    <app-page-header [Header]="title" [header]="header"></app-page-header>
+    <div class="card p-0 m-0 shadow-X-Large">
+        <div class="card-body p-0">
+            <ng-container #container>
+                <app-display-content *ngIf="componentToDisplay==1"></app-display-content>
+                <app-minshat-carousal  *ngIf="componentToDisplay==2"></app-minshat-carousal>
+                <app-posts-carousal-home *ngIf="componentToDisplay==3"></app-posts-carousal-home>
+                <app-month-faamous *ngIf="componentToDisplay==4"></app-month-faamous>
+                <app-form-contact *ngIf="componentToDisplay==5"></app-form-contact>
+            </ng-container>
+        </div>
+    </div>
+</div>

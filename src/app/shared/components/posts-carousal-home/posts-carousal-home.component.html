@@ -1,0 +1,36 @@
+<div  *ngIf="slides.length>0">
+<div class=" container d-flex align-items-center px-4 " >
+    <div class="d-none d-sm-block ms-4 ps-4">
+        <img src="assets/images/next-carousal.svg" alt="next-carousal" class="d-pointer" (click)="scrollNext()">
+    </div>
+    <div class="col-12 col-md-10 container w-75" dir="ltr">
+    <ngx-slick-carousel  #slickCarousel  class="carousel " #slickModal="slick-carousel" [config]="slideConfig">
+    <div class="text-center p-4" ngxSlickItem *ngFor="let slide of slides;let i = index">
+        <div class="d-flex justify-content-center"><img [src]="slide.imageParticipant" alt="moon.png" width="75" height="75"></div>
+        <p>{{slide.nameParticipant}}</p>
+        <p class="small text-main">{{slide.programName}}/ {{slide.activityName}}</p>
+        <div class="mt-4" [innerHTML]="slide.post">
+          
+            <!-- <h5 class="fs-4 fw-bold">مهلاً كفاءات</h5>
+            <p class="small fs-6 mx-0 px-0 px-sm-4 mx-sm-4 truncate-4-lines lh-base text-justify">كل طفل من أطفالنا بحاجة إلى ولي حريص يكتشف مواهبه وينمي قدراته ، وكل فتى وفتاة من فتياننا وفتياتنا بحاجة للتوجيه والنصح والدعم ، وكل شابةٍ وشابٍ بيننا بحاجة لتطوير المهارات وتبني الأفكار ، وكل شيخٍ بيننا بحاجة للترابط الأسري والتواصل الاجتماعي  وجميعهم يسعى للبحث عن هذه الحوائج سواءً من الأهل </p> -->
+            <p class="small fs-6 ">...<span class="text-main d-pointer fw-bold">المزيد</span></p>
+        </div>
+        
+    </div>
+</ngx-slick-carousel>
+</div>
+    <div class="d-none d-sm-block pe-4 me-4">
+        <img src="assets/images/back-carousal.svg" alt="back-carousal" class="d-pointer" (click)="scrollBack()">
+    </div>
+</div>
+
+<div class="text-center d-block d-sm-none">
+    <img src="assets/images/next-carousal.svg" (click)="scrollNext()" alt="next-carousal" class="mx-4 d-pointer">
+
+    <img src="assets/images/back-carousal.svg" alt="back-carousal" (click)="scrollBack()" class="mx-4 d-pointer">
+    </div>
+<div class="text-center pb-4">
+    <a class="bg-primary-btn mt-4" routerLink="/kafaat/famous-posts">تصفح كل المشاركات</a>
+</div>
+</div>
+<app-empty-data *ngIf="slides.length==0" [inputText]="'لا يوجد مشاركات لعرضها'"></app-empty-data>

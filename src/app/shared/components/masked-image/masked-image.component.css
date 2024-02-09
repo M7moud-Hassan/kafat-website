@@ -1,0 +1,32 @@
+.image-container{
+    position: relative;
+}
+  
+.image{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% - 20px);
+    height: calc(100% - 20px);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    clip-path: polygon(71% 0%, 50% 9%, 30% 0%, 21% 20%, 0% 30%, 8% 50%, 0% 71%, 21% 80%, 30% 100%, 50% 91%, 70% 99%, 80% 79%, 99% 70%, 92% 50%, 99% 30%, 79% 20%);
+}
+  
+  .maskedImage{
+    position: absolute;
+    width: calc(100% - 0px);
+    height: calc(100% - 0px);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(128, 128, 128, 0.349);
+    /* background-image: url('/assets/images/person.png'); */
+    background-repeat: no-repeat;
+    background-size: cover; 
+    padding: 80px;
+    background-clip: padding-box;
+    clip-path: polygon(71% 0%, 50% 9%, 30% 0%, 21% 20%, 0% 30%, 8% 50%, 0% 71%, 21% 80%, 30% 100%, 50% 91%, 70% 99%, 80% 79%, 99% 70%, 92% 50%, 99% 30%, 79% 20%);
+} 
