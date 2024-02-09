@@ -1,5 +1,5 @@
 import { Component, Input, Renderer2 } from '@angular/core';
-
+import * as URLParse from 'url-parse';
 @Component({
   selector: 'app-dialog-video-image',
   templateUrl: './dialog-video-image.component.html',
@@ -26,7 +26,7 @@ export class DialogVideoImageComponent {
   }
 
   openVideo(source:string) {
-    this.videoSource=source;
+    this.videoSource='https://www.youtube.com/embed/'+this.getYouTubeVideoId(source);
     this.modalImageSrc='';
     this.modalVisible = true;
 
@@ -40,7 +40,7 @@ export class DialogVideoImageComponent {
       this.renderer.setAttribute(
         this.iframe,
         'src',
-        source
+        'https://www.youtube.com/embed/'+this.getYouTubeVideoId(source)
       );
       this.renderer.setAttribute(this.iframe, 'title', 'YouTube video player');
       this.renderer.setAttribute(this.iframe, 'frameborder', '0');
@@ -55,6 +55,16 @@ export class DialogVideoImageComponent {
     }
    },500)
   
+  }
+  getYouTubeVideoId(url: string){
+    const regex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+    const match = url.match(regex);
+
+    if (match && match[1]) {
+      return  match[1];
+    } else {
+     return 'Invalid YouTube link';
+    }
   }
 
   closeModal() {

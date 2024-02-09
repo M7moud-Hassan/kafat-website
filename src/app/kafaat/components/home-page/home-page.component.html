@@ -1,8 +1,10 @@
 <div class="home">
 
     <div class="">
-        <app-navbar  style="position: relative; z-index: 29000;" typeNav="light" [active]=0 (handleOpenNav)="openOrClosNav($event)"></app-navbar>
-           <div class="text-center"  style="position: relative; top: 150px; z-index: 1; mix-blend-mode: screen;">
+        <div class="">
+            <!--  -->
+            <app-navbar  style="position: relative; z-index: 29000;" typeNav="light" [active]=0 (handleOpenNav)="openOrClosNav($event)"></app-navbar>
+           <div class="text-center"  style="position: relative; top: 150px; z-index: 30000000; mix-blend-mode: screen;">
             <video width="30%" height="100%" style="display: block;" oncanplay="this.play()" onloadedmetadata="this.muted = true"
             style="mix-blend-mode: screen;">
 
@@ -12,12 +14,36 @@
            </div>
                 
             <div  style="position: absolute; top: 0; left: 0; right: 0;">
-                <app-header [imgPath]="homeImagePath" >
+                <app-header  [imgPath]="homeImagePath" *ngIf="!isDevice()">
                 </app-header>
+                <app-header-device [imgPath]="homeImagePath" *ngIf="isDevice()"></app-header-device>
             </div>
+            <!-- <div class="row">
+                <div class="col-12 col-md-4 icons-rigt text-center d-none d-md-block">
+                    
+                </div>
+                <div class="col-12 col-md-4 d-flex align-items-center justify-content-center mb-4 py-4">
+                    
+                    <video width="70%" height="100%" oncanplay="this.play()" onloadedmetadata="this.muted = true"
+       style="mix-blend-mode: screen;">
+    <source src="{{homeVideoPath}}" type="video/mp4">
+</video>
+                </div>
+                <div class="col-8 mx-auto col-md-4 icons-left">
+                </div>
+            </div> -->
+         
+        </div>
+
+        
+           <!-- <div class="navbar-image" style="background-image: url('{{homeImagePath}}');"></div> -->
+
+        
+        
     </div>
     <!-- because mahmoud abd magisss -->
-    <div style="margin-top: 30%;"></div>
+    <div style="margin-top: 100%;"*ngIf="isDevice()" ></div>
+    <div style="margin-top: 30%;" *ngIf="!isDevice()"></div>
     <div style="padding-top: 60px;">
         <app-carousal-home></app-carousal-home>
     </div>
@@ -39,4 +65,3 @@
 <div class="divider-section"></div>
 
 <!-- <app-scroll-nav></app-scroll-nav> -->
-

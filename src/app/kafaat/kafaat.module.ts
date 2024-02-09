@@ -65,6 +65,7 @@ import { DateOfHegiraComponent } from './components/date-of-hegira/date-of-hegir
 import { DateOfBirthComponent } from './components/date-of-birth/date-of-birth.component';
 import { PdfViewrComponent } from './components/pdf-viewr/pdf-viewr.component';
 import { HeaderComponent } from './components/header/header.component';
+import { HeaderDeviceComponent } from './components/header-device/header-device.component';
 export function tokenGetter() {
   return localStorage.getItem("token");
 }
@@ -119,7 +120,8 @@ export function tokenGetter() {
     DateOfHegiraComponent,
     DateOfBirthComponent,
     PdfViewrComponent,
-    HeaderComponent
+    HeaderComponent,
+    HeaderDeviceComponent
   ],
   imports: [
     CommonModule,

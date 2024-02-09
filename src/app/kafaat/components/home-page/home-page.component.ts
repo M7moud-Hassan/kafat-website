@@ -105,5 +105,9 @@ export class HomePageComponent implements AfterViewInit, OnInit{
     });
   }
 
+  isDevice(){
+    return window.innerWidth<720;
+  }
+
   
 }
