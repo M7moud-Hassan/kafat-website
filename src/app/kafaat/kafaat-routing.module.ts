@@ -18,6 +18,7 @@ import { MemberGuard } from '../dashboard/core/guards/member.guard';
 import { PdfPopupComponent } from './components/pdf-popup/pdf-popup.component';
 import { RegisterationSucceededComponent } from './components/registeration-succeeded/registeration-succeeded.component';
 import { MaskedImageComponent } from '../shared/components/masked-image/masked-image.component';
+import { MagazineComponent } from './components/magazine/magazine.component';
 
 const routes: Routes = [
   {path:'',component:HomePageComponent},
@@ -42,6 +43,7 @@ const routes: Routes = [
   {path:'request-send-success',component:RegisterationSucceededComponent},
   {path:'pdf',component:PdfPopupComponent},
   {path:'mask',component:MaskedImageComponent},
+  {path:'magazine',component:MagazineComponent},
 ];
 
 @NgModule({

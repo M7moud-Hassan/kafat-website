@@ -33,6 +33,8 @@ import { CvImagePopupComponent } from './components/cv-image-popup/cv-image-popu
 import { EmptyDataComponent } from './components/empty-data/empty-data.component';
 import { MaskedImageComponent } from './components/masked-image/masked-image.component';
 import { NavActivitiesComponent } from './components/nav-activities/nav-activities.component';
+import { MagazineCartComponent } from './components/magazine-cart/magazine-cart.component';
+import { ControllerPdfComponent } from './components/controller-pdf/controller-pdf.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +72,9 @@ import { NavActivitiesComponent } from './components/nav-activities/nav-activiti
     CvImagePopupComponent,
     EmptyDataComponent,
     MaskedImageComponent,
-    NavActivitiesComponent
+    NavActivitiesComponent,
+    MagazineCartComponent,
+    ControllerPdfComponent
   ],
   imports: [
     CommonModule,
@@ -110,7 +114,9 @@ import { NavActivitiesComponent } from './components/nav-activities/nav-activiti
     CvImagePopupComponent,
     EmptyDataComponent,
     MaskedImageComponent,
-    NavActivitiesComponent
+    NavActivitiesComponent,
+    MagazineCartComponent,
+    ControllerPdfComponent
   ],
   providers: [
     {

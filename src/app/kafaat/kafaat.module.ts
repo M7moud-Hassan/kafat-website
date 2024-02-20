@@ -66,6 +66,7 @@ import { DateOfBirthComponent } from './components/date-of-birth/date-of-birth.c
 import { PdfViewrComponent } from './components/pdf-viewr/pdf-viewr.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HeaderDeviceComponent } from './components/header-device/header-device.component';
+import { MagazineComponent } from './components/magazine/magazine.component';
 export function tokenGetter() {
   return localStorage.getItem("token");
 }
@@ -121,7 +122,8 @@ export function tokenGetter() {
     DateOfBirthComponent,
     PdfViewrComponent,
     HeaderComponent,
-    HeaderDeviceComponent
+    HeaderDeviceComponent,
+    MagazineComponent
   ],
   imports: [
     CommonModule,
