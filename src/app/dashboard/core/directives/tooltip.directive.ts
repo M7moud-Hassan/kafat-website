@@ -1,9 +1,9 @@
-import { Directive, ElementRef, HostListener, Input, Renderer2 } from '@angular/core';
+import { Directive, ElementRef, HostListener, Input, OnDestroy, Renderer2 } from '@angular/core';
 
 @Directive({
   selector: '[appTooltip]'
 })
-export class TooltipDirective {
+export class TooltipDirective implements OnDestroy {
   @Input('appTooltip') tooltipText: string;
   private tooltipElement: HTMLElement;
 
@@ -15,6 +15,9 @@ export class TooltipDirective {
 
   @HostListener('mouseleave') onMouseLeave() {
     this.hideTooltip();
+  }
+  ngOnDestroy() {
+    this.hideTooltip(); // Clean up tooltip when the directive is destroyed
   }
 
   private showTooltip() {

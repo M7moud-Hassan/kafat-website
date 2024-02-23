@@ -1,6 +1,6 @@
 import { Location } from '@angular/common';
 import { Injectable } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ActivityService } from './activity.service';
@@ -27,6 +27,8 @@ import { KafaatFounderService } from './kafaat-founder.service';
 import { DocumentedImageService } from 'src/app/kafaat/services/documented-image.service';
 import { StatisticsService } from './statistics.service';
 import { MixService } from './mix.service';
+import { MagazineService } from './magazine.service';
+import { MagazinePageService } from './magazine-page.service';
 
 @Injectable({
   providedIn: 'root'
@@ -63,6 +65,8 @@ export class MainDashoardService {
     private _documentedImageService:DocumentedImageService,
     private _statistics:StatisticsService,
     private _mixService:MixService,
+    private _magazineService:MagazineService,
+    private _magazinePageService:MagazinePageService,
     ) { }
 
     get statistics(){
@@ -153,6 +157,12 @@ get attachmentsActivity():AttachmentsActivityService{
   get mixService(): MixService {
     return this._mixService;
   }
+  get magazineService(): MagazineService {
+    return this._magazineService;
+  }
+  get magazinePageService(): MagazinePageService {
+    return this._magazinePageService;
+  }
 
 
 
@@ -183,5 +193,98 @@ get attachmentsActivity():AttachmentsActivityService{
       }
     }
     return formData;
+  }
+  convertFormGroupToFormData(form: FormGroup): FormData {
+    const formData = new FormData();
+  
+    function appendToFormData(formGroup: FormGroup, formData: FormData, keyPrefix = ''): void {
+      Object.keys(formGroup.controls).forEach((controlName: string) => {
+        const formControl: FormControl = formGroup.controls[controlName] as FormControl;
+        const key = keyPrefix ? `${keyPrefix}_${controlName}` : controlName;
+  
+        if (formControl.value instanceof FileList) {
+          const fileList: FileList = formControl.value;
+          for (let i = 0; i < fileList.length; i++) {
+            const file: File|null = fileList.item(i);
+            formData.append(key, file!, file?.name);
+          }
+        } else {
+          formData.append(key, formControl.value);
+        }
+  
+        if (formControl instanceof FormGroup) {
+          appendToFormData(formControl, formData, key);
+        }
+      });
+    }
+  
+    appendToFormData(form, formData);
+    return formData;
+  }
+  
+  getFormErrors(formGroup: FormGroup | FormArray): { controlName: string, ErrorMsg: string }[] {
+    let formErrors: { controlName: string, ErrorMsg: string }[] = [];
+    let required = " هذا الحقل مطلوب";
+    Object.keys(formGroup.controls).forEach(controlName => {
+      const control: AbstractControl | null = formGroup.get(controlName);
+  
+      if (control instanceof FormControl && control.invalid && control.touched) {
+        Object.keys(control.errors!).forEach(errorName => {
+          let errorMessage = '';
+  
+          if (errorName === 'required') {
+            errorMessage = required;
+          }
+  
+          formErrors.push({ controlName: controlName, ErrorMsg: errorMessage });
+        });
+      }
+  
+      if (control instanceof FormArray) {
+        control.controls.forEach((arrayControl, index) => {
+          if (arrayControl instanceof FormGroup || arrayControl instanceof FormArray) {
+            const nestedErrors = this.getFormErrors(arrayControl);
+            if (nestedErrors.length > 0) {
+              formErrors = formErrors.concat(nestedErrors);
+            }
+          }
+        });
+      }
+  
+      if (control instanceof FormGroup || control instanceof FormArray) {
+        const nestedErrors = this.getFormErrors(control);
+        if (nestedErrors.length > 0) {
+          formErrors = formErrors.concat(nestedErrors);
+        }
+      }
+    });
+  
+    return formErrors;
+  }
+  markAllAsTouched(myForm:FormGroup): void {
+    for (const controlName in myForm.controls) {
+      if (myForm.controls.hasOwnProperty(controlName)) {
+        myForm.controls[controlName].markAsTouched();
+      }
+    }
+  }
+  markAllFormArrayControlsAsTouched(formArray:FormArray) {
+    formArray.controls.forEach((control: any) => {
+      Object.values(control.controls).forEach((formControl: any) => {
+        formControl.markAsTouched();
+      });
+    });
+  }
+  printAllData(myForm:FormGroup): void {
+    let  i = 0;
+    let displayedValues:String = "";
+    for (const controlName in myForm.controls) {
+      i++;
+      if (myForm.controls.hasOwnProperty(controlName)) {
+        displayedValues += `${i} - ${controlName}: ${myForm.controls[controlName].value} \n`;
+        console.log(`${controlName}: ${myForm.controls[controlName].value}`);
+      }
+    }
+    alert(displayedValues);
   }
 }

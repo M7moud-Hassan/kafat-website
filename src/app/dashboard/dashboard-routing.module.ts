@@ -41,6 +41,9 @@ import { ContactUsListNotSentComponent } from './components/contact-us-list-not-
 import { KafaatFoundersComponent } from './components/kafaat-founders/kafaat-founders.component';
 import { DocumentedImagesComponent } from './components/documented-images/documented-images.component';
 import { MixPageComponent } from './components/mix-page/mix-page.component';
+import { MagazinesComponent } from './components/magazines/magazines.component';
+import { MagazinePagesComponent } from './components/magazine-pages/magazine-pages.component';
+import { AddMagazinePagesComponent } from './components/add-magazine-pages/add-magazine-pages.component';
 
 export const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -93,7 +96,10 @@ export const routes: Routes = [
   {path:'documented-images',component:DocumentedImagesComponent},
 
   {path:'mix-page',component:MixPageComponent},
-
+  
+  {path:'magazines',component:MagazinesComponent},
+  {path:'magazine-details/:id',component:MagazinePagesComponent},
+  {path:'add-magazine-pages/:id',component:AddMagazinePagesComponent},
 ];
 
 @NgModule({

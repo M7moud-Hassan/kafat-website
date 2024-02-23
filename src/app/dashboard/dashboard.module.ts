@@ -89,6 +89,12 @@ import { ChangeUserCategoryPopUpComponent } from './components/change-user-categ
 import { TooltipDirective } from './core/directives/tooltip.directive';
 import { MixPageComponent } from './components/mix-page/mix-page.component';
 import { AddAdminComponent } from './components/add-admin/add-admin.component';
+import { MagazinesComponent } from './components/magazines/magazines.component';
+import { MagazinePagesComponent } from './components/magazine-pages/magazine-pages.component';
+import { AddMagazineComponent } from './components/add-magazine/add-magazine.component';
+import { EditMagazineComponent } from './components/edit-magazine/edit-magazine.component';
+import { AddMagazinePagesComponent } from './components/add-magazine-pages/add-magazine-pages.component';
+import { EditMagazinePageComponent } from './components/edit-magazine-page/edit-magazine-page.component';
 
 @NgModule({
   declarations: [
@@ -161,6 +167,12 @@ import { AddAdminComponent } from './components/add-admin/add-admin.component';
       TooltipDirective,
       MixPageComponent,
       AddAdminComponent,
+      MagazinesComponent,
+      MagazinePagesComponent,
+      AddMagazineComponent,
+      EditMagazineComponent,
+      AddMagazinePagesComponent,
+      EditMagazinePageComponent,
       // AddPostComponent,
   ],
   imports: [
