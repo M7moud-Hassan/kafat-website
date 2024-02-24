@@ -70,18 +70,10 @@ export class MagazinePageComponent implements OnInit {
   }
 
   downloadPdf(): void {
-    const pdfUrl = this.magazine.pdfPath
-
-    this.http.get(pdfUrl, { responseType: 'arraybuffer' as 'json' })
-      .subscribe((data: any) => {
-        const blob = new Blob([data], { type: 'application/pdf' });
-
-       
-        const link = document.createElement('a');
-        link.href = window.URL.createObjectURL(blob);
-        link.download = this.magazine.title+'.pdf'; 
-        link.click();
-      });
+    const link = document.createElement('a');
+    link.href = this.magazine.pdfPath;
+    link.download = this.magazine.title+'.pdf'; 
+    link.click();
   }
   @ViewChild('fullScreen') divRef: any;
   isFullScreen=false
