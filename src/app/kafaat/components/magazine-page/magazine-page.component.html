@@ -1,0 +1,18 @@
+<app-navbar typeNav="dark" [active]=1></app-navbar>
+<app-page-header-labeled Header="المجلة" [Label]="magazine.title"></app-page-header-labeled>
+<app-bread-crumb title="الرئسية" subTitlesRouteLink="/kafaat/magazine" subSubTitle="المجلة" subSubTitleRouteLink="/kafaat/magazine"
+[subSubSubTitle]="magazine.title"></app-bread-crumb>
+<div class="page-magazine" style="position: relative;" #fullScreen>
+       <app-controller-pdf class="mx-auto  controller" (nextClick)="nextClick()" (previosClick)="prevoisClick()" 
+       (stratClick)="startClick()" (endClick)="endClick()" (download)="downloadPdf()" (fullScreen)="fullScreenfun()"
+       [controller]="pageResponse"  ></app-controller-pdf>
+       <img [src]="items[0].imagePath" alt="" class="w-50 h-100" style="display: inline;"/>
+       <img *ngIf="items[1]" [src]="items[1].imagePath" alt="" class="w-50 h-100" style="display: inline;"/>
+</div>
+<div class="more">
+       <h1 style="font-size: 32px; font-weight: 600;">المزيد</h1>
+       <ngx-slick-carousel #slickCarousel  class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
+              <app-magazine-cart ngxSlickItem *ngFor="let slide of magazines;let i = index" [item]="slide" class="col-md-4"></app-magazine-cart>
+            </ngx-slick-carousel>
+</div>
+

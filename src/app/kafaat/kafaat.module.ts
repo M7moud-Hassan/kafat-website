@@ -67,6 +67,7 @@ import { PdfViewrComponent } from './components/pdf-viewr/pdf-viewr.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HeaderDeviceComponent } from './components/header-device/header-device.component';
 import { MagazineComponent } from './components/magazine/magazine.component';
+import { MagazinePageComponent } from './components/magazine-page/magazine-page.component';
 export function tokenGetter() {
   return localStorage.getItem("token");
 }
@@ -123,7 +124,8 @@ export function tokenGetter() {
     PdfViewrComponent,
     HeaderComponent,
     HeaderDeviceComponent,
-    MagazineComponent
+    MagazineComponent,
+    MagazinePageComponent
   ],
   imports: [
     CommonModule,

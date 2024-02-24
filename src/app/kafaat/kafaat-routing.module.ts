@@ -19,11 +19,13 @@ import { PdfPopupComponent } from './components/pdf-popup/pdf-popup.component';
 import { RegisterationSucceededComponent } from './components/registeration-succeeded/registeration-succeeded.component';
 import { MaskedImageComponent } from '../shared/components/masked-image/masked-image.component';
 import { MagazineComponent } from './components/magazine/magazine.component';
+import { MagazinePageComponent } from './components/magazine-page/magazine-page.component';
 
 const routes: Routes = [
   {path:'',component:HomePageComponent},
   {path:'program-details/:id',component:ProgramDetailsComponent},
   {path:'activity-details/:id',component:ManshatDetailsComponent},
+  {path:'magazine/:id',component:MagazinePageComponent},
   {path:'',component:HomePageComponent,},
   {path:'program-details',component:ProgramDetailsComponent},
   {path:'event-details',component:ManshatDetailsComponent},

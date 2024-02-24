@@ -23,6 +23,10 @@
                           </li>
                     </ul>
                 </li>
+
+                <li class="nav-item">
+                    <a  routerLink="/kafaat/magazine" routerLinkActive="active"  [class]="typeNav=='dark'?'nav-link text-dark':'nav-link text-light'" aria-current="page" >المجلة</a>
+                </li>
                 <li class="nav-item">
                     <a  routerLink="/kafaat/about" routerLinkActive="active"  [class]="typeNav=='dark'?'nav-link text-dark':'nav-link text-light'" aria-current="page" >من نحن</a>
                 </li>
@@ -46,13 +50,7 @@
                     <div [class]="typeNav=='dark'?'divider-line bg-dark mx-3 my-0':'divider-line bg-light mx-3 my-0'" >&nbsp;</div>
                 </li>
                 <li class="d-flex align-items-center">
-                    <!-- <a href="{{contactInformationLinks.facebookLink}}" target="_blank" [class]="typeNav=='dark'?'me-2 text-dark':'me-2 text-white'" style="font-size: 19px;"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="{{contactInformationLinks.twitterLink}}" target="_blank" class="me-2" style="font-size: 19px;color: white;"><i class="fa-brands fa-twitter"></i></a>
-                    <a href="{{contactInformationLinks.snapchatLink}}" target="_blank" class="me-2" style="font-size: 19px;color: white;"><i class="fa-brands fa-square-snapchat"></i></a>
-                    <a href="{{contactInformationLinks.instagramLink}}" target="_blank" class="me-2" style="font-size: 19px;color: white;"><i class="fa-brands fa-square-instagram"></i></a>
-                    <a href="{{contactInformationLinks.telegramLink}}" target="_blank" class="me-2" style="font-size: 19px;color: white;"><i class="fa-brands fa-telegram"></i></a>
-                    <a href="{{contactInformationLinks.linkedInLink}}" target="_blank" class="me-2" style="font-size: 19px;color: rgb(85, 70, 70);"><i class="fa-brands fa-linkedin-in"></i></a>
-                    <a href="{{contactInformationLinks.youtubeLink}}" target="_blank" class="me-2" style="font-size: 19px;color: white;"><i class="fa-brands fa-youtube"></i></a> -->
+                   
                     <a href="{{contactInformationLinks.facebookLink}}" target="_blank" class="me-2" [style]="typeNav=='dark'?'font-size: 19px;color: var(--main-color);':'font-size: 19px;color: white'"><i class="fa-brands fa-facebook-f"></i></a>
                     <a href="{{contactInformationLinks.twitterLink}}" target="_blank" class="me-2" [style]="typeNav=='dark'?'foPnt-size: 19px;color: var(--main-color);':'font-size: 19px;color: white'"><i class="fa-brands fa-twitter"></i></a>
                     <a href="{{contactInformationLinks.snapchatLink}}" target="_blank" class="me-2" [style]="typeNav=='dark'?'font-size: 19px;color: var(--main-color);':'font-size: 19px;color: white'"><i class="fa-brands fa-square-snapchat"></i></a>
@@ -92,6 +90,9 @@
                         <!-- <li><a class="dropdown-item" outerLinkActive="active"   [routerLink]="['/kafaat/program-details',programs[programs.length-1].id]">{{programs[programs.length-1].title}}</a></li> -->
    
                     </ul>
+                </li>
+                <li class="nav-item">
+                    <a   routerLink="/kafaat/magazine" routerLinkActive="active" class="nav-link text-dark" aria-current="page" href="#"><span [class]="active==2?'active':''">المجلة </span></a>
                 </li>
                 <li class="nav-item">
                     <a   routerLink="/kafaat/about" routerLinkActive="active" class="nav-link text-dark" aria-current="page" href="#"><span [class]="active==2?'active':''">من نحن</span></a>
@@ -168,6 +169,9 @@
                   </ul>
                 </li>
                  
+          <li class="nav-item">
+            <a   routerLink="/kafaat/magazine" routerLinkActive="active" class="nav-link text-dark" aria-current="page" href="#"><span>المجلة </span></a>
+          </li>
           <li class="nav-item">
             <a   routerLink="/kafaat/about" routerLinkActive="active" class="nav-link text-dark" aria-current="page" href="#"><span>من نحن</span></a>
           </li>

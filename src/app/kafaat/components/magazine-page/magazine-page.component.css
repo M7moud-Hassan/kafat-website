@@ -1,0 +1,30 @@
+.page-magazine {
+    margin: 50px;
+    height: 600px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.more{
+    padding: 10px;
+}
+.controller{
+    width: 50%;
+    position: absolute; bottom: 20px; right: 25%;
+}
+
+@media (767px >= width){
+    .page-magazine {
+        margin: 3px !important;
+        margin-top: 20px !important;
+        margin-bottom: 20px !important;
+        height: 300px !important;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+    .more{
+        padding: 10px;
+    }
+    .controller{
+        width: 90% !important;
+        position: absolute; 
+        bottom: 20px; right: 5%;
+    }
+}

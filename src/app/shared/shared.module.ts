@@ -35,6 +35,7 @@ import { MaskedImageComponent } from './components/masked-image/masked-image.com
 import { NavActivitiesComponent } from './components/nav-activities/nav-activities.component';
 import { MagazineCartComponent } from './components/magazine-cart/magazine-cart.component';
 import { ControllerPdfComponent } from './components/controller-pdf/controller-pdf.component';
+import { ScrollMagazineComponent } from './components/scroll-magazine/scroll-magazine.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import { ControllerPdfComponent } from './components/controller-pdf/controller-p
     MaskedImageComponent,
     NavActivitiesComponent,
     MagazineCartComponent,
-    ControllerPdfComponent
+    ControllerPdfComponent,
+    ScrollMagazineComponent
   ],
   imports: [
     CommonModule,
@@ -116,7 +118,8 @@ import { ControllerPdfComponent } from './components/controller-pdf/controller-p
     MaskedImageComponent,
     NavActivitiesComponent,
     MagazineCartComponent,
-    ControllerPdfComponent
+    ControllerPdfComponent,
+    ScrollMagazineComponent
   ],
   providers: [
     {

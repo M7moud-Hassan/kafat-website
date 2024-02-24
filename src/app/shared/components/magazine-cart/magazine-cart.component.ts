@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-magazine-cart',
@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./magazine-cart.component.css','../manashet-item/manashet-item.component.css']
 })
 export class MagazineCartComponent {
-
+@Input() item:any
 }

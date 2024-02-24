@@ -1,11 +1,15 @@
 <div class="controller d-flex justify-content-between align-items-center">
-    <img src="assets/images/full.svg" alt="not found">
-    <img src="assets/images/next_pdf_right.svg" alt="not found">
-    <img src="assets/images/next_right.svg" alt="not found">
+    <img src="assets/images/full.svg"  (click)="FullScreen()" alt="not found" style="cursor: pointer;">
+    <img *ngIf="controller.page==1" src="assets/images/next_pdf_right.svg" alt="not found" style="cursor: pointer;">
+    <img *ngIf="controller.page!=1" (click)="startClick()" src="assets/images/next_pdf_right_enb.svg" alt="not found" style="cursor: pointer;">
+    <img *ngIf="!controller.hasPreviousPage" src="assets/images/next_right.svg" alt="not found" style="cursor: pointer;">
+    <img *ngIf="controller.hasPreviousPage" (click)="PreviosClick()" src="assets/images/next_right_enb.svg" alt="not found" style="cursor: pointer;">
     <span class="numbers">
-        100-30
+        {{getCell(controller.totalCount)}}-{{controller.page}}
     </span>
-    <img src="assets/images/download_pdf.svg" alt="not found">
-    <img src="assets/images/next_pdf.svg" alt="not found">
-    <img src="assets/images/nex_to.svg" alt="not found">
+    <img src="assets/images/download_pdf.svg" alt="not found" (click)="DownladClick()" style="cursor: pointer;">
+    <img *ngIf="getCell(controller.totalCount)!=controller.page" (click)="EndClick()" src="assets/images/next_pdf.svg" alt="not found" style="cursor: pointer;">
+    <img *ngIf="getCell(controller.totalCount)==controller.page" src="assets/images/next_pdf_dis.svg" alt="not found" style="cursor: pointer;">
+    <img *ngIf="controller.hasNextPage" (click)="NextClick()" src="assets/images/nex_to.svg" alt="not found" style="cursor: pointer;">
+    <img *ngIf="!controller.hasNextPage" src="assets/images/nex_to_dis.svg" alt="not found" style="cursor: pointer;">
 </div>
