@@ -19,13 +19,13 @@ export class MagazinePageComponent implements OnInit,AfterViewInit {
   numOfPapers = this.papers.length;
   maxLocation = this.numOfPapers + 1;
   pageResponse:PagedResponse={page:1,pageSize:2,totalCount:0,hasNextPage:false,hasPreviousPage:false,items:[]};
-  pagedRequest:PagedRequest = {pageNumber:1,pageSize:2,name:''};
+  pagedRequest:PagedRequest = {pageNumber:1,pageSize:2000,name:''};
   items:any[]=[]
   constructor(private service:MagazinePageService,private service_m:MagazineService,private rouet:ActivatedRoute,
     private http: HttpClient) {
     rouet.params.subscribe(res=>{
       this.id=res['id']
-      this.pagedRequest= {pageNumber:1,pageSize:2,name:'',id:res['id']};
+      this.pagedRequest= {pageNumber:1,pageSize:2000,name:'',id:res['id']};
     })
     
   }
@@ -49,8 +49,8 @@ export class MagazinePageComponent implements OnInit,AfterViewInit {
     this.service_m.getById(this.id).subscribe(res=>{
       this.magazine=res.data
     })
-   this.service.getAll().subscribe(res=>{
-    this.items=res.data
+   this.service.getPage(this.pagedRequest).subscribe(res=>{
+    this.items=res.items
     for (let i = 0; i < this.items.length; i += 2) {
       
       const obj = {
