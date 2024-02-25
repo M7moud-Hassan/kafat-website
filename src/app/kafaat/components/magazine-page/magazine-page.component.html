@@ -3,16 +3,66 @@
 <app-bread-crumb title="الرئسية" subTitlesRouteLink="/kafaat/magazine" subSubTitle="المجلة" subSubTitleRouteLink="/kafaat/magazine"
 [subSubSubTitle]="magazine.title"></app-bread-crumb>
 <div class="page-magazine" style="position: relative;" #fullScreen>
-       <app-controller-pdf class="mx-auto  controller" (nextClick)="nextClick()" (previosClick)="prevoisClick()" 
+       <app-controller-pdf style="z-index: 1000;" class="mx-auto  controller" (nextClick)="goNextPage()" (previosClick)="goPrevPage()" 
        (stratClick)="startClick()" (endClick)="endClick()" (download)="downloadPdf()" (fullScreen)="fullScreenfun()"
-       [controller]="pageResponse"  ></app-controller-pdf>
-       <img [src]="items[0].imagePath" alt="" class="w-50 h-100" style="display: inline;"/>
-       <img *ngIf="items[1]" [src]="items[1].imagePath" alt="" class="w-50 h-100" style="display: inline;"/>
+       [controller]="papers" [currentPage]="currentLocation" ></app-controller-pdf>
+       <!-- <img [src]="items[0].imagePath" alt="" class="w-50 h-100" style="display: inline;"/>
+       <img *ngIf="items[1]" [src]="items[1].imagePath" alt="" class="w-50 h-100" style="display: inline;"/> -->
+       <div  class="book" #book>
+              <!-- Paper 1 -->
+              
+              <div *ngFor="let item of papers;let i =index"  [id]="'p'+i" class="paper">
+                  <div class="front">
+                      <div [id]="'f'+i" class="front-content">
+                            <img [src]="item.firstElement.imagePath" alt="" class="h-100 w-100"/>
+                          
+                      </div>
+                  </div>
+                  <div class="back">
+                      <div [id]="'b'+i" class="back-content">
+                        <div *ngIf="!item.secondElement" style="background-color: #005183; width: 100%; height: 100%;">
+                        
+                        </div>
+                        <img *ngIf="item.secondElement" [src]="item.secondElement.imagePath" alt="" class="h-100 w-100"/>
+                      </div>
+                  </div>
+              </div>
+            
+              <!-- Paper 2 -->
+              <!-- <div #p2 id="p2" class="paper">
+                  <div class="front">
+                      <div id="f2" class="front-content">
+                          <h1>Front 2</h1>
+                      </div>
+                  </div>
+                  <div class="back">
+                      <div id="b2" class="back-content">
+                          <h1>Back 2</h1>
+                      </div>
+                  </div>
+              </div> -->
+              <!-- Paper 3 -->
+              <!-- <div #p3 class="paper"  id="p3">
+                  <div class="front">
+                      <div id="f3" class="front-content">
+                          <h1>Front 3</h1>
+                      </div>
+                  </div>
+                  <div class="back">
+                      <div id="b3" class="back-content">
+                          <h1>Back 3</h1>
+                      </div>
+                  </div>
+              </div> -->
+          </div>
+        
 </div>
+
 <div class="more">
        <h1 style="font-size: 32px; font-weight: 600;">المزيد</h1>
        <ngx-slick-carousel #slickCarousel  class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
-              <app-magazine-cart ngxSlickItem *ngFor="let slide of magazines;let i = index" [item]="slide" class="col-md-4"></app-magazine-cart>
+              <app-magazine-cart ngxSlickItem *ngFor="let slide of magazines;let i = index" [item]="slide" class="col-md-4 ms-3"></app-magazine-cart>
             </ngx-slick-carousel>
 </div>
+
 

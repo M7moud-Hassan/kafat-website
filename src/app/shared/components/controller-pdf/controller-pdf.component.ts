@@ -8,6 +8,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class ControllerPdfComponent {
 [x: string]: any;
   @Input() controller:any
+  @Input() currentPage:any
   @Output() nextClick = new EventEmitter<string>();
   @Output() previosClick = new EventEmitter<string>();
   @Output() stratClick = new EventEmitter<string>();
